@@ -6,6 +6,42 @@
     <description>Recent content in Tags on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 01 Feb 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blueee04.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CNN</title>
+      <link>https://blueee04.github.io/blog/tags/cnn/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/cnn/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>data augmentation</title>
+      <link>https://blueee04.github.io/blog/tags/data-augmentation/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/data-augmentation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep learning</title>
+      <link>https://blueee04.github.io/blog/tags/deep-learning/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Image dataset</title>
+      <link>https://blueee04.github.io/blog/tags/image-dataset/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/image-dataset/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>object detection</title>
+      <link>https://blueee04.github.io/blog/tags/object-detection/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/object-detection/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
