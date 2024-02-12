@@ -71,5 +71,40 @@
       <guid>https://blueee04.github.io/blog/tags/data-science/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Algorithim</title>
+      <link>https://blueee04.github.io/blog/tags/algorithim/</link>
+      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/algorithim/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Computer Vision</title>
+      <link>https://blueee04.github.io/blog/tags/computer-vision/</link>
+      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Haarcascade</title>
+      <link>https://blueee04.github.io/blog/tags/haarcascade/</link>
+      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/haarcascade/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Object Detection</title>
+      <link>https://blueee04.github.io/blog/tags/object-detection/</link>
+      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/object-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenCV</title>
+      <link>https://blueee04.github.io/blog/tags/opencv/</link>
+      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/opencv/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
