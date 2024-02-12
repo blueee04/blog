@@ -13,13 +13,17 @@ Let's dive into the world of simple linear regression, a fundamental statistical
 ### The Problem
 
 Our goal is to predict housing prices in California based on various factors such as location, median income, housing density, and more. By understanding the relationship between these variables and housing prices, we can provide valuable insights to stakeholders in the real estate industry.
-![comma](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)
+
+[dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)
 
 
 ### Explore the Data
 
 Perform exploratory data analysis (EDA) to gain insights into the dataset. Visualize key variables using scatter plots, histograms, and correlation matrices to understand their distributions and relationships.
-![data](blog/content/images/2023-04-02-A-Simple-Linear Regression/Screenshot from 2024-02-13 04-07-56.png)
+![data](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2023-04-02-A-Simple-Linear%20Regression/Screenshot%20from%202024-02-13%2004-07-56.png)
+![data](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2023-04-02-A-Simple-Linear%20Regression/Screenshot%20from%202024-02-13%2004-08-07.png)
+![data](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2023-04-02-A-Simple-Linear%20Regression/Screenshot%20from%202024-02-13%2004-08-16.png)
+
 ### Train the model
 
 ```py
@@ -52,5 +56,8 @@ ridge_pred = ridgecv.predict(X_test)
 ### Visualize the data
 
 We visualize the data using seaborn, displt function
+![graph](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2023-04-02-A-Simple-Linear%20Regression/Screenshot%20from%202024-02-13%2004-08-42.png)
+![graph](https://github.com/blueee04/blog/blob/main/content/images/2023-04-02-A-Simple-Linear%20Regression/Screenshot%20from%202024-02-13%2004-08-53.png)
+![graph](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2023-04-02-A-Simple-Linear%20Regression/Screenshot%20from%202024-02-13%2004-09-00.png)
 
 
