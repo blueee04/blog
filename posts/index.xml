@@ -6,13 +6,20 @@
     <description>Recent content in Posts on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 02 Aug 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Nov 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blueee04.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>A Neural Network from Scratch</title>
+      <link>https://blueee04.github.io/blog/posts/2023-11-05-a-neural-network-from-scratch/</link>
+      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/posts/2023-11-05-a-neural-network-from-scratch/</guid>
+      <description>Build a Neural Network From Scratch</description>
+    </item>
+    <item>
       <title>A Simple Linear Regression</title>
-      <link>https://blueee04.github.io/blog/posts/2023-04-02-a-simple-linear-regression/</link>
-      <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/posts/2023-04-02-a-simple-linear-regression/</guid>
+      <link>https://blueee04.github.io/blog/posts/2023-11-02-a-simple-linear-regression/</link>
+      <pubDate>Thu, 02 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/posts/2023-11-02-a-simple-linear-regression/</guid>
       <description>Implementing a Simple Linear Regression </description>
     </item>
     <item>

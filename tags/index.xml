@@ -6,27 +6,69 @@
     <description>Recent content in Tags on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 02 Aug 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Nov 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blueee04.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Artificial Intelligence</title>
+      <link>https://blueee04.github.io/blog/tags/artificial-intelligence/</link>
+      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/artificial-intelligence/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep Learning</title>
+      <link>https://blueee04.github.io/blog/tags/deep-learning/</link>
+      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gradient Descent</title>
+      <link>https://blueee04.github.io/blog/tags/gradient-descent/</link>
+      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/gradient-descent/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine Learning</title>
+      <link>https://blueee04.github.io/blog/tags/machine-learning/</link>
+      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Neural Networks</title>
+      <link>https://blueee04.github.io/blog/tags/neural-networks/</link>
+      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/neural-networks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NumPy</title>
+      <link>https://blueee04.github.io/blog/tags/numpy/</link>
+      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/numpy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://blueee04.github.io/blog/tags/python/</link>
+      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/python/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Data Analysis</title>
       <link>https://blueee04.github.io/blog/tags/data-analysis/</link>
-      <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 02 Nov 2023 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/tags/data-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Science</title>
       <link>https://blueee04.github.io/blog/tags/data-science/</link>
-      <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 02 Nov 2023 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/tags/data-science/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Machine Learning</title>
-      <link>https://blueee04.github.io/blog/tags/machine-learning/</link>
-      <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/machine-learning/</guid>
       <description></description>
     </item>
   </channel>

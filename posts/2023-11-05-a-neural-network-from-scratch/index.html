@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>A Neural Network from Scratch | bluee :)</title>
+<meta name="keywords" content="Neural Networks, Deep Learning, Artificial Intelligence, Machine Learning, Python, Gradient Descent, NumPy">
+<meta name="description" content="Build a Neural Network From Scratch">
+<meta name="author" content="Barshan Mondal">
+<link rel="canonical" href="https://blueee04.github.io/blog/posts/2023-11-05-a-neural-network-from-scratch/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blueee04.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blueee04.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blueee04.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blueee04.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blueee04.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="A Neural Network from Scratch" />
+<meta property="og:description" content="Build a Neural Network From Scratch" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blueee04.github.io/blog/posts/2023-11-05-a-neural-network-from-scratch/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-05T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A Neural Network from Scratch"/>
+<meta name="twitter:description" content="Build a Neural Network From Scratch"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blueee04.github.io/blog/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "A Neural Network from Scratch",
+      "item": "https://blueee04.github.io/blog/posts/2023-11-05-a-neural-network-from-scratch/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A Neural Network from Scratch",
+  "name": "A Neural Network from Scratch",
+  "description": "Build a Neural Network From Scratch",
+  "keywords": [
+    "Neural Networks", "Deep Learning", "Artificial Intelligence", "Machine Learning", "Python", "Gradient Descent", "NumPy"
+  ],
+  "articleBody": "import matplotlib.pyplot as plt from sklearn.datasets import make_circles from sklearn.model_selection import train_test_split # Create a dataset with 10,000 samples. X, y = make_circles(n_samples = 10000, noise= 0.05, random_state=26) X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.33, random_state=26) # Visualize the data. fig, (train_ax, test_ax) = plt.subplots(ncols=2, sharex=True, sharey=True, figsize=(10, 5)) train_ax.scatter(X_train[:, 0], X_train[:, 1], c=y_train, cmap=plt.cm.Spectral) train_ax.set_title(\"Training Data\") train_ax.set_xlabel(\"Feature #0\") train_ax.set_ylabel(\"Feature #1\") test_ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test) test_ax.set_xlabel(\"Feature #0\") test_ax.set_title(\"Testing data\") plt.show() This code imports the necessary libraries for creating a dataset, splitting it into training and testing sets, and visualizing the data.\nThe make_circles function from sklearn. datasets are used to create a dataset with 10,000 samples.\nThe n_samples parameter specifies the number of samples to generate, noise adds random noise to the data, and random_state sets the seed for the random number generator to ensure reproducibility.\nThe train_test_split function from sklearn.model_selection is used to split the dataset into training and testing sets.\nThe test_size parameter specifies the proportion of the dataset to include in the testing set, and random_state sets the seed for the random number generator to ensure reproducibility.\nThe fig, (train_ax, test_ax) = plt.subplots(ncols=2, sharex=True, sharey=True, figsize=(10, 5)) line creates a figure with two subplots, one for the training data and one for the testing data.\nThe ncols=2 parameter specifies the number of columns in the figure, sharex=True and sharey=True ensure that the x and y axes are shared between the subplots, and figsize=(10, 5) sets the size of the figure.\nThe train_ax.scatter and test_ax.scatter functions are used to plot the training and testing data, respectively.\nThe c parameter specifies the color of the points based on the target variable (y_train or y_test).\nThe set_title, set_xlabel, and set_ylabel functions are used to set the title and axis labels for the training data subplot.\nFinally, plt.show() is used to display the figure.\nimport warnings warnings.filterwarnings(\"ignore\") !pip install torch -q import torch import numpy as np from torch.utils.data import Dataset, DataLoader # Convert data to torch tensors class Data(Dataset): def __init__(self, X, y): self.X = torch.from_numpy(X.astype(np.float32)) self.y = torch.from_numpy(y.astype(np.float32)) self.len = self.X.shape[0] def __getitem__(self, index): return self.X[index], self.y[index] def __len__(self): return self.len batch_size = 64 # Instantiate training and test data train_data = Data(X_train, y_train) train_dataloader = DataLoader(dataset=train_data, batch_size=batch_size, shuffle=True) test_data = Data(X_test, y_test) test_dataloader = DataLoader(dataset=test_data, batch_size=batch_size, shuffle=True) # Check it's working for batch, (X, y) in enumerate(train_dataloader): print(f\"Batch: {batch+1}\") print(f\"X shape: {X.shape}\") print(f\"y shape: {y.shape}\") break It defines a class called Data that converts input data into torch tensors. The class has three methods: init that initializes the class with input data, getitem that returns the data at a specific index, and len that returns the length of the data. The code then instantiates training and test data using the Data class and DataLoader. The DataLoader is used to load the data in batches of size 64 and shuffle the data. Finally, the code checks if the DataLoader is working by printing the shape of the first batch of data. The warnings library is used to ignore any warnings that may arise during the execution of the code. The !pip install torch -q command installs the torch library without displaying any output. The numpy library is used to convert input data into numpy arrays before converting them into torch tensors. Overall, this code converts input data into torch tensors and loads them into batches using DataLoader for efficient training and testing of machine learning models. import torch from torch import nn from torch import optim input_dim = 2 hidden_dim = 10 output_dim = 1 class NeuralNetwork(nn.Module): def __init__(self, input_dim, hidden_dim, output_dim): super(NeuralNetwork, self).__init__() self.layer_1 = nn.Linear(input_dim, hidden_dim) nn.init.kaiming_uniform_(self.layer_1.weight, nonlinearity=\"relu\") self.layer_2 = nn.Linear(hidden_dim, output_dim) def forward(self, x): x = torch.nn.functional.relu(self.layer_1(x)) x = torch.nn.functional.sigmoid(self.layer_2(x)) return x model = NeuralNetwork(input_dim, hidden_dim, output_dim) print(model) This code defines a neural network model using the PyTorch library. First, the necessary libraries are imported: torch, nn (short for neural network), and optim (short for optimizer). Next, the input, hidden, and output dimensions of the neural network are defined. Then, a class called NeuralNetwork is defined, which inherits from the nn.Module class. This class has an init method that initializes the layers of the neural network. The first layer is a linear layer (nn.Linear) that takes in the input dimension and outputs to the hidden dimension. The weights of this layer are initialized using the Kaiming uniform initialization method with a ReLU nonlinearity. The second layer is another linear layer that takes in the hidden dimension and outputs to the output dimension. The forward method of the NeuralNetwork class defines the forward pass of the neural network. It takes in an input tensor x and passes it through the first layer with a ReLU activation function (torch.nn.functional.relu). The output of this layer is then passed through the second layer with a sigmoid activation function (torch.nn.functional.sigmoid). The final output of the neural network is returned. Finally, an instance of the NeuralNetwork class is created with the specified input, hidden, and output dimensions, and the model is printed to show the structure of the neural network. learning_rate = 0.1 loss_fn = nn.BCELoss() optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate) The code also defines the loss function as Binary Cross Entropy (BCE) Loss, which is commonly used for binary classification problems. Finally, the code initializes the optimizer as Stochastic Gradient Descent (SGD) with the model parameters and the learning rate as inputs. The optimizer is responsible for updating the model parameters during training to minimize the loss function. num_epochs = 100 loss_values = [] for epoch in range(num_epochs): for X, y in train_dataloader: # zero the parameter gradients optimizer.zero_grad() # forward + backward + optimize pred = model(X) loss = loss_fn(pred, y.unsqueeze(-1)) loss_values.append(loss.item()) loss.backward() optimizer.step() print(\"Training Complete\") This code trains a machine learning model using a training dataset. The first line sets the number of epochs to 100. An epoch is a complete pass through the entire training dataset. The for loop iterates through each epoch. Within each epoch, the for loop iterates through each batch of data in the train_dataloader. The optimizer.zero_grad() line sets the gradients of all model parameters to zero. This is necessary because PyTorch accumulates gradients by default, so we need to reset them before each iteration. The pred = model(X) line computes the model’s predictions for the input data X. The loss = loss_fn(pred, y.unsqueeze(-1)) line computes the loss between the model’s predictions and the true labels y. The unsqueeze(-1) method adds an extra dimension to y to match the shape of pred. The loss_values.append(loss.item()) line adds the current loss value to a list of loss values. The loss.backward() line computes the gradients of the loss with respect to all model parameters. The optimizer.step() line updates the model parameters based on the computed gradients. After all epochs and batches have been processed, the code prints “Training Complete”. step = np.linspace(0, 100, 10500) fig, ax = plt.subplots(figsize=(8,5)) plt.plot(step, np.array(loss_values)) plt.title(\"Step-wise Loss\") plt.xlabel(\"Epochs\") plt.ylabel(\"Loss\") plt.show() This code creates a plot of the loss values over a range of steps or epochs. First, it creates an array of 10500 evenly spaced values between 0 and 100 using the np.linspace() function and assigns it to the variable step. Then, it creates a figure and axes object using plt.subplots() and sets the size of the figure to 8 inches by 5 inches. Next, it plots the loss_values array against the step array using plt.plot(). It sets the title of the plot to “Step-wise Loss” using plt.title(), the x-axis label to “Epochs” using plt.xlabel(), and the y-axis label to “Loss” using plt.ylabel(). Finally, it displays the plot using plt.show(). Note that this code assumes that loss_values is a list or array of the same length as step containing the loss values at each step/epoch. import itertools with torch.no_grad(): y_pred = [] y_test = [] total = 0 correct = 0 for X, y in test_dataloader: outputs = model(X) predicted = np.where(outputs \u003c 0.5, 0, 1) predicted = list(itertools.chain(*predicted)) y_pred.append(predicted) y_test.append(y) total += y.size(0) correct += (predicted == y.numpy()).sum().item() print(f'Accuracy of the network on the test instances: {100 * correct // total}%') ",
+  "wordCount" : "1340",
+  "inLanguage": "en",
+  "datePublished": "2023-11-05T00:00:00Z",
+  "dateModified": "2023-11-05T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Barshan Mondal"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blueee04.github.io/blog/posts/2023-11-05-a-neural-network-from-scratch/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "bluee :)",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blueee04.github.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blueee04.github.io/blog/" accesskey="h" title="bluee :) (Alt + H)">bluee :)</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blueee04.github.io/blog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blueee04.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://blueee04.github.io/blog/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      A Neural Network from Scratch
+    </h1>
+    <div class="post-description">
+      Build a Neural Network From Scratch
+    </div>
+    <div class="post-meta"><span title='2023-11-05 00:00:00 +0000 UTC'>November 5, 2023</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Barshan Mondal
+
+</div>
+  </header> 
+
+  <div class="post-content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_circles</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a dataset with 10,000 samples.</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_circles</span><span class="p">(</span><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">noise</span><span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">random_state</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">.33</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Visualize the data.</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">train_ax</span><span class="p">,</span> <span class="n">test_ax</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_train</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&#34;Training Data&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&#34;Feature #0&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&#34;Feature #1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">test_ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&#34;Feature #0&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&#34;Testing data&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>This code imports the necessary libraries for creating a dataset, splitting it into training and testing sets, and visualizing the data.</p>
+</li>
+<li>
+<p>The make_circles function from sklearn. datasets are used to create a dataset with 10,000 samples.</p>
+</li>
+<li>
+<p>The n_samples parameter specifies the number of samples to generate, noise adds random noise to the data, and random_state sets the seed for the random number generator to ensure reproducibility.</p>
+</li>
+<li>
+<p>The train_test_split function from sklearn.model_selection is used to split the dataset into training and testing sets.</p>
+</li>
+<li>
+<p>The test_size parameter specifies the proportion of the dataset to include in the testing set, and random_state sets the seed for the random number generator to ensure reproducibility.</p>
+</li>
+<li>
+<p>The fig, (train_ax, test_ax) = plt.subplots(ncols=2, sharex=True, sharey=True, figsize=(10, 5)) line creates a figure with two subplots, one for the training data and one for the testing data.</p>
+</li>
+<li>
+<p>The ncols=2 parameter specifies the number of columns in the figure, sharex=True and sharey=True ensure that the x and y axes are shared between the subplots, and figsize=(10, 5) sets the size of the figure.</p>
+</li>
+<li>
+<p>The train_ax.scatter and test_ax.scatter functions are used to plot the training and testing data, respectively.</p>
+</li>
+<li>
+<p>The c parameter specifies the color of the points based on the target variable (y_train or y_test).</p>
+</li>
+<li>
+<p>The set_title, set_xlabel, and set_ylabel functions are used to set the title and    axis labels for the training data subplot.</p>
+</li>
+<li>
+<p>Finally, plt.show() is used to display the figure.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">warnings</span>
+</span></span><span class="line"><span class="cl"><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&#34;ignore&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span> <span class="o">-</span><span class="n">q</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Convert data to torch tensors</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Data</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">       <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">       <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">       <span class="bp">self</span><span class="o">.</span><span class="n">len</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">   <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">   <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">len</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Instantiate training and test data</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">test_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check it&#39;s working</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">batch</span><span class="p">,</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_dataloader</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Batch: </span><span class="si">{</span><span class="n">batch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;X shape: </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;y shape: </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="k">break</span>
+</span></span></code></pre></div><ul>
+<li>It defines a class called Data that converts input data into torch tensors.</li>
+<li>The class has three methods: <strong>init</strong> that initializes the class with input data, <strong>getitem</strong> that returns the data at a specific index, and <strong>len</strong> that returns the length of the data.</li>
+<li>The code then instantiates training and test data using the Data class and DataLoader.</li>
+<li>The DataLoader is used to load the data in batches of size 64 and shuffle the data.</li>
+<li>Finally, the code checks if the DataLoader is working by printing the shape of the first batch of data.</li>
+<li>The warnings library is used to ignore any warnings that may arise during the execution of the code.</li>
+<li>The !pip install torch -q command installs the torch library without displaying any output.</li>
+<li>The numpy library is used to convert input data into numpy arrays before converting them into torch tensors.</li>
+<li>Overall, this code converts input data into torch tensors and loads them into batches using DataLoader for efficient training and testing of machine learning models.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">optim</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">input_dim</span> <span class="o">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">output_dim</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">NeuralNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">       <span class="nb">super</span><span class="p">(</span><span class="n">NeuralNetwork</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">       <span class="bp">self</span><span class="o">.</span><span class="n">layer_1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">kaiming_uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_1</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="s2">&#34;relu&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="bp">self</span><span class="o">.</span><span class="n">layer_2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">   <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">       <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">       <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">NeuralNetwork</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li>This code defines a neural network model using the PyTorch library.</li>
+<li>First, the necessary libraries are imported: torch, nn (short for neural network), and optim (short for optimizer).</li>
+<li>Next, the input, hidden, and output dimensions of the neural network are defined.</li>
+<li>Then, a class called NeuralNetwork is defined, which inherits from the nn.Module class.</li>
+<li>This class has an <strong>init</strong> method that initializes the layers of the neural network.</li>
+<li>The first layer is a linear layer (nn.Linear) that takes in the input dimension and outputs to the hidden dimension.</li>
+<li>The weights of this layer are initialized using the Kaiming uniform initialization method with a ReLU nonlinearity.</li>
+<li>The second layer is another linear layer that takes in the hidden dimension and outputs to the output dimension.</li>
+<li>The forward method of the NeuralNetwork class defines the forward pass of the neural network.</li>
+<li>It takes in an input tensor x and passes it through the first layer with a ReLU activation function (torch.nn.functional.relu).</li>
+<li>The output of this layer is then passed through the second layer with a sigmoid activation function (torch.nn.functional.sigmoid).</li>
+<li>The final output of the neural network is returned.</li>
+<li>Finally, an instance of the NeuralNetwork class is created with the specified input, hidden, and output dimensions, and the model is printed to show the structure of the neural network.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li>The code also defines the loss function as Binary Cross Entropy (BCE) Loss, which is commonly used for binary classification problems.</li>
+<li>Finally, the code initializes the optimizer as Stochastic Gradient Descent (SGD) with the model parameters and the learning rate as inputs.</li>
+<li>The optimizer is responsible for updating the model parameters during training to minimize the loss function.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl"><span class="n">loss_values</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">train_dataloader</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="c1"># zero the parameter gradients</span>
+</span></span><span class="line"><span class="cl">       <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">       <span class="c1"># forward + backward + optimize</span>
+</span></span><span class="line"><span class="cl">       <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">       <span class="n">loss_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">       <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">       <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Training Complete&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li>This code trains a machine learning model using a training dataset.</li>
+<li>The first line sets the number of epochs to 100.</li>
+<li>An epoch is a complete pass through the entire training dataset.</li>
+<li>The for loop iterates through each epoch.</li>
+<li>Within each epoch, the for loop iterates through each batch of data in the train_dataloader.</li>
+<li>The optimizer.zero_grad() line sets the gradients of all model parameters to zero.</li>
+<li>This is necessary because PyTorch accumulates gradients by default, so we need to reset them before each iteration.</li>
+<li>The pred = model(X) line computes the model&rsquo;s predictions for the input data X.</li>
+<li>The loss = loss_fn(pred, y.unsqueeze(-1)) line computes the loss between the model&rsquo;s predictions and the true labels y.</li>
+<li>The unsqueeze(-1) method adds an extra dimension to y to match the shape of pred.</li>
+<li>The loss_values.append(loss.item()) line adds the current loss value to a list of loss values.</li>
+<li>The loss.backward() line computes the gradients of the loss with respect to all model parameters.</li>
+<li>The optimizer.step() line updates the model parameters based on the computed gradients.</li>
+<li>After all epochs and batches have been processed, the code prints &ldquo;Training Complete&rdquo;.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10500</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">loss_values</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;Step-wise Loss&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Epochs&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&#34;Loss&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div><ul>
+<li>This code creates a plot of the loss values over a range of steps or epochs.</li>
+<li>First, it creates an array of 10500 evenly spaced values between 0 and 100 using the np.linspace() function and assigns it to the variable step.</li>
+<li>Then, it creates a figure and axes object using plt.subplots() and sets the size of the figure to 8 inches by 5 inches.</li>
+<li>Next, it plots the loss_values array against the step array using plt.plot().</li>
+<li>It sets the title of the plot to &ldquo;Step-wise Loss&rdquo; using plt.title(), the x-axis label to &ldquo;Epochs&rdquo; using plt.xlabel(), and the y-axis label to &ldquo;Loss&rdquo; using plt.ylabel().</li>
+<li>Finally, it displays the plot using plt.show().</li>
+<li>Note that this code assumes that loss_values is a list or array of the same length as step containing the loss values at each step/epoch.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">itertools</span>    
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">   <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">   <span class="n">y_test</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">   <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">   <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">   <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">test_dataloader</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="n">predicted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">outputs</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="n">predicted</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">predicted</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">       <span class="n">y_pred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">predicted</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="n">y_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="n">total</span> <span class="o">+=</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy of the network on the test instances: </span><span class="si">{</span><span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">//</span> <span class="n">total</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blueee04.github.io/blog/tags/neural-networks/">Neural Networks</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/deep-learning/">Deep Learning</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/artificial-intelligence/">Artificial Intelligence</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/python/">Python</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/gradient-descent/">Gradient Descent</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/numpy/">NumPy</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://blueee04.github.io/blog/posts/2023-11-02-a-simple-linear-regression/">
+    <span class="title">Next »</span>
+    <br>
+    <span>A Simple Linear Regression</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share A Neural Network from Scratch on x"
+            href="https://x.com/intent/tweet/?text=A%20Neural%20Network%20from%20Scratch&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2023-11-05-a-neural-network-from-scratch%2f&amp;hashtags=NeuralNetworks%2cDeepLearning%2cArtificialIntelligence%2cMachineLearning%2cPython%2cGradientDescent%2cNumPy">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share A Neural Network from Scratch on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2023-11-05-a-neural-network-from-scratch%2f&amp;title=A%20Neural%20Network%20from%20Scratch&amp;summary=A%20Neural%20Network%20from%20Scratch&amp;source=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2023-11-05-a-neural-network-from-scratch%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share A Neural Network from Scratch on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2023-11-05-a-neural-network-from-scratch%2f&title=A%20Neural%20Network%20from%20Scratch">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share A Neural Network from Scratch on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2023-11-05-a-neural-network-from-scratch%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share A Neural Network from Scratch on whatsapp"
+            href="https://api.whatsapp.com/send?text=A%20Neural%20Network%20from%20Scratch%20-%20https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2023-11-05-a-neural-network-from-scratch%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share A Neural Network from Scratch on telegram"
+            href="https://telegram.me/share/url?text=A%20Neural%20Network%20from%20Scratch&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2023-11-05-a-neural-network-from-scratch%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share A Neural Network from Scratch on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=A%20Neural%20Network%20from%20Scratch&u=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2023-11-05-a-neural-network-from-scratch%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://blueee04.github.io/blog/">bluee :)</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
