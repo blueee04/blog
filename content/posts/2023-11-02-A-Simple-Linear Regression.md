@@ -1,7 +1,7 @@
 +++
 title = "A Simple Linear Regression"
 description = "Implementing a Simple Linear Regression "
-date = "2023-08-02"
+date = "2023-11-02"
 tags = ["Data Analysis","Machine Learning","Data Science"]
 summary = "Implementing a Simple Linear Regression "
 +++
