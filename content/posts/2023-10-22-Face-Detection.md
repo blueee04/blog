@@ -2,6 +2,7 @@
 title = "Face Detection"
 date = "2023-10-22"
 summary = "Face Detection Using Haarcascade Frontal Face Classifier"
+tags = ["Object Detection", "Computer Vision", "OpenCV", "Haarcascade", "Machine Learning", "Algorithim"]
 
 +++
 
