@@ -51,3 +51,5 @@ cv2.destroyAllWindows()
 * This checks if the frames can be read and then runs the function to detect the faces
 * It also configures the program to stop when the key 'q' is pressed
 
+![image](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2023-10-22-Face-Detection/Screenshot%20from%202024-02-13%2006-31-04.png)
+
