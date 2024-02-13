@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Packet Capture on bluee :)</title>
+    <link>https://blueee04.github.io/blog/tags/packet-capture/</link>
+    <description>Recent content in Packet Capture on bluee :)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 12 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://blueee04.github.io/blog/tags/packet-capture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bluetooth Network Capture</title>
+      <link>https://blueee04.github.io/blog/posts/2023-06-12-bluetooth-network-capture/</link>
+      <pubDate>Mon, 12 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/posts/2023-06-12-bluetooth-network-capture/</guid>
+      <description>We need to Map the movement of the cursor to recieve the hidden message written on by the user&amp;hellip;&amp;hellip;.We have a Bluetooth Network Capture as a challenge and we need to follow it&amp;rsquo;s movement to get the message</description>
+    </item>
+  </channel>
+</rss>
