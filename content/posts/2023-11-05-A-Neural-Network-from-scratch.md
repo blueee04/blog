@@ -32,6 +32,7 @@ test_ax.set_xlabel("Feature #0")
 test_ax.set_title("Testing data")
 plt.show()
 ```
+![image](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2023-11-05-A-Neural-Network-from-scratch/Screenshot%20from%202024-02-13%2005-43-00.png)
  * This code imports the necessary libraries for creating a dataset, splitting it into training and testing sets, and visualizing the data.
 
  * The make_circles function from sklearn. datasets are used to create a dataset with 10,000 samples.
@@ -197,6 +198,7 @@ plt.xlabel("Epochs")
 plt.ylabel("Loss")
 plt.show()
 ```
+!{[image](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2023-11-05-A-Neural-Network-from-scratch/Screenshot%20from%202024-02-13%2005-43-08.png)
  * This code creates a plot of the loss values over a range of steps or epochs.
  * First, it creates an array of 10500 evenly spaced values between 0 and 100 using the np.linspace() function and assigns it to the variable step.
  * Then, it creates a figure and axes object using plt.subplots() and sets the size of the figure to 8 inches by 5 inches.
