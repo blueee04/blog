@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Bluetooth Network Capture | bluee :)</title>
-<meta name="keywords" content="DFC, Network, Forensics, Packet Capture">
+<meta name="keywords" content="CTF, DFC, Network, Forensics, Packet Capture">
 <meta name="description" content="We have a Bluetooth Network Capture as a challenge and we need to follow it&rsquo;s movement to get the message">
 <meta name="author" content="Barshan Mondal">
 <link rel="canonical" href="https://blueee04.github.io/blog/posts/2023-06-12-bluetooth-network-capture/">
@@ -94,7 +94,7 @@
   "name": "Bluetooth Network Capture",
   "description": "We have a Bluetooth Network Capture as a challenge and we need to follow it\u0026rsquo;s movement to get the message",
   "keywords": [
-    "DFC", "Network", "Forensics", "Packet Capture"
+    "CTF", "DFC", "Network", "Forensics", "Packet Capture"
   ],
   "articleBody": "Description We need to Map the movement of the cursor to recieve the hidden message written on by the user…….We have a Bluetooth Network Capture as a challenge and we need to follow it’s movement to get the message\nTools Required: TShark Numpy Matplotlib Code import os import matplotlib.pyplot as plt import numpy as np count = 0 plot_x = [] plot_y = [] X = [] Y = [] condition = [] x_pos = 0 y_pos = 0 output1= os.popen(\"tshark -r yourpcaphere.pcap -Y \\\"btl2cap \u0026\u0026 btatt.handle==0x0030 \u0026\u0026 btatt.opcode==0x1b\\\" -T fields -e \\\"btatt.value\\\"\").readlines() def filter_the_values(a): return (a if a \u003c 127 else (a-256)) for i in range(len(output1)): temp = bytes.fromhex(output1[i].strip()) indicator = temp[0] X.append(filter_the_values(temp[2])) Y.append(filter_the_values(temp[3])) condition.append(indicator) for _ in range(len(X)): x_pos += X[_] y_pos += Y[_] plot_x.append(x_pos) plot_y.append(y_pos) plot_x = np.array(plot_x) * -1 plot_y = np.array(plot_y) plt.figure(figsize=(100,60)) for i in range(len(plot_x)): if condition[i]: plt.scatter(plot_x[i],plot_y[i],marker='o',color='blue',linewidth=50,alpha=1) plt.plot() Result [Mapped Cursor movement]\nCode Explanation The code imports the necessary libraries: os, matplotlib.pyplot, and numpy.\nSeveral variables are init ialized, including count, plot_x, plot_y, X, Y, condition, x_pos, and y_pos.\nThe output1 variable is assigned the output of a command executed using os.popen(). The command runs tshark (a network protocol analyzer) on a pcap file specified by “yourpcaphere.pcap”. It filters the output to only include packets that match specific criteria related to Bluetooth Attribute Protocol (ATT).\nThe filter_the_values() function is defined to convert values in the range 128-255 to their corresponding negative values.\nA loop iterates over each line of output1. Each line is converted from hexadecimal to a bytes object, and relevant values are extracted and appended to X, Y, and condition lists.\nAnother loop calculates cumulative positions (x_pos and y_pos) and appends them to plot_x and plot_y lists. plot_x and plot_y lists are converted to numpy arrays and modified (multiply plot_x by -1).\nA figure with a large size is created using plt.figure().\nA loop iterates over each point in plot_x and plot_y. If the corresponding condition is true, a blue circle marker is added to the plot using plt.scatter().\nFinally, plt.plot() is called to display the plot.\nNote: Make sure you have the necessary libraries installed (os, matplotlib, numpy) and replace “yourpcaphere.pcap” with the actual path to your pcap file. Additionally, you may need to adjust the figure size (plt.figure(figsize=(100,60))) according to your needs.\n",
   "wordCount" : "383",
@@ -295,6 +295,7 @@ plot_x and plot_y lists are converted to numpy arrays and modified (multiply plo
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="https://blueee04.github.io/blog/tags/ctf/">CTF</a></li>
       <li><a href="https://blueee04.github.io/blog/tags/dfc/">DFC</a></li>
       <li><a href="https://blueee04.github.io/blog/tags/network/">Network</a></li>
       <li><a href="https://blueee04.github.io/blog/tags/forensics/">Forensics</a></li>
@@ -317,7 +318,7 @@ plot_x and plot_y lists are converted to numpy arrays and modified (multiply plo
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Bluetooth Network Capture on x"
-            href="https://x.com/intent/tweet/?text=Bluetooth%20Network%20Capture&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2023-06-12-bluetooth-network-capture%2f&amp;hashtags=DFC%2cNetwork%2cForensics%2cPacketCapture">
+            href="https://x.com/intent/tweet/?text=Bluetooth%20Network%20Capture&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2023-06-12-bluetooth-network-capture%2f&amp;hashtags=CTF%2cDFC%2cNetwork%2cForensics%2cPacketCapture">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
