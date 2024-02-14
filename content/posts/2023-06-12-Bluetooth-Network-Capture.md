@@ -2,7 +2,7 @@
 title = "Bluetooth Network Capture"
 date = "2023-06-12"
 summary = "We have a Bluetooth Network Capture as a challenge and we need to follow it's movement to get the message" 
-tags = ["DFC" , "Network" , "Forensics" , "Packet Capture"]
+tags = ["CTF","DFC" , "Network" , "Forensics" , "Packet Capture"]
 +++
 
 ## Description
