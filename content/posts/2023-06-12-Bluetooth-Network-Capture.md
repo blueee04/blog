@@ -1,7 +1,7 @@
 +++
 title = "Bluetooth Network Capture"
 date = "2023-06-12"
-summary = "We need to Map the movement of the cursor to recieve the hidden message written on by the user.......We have a Bluetooth Network Capture as a challenge and we need to follow it's movement to get the message" 
+summary = "We have a Bluetooth Network Capture as a challenge and we need to follow it's movement to get the message" 
 tags = ["DFC" , "Network" , "Forensics" , "Packet Capture"]
 +++
 
