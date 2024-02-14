@@ -7,7 +7,7 @@ tags = ["CTF", "Writeup" , "Memory Forensics", "Forensics"]
 
 # Introduction
 
-In this blog post, I will be sharing a complete writeup on the (Memlabs)[https://github.com/stuxnet999/MemLabs] challenge. This challenge was created by my supersenior,Abhiram Bhaiya aka Stuxnet and it proved to be an exciting and educational experience. I will walk you through the steps I took to solve the challenge and provide insights into the techniques and tools used.
+In this blog post, I will be sharing a complete writeup on the [Memlabs](https://github.com/stuxnet999/MemLabs) challenge. This challenge was created by my supersenior,Abhiram Bhaiya aka Stuxnet and it proved to be an exciting and educational experience. I will walk you through the steps I took to solve the challenge and provide insights into the techniques and tools used.
 
 ## Challenge Overview
 
