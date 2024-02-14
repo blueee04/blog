@@ -1,8 +1,8 @@
 +++
-title =  "Complete Memlabs Writeup"
+title =  "Memlabs"
 date = 2023-05-15
-author = Barshan Mondal
-tags: ["CTF", "Writeup" , "Memory Forensics", "Forensics"]
+summary = "Complete Writeup Of Memlabs"
+tags = ["CTF", "Writeup" , "Memory Forensics", "Forensics"]
 +++
 
 # Introduction
