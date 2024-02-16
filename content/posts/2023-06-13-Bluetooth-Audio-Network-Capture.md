@@ -13,10 +13,10 @@ We are given a .pcap [file](https://github.com/blueee04/DFC-writeups/raw/main/ev
 * Morse Code Translator
 
 ## Method
-[]()
+[](https://github.com/blueee04/blog/blob/main/content/images/2023-06-13-Bluetooth-Audio-Network-Capture/Screenshot%20from%202024-02-17%2002-16-00.png)
 There we can dump out the audio stream as a .wav to analyse it.
-[]()
+[](https://github.com/blueee04/blog/blob/main/content/images/2023-06-13-Bluetooth-Audio-Network-Capture/Screenshot%20from%202024-02-17%2002-16-07.png)
 We import this wav file into Sonic Visualizer to analyze it further.
-[]()
+[](https://github.com/blueee04/blog/blob/main/content/images/2023-06-13-Bluetooth-Audio-Network-Capture/Screenshot%20from%202024-02-17%2002-16-13.png)
 Analyzing it further we can see we have a morse code…decoding it further we have a string as follows
-[]()
+[](https://github.com/blueee04/blog/blob/main/content/images/2023-06-13-Bluetooth-Audio-Network-Capture/Screenshot%20from%202024-02-17%2002-16-21.png)
