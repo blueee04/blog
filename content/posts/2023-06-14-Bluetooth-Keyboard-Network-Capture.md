@@ -1,7 +1,7 @@
 +++
 title = "Bluetooth Keyboard Network Capture"
 date = "2023-06-12"
-summary = "We have a Bluetooth Network Capture over here which looks like a Bluetooth keyboard capture…so we take the data from the capture and pair it with their respective USB codes to generate the message typed on the keyboard." 
+summary = "We have a Bluetooth Network Capture over here which looks like a Bluetooth keyboard capture…." 
 tags = ["CTF","DFC" , "Network" , "Forensics" , "Packet Capture"]
 +++
 
