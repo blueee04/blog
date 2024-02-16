@@ -7,7 +7,7 @@ tags = ["CTF","DFC" , "Network" , "Forensics" , "Packet Capture"]
 
 ## Description
 
-We have another .pcap file[](https://github.com/blueee04/DFC-writeups/raw/main/evidence3/evidence3.pcap) over here which looks like a Bluetooth keyboard capture…so we take the data from the capture and pair it with their respective USB codes to generate the message typed on the keyboard.
+We have another .pcap [file](https://github.com/blueee04/DFC-writeups/raw/main/evidence3/evidence3.pcap) over here which looks like a Bluetooth keyboard capture…so we take the data from the capture and pair it with their respective USB codes to generate the message typed on the keyboard.
 
 ## Tools:
 * Python
