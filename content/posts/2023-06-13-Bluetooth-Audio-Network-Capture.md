@@ -1,7 +1,7 @@
 +++
 title = "Bluetooth Audio Device Network Capture"
 date = "2023-06-12"
-summary = "We have a Bluetooth Network Capture as a challenge and we need to follow it's movement to get the message" 
+summary = "We have a Network capture of a bluetooth audio device. So let's see how to analyze it." 
 tags = ["CTF","DFC" , "Network" , "Forensics" , "Packet Capture"]
 +++
 
