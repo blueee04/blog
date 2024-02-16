@@ -61,7 +61,7 @@ plt.plot()
 ```
 ## Result
 
-![](../images/2023-06-12-Bluetooth-Network-Capture/bluetoothplot.jpeg)
+![](https://github.com/blueee04/blog/blob/main/content/images/2023-06-12-Bluetooth-Network-Capture/bluetoothplot.jpeg?raw=true)
 
 **[Mapped Cursor movement]**
 ## Code Explanation
