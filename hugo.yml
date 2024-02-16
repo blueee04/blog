@@ -3,6 +3,7 @@ languageCode : en-us
 title : bluee :)
 theme : PaperMod
 
+
 enableInlineShortcodes: true
 enableRobotsTXT: true
 buildDrafts: false
@@ -119,7 +120,7 @@ params:
 
   assets:
     disableHLJS: true
-  #     favicon: "<link / abs url>"
+  #     favicon: "https://icons8.com/icon/19983/batman"
   #     favicon16x16: "<link / abs url>"
   #     favicon32x32: "<link / abs url>"
   #     apple_touch_icon: "<link / abs url>"
