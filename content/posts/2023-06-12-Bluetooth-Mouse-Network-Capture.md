@@ -1,5 +1,5 @@
 +++
-title = "Bluetooth Network Capture"
+title = "Bluetooth Mouse Network Capture"
 date = "2023-06-12"
 summary = "We have a Bluetooth Network Capture as a challenge and we need to follow it's movement to get the message" 
 tags = ["CTF","DFC" , "Network" , "Forensics" , "Packet Capture"]
@@ -7,7 +7,7 @@ tags = ["CTF","DFC" , "Network" , "Forensics" , "Packet Capture"]
 
 ## Description
 
-We need to Map the movement of the cursor to recieve the hidden message written on by the user.......We have a Bluetooth Network Capture as a challenge and we need to follow it's movement to get the message
+We need to Map the movement of the cursor to recieve the hidden message written on by the user.......We have a Bluetooth Network Capture as a [challenge](https://github.com/blueee04/DFC-writeups/raw/main/evidence1/evidence1.pcap) and we need to follow it's movement to get the message
 
 ## Tools Required:
 
@@ -69,7 +69,7 @@ plt.plot()
 
 1. The code imports the necessary libraries: os, matplotlib.pyplot, and numpy.
 
-2. Several variables are init
+2. Several variables are init       
 ialized, including count, plot_x, plot_y, X, Y, condition, x_pos, and y_pos.
 
 3. The output1 variable is assigned the output of a command executed using os.popen(). The command runs tshark (a network protocol analyzer) on a pcap file specified by "yourpcaphere.pcap". It filters the output to only include packets that match specific criteria related to Bluetooth Attribute Protocol (ATT).
