@@ -38,7 +38,7 @@ languages:
       profileMode:
         enabled: true
         title: Barshan Mondal
-        imageUrl: "https://neal.fun/space-elevator/images/sprites/monarch-butterfly.webp"
+        imageUrl: "https://neal.fun/space-elevator/images/sprites/monarch-butterfly-lg.webp"
         imageTitle: Profile image
         imageWidth: 120
         imageHeight: 120
