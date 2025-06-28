@@ -13,8 +13,8 @@ In this blog post, I share a complete overview of a deep learning-based medical 
 
 ## 🔗 Project Links
 
-- **GitHub Repository**: [Leprosy Detection Project](https://github.com/blueee04/Music-Tracklist-Recommendation-System)
-- **Dataset**: [Leprosy Dataset](https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification)
+- **GitHub Repository**: [Leprosy Detection Project](https://github.com/5h4rrk/Leprosy_Detection)
+- **Dataset**: [Leprosy Dataset](https://www.kaggle.com/datasets/orvile/leprosy-chronic-wound-images-co2wounds-v2)
 
 ---
 
