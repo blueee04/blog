@@ -6,6 +6,8 @@ tags = ["Healthcare", "Generative AI", "Medical Imaging", "GANs", "Medical Techn
 +++
 
 # Generative AI in Healthcare: Transforming Diagnosis, Imaging, and Patient Care
+# A Review Paper Done By Me And My Classmate For A Journal Chapter(General Area Of Research)
+## So i dump here whatever i picked up from there
 
 In recent years, the integration of artificial intelligence (AI) into healthcare has moved beyond predictive analytics and into the realm of **content generation**—with Generative AI now playing a pivotal role in medical diagnostics, imaging, and data augmentation. This shift is driven by the need to **overcome data scarcity**, reduce **bias in clinical models**, and accelerate innovation in patient care.
 
