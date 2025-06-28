@@ -6,20 +6,48 @@
     <description>Recent content in Tags on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blueee04.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Artificial Intelligence</title>
-      <link>https://blueee04.github.io/blog/tags/artificial-intelligence/</link>
-      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/artificial-intelligence/</guid>
+      <title>Computer Vision</title>
+      <link>https://blueee04.github.io/blog/tags/computer-vision/</link>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/computer-vision/</guid>
       <description></description>
     </item>
     <item>
       <title>Deep Learning</title>
       <link>https://blueee04.github.io/blog/tags/deep-learning/</link>
-      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Healthcare AI</title>
+      <link>https://blueee04.github.io/blog/tags/healthcare-ai/</link>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/healthcare-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Leprosy Detection</title>
+      <link>https://blueee04.github.io/blog/tags/leprosy-detection/</link>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/leprosy-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Transfer Learning</title>
+      <link>https://blueee04.github.io/blog/tags/transfer-learning/</link>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/transfer-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Artificial Intelligence</title>
+      <link>https://blueee04.github.io/blog/tags/artificial-intelligence/</link>
+      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/artificial-intelligence/</guid>
       <description></description>
     </item>
     <item>
@@ -76,13 +104,6 @@
       <link>https://blueee04.github.io/blog/tags/algorithim/</link>
       <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/tags/algorithim/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Computer Vision</title>
-      <link>https://blueee04.github.io/blog/tags/computer-vision/</link>
-      <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/computer-vision/</guid>
       <description></description>
     </item>
     <item>
