@@ -11,6 +11,11 @@ In this blog post, I share a complete overview of a deep learning-based medical 
 
 ![Pipeline Architecture](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2024-6-21%20Leprosy%20Detection/pipeline.png)
 
+## 🔗 Project Links
+
+- **GitHub Repository**: [Leprosy Detection Project](https://github.com/blueee04/Music-Tracklist-Recommendation-System)
+- **Dataset**: [Leprosy Dataset](https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification)
+
 ---
 
 ## Dataset Overview
