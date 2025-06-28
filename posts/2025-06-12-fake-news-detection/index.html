@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Leprosy Detection using Deep Learning | bluee :)</title>
-<meta name="keywords" content="Deep Learning, Computer Vision, Transfer Learning, Leprosy Detection, Healthcare AI">
-<meta name="description" content="Deep learning pipeline for classifying leprosy vs non-leprosy images using EfficientNet, VGG16, MobileNet, and Xception with hinge loss integration.">
+<title>Graph-Based Fake News Detection with BERT and TF-IDF | bluee :)</title>
+<meta name="keywords" content="Fake News, GNN, GraphSAGE, BERT, NLP, ML">
+<meta name="description" content="A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion.">
 <meta name="author" content="Barshan Mondal">
-<link rel="canonical" href="https://blueee04.github.io/blog/posts/2024-6-21-leprosy-detection/">
+<link rel="canonical" href="https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/">
 <link crossorigin="anonymous" href="/blog/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blueee04.github.io/blog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blueee04.github.io/blog/favicon-16x16.png">
@@ -54,16 +54,16 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Leprosy Detection using Deep Learning" />
-<meta property="og:description" content="Deep learning pipeline for classifying leprosy vs non-leprosy images using EfficientNet, VGG16, MobileNet, and Xception with hinge loss integration." />
+</noscript><meta property="og:title" content="Graph-Based Fake News Detection with BERT and TF-IDF" />
+<meta property="og:description" content="A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blueee04.github.io/blog/posts/2024-6-21-leprosy-detection/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-06-28T00:00:00+00:00" />
 <meta property="article:modified_time" content="2025-06-28T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Leprosy Detection using Deep Learning"/>
-<meta name="twitter:description" content="Deep learning pipeline for classifying leprosy vs non-leprosy images using EfficientNet, VGG16, MobileNet, and Xception with hinge loss integration."/>
+<meta name="twitter:title" content="Graph-Based Fake News Detection with BERT and TF-IDF"/>
+<meta name="twitter:description" content="A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion."/>
 
 
 <script type="application/ld+json">
@@ -80,8 +80,8 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Leprosy Detection using Deep Learning",
-      "item": "https://blueee04.github.io/blog/posts/2024-6-21-leprosy-detection/"
+      "name": "Graph-Based Fake News Detection with BERT and TF-IDF",
+      "item": "https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/"
     }
   ]
 }
@@ -90,14 +90,14 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Leprosy Detection using Deep Learning",
-  "name": "Leprosy Detection using Deep Learning",
-  "description": "Deep learning pipeline for classifying leprosy vs non-leprosy images using EfficientNet, VGG16, MobileNet, and Xception with hinge loss integration.",
+  "headline": "Graph-Based Fake News Detection with BERT and TF-IDF",
+  "name": "Graph-Based Fake News Detection with BERT and TF-IDF",
+  "description": "A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion.",
   "keywords": [
-    "Deep Learning", "Computer Vision", "Transfer Learning", "Leprosy Detection", "Healthcare AI"
+    "Fake News", "GNN", "GraphSAGE", "BERT", "NLP", "ML"
   ],
-  "articleBody": "Introduction In this blog post, I share a complete overview of a deep learning-based medical imaging project focused on detecting leprosy from skin images. We use a blend of advanced CNN architectures like EfficientNet, VGG16, MobileNet, and Xception, all optimized through hinge loss—a method inspired by SVMs—to accurately distinguish between leprosy and non-leprosy images.\n🔗 Project Links GitHub Repository: Leprosy Detection Project Dataset: Leprosy Dataset Dataset Overview The dataset is structured into two classes:\nLeprosy (Label 1)\nImages show visible symptoms of leprosy.\nFolder: new_train/Leprosy\nNon-Leprosy (Label 0)\nImages depict healthy skin.\nFolder: new_train/Non_Leprosy\nData Preprocessing We applied several preprocessing steps to ensure consistent input and enhance generalization:\nResizing all images to (256, 256) pixels. RGB Conversion using Image.open(...).convert(\"RGB\"). Random Saturation variation using HSV channel manipulation. Clean Directory Handling with os.path.join() and directory checks. Systematic File Renaming to avoid duplicates and maintain order. Modeling Approach We tested several CNN architectures using transfer learning:\nEfficientNetB0\nPre-trained model fine-tuned for our binary classification task.\nVGG16\nSimple and widely used; enhanced with hinge loss and linear output.\nMobileNet\nLightweight and ideal for embedded/mobile applications.\nXception\nLeverages depthwise separable convolutions for efficiency.\nAll models pass through a final Dense layer (linear activation) with L2 regularization and use hinge loss to enforce margin-based classification—akin to SVMs.\nIf final output \u003e 0 → Leprosy\nIf final output \u003c 0 → Non-Leprosy\nWhy These Models? Transfer learning leverages pre-trained features on ImageNet. EfficientNet adapts quickly with minimal training data. Hinge loss maximizes separation margin between classes. L2 regularization prevents overfitting. Training Strategy Train/Test Split: 80% training, 20% testing Optimizer: Adam with learning rate 0.01 Loss: Hinge loss Regularization: L2 Evaluation Metrics Metric Value Precision 0.931 Recall 0.947 F1 Score 0.939 Hosting the Model in Google Colab Upload the files:\nmodelapp.py svm_in_cnn.h5 run.sh Run the command in your Colab notebook.\nClick the provided URL.\nUse your IP address as the password.\nFinal Thoughts This project combines the strengths of traditional SVM theory and modern deep learning architectures. It’s an ideal example of how even small datasets can yield accurate results with the right preprocessing, model selection, and evaluation pipeline.\n👨‍⚕️ Bridging the gap between machine learning and healthcare—one pixel at a time.\n",
-  "wordCount" : "364",
+  "articleBody": "🧠 Fake News Detection with GraphSAGE, BERT \u0026 TF-IDF In today’s digital age, misinformation spreads faster than ever, and detecting fake news has become both a technical and societal challenge. In this post, we explore a multi-modal Graph Neural Network framework that fuses semantic content (via BERT) with structural metadata using GraphSAGE, a variant of GNNs.\nThis blog breaks down three critical experiments and insights that powered our model’s performance and interpretability.\n📈 Training vs Testing Accuracy with GraphSAGE To evaluate the learning capability and potential overfitting of our model, we trained it over multiple epochs and plotted both training and test accuracy.\nObservation: The training accuracy improves steadily, while test accuracy rises until ~Epoch 20 and then flattens. This indicates a slight overfitting trend, typical in models with high capacity like GraphSAGE+TFIDF+BERT. Still, it generalizes reasonably well for a real-world use case.\n🔗 Cosine Similarity Between Metadata Nodes To build the structural part of the graph, we connected nodes (news claims) based on metadata similarity — like political party, speaker credibility, and publication time — using cosine similarity.\nInsight: The diagonal dominance shows high similarity of each node to itself. Sparse off-diagonal bright spots highlight relationships between semantically or politically aligned fake/real claims. These patterns support community-aware graph learning.\n🔍 Global Feature Importance via Ablation Study Which features mattered most to our model? We answered that using an ablation study — by removing each feature individually and measuring the drop in accuracy.\nConclusion: Even though the plot appears sparse, spikes correspond to features (mostly semantic and temporal) that, when removed, noticeably reduce performance. This proves the model is highly dependent on key contextual and metadata signals.\n🧪 Summary of Experimental Results We benchmarked our multi-modal GNN model (BERT+TF-IDF+metadata via GraphSAGE) against traditional baselines like SVM and BERT-only classifiers.\nModel Accuracy TF-IDF + SVM 62.3% BERT + Linear Classifier 71.2% GraphSAGE + TF-IDF 66.7% Our Method (Multi-modal) 76.9% The accuracy bump demonstrates the power of fusing content and structural signals within a graph neural network context.\n🔗 Project Links GitHub Repository: Fake News Detection Project Dataset: Fake News Dataset Live Demo: Try the Model 🧭 Final Thoughts This project shows how fake news detection isn’t just about language understanding — it’s about context, structure, and community. Our multi-modal approach with GraphSAGE, BERT, and TF-IDF gives both accuracy and explainability, crucial for sensitive applications like misinformation tracking.\nWe believe future directions lie in temporal graph learning, multilingual datasets, and attention-based graph architectures to further advance this domain.\n🔍 Key Takeaway: The fusion of semantic content (BERT) with structural metadata (GraphSAGE) creates a more robust fake news detection system than either approach alone.\n",
+  "wordCount" : "441",
   "inLanguage": "en",
   "datePublished": "2025-06-28T00:00:00Z",
   "dateModified": "2025-06-28T00:00:00Z",
@@ -107,7 +107,7 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blueee04.github.io/blog/posts/2024-6-21-leprosy-detection/"
+    "@id": "https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/"
   },
   "publisher": {
     "@type": "Organization",
@@ -175,9 +175,9 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://blueee04.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://blueee04.github.io/blog/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      Leprosy Detection using Deep Learning
+      Graph-Based Fake News Detection with BERT and TF-IDF
     </h1>
-    <div class="post-meta"><span title='2025-06-28 00:00:00 +0000 UTC'>June 28, 2025</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Barshan Mondal
+    <div class="post-meta"><span title='2025-06-28 00:00:00 +0000 UTC'>June 28, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Barshan Mondal
 
 </div>
   </header> <div class="toc">
@@ -188,26 +188,20 @@
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
+                    <a href="#-fake-news-detection-with-graphsage-bert--tf-idf" aria-label="🧠 Fake News Detection with GraphSAGE, BERT &amp; TF-IDF">🧠 Fake News Detection with GraphSAGE, BERT &amp; TF-IDF</a><ul>
                         
+                <li>
+                    <a href="#-training-vs-testing-accuracy-with-graphsage" aria-label="📈 Training vs Testing Accuracy with GraphSAGE">📈 Training vs Testing Accuracy with GraphSAGE</a></li>
+                <li>
+                    <a href="#-cosine-similarity-between-metadata-nodes" aria-label="🔗 Cosine Similarity Between Metadata Nodes">🔗 Cosine Similarity Between Metadata Nodes</a></li>
+                <li>
+                    <a href="#-global-feature-importance-via-ablation-study" aria-label="🔍 Global Feature Importance via Ablation Study">🔍 Global Feature Importance via Ablation Study</a></li>
+                <li>
+                    <a href="#-summary-of-experimental-results" aria-label="🧪 Summary of Experimental Results">🧪 Summary of Experimental Results</a></li>
                 <li>
                     <a href="#-project-links" aria-label="🔗 Project Links">🔗 Project Links</a></li>
                 <li>
-                    <a href="#dataset-overview" aria-label="Dataset Overview">Dataset Overview</a></li>
-                <li>
-                    <a href="#data-preprocessing" aria-label="Data Preprocessing">Data Preprocessing</a></li>
-                <li>
-                    <a href="#modeling-approach" aria-label="Modeling Approach">Modeling Approach</a></li>
-                <li>
-                    <a href="#why-these-models" aria-label="Why These Models?">Why These Models?</a></li>
-                <li>
-                    <a href="#training-strategy" aria-label="Training Strategy">Training Strategy</a></li>
-                <li>
-                    <a href="#evaluation-metrics" aria-label="Evaluation Metrics">Evaluation Metrics</a></li>
-                <li>
-                    <a href="#hosting-the-model-in-google-colab" aria-label="Hosting the Model in Google Colab">Hosting the Model in Google Colab</a></li>
-                <li>
-                    <a href="#final-thoughts" aria-label="Final Thoughts">Final Thoughts</a>
+                    <a href="#-final-thoughts" aria-label="🧭 Final Thoughts">🧭 Final Thoughts</a>
                 </li>
             </ul>
             </li>
@@ -216,169 +210,101 @@
     </details>
 </div>
 
-  <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
-<p>In this blog post, I share a complete overview of a deep learning-based medical imaging project focused on detecting leprosy from skin images. We use a blend of advanced CNN architectures like EfficientNet, VGG16, MobileNet, and Xception, all optimized through hinge loss—a method inspired by SVMs—to accurately distinguish between leprosy and non-leprosy images.</p>
-<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2024-6-21%20Leprosy%20Detection/pipeline.png" alt="Pipeline Architecture"  />
+  <div class="post-content"><h1 id="-fake-news-detection-with-graphsage-bert--tf-idf">🧠 Fake News Detection with GraphSAGE, BERT &amp; TF-IDF<a hidden class="anchor" aria-hidden="true" href="#-fake-news-detection-with-graphsage-bert--tf-idf">#</a></h1>
+<p>In today&rsquo;s digital age, misinformation spreads faster than ever, and detecting fake news has become both a technical and societal challenge. In this post, we explore a <strong>multi-modal Graph Neural Network</strong> framework that fuses semantic content (via BERT) with structural metadata using GraphSAGE, a variant of GNNs.</p>
+<p>This blog breaks down three critical experiments and insights that powered our model&rsquo;s performance and interpretability.</p>
+<hr>
+<h2 id="-training-vs-testing-accuracy-with-graphsage">📈 Training vs Testing Accuracy with GraphSAGE<a hidden class="anchor" aria-hidden="true" href="#-training-vs-testing-accuracy-with-graphsage">#</a></h2>
+<p>To evaluate the learning capability and potential overfitting of our model, we trained it over multiple epochs and plotted both training and test accuracy.</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-06-12-Fake-News-Detection/comapre.png" alt="Train vs Test Accuracy"  />
 </p>
-<h2 id="-project-links">🔗 Project Links<a hidden class="anchor" aria-hidden="true" href="#-project-links">#</a></h2>
-<ul>
-<li><strong>GitHub Repository</strong>: <a href="https://github.com/blueee04/Music-Tracklist-Recommendation-System">Leprosy Detection Project</a></li>
-<li><strong>Dataset</strong>: <a href="https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification">Leprosy Dataset</a></li>
-</ul>
+<p><strong>Observation</strong>:
+The training accuracy improves steadily, while test accuracy rises until ~Epoch 20 and then flattens. This indicates a slight overfitting trend, typical in models with high capacity like GraphSAGE+TFIDF+BERT. Still, it generalizes reasonably well for a real-world use case.</p>
 <hr>
-<h2 id="dataset-overview">Dataset Overview<a hidden class="anchor" aria-hidden="true" href="#dataset-overview">#</a></h2>
-<p>The dataset is structured into two classes:</p>
-<ul>
-<li>
-<p><strong>Leprosy (Label 1)</strong><br>
-Images show visible symptoms of leprosy.<br>
-Folder: <code>new_train/Leprosy</code></p>
-</li>
-<li>
-<p><strong>Non-Leprosy (Label 0)</strong><br>
-Images depict healthy skin.<br>
-Folder: <code>new_train/Non_Leprosy</code></p>
-</li>
-</ul>
+<h2 id="-cosine-similarity-between-metadata-nodes">🔗 Cosine Similarity Between Metadata Nodes<a hidden class="anchor" aria-hidden="true" href="#-cosine-similarity-between-metadata-nodes">#</a></h2>
+<p>To build the structural part of the graph, we connected nodes (news claims) based on metadata similarity — like political party, speaker credibility, and publication time — using <strong>cosine similarity</strong>.</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-06-12-Fake-News-Detection/cosine%20similarity.png" alt="Cosine Similarity Heatmap"  />
+</p>
+<p><strong>Insight</strong>:
+The diagonal dominance shows high similarity of each node to itself. Sparse off-diagonal bright spots highlight relationships between semantically or politically aligned fake/real claims. These patterns support community-aware graph learning.</p>
 <hr>
-<h2 id="data-preprocessing">Data Preprocessing<a hidden class="anchor" aria-hidden="true" href="#data-preprocessing">#</a></h2>
-<p>We applied several preprocessing steps to ensure consistent input and enhance generalization:</p>
-<ul>
-<li><strong>Resizing</strong> all images to <code>(256, 256)</code> pixels.</li>
-<li><strong>RGB Conversion</strong> using <code>Image.open(...).convert(&quot;RGB&quot;)</code>.</li>
-<li><strong>Random Saturation</strong> variation using HSV channel manipulation.</li>
-<li><strong>Clean Directory Handling</strong> with <code>os.path.join()</code> and directory checks.</li>
-<li><strong>Systematic File Renaming</strong> to avoid duplicates and maintain order.</li>
-</ul>
+<h2 id="-global-feature-importance-via-ablation-study">🔍 Global Feature Importance via Ablation Study<a hidden class="anchor" aria-hidden="true" href="#-global-feature-importance-via-ablation-study">#</a></h2>
+<p>Which features mattered most to our model? We answered that using an <strong>ablation study</strong> — by removing each feature individually and measuring the drop in accuracy.</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-06-12-Fake-News-Detection/globalfeature_ablation.png" alt="Feature Importance Plot"  />
+</p>
+<p><strong>Conclusion</strong>:
+Even though the plot appears sparse, spikes correspond to features (mostly semantic and temporal) that, when removed, noticeably reduce performance. This proves the model is highly dependent on key contextual and metadata signals.</p>
 <hr>
-<h2 id="modeling-approach">Modeling Approach<a hidden class="anchor" aria-hidden="true" href="#modeling-approach">#</a></h2>
-<p>We tested several CNN architectures using transfer learning:</p>
-<ul>
-<li>
-<p><strong>EfficientNetB0</strong><br>
-Pre-trained model fine-tuned for our binary classification task.</p>
-</li>
-<li>
-<p><strong>VGG16</strong><br>
-Simple and widely used; enhanced with hinge loss and linear output.</p>
-</li>
-<li>
-<p><strong>MobileNet</strong><br>
-Lightweight and ideal for embedded/mobile applications.</p>
-</li>
-<li>
-<p><strong>Xception</strong><br>
-Leverages depthwise separable convolutions for efficiency.</p>
-</li>
-</ul>
-<p>All models pass through a final Dense layer (linear activation) with L2 regularization and use <strong>hinge loss</strong> to enforce margin-based classification—akin to SVMs.</p>
-<blockquote>
-<p>If final output &gt; 0 → Leprosy<br>
-If final output &lt; 0 → Non-Leprosy</p>
-</blockquote>
-<hr>
-<h2 id="why-these-models">Why These Models?<a hidden class="anchor" aria-hidden="true" href="#why-these-models">#</a></h2>
-<ul>
-<li><strong>Transfer learning</strong> leverages pre-trained features on ImageNet.</li>
-<li><strong>EfficientNet</strong> adapts quickly with minimal training data.</li>
-<li><strong>Hinge loss</strong> maximizes separation margin between classes.</li>
-<li><strong>L2 regularization</strong> prevents overfitting.</li>
-</ul>
-<hr>
-<h2 id="training-strategy">Training Strategy<a hidden class="anchor" aria-hidden="true" href="#training-strategy">#</a></h2>
-<ul>
-<li><strong>Train/Test Split</strong>: 80% training, 20% testing</li>
-<li><strong>Optimizer</strong>: Adam with learning rate 0.01</li>
-<li><strong>Loss</strong>: Hinge loss</li>
-<li><strong>Regularization</strong>: L2</li>
-</ul>
-<hr>
-<h2 id="evaluation-metrics">Evaluation Metrics<a hidden class="anchor" aria-hidden="true" href="#evaluation-metrics">#</a></h2>
+<h2 id="-summary-of-experimental-results">🧪 Summary of Experimental Results<a hidden class="anchor" aria-hidden="true" href="#-summary-of-experimental-results">#</a></h2>
+<p>We benchmarked our <strong>multi-modal GNN model</strong> (BERT+TF-IDF+metadata via GraphSAGE) against traditional baselines like SVM and BERT-only classifiers.</p>
 <table>
 <thead>
 <tr>
-<th>Metric</th>
-<th>Value</th>
+<th>Model</th>
+<th>Accuracy</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Precision</td>
-<td>0.931</td>
+<td>TF-IDF + SVM</td>
+<td>62.3%</td>
 </tr>
 <tr>
-<td>Recall</td>
-<td>0.947</td>
+<td>BERT + Linear Classifier</td>
+<td>71.2%</td>
 </tr>
 <tr>
-<td>F1 Score</td>
-<td>0.939</td>
+<td>GraphSAGE + TF-IDF</td>
+<td>66.7%</td>
+</tr>
+<tr>
+<td>Our Method (Multi-modal)</td>
+<td><strong>76.9%</strong></td>
 </tr>
 </tbody>
 </table>
-<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2024-6-21%20Leprosy%20Detection/confusion.png" alt="Confusion Matrix"  />
-</p>
+<p>The accuracy bump demonstrates the power of <strong>fusing content and structural signals</strong> within a graph neural network context.</p>
 <hr>
-<h2 id="hosting-the-model-in-google-colab">Hosting the Model in Google Colab<a hidden class="anchor" aria-hidden="true" href="#hosting-the-model-in-google-colab">#</a></h2>
-<ol>
-<li>
-<p>Upload the files:</p>
+<h2 id="-project-links">🔗 Project Links<a hidden class="anchor" aria-hidden="true" href="#-project-links">#</a></h2>
 <ul>
-<li><code>modelapp.py</code></li>
-<li><code>svm_in_cnn.h5</code></li>
-<li><code>run.sh</code></li>
+<li><strong>GitHub Repository</strong>: <a href="https://github.com/yourusername/fake-news-detection">Fake News Detection Project</a></li>
+<li><strong>Dataset</strong>: <a href="https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset">Fake News Dataset</a></li>
+<li><strong>Live Demo</strong>: <a href="https://your-demo-link.com">Try the Model</a></li>
 </ul>
-</li>
-<li>
-<p>Run the command in your Colab notebook.</p>
-</li>
-<li>
-<p>Click the provided URL.</p>
-</li>
-<li>
-<p>Use your IP address as the password.</p>
-</li>
-</ol>
-<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2024-6-21%20Leprosy%20Detection/app.png" alt="App Screenshot 1"  />
-</p>
-<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2024-6-21%20Leprosy%20Detection/app1.png" alt="App Screenshot 2"  />
-</p>
 <hr>
-<h2 id="final-thoughts">Final Thoughts<a hidden class="anchor" aria-hidden="true" href="#final-thoughts">#</a></h2>
-<p>This project combines the strengths of traditional SVM theory and modern deep learning architectures. It&rsquo;s an ideal example of how even small datasets can yield accurate results with the right preprocessing, model selection, and evaluation pipeline.</p>
+<h2 id="-final-thoughts">🧭 Final Thoughts<a hidden class="anchor" aria-hidden="true" href="#-final-thoughts">#</a></h2>
+<p>This project shows how fake news detection isn&rsquo;t just about language understanding — it&rsquo;s about <strong>context, structure, and community</strong>. Our multi-modal approach with GraphSAGE, BERT, and TF-IDF gives both <strong>accuracy and explainability</strong>, crucial for sensitive applications like misinformation tracking.</p>
+<p>We believe future directions lie in <strong>temporal graph learning</strong>, <strong>multilingual datasets</strong>, and <strong>attention-based graph architectures</strong> to further advance this domain.</p>
 <blockquote>
-<p>👨‍⚕️ Bridging the gap between machine learning and healthcare—one pixel at a time.</p>
+<p>🔍 <strong>Key Takeaway</strong>: The fusion of semantic content (BERT) with structural metadata (GraphSAGE) creates a more robust fake news detection system than either approach alone.</p>
 </blockquote>
+<hr>
 
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://blueee04.github.io/blog/tags/deep-learning/">Deep Learning</a></li>
-      <li><a href="https://blueee04.github.io/blog/tags/computer-vision/">Computer Vision</a></li>
-      <li><a href="https://blueee04.github.io/blog/tags/transfer-learning/">Transfer Learning</a></li>
-      <li><a href="https://blueee04.github.io/blog/tags/leprosy-detection/">Leprosy Detection</a></li>
-      <li><a href="https://blueee04.github.io/blog/tags/healthcare-ai/">Healthcare AI</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/fake-news/">Fake News</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/gnn/">GNN</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/graphsage/">GraphSAGE</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/bert/">BERT</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/nlp/">NLP</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/ml/">ML</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>Graph-Based Fake News Detection with BERT and TF-IDF</span>
-  </a>
-  <a class="next" href="https://blueee04.github.io/blog/posts/2023-11-05-a-neural-network-from-scratch/">
+  <a class="next" href="https://blueee04.github.io/blog/posts/2024-6-21-leprosy-detection/">
     <span class="title">Next »</span>
     <br>
-    <span>A Neural Network from Scratch</span>
+    <span>Leprosy Detection using Deep Learning</span>
   </a>
 </nav>
 
 
 <ul class="share-buttons">
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Leprosy Detection using Deep Learning on x"
-            href="https://x.com/intent/tweet/?text=Leprosy%20Detection%20using%20Deep%20Learning&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-6-21-leprosy-detection%2f&amp;hashtags=DeepLearning%2cComputerVision%2cTransferLearning%2cLeprosyDetection%2cHealthcareAI">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on x"
+            href="https://x.com/intent/tweet/?text=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f&amp;hashtags=FakeNews%2cGNN%2cGraphSAGE%2cBERT%2cNLP%2cML">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -386,8 +312,8 @@ If final output &lt; 0 → Non-Leprosy</p>
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Leprosy Detection using Deep Learning on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-6-21-leprosy-detection%2f&amp;title=Leprosy%20Detection%20using%20Deep%20Learning&amp;summary=Leprosy%20Detection%20using%20Deep%20Learning&amp;source=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-6-21-leprosy-detection%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f&amp;title=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF&amp;summary=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF&amp;source=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -395,8 +321,8 @@ If final output &lt; 0 → Non-Leprosy</p>
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Leprosy Detection using Deep Learning on reddit"
-            href="https://reddit.com/submit?url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-6-21-leprosy-detection%2f&title=Leprosy%20Detection%20using%20Deep%20Learning">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f&title=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -404,8 +330,8 @@ If final output &lt; 0 → Non-Leprosy</p>
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Leprosy Detection using Deep Learning on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-6-21-leprosy-detection%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -413,8 +339,8 @@ If final output &lt; 0 → Non-Leprosy</p>
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Leprosy Detection using Deep Learning on whatsapp"
-            href="https://api.whatsapp.com/send?text=Leprosy%20Detection%20using%20Deep%20Learning%20-%20https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-6-21-leprosy-detection%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on whatsapp"
+            href="https://api.whatsapp.com/send?text=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF%20-%20https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -422,8 +348,8 @@ If final output &lt; 0 → Non-Leprosy</p>
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Leprosy Detection using Deep Learning on telegram"
-            href="https://telegram.me/share/url?text=Leprosy%20Detection%20using%20Deep%20Learning&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-6-21-leprosy-detection%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on telegram"
+            href="https://telegram.me/share/url?text=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -431,8 +357,8 @@ If final output &lt; 0 → Non-Leprosy</p>
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Leprosy Detection using Deep Learning on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Leprosy%20Detection%20using%20Deep%20Learning&u=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-6-21-leprosy-detection%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF&u=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path

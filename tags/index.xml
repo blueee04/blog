@@ -9,6 +9,13 @@
     <lastBuildDate>Sat, 28 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blueee04.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>BERT</title>
+      <link>https://blueee04.github.io/blog/tags/bert/</link>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/bert/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Computer Vision</title>
       <link>https://blueee04.github.io/blog/tags/computer-vision/</link>
       <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
@@ -23,6 +30,27 @@
       <description></description>
     </item>
     <item>
+      <title>Fake News</title>
+      <link>https://blueee04.github.io/blog/tags/fake-news/</link>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/fake-news/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GNN</title>
+      <link>https://blueee04.github.io/blog/tags/gnn/</link>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/gnn/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GraphSAGE</title>
+      <link>https://blueee04.github.io/blog/tags/graphsage/</link>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/graphsage/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Healthcare AI</title>
       <link>https://blueee04.github.io/blog/tags/healthcare-ai/</link>
       <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
@@ -34,6 +62,20 @@
       <link>https://blueee04.github.io/blog/tags/leprosy-detection/</link>
       <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/tags/leprosy-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ML</title>
+      <link>https://blueee04.github.io/blog/tags/ml/</link>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/ml/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NLP</title>
+      <link>https://blueee04.github.io/blog/tags/nlp/</link>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/nlp/</guid>
       <description></description>
     </item>
     <item>

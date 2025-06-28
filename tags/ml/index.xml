@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ML on bluee :)</title>
+    <link>https://blueee04.github.io/blog/tags/ml/</link>
+    <description>Recent content in ML on bluee :)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 28 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://blueee04.github.io/blog/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Graph-Based Fake News Detection with BERT and TF-IDF</title>
+      <link>https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/</link>
+      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/</guid>
+      <description>A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion.</description>
+    </item>
+  </channel>
+</rss>
