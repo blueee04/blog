@@ -63,9 +63,8 @@ The accuracy bump demonstrates the power of **fusing content and structural sign
 
 ## 🔗 Project Links
 
-- **GitHub Repository**: [Fake News Detection Project](https://github.com/yourusername/fake-news-detection)
-- **Dataset**: [Fake News Dataset](https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset)
-- **Live Demo**: [Try the Model](https://your-demo-link.com)
+- **GitHub Repository**: [Fake News Detection Project](https://github.com/blueee04/Fake-News-Detection)
+- **Dataset**: [Fake News Dataset](https://paperswithcode.com/dataset/politifact)
 
 ---
 
