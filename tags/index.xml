@@ -16,20 +16,6 @@
       <description></description>
     </item>
     <item>
-      <title>Computer Vision</title>
-      <link>https://blueee04.github.io/blog/tags/computer-vision/</link>
-      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/computer-vision/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Deep Learning</title>
-      <link>https://blueee04.github.io/blog/tags/deep-learning/</link>
-      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/deep-learning/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Fake News</title>
       <link>https://blueee04.github.io/blog/tags/fake-news/</link>
       <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
@@ -72,20 +58,6 @@
       <description></description>
     </item>
     <item>
-      <title>Healthcare AI</title>
-      <link>https://blueee04.github.io/blog/tags/healthcare-ai/</link>
-      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/healthcare-ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Leprosy Detection</title>
-      <link>https://blueee04.github.io/blog/tags/leprosy-detection/</link>
-      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/leprosy-detection/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Medical Imaging</title>
       <link>https://blueee04.github.io/blog/tags/medical-imaging/</link>
       <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
@@ -111,13 +83,6 @@
       <link>https://blueee04.github.io/blog/tags/nlp/</link>
       <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/tags/nlp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Transfer Learning</title>
-      <link>https://blueee04.github.io/blog/tags/transfer-learning/</link>
-      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/transfer-learning/</guid>
       <description></description>
     </item>
     <item>
@@ -153,6 +118,41 @@
       <link>https://blueee04.github.io/blog/tags/music-recommendation/</link>
       <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/tags/music-recommendation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Computer Vision</title>
+      <link>https://blueee04.github.io/blog/tags/computer-vision/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep Learning</title>
+      <link>https://blueee04.github.io/blog/tags/deep-learning/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Healthcare AI</title>
+      <link>https://blueee04.github.io/blog/tags/healthcare-ai/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/healthcare-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Leprosy Detection</title>
+      <link>https://blueee04.github.io/blog/tags/leprosy-detection/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/leprosy-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Transfer Learning</title>
+      <link>https://blueee04.github.io/blog/tags/transfer-learning/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/transfer-learning/</guid>
       <description></description>
     </item>
     <item>
