@@ -38,6 +38,7 @@ music_recommendation_system_project/
 ```
 
 ![Dataset Structure](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-06-10-Music%20Recommendation%20System/genre_distribution.png)
+*Genre distribution in the dataset.*
 
 ## 🛠️ Feature Extraction
 
@@ -47,8 +48,6 @@ Used librosa to extract:
 - Spectral features (centroid, bandwidth, rolloff)
 - Zero-crossing rate, tempo, etc.
 - Features saved in CSV files for 3-sec and 30-sec segments.
-
-> *[Insert code snippet or screenshot of feature extraction process]*
 
 ```python
 # Example: Extracting MFCCs
@@ -64,20 +63,16 @@ mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=20)
   - Genre-based (simulated collaborative filtering)
   - Hybrid (weighted combination)
 
-> *[Insert diagram or screenshot of model pipeline]*
-> 
 > ![Model Pipeline](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-06-10-Music%20Recommendation%20System/pipeline.png)
+*Model architecture and processing pipeline.*
 
 ## 📊 Evaluation & Results
 
 - **Metrics:** Accuracy, confusion matrix, classification report
 - **Visualization:** Confusion matrix, feature importance, genre distribution
 
-> *[Insert confusion matrix and other result screenshots]*
-> 
 > ![Confusion Matrix](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-06-10-Music%20Recommendation%20System/confusion_matrix.png)
-
-> *[Insert sample recommendations output]*
+*Confusion matrix for genre classification results.*
 
 ```text
 Sample Recommendations:
@@ -87,18 +82,16 @@ Sample Recommendations:
 ...
 ```
 
-## 🖼️ Screenshots & Visualizations
 
-- [ ] Dataset folder structure
-- [ ] Feature extraction process
-- [ ] Model training output
-- [ ] Confusion matrix
-- [ ] Feature importance plot
-- [ ] Sample recommendations
-
-> *[Insert screenshots and plots here as you progress]*
-> 
 > ![Feature Importance](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-06-10-Music%20Recommendation%20System/feature_importance.png)
+*Feature importance plot for the Random Forest classifier.*
+
+## 🖥️ App Screenshot
+
+Here is a screenshot of the music recommendation app interface:
+
+![App Main Interface](/images/2025-06-10-Music Recommendation System/app.png)
+*Main interface of the music recommendation app.*
 
 ## 🚀 Conclusion & Future Work
 
