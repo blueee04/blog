@@ -1,8 +1,8 @@
 +++
 title = "Music Recommendation System: Project Overview"
 date = 2025-06-10
-tags = ["Music Recommendation", "Machine Learning", "Audio Analysis", "Content-Based Filtering", "Hybrid Systems"]
 summary = "A content-based and hybrid music recommendation system using audio features and machine learning."
+tags = ["Music Recommendation", "Machine Learning", "Audio Analysis", "Content-Based Filtering", "Hybrid Systems"]
 +++
 
 # Music Recommendation System: Project Overview
