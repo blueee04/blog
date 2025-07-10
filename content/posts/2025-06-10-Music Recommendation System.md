@@ -90,7 +90,7 @@ Sample Recommendations:
 
 Here is a screenshot of the music recommendation app interface:
 
-![App Main Interface](/images/2025-06-10-Music Recommendation System/app.png)
+![App Main Interface](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-06-10-Music%20Recommendation%20System/app.png)
 *Main interface of the music recommendation app.*
 
 ## 🚀 Conclusion & Future Work
