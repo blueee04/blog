@@ -107,9 +107,9 @@ Here is a screenshot of the music recommendation app interface:
 
 ## 📂 Resources
 
-- [GitHub Repository](https://github.com/yourusername/music-recommendation-system)
-- [Librosa Documentation](https://librosa.org/doc/latest/)
-- [PaperMod Theme](https://github.com/adityatelange/hugo-PaperMod)
+- [GitHub Repository](https://github.com/blueee04/Music-Tracklist-Recommendation-System)
+- [Dataset](https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification)
+
 
 ---
 
