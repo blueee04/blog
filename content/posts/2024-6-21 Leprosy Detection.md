@@ -1,6 +1,6 @@
 +++
 title =  "Leprosy Detection using Deep Learning"
-date = 2025-06-28
+date = 2024-06-28
 summary = "Deep learning pipeline for classifying leprosy vs non-leprosy images using EfficientNet, VGG16, MobileNet, and Xception with hinge loss integration."
 tags = ["Deep Learning", "Computer Vision", "Transfer Learning", "Leprosy Detection", "Healthcare AI"]
 +++
