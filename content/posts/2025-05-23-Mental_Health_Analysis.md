@@ -37,16 +37,6 @@ The first step in our process was **cleaning** and **visualizing** the data to u
 
 ---
 
-## 🌐 Visualization Insights
-
-![Stress vs Year of Study](attachment:Stress_vs_Year.png)  
-*Students in higher years showed greater stress, likely due to academic and career pressures.*
-
-![Mental Health vs Sleep](attachment:MentalHealth_vs_Sleep.png)  
-*Students sleeping less than 6 hours showed higher probabilities of poor mental health.*
-
----
-
 ## 🧠 Machine Learning Models
 
 We implemented two classification models to predict the likelihood of students experiencing mental health challenges:
