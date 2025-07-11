@@ -6,12 +6,12 @@
     <description>Recent content in Leprosy Detection on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 28 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blueee04.github.io/blog/tags/leprosy-detection/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Leprosy Detection using Deep Learning</title>
       <link>https://blueee04.github.io/blog/posts/2024-6-21-leprosy-detection/</link>
-      <pubDate>Sat, 28 Jun 2025 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/posts/2024-6-21-leprosy-detection/</guid>
       <description>Deep learning pipeline for classifying leprosy vs non-leprosy images using EfficientNet, VGG16, MobileNet, and Xception with hinge loss integration.</description>
     </item>

@@ -6,8 +6,15 @@
     <description>Recent content in Data Analysis on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 02 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blueee04.github.io/blog/tags/data-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Student Mental Health Analysis: Understanding the Silent Struggle</title>
+      <link>https://blueee04.github.io/blog/posts/2025-05-23-mental_health_analysis/</link>
+      <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/posts/2025-05-23-mental_health_analysis/</guid>
+      <description>A data-driven analysis on student mental health using EDA and machine learning models to uncover key factors such as sleep, GPA, and academic pressure.</description>
+    </item>
     <item>
       <title>A Simple Linear Regression</title>
       <link>https://blueee04.github.io/blog/posts/2023-11-02-a-simple-linear-regression/</link>

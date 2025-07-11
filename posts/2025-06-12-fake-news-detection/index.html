@@ -58,8 +58,8 @@
 <meta property="og:description" content="A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-06-28T00:00:00+00:00" />
-<meta property="article:modified_time" content="2025-06-28T00:00:00+00:00" />
+<meta property="article:published_time" content="2025-06-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-06-12T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Graph-Based Fake News Detection with BERT and TF-IDF"/>
@@ -99,8 +99,8 @@
   "articleBody": "🧠 Fake News Detection with GraphSAGE, BERT \u0026 TF-IDF In today’s digital age, misinformation spreads faster than ever, and detecting fake news has become both a technical and societal challenge. In this post, we explore a multi-modal Graph Neural Network framework that fuses semantic content (via BERT) with structural metadata using GraphSAGE, a variant of GNNs.\nThis blog breaks down three critical experiments and insights that powered our model’s performance and interpretability.\n📈 Training vs Testing Accuracy with GraphSAGE To evaluate the learning capability and potential overfitting of our model, we trained it over multiple epochs and plotted both training and test accuracy.\nObservation: The training accuracy improves steadily, while test accuracy rises until ~Epoch 20 and then flattens. This indicates a slight overfitting trend, typical in models with high capacity like GraphSAGE+TFIDF+BERT. Still, it generalizes reasonably well for a real-world use case.\n🔗 Cosine Similarity Between Metadata Nodes To build the structural part of the graph, we connected nodes (news claims) based on metadata similarity — like political party, speaker credibility, and publication time — using cosine similarity.\nInsight: The diagonal dominance shows high similarity of each node to itself. Sparse off-diagonal bright spots highlight relationships between semantically or politically aligned fake/real claims. These patterns support community-aware graph learning.\n🔍 Global Feature Importance via Ablation Study Which features mattered most to our model? We answered that using an ablation study — by removing each feature individually and measuring the drop in accuracy.\nConclusion: Even though the plot appears sparse, spikes correspond to features (mostly semantic and temporal) that, when removed, noticeably reduce performance. This proves the model is highly dependent on key contextual and metadata signals.\n🧪 Summary of Experimental Results We benchmarked our multi-modal GNN model (BERT+TF-IDF+metadata via GraphSAGE) against traditional baselines like SVM and BERT-only classifiers.\nModel Accuracy TF-IDF + SVM 62.3% BERT + Linear Classifier 71.2% GraphSAGE + TF-IDF 66.7% Our Method (Multi-modal) 76.9% The accuracy bump demonstrates the power of fusing content and structural signals within a graph neural network context.\n🔗 Project Links GitHub Repository: Fake News Detection Project Dataset: Fake News Dataset 🧭 Final Thoughts This project shows how fake news detection isn’t just about language understanding — it’s about context, structure, and community. Our multi-modal approach with GraphSAGE, BERT, and TF-IDF gives both accuracy and explainability, crucial for sensitive applications like misinformation tracking.\nWe believe future directions lie in temporal graph learning, multilingual datasets, and attention-based graph architectures to further advance this domain.\n🔍 Key Takeaway: The fusion of semantic content (BERT) with structural metadata (GraphSAGE) creates a more robust fake news detection system than either approach alone.\n",
   "wordCount" : "436",
   "inLanguage": "en",
-  "datePublished": "2025-06-28T00:00:00Z",
-  "dateModified": "2025-06-28T00:00:00Z",
+  "datePublished": "2025-06-12T00:00:00Z",
+  "dateModified": "2025-06-12T00:00:00Z",
   "author":{
     "@type": "Person",
     "name": "Barshan Mondal"
@@ -177,7 +177,7 @@
     <h1 class="post-title entry-hint-parent">
       Graph-Based Fake News Detection with BERT and TF-IDF
     </h1>
-    <div class="post-meta"><span title='2025-06-28 00:00:00 +0000 UTC'>June 28, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Barshan Mondal
+    <div class="post-meta"><span title='2025-06-12 00:00:00 +0000 UTC'>June 12, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Barshan Mondal
 
 </div>
   </header> <div class="toc">
@@ -292,15 +292,10 @@ Even though the plot appears sparse, spikes correspond to features (mostly seman
       <li><a href="https://blueee04.github.io/blog/tags/ml/">ML</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blueee04.github.io/blog/posts/2024-04-12-generative-ai-in-healthcare/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>Generative AI in Healthcare: Transforming Diagnosis, Imaging, and Patient Care</span>
-  </a>
-  <a class="next" href="https://blueee04.github.io/blog/posts/2024-6-21-leprosy-detection/">
+  <a class="next" href="https://blueee04.github.io/blog/posts/2025-06-10-music-recommendation-system/">
     <span class="title">Next »</span>
     <br>
-    <span>Leprosy Detection using Deep Learning</span>
+    <span>Music Recommendation System: Project Overview</span>
   </a>
 </nav>
 
