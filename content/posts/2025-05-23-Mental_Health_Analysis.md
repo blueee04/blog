@@ -1,6 +1,6 @@
 +++
 title = "Student Mental Health Analysis: Understanding the Silent Struggle"
-date = 2025-07-10
+date = 2025-05-23
 summary = "A data-driven analysis on student mental health using EDA and machine learning models to uncover key factors such as sleep, GPA, and academic pressure."
 tags = ["Mental Health", "Data Analysis", "Machine Learning", "Student Life", "Educational Research"]
 +++

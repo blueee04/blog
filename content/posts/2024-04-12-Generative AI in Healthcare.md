@@ -1,6 +1,6 @@
 +++
 title = "Generative AI in Healthcare: Transforming Diagnosis, Imaging, and Patient Care"  
-date = 2025-06-28  
+date = 2024-04-12  
 summary = "An informed exploration of how Generative AI—especially GANs—is enhancing medical diagnostics, reducing bias, and addressing data scarcity in healthcare."  
 tags = ["Healthcare", "Generative AI", "Medical Imaging", "GANs", "Medical Technology"]  
 +++

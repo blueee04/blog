@@ -1,6 +1,6 @@
 +++
 title = "Graph-Based Fake News Detection with BERT and TF-IDF"
-date = 2025-06-28
+date = 2025-06-12
 summary = "A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion."
 tags = ["Fake News", "GNN", "GraphSAGE", "BERT", "NLP", "ML"]
 +++
