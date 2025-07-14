@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Graph-Based Fake News Detection with BERT and TF-IDF | bluee :)</title>
-<meta name="keywords" content="Fake News, GNN, GraphSAGE, BERT, NLP, ML">
-<meta name="description" content="A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion.">
+<title>EzProject: Discord Bot for Assignment and Task Management | bluee :)</title>
+<meta name="keywords" content="Python, Discord, Automation, Bot, Task Management">
+<meta name="description" content="EzProject is a modular Python Discord bot that helps manage assignments, tasks, and deadlines in a collaborative server environment.">
 <meta name="author" content="Barshan Mondal">
-<link rel="canonical" href="https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/">
+<link rel="canonical" href="https://blueee04.github.io/blog/posts/2024-08-22-ezproject/">
 <link crossorigin="anonymous" href="/blog/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blueee04.github.io/blog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blueee04.github.io/blog/favicon-16x16.png">
@@ -54,16 +54,16 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Graph-Based Fake News Detection with BERT and TF-IDF" />
-<meta property="og:description" content="A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion." />
+</noscript><meta property="og:title" content="EzProject: Discord Bot for Assignment and Task Management" />
+<meta property="og:description" content="EzProject is a modular Python Discord bot that helps manage assignments, tasks, and deadlines in a collaborative server environment." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-06-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2025-06-12T00:00:00+00:00" />
+<meta property="og:url" content="https://blueee04.github.io/blog/posts/2024-08-22-ezproject/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-07-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-07-14T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Graph-Based Fake News Detection with BERT and TF-IDF"/>
-<meta name="twitter:description" content="A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion."/>
+<meta name="twitter:title" content="EzProject: Discord Bot for Assignment and Task Management"/>
+<meta name="twitter:description" content="EzProject is a modular Python Discord bot that helps manage assignments, tasks, and deadlines in a collaborative server environment."/>
 
 
 <script type="application/ld+json">
@@ -80,8 +80,8 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Graph-Based Fake News Detection with BERT and TF-IDF",
-      "item": "https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/"
+      "name": "EzProject: Discord Bot for Assignment and Task Management",
+      "item": "https://blueee04.github.io/blog/posts/2024-08-22-ezproject/"
     }
   ]
 }
@@ -90,24 +90,24 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Graph-Based Fake News Detection with BERT and TF-IDF",
-  "name": "Graph-Based Fake News Detection with BERT and TF-IDF",
-  "description": "A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion.",
+  "headline": "EzProject: Discord Bot for Assignment and Task Management",
+  "name": "EzProject: Discord Bot for Assignment and Task Management",
+  "description": "EzProject is a modular Python Discord bot that helps manage assignments, tasks, and deadlines in a collaborative server environment.",
   "keywords": [
-    "Fake News", "GNN", "GraphSAGE", "BERT", "NLP", "ML"
+    "Python", "Discord", "Automation", "Bot", "Task Management"
   ],
-  "articleBody": "🧠 Fake News Detection with GraphSAGE, BERT \u0026 TF-IDF In today’s digital age, misinformation spreads faster than ever, and detecting fake news has become both a technical and societal challenge. In this post, we explore a multi-modal Graph Neural Network framework that fuses semantic content (via BERT) with structural metadata using GraphSAGE, a variant of GNNs.\nThis blog breaks down three critical experiments and insights that powered our model’s performance and interpretability.\n📈 Training vs Testing Accuracy with GraphSAGE To evaluate the learning capability and potential overfitting of our model, we trained it over multiple epochs and plotted both training and test accuracy.\nObservation: The training accuracy improves steadily, while test accuracy rises until ~Epoch 20 and then flattens. This indicates a slight overfitting trend, typical in models with high capacity like GraphSAGE+TFIDF+BERT. Still, it generalizes reasonably well for a real-world use case.\n🔗 Cosine Similarity Between Metadata Nodes To build the structural part of the graph, we connected nodes (news claims) based on metadata similarity — like political party, speaker credibility, and publication time — using cosine similarity.\nInsight: The diagonal dominance shows high similarity of each node to itself. Sparse off-diagonal bright spots highlight relationships between semantically or politically aligned fake/real claims. These patterns support community-aware graph learning.\n🔍 Global Feature Importance via Ablation Study Which features mattered most to our model? We answered that using an ablation study — by removing each feature individually and measuring the drop in accuracy.\nConclusion: Even though the plot appears sparse, spikes correspond to features (mostly semantic and temporal) that, when removed, noticeably reduce performance. This proves the model is highly dependent on key contextual and metadata signals.\n🧪 Summary of Experimental Results We benchmarked our multi-modal GNN model (BERT+TF-IDF+metadata via GraphSAGE) against traditional baselines like SVM and BERT-only classifiers.\nModel Accuracy TF-IDF + SVM 62.3% BERT + Linear Classifier 71.2% GraphSAGE + TF-IDF 66.7% Our Method (Multi-modal) 76.9% The accuracy bump demonstrates the power of fusing content and structural signals within a graph neural network context.\n🔗 Project Links GitHub Repository: Fake News Detection Project Dataset: Fake News Dataset 🧭 Final Thoughts This project shows how fake news detection isn’t just about language understanding — it’s about context, structure, and community. Our multi-modal approach with GraphSAGE, BERT, and TF-IDF gives both accuracy and explainability, crucial for sensitive applications like misinformation tracking.\nWe believe future directions lie in temporal graph learning, multilingual datasets, and attention-based graph architectures to further advance this domain.\n🔍 Key Takeaway: The fusion of semantic content (BERT) with structural metadata (GraphSAGE) creates a more robust fake news detection system than either approach alone.\n",
-  "wordCount" : "436",
+  "articleBody": "📌 Project Overview EzProject is a student productivity-focused Discord bot built using Python. It provides an organized way to manage tasks, assignments, and deadlines within a Discord server, using both traditional and modern slash commands. The bot is designed with modular components (called cogs) that handle specific features, making the system easy to scale and maintain.\n🗂️ Project Structure Overview Here’s a breakdown of the main components:\nEzProject/ ├── bot/ # Main bot logic and commands │ ├── main.py # Bot launcher │ ├── slash_commands.py # Slash command definitions │ ├── commands.py # Legacy command support │ └── cogs/ # Functional modules │ ├── assignment_management.py │ ├── deadline_management.py │ ├── task_management.py │ ├── role_management.py │ └── utility_commands.py ├── Datamodule/db.py # Local data storage ├── config.py # Token and bot configuration ├── requirements.txt # Dependencies ├── Procfile, runtime.txt # Heroku deployment support 🧠 How EzProject Works 1. Bot Initialization The entry point is bot/main.py, which initializes the Discord client and loads all cog modules from bot/cogs/.\nclient.load_extension(\"bot.cogs.assignment_management\") client.load_extension(\"bot.cogs.task_management\") This dynamic loading allows each feature (assignment, task, role, utility) to work independently.\n2. Command Handling EzProject uses both traditional commands (commands.py) and modern Discord slash commands (slash_commands.py), offering a smooth user experience.\nExample Slash Command @app_commands.command(name=\"add_assignment\", description=\"Add a new assignment.\") async def add_assignment(interaction: discord.Interaction, name: str, due_date: str): ... When this command is triggered in Discord, it captures the input and stores the assignment info using helper functions in Datamodule/db.py.\n3. Cog System Each feature is implemented as a cog:\nassignment_management.py: Add, list, or delete assignments. task_management.py: Log tasks, update progress. deadline_management.py: View and manage due dates. role_management.py: Assign and manage user roles. utility_commands.py: Extra helper commands (e.g., help, ping, etc.) This structure makes the bot modular—each cog handles a specific context, listens to relevant commands, and interacts with the data layer.\n4. Data Storage Datamodule/db.py provides functions to store user inputs such as:\nAssignment details Task status User-specific information The data is currently stored locally in structured files, offering lightweight persistence without needing a database.\n5. Logging \u0026 Config Logs are created for debugging or monitoring purposes (optional), and all secrets like bot tokens are set via config.py.\n6. Deployment The bot includes a Procfile and runtime.txt, which means it can be easily deployed on Heroku:\ngit push heroku main This makes it easy to run 24/7 in the cloud.\n✅ Summary of Workflow User invokes a command (e.g., /add_assignment). Bot processes it via the correct cog. Data is stored locally through db.py. Bot responds with confirmation (e.g., “Assignment added!”). Optional: Data can be retrieved later via /list_assignments, etc. This clean, modular flow allows EzProject to work reliably in any Discord server while offering extensibility for future additions.\n",
+  "wordCount" : "447",
   "inLanguage": "en",
-  "datePublished": "2025-06-12T00:00:00Z",
-  "dateModified": "2025-06-12T00:00:00Z",
+  "datePublished": "2025-07-14T00:00:00Z",
+  "dateModified": "2025-07-14T00:00:00Z",
   "author":{
     "@type": "Person",
     "name": "Barshan Mondal"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/"
+    "@id": "https://blueee04.github.io/blog/posts/2024-08-22-ezproject/"
   },
   "publisher": {
     "@type": "Organization",
@@ -175,9 +175,9 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://blueee04.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://blueee04.github.io/blog/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      Graph-Based Fake News Detection with BERT and TF-IDF
+      EzProject: Discord Bot for Assignment and Task Management
     </h1>
-    <div class="post-meta"><span title='2025-06-12 00:00:00 +0000 UTC'>June 12, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Barshan Mondal
+    <div class="post-meta"><span title='2025-07-14 00:00:00 +0000 UTC'>July 14, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Barshan Mondal
 
 </div>
   </header> <div class="toc">
@@ -188,127 +188,136 @@
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#-fake-news-detection-with-graphsage-bert--tf-idf" aria-label="🧠 Fake News Detection with GraphSAGE, BERT &amp; TF-IDF">🧠 Fake News Detection with GraphSAGE, BERT &amp; TF-IDF</a><ul>
+                    <a href="#-project-overview" aria-label="📌 Project Overview">📌 Project Overview</a></li>
+                <li>
+                    <a href="#-project-structure-overview" aria-label="🗂️ Project Structure Overview">🗂️ Project Structure Overview</a></li>
+                <li>
+                    <a href="#-how-ezproject-works" aria-label="🧠 How EzProject Works">🧠 How EzProject Works</a><ul>
                         
                 <li>
-                    <a href="#-training-vs-testing-accuracy-with-graphsage" aria-label="📈 Training vs Testing Accuracy with GraphSAGE">📈 Training vs Testing Accuracy with GraphSAGE</a></li>
+                    <a href="#1-bot-initialization" aria-label="1. Bot Initialization">1. Bot Initialization</a></li>
                 <li>
-                    <a href="#-cosine-similarity-between-metadata-nodes" aria-label="🔗 Cosine Similarity Between Metadata Nodes">🔗 Cosine Similarity Between Metadata Nodes</a></li>
+                    <a href="#2-command-handling" aria-label="2. Command Handling">2. Command Handling</a><ul>
+                        
                 <li>
-                    <a href="#-global-feature-importance-via-ablation-study" aria-label="🔍 Global Feature Importance via Ablation Study">🔍 Global Feature Importance via Ablation Study</a></li>
-                <li>
-                    <a href="#-summary-of-experimental-results" aria-label="🧪 Summary of Experimental Results">🧪 Summary of Experimental Results</a></li>
-                <li>
-                    <a href="#-project-links" aria-label="🔗 Project Links">🔗 Project Links</a></li>
-                <li>
-                    <a href="#-final-thoughts" aria-label="🧭 Final Thoughts">🧭 Final Thoughts</a>
+                    <a href="#example-slash-command" aria-label="Example Slash Command">Example Slash Command</a></li></ul>
                 </li>
-            </ul>
-            </li>
+                <li>
+                    <a href="#3-cog-system" aria-label="3. Cog System">3. Cog System</a></li>
+                <li>
+                    <a href="#4-data-storage" aria-label="4. Data Storage">4. Data Storage</a></li>
+                <li>
+                    <a href="#5-logging--config" aria-label="5. Logging &amp; Config">5. Logging &amp; Config</a></li>
+                <li>
+                    <a href="#6-deployment" aria-label="6. Deployment">6. Deployment</a></li></ul>
+                </li>
+                <li>
+                    <a href="#-summary-of-workflow" aria-label="✅ Summary of Workflow">✅ Summary of Workflow</a>
+                </li>
             </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h1 id="-fake-news-detection-with-graphsage-bert--tf-idf">🧠 Fake News Detection with GraphSAGE, BERT &amp; TF-IDF<a hidden class="anchor" aria-hidden="true" href="#-fake-news-detection-with-graphsage-bert--tf-idf">#</a></h1>
-<p>In today&rsquo;s digital age, misinformation spreads faster than ever, and detecting fake news has become both a technical and societal challenge. In this post, we explore a <strong>multi-modal Graph Neural Network</strong> framework that fuses semantic content (via BERT) with structural metadata using GraphSAGE, a variant of GNNs.</p>
-<p>This blog breaks down three critical experiments and insights that powered our model&rsquo;s performance and interpretability.</p>
+  <div class="post-content"><h2 id="-project-overview">📌 Project Overview<a hidden class="anchor" aria-hidden="true" href="#-project-overview">#</a></h2>
+<p><strong>EzProject</strong> is a student productivity-focused Discord bot built using Python. It provides an organized way to manage tasks, assignments, and deadlines within a Discord server, using both traditional and modern slash commands. The bot is designed with modular components (called <em>cogs</em>) that handle specific features, making the system easy to scale and maintain.</p>
 <hr>
-<h2 id="-training-vs-testing-accuracy-with-graphsage">📈 Training vs Testing Accuracy with GraphSAGE<a hidden class="anchor" aria-hidden="true" href="#-training-vs-testing-accuracy-with-graphsage">#</a></h2>
-<p>To evaluate the learning capability and potential overfitting of our model, we trained it over multiple epochs and plotted both training and test accuracy.</p>
-<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-06-12-Fake-News-Detection/comapre.png" alt="Train vs Test Accuracy"  />
-</p>
-<p><strong>Observation</strong>:
-The training accuracy improves steadily, while test accuracy rises until ~Epoch 20 and then flattens. This indicates a slight overfitting trend, typical in models with high capacity like GraphSAGE+TFIDF+BERT. Still, it generalizes reasonably well for a real-world use case.</p>
+<h2 id="-project-structure-overview">🗂️ Project Structure Overview<a hidden class="anchor" aria-hidden="true" href="#-project-structure-overview">#</a></h2>
+<p>Here&rsquo;s a breakdown of the main components:</p>
+<pre tabindex="0"><code>EzProject/
+├── bot/                      # Main bot logic and commands
+│   ├── main.py              # Bot launcher
+│   ├── slash_commands.py    # Slash command definitions
+│   ├── commands.py          # Legacy command support
+│   └── cogs/                # Functional modules
+│       ├── assignment_management.py
+│       ├── deadline_management.py
+│       ├── task_management.py
+│       ├── role_management.py
+│       └── utility_commands.py
+├── Datamodule/db.py         # Local data storage
+├── config.py                # Token and bot configuration
+├── requirements.txt         # Dependencies
+├── Procfile, runtime.txt    # Heroku deployment support
+</code></pre><hr>
+<h2 id="-how-ezproject-works">🧠 How EzProject Works<a hidden class="anchor" aria-hidden="true" href="#-how-ezproject-works">#</a></h2>
+<h3 id="1-bot-initialization">1. <strong>Bot Initialization</strong><a hidden class="anchor" aria-hidden="true" href="#1-bot-initialization">#</a></h3>
+<p>The entry point is <code>bot/main.py</code>, which initializes the Discord client and loads all cog modules from <code>bot/cogs/</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">client</span><span class="o">.</span><span class="n">load_extension</span><span class="p">(</span><span class="s2">&#34;bot.cogs.assignment_management&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">client</span><span class="o">.</span><span class="n">load_extension</span><span class="p">(</span><span class="s2">&#34;bot.cogs.task_management&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>This dynamic loading allows each feature (assignment, task, role, utility) to work independently.</p>
 <hr>
-<h2 id="-cosine-similarity-between-metadata-nodes">🔗 Cosine Similarity Between Metadata Nodes<a hidden class="anchor" aria-hidden="true" href="#-cosine-similarity-between-metadata-nodes">#</a></h2>
-<p>To build the structural part of the graph, we connected nodes (news claims) based on metadata similarity — like political party, speaker credibility, and publication time — using <strong>cosine similarity</strong>.</p>
-<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-06-12-Fake-News-Detection/cosine%20similarity.png" alt="Cosine Similarity Heatmap"  />
-</p>
-<p><strong>Insight</strong>:
-The diagonal dominance shows high similarity of each node to itself. Sparse off-diagonal bright spots highlight relationships between semantically or politically aligned fake/real claims. These patterns support community-aware graph learning.</p>
+<h3 id="2-command-handling">2. <strong>Command Handling</strong><a hidden class="anchor" aria-hidden="true" href="#2-command-handling">#</a></h3>
+<p>EzProject uses both traditional commands (<code>commands.py</code>) and modern Discord <strong>slash commands</strong> (<code>slash_commands.py</code>), offering a smooth user experience.</p>
+<h4 id="example-slash-command">Example Slash Command<a hidden class="anchor" aria-hidden="true" href="#example-slash-command">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app_commands.command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;add_assignment&#34;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&#34;Add a new assignment.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">add_assignment</span><span class="p">(</span><span class="n">interaction</span><span class="p">:</span> <span class="n">discord</span><span class="o">.</span><span class="n">Interaction</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">due_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span></code></pre></div><p>When this command is triggered in Discord, it captures the input and stores the assignment info using helper functions in <code>Datamodule/db.py</code>.</p>
 <hr>
-<h2 id="-global-feature-importance-via-ablation-study">🔍 Global Feature Importance via Ablation Study<a hidden class="anchor" aria-hidden="true" href="#-global-feature-importance-via-ablation-study">#</a></h2>
-<p>Which features mattered most to our model? We answered that using an <strong>ablation study</strong> — by removing each feature individually and measuring the drop in accuracy.</p>
-<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-06-12-Fake-News-Detection/globalfeature_ablation.png" alt="Feature Importance Plot"  />
-</p>
-<p><strong>Conclusion</strong>:
-Even though the plot appears sparse, spikes correspond to features (mostly semantic and temporal) that, when removed, noticeably reduce performance. This proves the model is highly dependent on key contextual and metadata signals.</p>
-<hr>
-<h2 id="-summary-of-experimental-results">🧪 Summary of Experimental Results<a hidden class="anchor" aria-hidden="true" href="#-summary-of-experimental-results">#</a></h2>
-<p>We benchmarked our <strong>multi-modal GNN model</strong> (BERT+TF-IDF+metadata via GraphSAGE) against traditional baselines like SVM and BERT-only classifiers.</p>
-<table>
-<thead>
-<tr>
-<th>Model</th>
-<th>Accuracy</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TF-IDF + SVM</td>
-<td>62.3%</td>
-</tr>
-<tr>
-<td>BERT + Linear Classifier</td>
-<td>71.2%</td>
-</tr>
-<tr>
-<td>GraphSAGE + TF-IDF</td>
-<td>66.7%</td>
-</tr>
-<tr>
-<td>Our Method (Multi-modal)</td>
-<td><strong>76.9%</strong></td>
-</tr>
-</tbody>
-</table>
-<p>The accuracy bump demonstrates the power of <strong>fusing content and structural signals</strong> within a graph neural network context.</p>
-<hr>
-<h2 id="-project-links">🔗 Project Links<a hidden class="anchor" aria-hidden="true" href="#-project-links">#</a></h2>
+<h3 id="3-cog-system">3. <strong>Cog System</strong><a hidden class="anchor" aria-hidden="true" href="#3-cog-system">#</a></h3>
+<p>Each feature is implemented as a <strong>cog</strong>:</p>
 <ul>
-<li><strong>GitHub Repository</strong>: <a href="https://github.com/blueee04/Fake-News-Detection">Fake News Detection Project</a></li>
-<li><strong>Dataset</strong>: <a href="https://paperswithcode.com/dataset/politifact">Fake News Dataset</a></li>
+<li><code>assignment_management.py</code>: Add, list, or delete assignments.</li>
+<li><code>task_management.py</code>: Log tasks, update progress.</li>
+<li><code>deadline_management.py</code>: View and manage due dates.</li>
+<li><code>role_management.py</code>: Assign and manage user roles.</li>
+<li><code>utility_commands.py</code>: Extra helper commands (e.g., help, ping, etc.)</li>
 </ul>
+<p>This structure makes the bot modular—each cog handles a specific context, listens to relevant commands, and interacts with the data layer.</p>
 <hr>
-<h2 id="-final-thoughts">🧭 Final Thoughts<a hidden class="anchor" aria-hidden="true" href="#-final-thoughts">#</a></h2>
-<p>This project shows how fake news detection isn&rsquo;t just about language understanding — it&rsquo;s about <strong>context, structure, and community</strong>. Our multi-modal approach with GraphSAGE, BERT, and TF-IDF gives both <strong>accuracy and explainability</strong>, crucial for sensitive applications like misinformation tracking.</p>
-<p>We believe future directions lie in <strong>temporal graph learning</strong>, <strong>multilingual datasets</strong>, and <strong>attention-based graph architectures</strong> to further advance this domain.</p>
-<blockquote>
-<p>🔍 <strong>Key Takeaway</strong>: The fusion of semantic content (BERT) with structural metadata (GraphSAGE) creates a more robust fake news detection system than either approach alone.</p>
-</blockquote>
+<h3 id="4-data-storage">4. <strong>Data Storage</strong><a hidden class="anchor" aria-hidden="true" href="#4-data-storage">#</a></h3>
+<p><code>Datamodule/db.py</code> provides functions to store user inputs such as:</p>
+<ul>
+<li>Assignment details</li>
+<li>Task status</li>
+<li>User-specific information</li>
+</ul>
+<p>The data is currently stored locally in structured files, offering lightweight persistence without needing a database.</p>
 <hr>
+<h3 id="5-logging--config">5. <strong>Logging &amp; Config</strong><a hidden class="anchor" aria-hidden="true" href="#5-logging--config">#</a></h3>
+<p>Logs are created for debugging or monitoring purposes (optional), and all secrets like bot tokens are set via <code>config.py</code>.</p>
+<hr>
+<h3 id="6-deployment">6. <strong>Deployment</strong><a hidden class="anchor" aria-hidden="true" href="#6-deployment">#</a></h3>
+<p>The bot includes a <code>Procfile</code> and <code>runtime.txt</code>, which means it can be easily deployed on <strong>Heroku</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git push heroku main
+</span></span></code></pre></div><p>This makes it easy to run 24/7 in the cloud.</p>
+<hr>
+<h2 id="-summary-of-workflow">✅ Summary of Workflow<a hidden class="anchor" aria-hidden="true" href="#-summary-of-workflow">#</a></h2>
+<ol>
+<li>User invokes a command (e.g., <code>/add_assignment</code>).</li>
+<li>Bot processes it via the correct cog.</li>
+<li>Data is stored locally through <code>db.py</code>.</li>
+<li>Bot responds with confirmation (e.g., &ldquo;Assignment added!&rdquo;).</li>
+<li>Optional: Data can be retrieved later via <code>/list_assignments</code>, etc.</li>
+</ol>
+<hr>
+<p>This clean, modular flow allows EzProject to work reliably in any Discord server while offering extensibility for future additions.</p>
 
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://blueee04.github.io/blog/tags/fake-news/">Fake News</a></li>
-      <li><a href="https://blueee04.github.io/blog/tags/gnn/">GNN</a></li>
-      <li><a href="https://blueee04.github.io/blog/tags/graphsage/">GraphSAGE</a></li>
-      <li><a href="https://blueee04.github.io/blog/tags/bert/">BERT</a></li>
-      <li><a href="https://blueee04.github.io/blog/tags/nlp/">NLP</a></li>
-      <li><a href="https://blueee04.github.io/blog/tags/ml/">ML</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/python/">Python</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/discord/">Discord</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/automation/">Automation</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/bot/">Bot</a></li>
+      <li><a href="https://blueee04.github.io/blog/tags/task-management/">Task Management</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blueee04.github.io/blog/posts/2024-08-22-ezproject/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>EzProject: Discord Bot for Assignment and Task Management</span>
-  </a>
-  <a class="next" href="https://blueee04.github.io/blog/posts/2025-06-10-music-recommendation-system/">
+  <a class="next" href="https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/">
     <span class="title">Next »</span>
     <br>
-    <span>Music Recommendation System: Project Overview</span>
+    <span>Graph-Based Fake News Detection with BERT and TF-IDF</span>
   </a>
 </nav>
 
 
 <ul class="share-buttons">
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on x"
-            href="https://x.com/intent/tweet/?text=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f&amp;hashtags=FakeNews%2cGNN%2cGraphSAGE%2cBERT%2cNLP%2cML">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share EzProject: Discord Bot for Assignment and Task Management on x"
+            href="https://x.com/intent/tweet/?text=EzProject%3a%20Discord%20Bot%20for%20Assignment%20and%20Task%20Management&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-08-22-ezproject%2f&amp;hashtags=Python%2cDiscord%2cAutomation%2cBot%2cTaskManagement">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -316,8 +325,8 @@ Even though the plot appears sparse, spikes correspond to features (mostly seman
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f&amp;title=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF&amp;summary=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF&amp;source=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share EzProject: Discord Bot for Assignment and Task Management on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-08-22-ezproject%2f&amp;title=EzProject%3a%20Discord%20Bot%20for%20Assignment%20and%20Task%20Management&amp;summary=EzProject%3a%20Discord%20Bot%20for%20Assignment%20and%20Task%20Management&amp;source=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-08-22-ezproject%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -325,8 +334,8 @@ Even though the plot appears sparse, spikes correspond to features (mostly seman
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on reddit"
-            href="https://reddit.com/submit?url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f&title=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share EzProject: Discord Bot for Assignment and Task Management on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-08-22-ezproject%2f&title=EzProject%3a%20Discord%20Bot%20for%20Assignment%20and%20Task%20Management">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -334,8 +343,8 @@ Even though the plot appears sparse, spikes correspond to features (mostly seman
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share EzProject: Discord Bot for Assignment and Task Management on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-08-22-ezproject%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -343,8 +352,8 @@ Even though the plot appears sparse, spikes correspond to features (mostly seman
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on whatsapp"
-            href="https://api.whatsapp.com/send?text=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF%20-%20https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share EzProject: Discord Bot for Assignment and Task Management on whatsapp"
+            href="https://api.whatsapp.com/send?text=EzProject%3a%20Discord%20Bot%20for%20Assignment%20and%20Task%20Management%20-%20https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-08-22-ezproject%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -352,8 +361,8 @@ Even though the plot appears sparse, spikes correspond to features (mostly seman
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on telegram"
-            href="https://telegram.me/share/url?text=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share EzProject: Discord Bot for Assignment and Task Management on telegram"
+            href="https://telegram.me/share/url?text=EzProject%3a%20Discord%20Bot%20for%20Assignment%20and%20Task%20Management&amp;url=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-08-22-ezproject%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -361,8 +370,8 @@ Even though the plot appears sparse, spikes correspond to features (mostly seman
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Graph-Based Fake News Detection with BERT and TF-IDF on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Graph-Based%20Fake%20News%20Detection%20with%20BERT%20and%20TF-IDF&u=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2025-06-12-fake-news-detection%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share EzProject: Discord Bot for Assignment and Task Management on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=EzProject%3a%20Discord%20Bot%20for%20Assignment%20and%20Task%20Management&u=https%3a%2f%2fblueee04.github.io%2fblog%2fposts%2f2024-08-22-ezproject%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path

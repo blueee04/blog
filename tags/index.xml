@@ -6,8 +6,43 @@
     <description>Recent content in Tags on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blueee04.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Automation</title>
+      <link>https://blueee04.github.io/blog/tags/automation/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/automation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bot</title>
+      <link>https://blueee04.github.io/blog/tags/bot/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/bot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Discord</title>
+      <link>https://blueee04.github.io/blog/tags/discord/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/discord/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://blueee04.github.io/blog/tags/python/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Task Management</title>
+      <link>https://blueee04.github.io/blog/tags/task-management/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/task-management/</guid>
+      <description></description>
+    </item>
     <item>
       <title>BERT</title>
       <link>https://blueee04.github.io/blog/tags/bert/</link>
@@ -209,13 +244,6 @@
       <link>https://blueee04.github.io/blog/tags/numpy/</link>
       <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/tags/numpy/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>https://blueee04.github.io/blog/tags/python/</link>
-      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/python/</guid>
       <description></description>
     </item>
     <item>
