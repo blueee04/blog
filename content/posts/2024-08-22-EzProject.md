@@ -1,7 +1,7 @@
 
 +++
 title = "EzProject: Discord Bot for Assignment and Task Management"
-date = "2025-07-14"
+date = "2024-08-22"
 summary = "EzProject is a modular Python Discord bot that helps manage assignments, tasks, and deadlines in a collaborative server environment."
 tags = ["Python", "Discord", "Automation", "Bot", "Task Management"]
 +++
