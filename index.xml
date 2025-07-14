@@ -6,15 +6,8 @@
     <description>Recent content on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blueee04.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>EzProject: Discord Bot for Assignment and Task Management</title>
-      <link>https://blueee04.github.io/blog/posts/2024-08-22-ezproject/</link>
-      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/posts/2024-08-22-ezproject/</guid>
-      <description>EzProject is a modular Python Discord bot that helps manage assignments, tasks, and deadlines in a collaborative server environment.</description>
-    </item>
     <item>
       <title>Graph-Based Fake News Detection with BERT and TF-IDF</title>
       <link>https://blueee04.github.io/blog/posts/2025-06-12-fake-news-detection/</link>
@@ -35,6 +28,13 @@
       <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/posts/2025-05-23-mental_health_analysis/</guid>
       <description>A data-driven analysis on student mental health using EDA and machine learning models to uncover key factors such as sleep, GPA, and academic pressure.</description>
+    </item>
+    <item>
+      <title>EzProject: Discord Bot for Assignment and Task Management</title>
+      <link>https://blueee04.github.io/blog/posts/2024-08-22-ezproject/</link>
+      <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/posts/2024-08-22-ezproject/</guid>
+      <description>EzProject is a modular Python Discord bot that helps manage assignments, tasks, and deadlines in a collaborative server environment.</description>
     </item>
     <item>
       <title>Leprosy Detection using Deep Learning</title>
