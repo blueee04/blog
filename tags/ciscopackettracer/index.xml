@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CiscoPacketTracer on bluee :)</title>
+    <link>https://blueee04.github.io/blog/tags/ciscopackettracer/</link>
+    <description>Recent content in CiscoPacketTracer on bluee :)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://blueee04.github.io/blog/tags/ciscopackettracer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adaptive Multi-Zone IoT Security Framework for Smart Factory Systems</title>
+      <link>https://blueee04.github.io/blog/posts/2025-02-23-adaptive-multi-zone-iot-security-framework/</link>
+      <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/posts/2025-02-23-adaptive-multi-zone-iot-security-framework/</guid>
+      <description>A comprehensive smart factory network simulation using Cisco Packet Tracer, integrating advanced wireless technologies and IoT/IoE solutions for industrial environments designed to meet Industry 4.0 requirements.</description>
+    </item>
+  </channel>
+</rss>
