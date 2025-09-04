@@ -5,13 +5,13 @@ summary = "A data-driven analysis on student mental health using EDA and machine
 tags = ["Mental Health", "Data Analysis", "Machine Learning", "Student Life", "Educational Research"]
 +++
 
-# 🧠 Student Mental Health Analysis: Understanding the Silent Struggle
+# Student Mental Health Analysis: Understanding the Silent Struggle
 
 In today’s fast-paced and competitive academic world, mental health among students has become a critical issue—yet it remains under-discussed and stigmatized. In this blog, we dive into a data-driven analysis of student mental health, exploring the underlying factors, patterns, and actionable insights uncovered through our research project.
 
 ---
 
-## 📌 Overview
+##  Overview
 
 **Objective**:  
 To analyze various demographic and lifestyle factors affecting student mental health using data analytics and machine learning techniques.
@@ -26,7 +26,7 @@ The dataset was sourced from Kaggle and includes attributes such as age, gender,
 
 ---
 
-## 📊 Exploratory Data Analysis (EDA)
+##  Exploratory Data Analysis (EDA)
 
 The first step in our process was **cleaning** and **visualizing** the data to uncover patterns. Key findings include:
 
@@ -37,7 +37,7 @@ The first step in our process was **cleaning** and **visualizing** the data to u
 
 ---
 
-## 🧠 Machine Learning Models
+##  Machine Learning Models
 
 We implemented two classification models to predict the likelihood of students experiencing mental health challenges:
 
@@ -57,7 +57,7 @@ We implemented two classification models to predict the likelihood of students e
 
 ---
 
-## 🔍 Key Takeaways
+##  Key Takeaways
 
 - **Sleep deprivation** is a significant factor in poor student mental health.
 - Stress increases considerably in **later academic years**.
@@ -66,18 +66,18 @@ We implemented two classification models to predict the likelihood of students e
 
 ---
 
-## 📌 Recommendations
+## Recommendations
 
 Based on the analysis, the following interventions are recommended:
 
-- 🧠 **Mental Health Workshops**: For awareness and emotional resilience.
-- 📞 **Accessible Counseling**: On-campus or virtual psychological support.
-- 🌙 **Sleep & Screen Hygiene**: Promoting healthy digital habits and rest.
-- 🎓 **Academic Mentorship**: Pairing senior mentors with juniors to ease academic pressure.
+-  **Mental Health Workshops**: For awareness and emotional resilience.
+-  **Accessible Counseling**: On-campus or virtual psychological support.
+- **Sleep & Screen Hygiene**: Promoting healthy digital habits and rest.
+-  **Academic Mentorship**: Pairing senior mentors with juniors to ease academic pressure.
 
 ---
 
-## 💡 Conclusion
+##  Conclusion
 
 Mental health is not a standalone issue—it is a complex interplay of lifestyle, academic, and emotional factors. By leveraging data analysis and machine learning, we can uncover the hidden patterns that affect student well-being and design targeted interventions.
 
@@ -85,14 +85,14 @@ This project is one step toward fostering a more empathetic and proactive academ
 
 ---
 
-## 📂 Project Repository
+##  Project Repository
 
 You can explore the full code and analysis in the Jupyter Notebook:  
-📎 [Download Notebook](https://colab.research.google.com/drive/16PgX3G7GL_HArn4WuH444zOfxJXIfDGu?usp=sharinge)
+ [Download Notebook](https://colab.research.google.com/drive/16PgX3G7GL_HArn4WuH444zOfxJXIfDGu?usp=sharinge)
 
 ---
 
-## 🙌 Acknowledgments
+##  Acknowledgments
 
 Special thanks to the data contributors and mentors who supported this project. Let’s continue driving conversations and policies that prioritize student well-being.
 

@@ -5,7 +5,7 @@ summary = "A detailed breakdown of a multi-modal Graph Neural Network framework 
 tags = ["Fake News", "GNN", "GraphSAGE", "BERT", "NLP", "ML"]
 +++
 
-# 🧠 Fake News Detection with GraphSAGE, BERT & TF-IDF
+# Fake News Detection with GraphSAGE, BERT & TF-IDF
 
 In today's digital age, misinformation spreads faster than ever, and detecting fake news has become both a technical and societal challenge. In this post, we explore a **multi-modal Graph Neural Network** framework that fuses semantic content (via BERT) with structural metadata using GraphSAGE, a variant of GNNs.
 
@@ -13,7 +13,7 @@ This blog breaks down three critical experiments and insights that powered our m
 
 ---
 
-## 📈 Training vs Testing Accuracy with GraphSAGE
+## Training vs Testing Accuracy with GraphSAGE
 
 To evaluate the learning capability and potential overfitting of our model, we trained it over multiple epochs and plotted both training and test accuracy.
 
@@ -24,7 +24,7 @@ The training accuracy improves steadily, while test accuracy rises until ~Epoch 
 
 ---
 
-## 🔗 Cosine Similarity Between Metadata Nodes
+##  Cosine Similarity Between Metadata Nodes
 
 To build the structural part of the graph, we connected nodes (news claims) based on metadata similarity — like political party, speaker credibility, and publication time — using **cosine similarity**.
 
@@ -35,7 +35,7 @@ The diagonal dominance shows high similarity of each node to itself. Sparse off-
 
 ---
 
-## 🔍 Global Feature Importance via Ablation Study
+##  Global Feature Importance via Ablation Study
 
 Which features mattered most to our model? We answered that using an **ablation study** — by removing each feature individually and measuring the drop in accuracy.
 
@@ -46,7 +46,7 @@ Even though the plot appears sparse, spikes correspond to features (mostly seman
 
 ---
 
-## 🧪 Summary of Experimental Results
+## Summary of Experimental Results
 
 We benchmarked our **multi-modal GNN model** (BERT+TF-IDF+metadata via GraphSAGE) against traditional baselines like SVM and BERT-only classifiers.
 
@@ -61,19 +61,19 @@ The accuracy bump demonstrates the power of **fusing content and structural sign
 
 ---
 
-## 🔗 Project Links
+## Project Links
 
 - **GitHub Repository**: [Fake News Detection Project](https://github.com/blueee04/Fake-News-Detection)
 - **Dataset**: [Fake News Dataset](https://paperswithcode.com/dataset/politifact)
 
 ---
 
-## 🧭 Final Thoughts
+## Final Thoughts
 
 This project shows how fake news detection isn't just about language understanding — it's about **context, structure, and community**. Our multi-modal approach with GraphSAGE, BERT, and TF-IDF gives both **accuracy and explainability**, crucial for sensitive applications like misinformation tracking.
 
 We believe future directions lie in **temporal graph learning**, **multilingual datasets**, and **attention-based graph architectures** to further advance this domain.
 
-> 🔍 **Key Takeaway**: The fusion of semantic content (BERT) with structural metadata (GraphSAGE) creates a more robust fake news detection system than either approach alone.
+>  **Key Takeaway**: The fusion of semantic content (BERT) with structural metadata (GraphSAGE) creates a more robust fake news detection system than either approach alone.
 
 ---

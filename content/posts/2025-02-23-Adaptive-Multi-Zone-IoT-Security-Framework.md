@@ -5,7 +5,7 @@ summary = "A comprehensive smart factory network simulation using Cisco Packet T
 tags = ["IoT", "SmartFactory", "Cybersecurity", "Industry4.0", "Engineering", "CiscoPacketTracer", "WirelessNetworks", "EdgeComputing", "MQTT"]
 +++
 
-# 🏭 Adaptive Multi-Zone IoT Security Framework for Smart Factory Systems
+#  Adaptive Multi-Zone IoT Security Framework for Smart Factory Systems
 
 *By Anikait Panigrahi, Barshan Mondal, and Krishnan V Namboothiri*  
 *Department of Electronics and Communication Engineering*  
@@ -14,25 +14,24 @@ tags = ["IoT", "SmartFactory", "Cybersecurity", "Industry4.0", "Engineering", "C
 In today's rapidly evolving industrial landscape, the integration of IoT technologies in smart factories has become crucial for achieving Industry 4.0 standards. This project implements a comprehensive smart factory network simulation using **Cisco Packet Tracer**, integrating advanced wireless technologies and IoT/IoE solutions for industrial environments.
 
 ---
-
-## 🏗️ Architecture Overview
+##  Architecture Overview
 
 ### Three-Layer Architecture
 
 Our framework follows a robust three-layer architecture designed for scalability and reliability:
 
 ```
-🏢 Infrastructure Layer
+ Infrastructure Layer
 ├── Core network backbone
 ├── Wireless routers and switches
 └── Central servers
 
-📡 Communication Layer  
+ Communication Layer  
 ├── Wi-Fi 6 for high-speed data
 ├── Mesh networking for redundancy
 └── Private LTE for critical operations
 
-🤖 Application Layer
+ Application Layer
 ├── IoT sensors and actuators
 ├── Edge computing nodes
 └── User interfaces
@@ -52,7 +51,7 @@ Our framework follows a robust three-layer architecture designed for scalability
 
 ---
 
-## 🔧 Technical Implementation
+##  Technical Implementation
 
 ### Network Infrastructure Setup
 
@@ -88,7 +87,7 @@ Our framework follows a robust three-layer architecture designed for scalability
 
 ---
 
-## 📊 Performance Metrics
+##  Performance Metrics
 
 ### Network Performance
 - **Latency**: <10ms for real-time control applications
@@ -106,7 +105,7 @@ Our framework follows a robust three-layer architecture designed for scalability
 
 ---
 
-## 🧪 Testing and Validation
+##  Testing and Validation
 
 ### Testing Procedures
 
@@ -117,18 +116,18 @@ Our framework follows a robust three-layer architecture designed for scalability
 
 ### Validation Results
 
-- ✅ Real-time data collection and processing
-- ✅ Predictive maintenance capabilities
-- ✅ Network performance meets Industry 4.0 requirements
-- ✅ Complete wireless coverage validation
-- ✅ IoT device integration verification
+- Real-time data collection and processing
+- Predictive maintenance capabilities
+- Network performance meets Industry 4.0 requirements
+-  Complete wireless coverage validation
+-  IoT device integration verification
 
 ![Server Configuration and IoT Monitor](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-02-23-Adaptive-Multi-Zone-IoT-Security-Framework/Server%20Configuration%20(IOT%20Monitor).png)
 *Server configuration and IoT monitoring dashboard showing system validation and performance benchmarks.*
 
 ---
 
-## 🔒 Security Framework
+##  Security Framework
 
 ### Multi-Zone Security Implementation
 
@@ -150,7 +149,7 @@ Our adaptive security framework implements a sophisticated multi-zone approach:
 
 ---
 
-## 💡 Benefits
+##  Benefits
 
 - **Real-time Monitoring**: Immediate response to production anomalies
 - **Predictive Maintenance**: Reduced unplanned downtime
@@ -162,7 +161,7 @@ Our adaptive security framework implements a sophisticated multi-zone approach:
 
 ---
 
-## 🚀 Future Enhancements
+##  Future Enhancements
 
 - [ ] Advanced security implementations
 - [ ] 5G technology integration
@@ -172,7 +171,7 @@ Our adaptive security framework implements a sophisticated multi-zone approach:
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 smart-factory-iot-security/
@@ -217,7 +216,7 @@ smart-factory-iot-security/
 
 ---
 
-## 🎯 Key Takeaways
+##  Key Takeaways
 
 This project demonstrates the power of integrating multiple wireless technologies and IoT protocols in a unified smart factory environment. The adaptive multi-zone security framework ensures robust protection while maintaining operational efficiency.
 
@@ -225,11 +224,11 @@ The combination of Wi-Fi 6, mesh networking, and private LTE creates a resilient
 
 
 
-> 🔍 **Key Insight**: The fusion of multiple wireless technologies with adaptive security creates a more robust smart factory system than any single approach alone.
+>  **Key Insight**: The fusion of multiple wireless technologies with adaptive security creates a more robust smart factory system than any single approach alone.
 
 ---
 
-## 📞 Contact Information
+##  Contact Information
 
 - **Anikait Panigrahi**: anikait05@gmail.com
 - **Barshan Mondal**: barshan2004@gmail.com

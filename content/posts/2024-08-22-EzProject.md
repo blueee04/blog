@@ -25,7 +25,7 @@ Ever felt like keeping track of all your assignments and group tasks on Discord 
 
 ---
 
-## 🏗️ How's It Built?
+##  How's It Built?
 
 Here's a peek at the folder structure:
 
@@ -53,7 +53,7 @@ EzProject/
 
 ---
 
-## ⚡ How Do I Use It?
+##  How Do I Use It?
 
 **Add an assignment:**
 ```python
@@ -70,7 +70,7 @@ async def add_assignment(interaction: discord.Interaction, name: str, due_date: 
 
 ---
 
-## ☁️ How to Deploy on Railway
+##  How to Deploy on Railway
 
 Want to run EzProject 24/7? Railway makes it easy:
 
@@ -84,7 +84,7 @@ If you get stuck, check out the [Railway Docs](https://docs.railway.app/).
 
 ---
 
-## 🎉 Wrap Up
+## Wrap Up
 
 EzProject is all about making Discord group work less stressful and more organized. Whether you're a student, a club leader, or just want to keep your server tidy, give it a try!
 

@@ -11,7 +11,7 @@ In this blog post, I share a complete overview of a deep learning-based medical 
 
 ![Pipeline Architecture](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2024-6-21%20Leprosy%20Detection/pipeline.png)
 
-## 🔗 Project Links
+## Project Links
 
 - **GitHub Repository**: [Leprosy Detection Project](https://github.com/5h4rrk/Leprosy_Detection)
 - **Dataset**: [Leprosy Dataset](https://www.kaggle.com/datasets/orvile/leprosy-chronic-wound-images-co2wounds-v2)
@@ -118,4 +118,4 @@ All models pass through a final Dense layer (linear activation) with L2 regulari
 
 This project combines the strengths of traditional SVM theory and modern deep learning architectures. It's an ideal example of how even small datasets can yield accurate results with the right preprocessing, model selection, and evaluation pipeline.
 
-> 👨‍⚕️ Bridging the gap between machine learning and healthcare—one pixel at a time.
+>  Bridging the gap between machine learning and healthcare—one pixel at a time.
