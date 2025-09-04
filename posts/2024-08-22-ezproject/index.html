@@ -96,8 +96,8 @@
   "keywords": [
     "Python", "Discord", "Automation", "Bot", "Task Management"
   ],
-  "articleBody": "EzProject: Your Discord Buddy for Assignments \u0026 Tasks Hey there! 👋\nEver felt like keeping track of all your assignments and group tasks on Discord is a mess? EzProject is here to help! It’s a Python-powered Discord bot that makes managing assignments, tasks, and deadlines super easy—right inside your server.\n🚀 What Can EzProject Do? Add \u0026 List Assignments: Quickly add new assignments and see what’s due. Task Tracking: Log your tasks, update progress, and check things off as you go. Deadline Reminders: Never miss a due date again! Role Management: Assign roles to your friends or teammates for better collab. Handy Commands: Need help or info? There are commands for that too. Slash Commands: Use modern Discord slash commands for a smooth experience. Modular Design: Each feature is its own “cog” (module), so it’s easy to add more cool stuff later. 🏗️ How’s It Built? Here’s a peek at the folder structure:\nEzProject/ ├── bot/ │ ├── main.py # Bot launcher │ ├── slash_commands.py # Slash command definitions │ ├── commands.py # Old-school command support │ └── cogs/ # All the feature modules │ ├── assignment_management.py │ ├── deadline_management.py │ ├── task_management.py │ ├── role_management.py │ └── utility_commands.py ├── Datamodule/db.py # Where your data lives ├── config.py # Bot token \u0026 config ├── requirements.txt # Stuff you need to install Bot loads up all the cogs so each feature works on its own. Supports both old and new commands (but slash commands are the way to go!). Stores your data locally—no fancy database needed to get started. Config is simple—just set your token and you’re good. ⚡ How Do I Use It? Add an assignment:\n@app_commands.command(name=\"add_assignment\", description=\"Add a new assignment.\") async def add_assignment(interaction: discord.Interaction, name: str, due_date: str): ... Typical flow:\nYou type a command (like /add_assignment). The bot does its thing and saves your info. You get a friendly reply (“Assignment added!”). Check or update stuff whenever you want. ☁️ How to Deploy on Railway Want to run EzProject 24/7? Railway makes it easy:\nFork or clone the repo to your GitHub. Sign in at Railway and hit “New Project”. Pick “Deploy from GitHub Repo” and connect your EzProject repo. Set up your environment variables (like your Discord bot token). Click “Deploy” and you’re live! If you get stuck, check out the Railway Docs.\n🎉 Wrap Up EzProject is all about making Discord group work less stressful and more organized. Whether you’re a student, a club leader, or just want to keep your server tidy, give it a try!\nWant to see the code or contribute? Check it out here: EzProject on GitHub\n",
-  "wordCount" : "435",
+  "articleBody": "EzProject: Your Discord Buddy for Assignments \u0026 Tasks Hey there! 👋\nEver felt like keeping track of all your assignments and group tasks on Discord is a mess? EzProject is here to help! It’s a Python-powered Discord bot that makes managing assignments, tasks, and deadlines super easy—right inside your server.\n🚀 What Can EzProject Do? Add \u0026 List Assignments: Quickly add new assignments and see what’s due. Task Tracking: Log your tasks, update progress, and check things off as you go. Deadline Reminders: Never miss a due date again! Role Management: Assign roles to your friends or teammates for better collab. Handy Commands: Need help or info? There are commands for that too. Slash Commands: Use modern Discord slash commands for a smooth experience. Modular Design: Each feature is its own “cog” (module), so it’s easy to add more cool stuff later. How’s It Built? Here’s a peek at the folder structure:\nEzProject/ ├── bot/ │ ├── main.py # Bot launcher │ ├── slash_commands.py # Slash command definitions │ ├── commands.py # Old-school command support │ └── cogs/ # All the feature modules │ ├── assignment_management.py │ ├── deadline_management.py │ ├── task_management.py │ ├── role_management.py │ └── utility_commands.py ├── Datamodule/db.py # Where your data lives ├── config.py # Bot token \u0026 config ├── requirements.txt # Stuff you need to install Bot loads up all the cogs so each feature works on its own. Supports both old and new commands (but slash commands are the way to go!). Stores your data locally—no fancy database needed to get started. Config is simple—just set your token and you’re good. How Do I Use It? Add an assignment:\n@app_commands.command(name=\"add_assignment\", description=\"Add a new assignment.\") async def add_assignment(interaction: discord.Interaction, name: str, due_date: str): ... Typical flow:\nYou type a command (like /add_assignment). The bot does its thing and saves your info. You get a friendly reply (“Assignment added!”). Check or update stuff whenever you want. How to Deploy on Railway Want to run EzProject 24/7? Railway makes it easy:\nFork or clone the repo to your GitHub. Sign in at Railway and hit “New Project”. Pick “Deploy from GitHub Repo” and connect your EzProject repo. Set up your environment variables (like your Discord bot token). Click “Deploy” and you’re live! If you get stuck, check out the Railway Docs.\nWrap Up EzProject is all about making Discord group work less stressful and more organized. Whether you’re a student, a club leader, or just want to keep your server tidy, give it a try!\nWant to see the code or contribute? Check it out here: EzProject on GitHub\n",
+  "wordCount" : "431",
   "inLanguage": "en",
   "datePublished": "2024-08-22T00:00:00Z",
   "dateModified": "2024-08-22T00:00:00Z",
@@ -193,13 +193,13 @@
                 <li>
                     <a href="#-what-can-ezproject-do" aria-label="🚀 What Can EzProject Do?">🚀 What Can EzProject Do?</a></li>
                 <li>
-                    <a href="#-hows-it-built" aria-label="🏗️ How&rsquo;s It Built?">🏗️ How&rsquo;s It Built?</a></li>
+                    <a href="#hows-it-built" aria-label="How&rsquo;s It Built?">How&rsquo;s It Built?</a></li>
                 <li>
-                    <a href="#-how-do-i-use-it" aria-label="⚡ How Do I Use It?">⚡ How Do I Use It?</a></li>
+                    <a href="#how-do-i-use-it" aria-label="How Do I Use It?">How Do I Use It?</a></li>
                 <li>
-                    <a href="#-how-to-deploy-on-railway" aria-label="☁️ How to Deploy on Railway">☁️ How to Deploy on Railway</a></li>
+                    <a href="#how-to-deploy-on-railway" aria-label="How to Deploy on Railway">How to Deploy on Railway</a></li>
                 <li>
-                    <a href="#-wrap-up" aria-label="🎉 Wrap Up">🎉 Wrap Up</a>
+                    <a href="#wrap-up" aria-label="Wrap Up">Wrap Up</a>
                 </li>
             </ul>
             </li>
@@ -223,7 +223,7 @@
 <li><strong>Modular Design:</strong> Each feature is its own &ldquo;cog&rdquo; (module), so it&rsquo;s easy to add more cool stuff later.</li>
 </ul>
 <hr>
-<h2 id="-hows-it-built">🏗️ How&rsquo;s It Built?<a hidden class="anchor" aria-hidden="true" href="#-hows-it-built">#</a></h2>
+<h2 id="hows-it-built">How&rsquo;s It Built?<a hidden class="anchor" aria-hidden="true" href="#hows-it-built">#</a></h2>
 <p>Here&rsquo;s a peek at the folder structure:</p>
 <pre tabindex="0"><code>EzProject/
 ├── bot/
@@ -246,7 +246,7 @@
 <li><strong>Config is simple</strong>—just set your token and you&rsquo;re good.</li>
 </ul>
 <hr>
-<h2 id="-how-do-i-use-it">⚡ How Do I Use It?<a hidden class="anchor" aria-hidden="true" href="#-how-do-i-use-it">#</a></h2>
+<h2 id="how-do-i-use-it">How Do I Use It?<a hidden class="anchor" aria-hidden="true" href="#how-do-i-use-it">#</a></h2>
 <p><strong>Add an assignment:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app_commands.command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;add_assignment&#34;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&#34;Add a new assignment.&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">add_assignment</span><span class="p">(</span><span class="n">interaction</span><span class="p">:</span> <span class="n">discord</span><span class="o">.</span><span class="n">Interaction</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">due_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -259,7 +259,7 @@
 <li>Check or update stuff whenever you want.</li>
 </ol>
 <hr>
-<h2 id="-how-to-deploy-on-railway">☁️ How to Deploy on Railway<a hidden class="anchor" aria-hidden="true" href="#-how-to-deploy-on-railway">#</a></h2>
+<h2 id="how-to-deploy-on-railway">How to Deploy on Railway<a hidden class="anchor" aria-hidden="true" href="#how-to-deploy-on-railway">#</a></h2>
 <p>Want to run EzProject 24/7? Railway makes it easy:</p>
 <ol>
 <li>Fork or clone the repo to your GitHub.</li>
@@ -270,7 +270,7 @@
 </ol>
 <p>If you get stuck, check out the <a href="https://docs.railway.app/">Railway Docs</a>.</p>
 <hr>
-<h2 id="-wrap-up">🎉 Wrap Up<a hidden class="anchor" aria-hidden="true" href="#-wrap-up">#</a></h2>
+<h2 id="wrap-up">Wrap Up<a hidden class="anchor" aria-hidden="true" href="#wrap-up">#</a></h2>
 <p>EzProject is all about making Discord group work less stressful and more organized. Whether you&rsquo;re a student, a club leader, or just want to keep your server tidy, give it a try!</p>
 <hr>
 <p>Want to see the code or contribute? Check it out here: <a href="https://github.com/blueee04/EzProject">EzProject on GitHub</a></p>

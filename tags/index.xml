@@ -6,8 +6,15 @@
     <description>Recent content in Tags on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blueee04.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Life Stuff</title>
+      <link>https://blueee04.github.io/blog/tags/life-stuff/</link>
+      <pubDate>Thu, 04 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/life-stuff/</guid>
+      <description></description>
+    </item>
     <item>
       <title>BERT</title>
       <link>https://blueee04.github.io/blog/tags/bert/</link>
