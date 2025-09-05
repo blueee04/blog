@@ -9,10 +9,94 @@
     <lastBuildDate>Thu, 04 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blueee04.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Life Stuff</title>
-      <link>https://blueee04.github.io/blog/tags/life-stuff/</link>
+      <title>Career</title>
+      <link>https://blueee04.github.io/blog/tags/career/</link>
       <pubDate>Thu, 04 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/life-stuff/</guid>
+      <guid>https://blueee04.github.io/blog/tags/career/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Growth</title>
+      <link>https://blueee04.github.io/blog/tags/growth/</link>
+      <pubDate>Thu, 04 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/growth/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Opportunity</title>
+      <link>https://blueee04.github.io/blog/tags/opportunity/</link>
+      <pubDate>Thu, 04 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/opportunity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Personal</title>
+      <link>https://blueee04.github.io/blog/tags/personal/</link>
+      <pubDate>Thu, 04 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/personal/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research</title>
+      <link>https://blueee04.github.io/blog/tags/research/</link>
+      <pubDate>Thu, 04 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/research/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CNN</title>
+      <link>https://blueee04.github.io/blog/tags/cnn/</link>
+      <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/cnn/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Computer Vision</title>
+      <link>https://blueee04.github.io/blog/tags/computer-vision/</link>
+      <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep Learning</title>
+      <link>https://blueee04.github.io/blog/tags/deep-learning/</link>
+      <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Image Segmentation</title>
+      <link>https://blueee04.github.io/blog/tags/image-segmentation/</link>
+      <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/image-segmentation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine Learning</title>
+      <link>https://blueee04.github.io/blog/tags/machine-learning/</link>
+      <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Medical Imaging</title>
+      <link>https://blueee04.github.io/blog/tags/medical-imaging/</link>
+      <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/medical-imaging/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Neural Networks</title>
+      <link>https://blueee04.github.io/blog/tags/neural-networks/</link>
+      <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/neural-networks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>U-Net</title>
+      <link>https://blueee04.github.io/blog/tags/u-net/</link>
+      <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://blueee04.github.io/blog/tags/u-net/</guid>
       <description></description>
     </item>
     <item>
@@ -76,13 +160,6 @@
       <link>https://blueee04.github.io/blog/tags/hybrid-systems/</link>
       <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/tags/hybrid-systems/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Machine Learning</title>
-      <link>https://blueee04.github.io/blog/tags/machine-learning/</link>
-      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
@@ -219,20 +296,6 @@
       <description></description>
     </item>
     <item>
-      <title>Computer Vision</title>
-      <link>https://blueee04.github.io/blog/tags/computer-vision/</link>
-      <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/computer-vision/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Deep Learning</title>
-      <link>https://blueee04.github.io/blog/tags/deep-learning/</link>
-      <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/deep-learning/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Healthcare AI</title>
       <link>https://blueee04.github.io/blog/tags/healthcare-ai/</link>
       <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
@@ -275,13 +338,6 @@
       <description></description>
     </item>
     <item>
-      <title>Medical Imaging</title>
-      <link>https://blueee04.github.io/blog/tags/medical-imaging/</link>
-      <pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/medical-imaging/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Medical Technology</title>
       <link>https://blueee04.github.io/blog/tags/medical-technology/</link>
       <pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate>
@@ -300,13 +356,6 @@
       <link>https://blueee04.github.io/blog/tags/gradient-descent/</link>
       <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/tags/gradient-descent/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Neural Networks</title>
-      <link>https://blueee04.github.io/blog/tags/neural-networks/</link>
-      <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/neural-networks/</guid>
       <description></description>
     </item>
     <item>
