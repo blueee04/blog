@@ -46,6 +46,8 @@ languages:
         buttons:
           - name: Blog
             url: posts
+          - name: About Me
+            url: posts/2025-09-14-about-me/
           - name: Notes
             url : "https://blueee04.github.io/notes/"
           
