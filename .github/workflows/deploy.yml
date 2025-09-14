@@ -36,5 +36,5 @@ jobs:
           git add .
           git config user.name 'blueee04'
           git config user.email 'barshan2004@gmail.com'
-          git commit -m 'Updated site'
+          git commit --allow-empty -m 'Updated site'
           git push   
