@@ -40,8 +40,8 @@ languages:
         title: Barshan Mondal
         imageUrl: "https://raw.githubusercontent.com/blueee04/blog/main/profile/profile.png.png"
         imageTitle: Profile image
-        imageWidth: 210
-        imageHeight: 210
+        imageWidth: 240
+        imageHeight: 240
         subtitle: "⚡ Swift | 🌟 Polished | 🚀 Adaptable"
         buttons:
           - name: Blog
