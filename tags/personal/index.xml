@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>personal on bluee :)</title>
+    <title>Personal on bluee :)</title>
     <link>https://blueee04.github.io/blog/tags/personal/</link>
-    <description>Recent content in personal on bluee :)</description>
+    <description>Recent content in Personal on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 04 Sep 2025 00:00:00 +0000</lastBuildDate>
@@ -14,13 +14,6 @@
       <pubDate>Thu, 04 Sep 2025 00:00:00 +0000</pubDate>
       <guid>https://blueee04.github.io/blog/posts/2025-09-05-got-my-first-rejection-mail/</guid>
       <description>Just a little update about what happened</description>
-    </item>
-    <item>
-      <title>About Me</title>
-      <link>https://blueee04.github.io/blog/posts/2025-01-15-about-me/</link>
-      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/posts/2025-01-15-about-me/</guid>
-      <description>Get to know more about Barshan - my journey, tech stack, skills, and aspirations in cybersecurity and machine learning.</description>
     </item>
   </channel>
 </rss>
