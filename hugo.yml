@@ -107,7 +107,7 @@ params:
     - name: email
       title: Join me on Gmail
       url: "mailto:barshan2004@gmail.com"
-    - name: file
+    - name: cv
       title: View my Resume
       url: "https://drive.google.com/file/d/1UOve7eNkWQ2yd-80Ig3Bw_vWEiOwqfkf/view?usp=sharing"
 
