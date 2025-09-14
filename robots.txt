@@ -1,3 +1,3 @@
 User-agent: *
 Disallow:
-Sitemap: https://blueee04.github.io/blog/sitemap.xml
+Sitemap: https://barshan.is-a.dev/sitemap.xml

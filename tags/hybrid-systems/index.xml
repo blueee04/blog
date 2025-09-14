@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Hybrid Systems on bluee :)</title>
-    <link>https://blueee04.github.io/blog/tags/hybrid-systems/</link>
+    <link>https://barshan.is-a.dev/tags/hybrid-systems/</link>
     <description>Recent content in Hybrid Systems on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://blueee04.github.io/blog/tags/hybrid-systems/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://barshan.is-a.dev/tags/hybrid-systems/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Music Recommendation System: Project Overview</title>
-      <link>https://blueee04.github.io/blog/posts/2025-06-10-music-recommendation-system/</link>
+      <link>https://barshan.is-a.dev/posts/2025-06-10-music-recommendation-system/</link>
       <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/posts/2025-06-10-music-recommendation-system/</guid>
+      <guid>https://barshan.is-a.dev/posts/2025-06-10-music-recommendation-system/</guid>
       <description>A content-based and hybrid music recommendation system using audio features and machine learning.</description>
     </item>
   </channel>

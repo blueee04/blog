@@ -2,479 +2,479 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on bluee :)</title>
-    <link>https://blueee04.github.io/blog/tags/</link>
+    <link>https://barshan.is-a.dev/tags/</link>
     <description>Recent content in Tags on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://blueee04.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://barshan.is-a.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>about</title>
-      <link>https://blueee04.github.io/blog/tags/about/</link>
+      <link>https://barshan.is-a.dev/tags/about/</link>
       <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/about/</guid>
+      <guid>https://barshan.is-a.dev/tags/about/</guid>
       <description></description>
     </item>
     <item>
       <title>Personal</title>
-      <link>https://blueee04.github.io/blog/tags/personal/</link>
+      <link>https://barshan.is-a.dev/tags/personal/</link>
       <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/personal/</guid>
+      <guid>https://barshan.is-a.dev/tags/personal/</guid>
       <description></description>
     </item>
     <item>
       <title>skills</title>
-      <link>https://blueee04.github.io/blog/tags/skills/</link>
+      <link>https://barshan.is-a.dev/tags/skills/</link>
       <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/skills/</guid>
+      <guid>https://barshan.is-a.dev/tags/skills/</guid>
       <description></description>
     </item>
     <item>
       <title>tech-stack</title>
-      <link>https://blueee04.github.io/blog/tags/tech-stack/</link>
+      <link>https://barshan.is-a.dev/tags/tech-stack/</link>
       <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/tech-stack/</guid>
+      <guid>https://barshan.is-a.dev/tags/tech-stack/</guid>
       <description></description>
     </item>
     <item>
       <title>Career</title>
-      <link>https://blueee04.github.io/blog/tags/career/</link>
+      <link>https://barshan.is-a.dev/tags/career/</link>
       <pubDate>Thu, 04 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/career/</guid>
+      <guid>https://barshan.is-a.dev/tags/career/</guid>
       <description></description>
     </item>
     <item>
       <title>Growth</title>
-      <link>https://blueee04.github.io/blog/tags/growth/</link>
+      <link>https://barshan.is-a.dev/tags/growth/</link>
       <pubDate>Thu, 04 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/growth/</guid>
+      <guid>https://barshan.is-a.dev/tags/growth/</guid>
       <description></description>
     </item>
     <item>
       <title>Opportunity</title>
-      <link>https://blueee04.github.io/blog/tags/opportunity/</link>
+      <link>https://barshan.is-a.dev/tags/opportunity/</link>
       <pubDate>Thu, 04 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/opportunity/</guid>
+      <guid>https://barshan.is-a.dev/tags/opportunity/</guid>
       <description></description>
     </item>
     <item>
       <title>Research</title>
-      <link>https://blueee04.github.io/blog/tags/research/</link>
+      <link>https://barshan.is-a.dev/tags/research/</link>
       <pubDate>Thu, 04 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/research/</guid>
+      <guid>https://barshan.is-a.dev/tags/research/</guid>
       <description></description>
     </item>
     <item>
       <title>CNN</title>
-      <link>https://blueee04.github.io/blog/tags/cnn/</link>
+      <link>https://barshan.is-a.dev/tags/cnn/</link>
       <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/cnn/</guid>
+      <guid>https://barshan.is-a.dev/tags/cnn/</guid>
       <description></description>
     </item>
     <item>
       <title>Computer Vision</title>
-      <link>https://blueee04.github.io/blog/tags/computer-vision/</link>
+      <link>https://barshan.is-a.dev/tags/computer-vision/</link>
       <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/computer-vision/</guid>
+      <guid>https://barshan.is-a.dev/tags/computer-vision/</guid>
       <description></description>
     </item>
     <item>
       <title>Deep Learning</title>
-      <link>https://blueee04.github.io/blog/tags/deep-learning/</link>
+      <link>https://barshan.is-a.dev/tags/deep-learning/</link>
       <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/deep-learning/</guid>
+      <guid>https://barshan.is-a.dev/tags/deep-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Image Segmentation</title>
-      <link>https://blueee04.github.io/blog/tags/image-segmentation/</link>
+      <link>https://barshan.is-a.dev/tags/image-segmentation/</link>
       <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/image-segmentation/</guid>
+      <guid>https://barshan.is-a.dev/tags/image-segmentation/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine Learning</title>
-      <link>https://blueee04.github.io/blog/tags/machine-learning/</link>
+      <link>https://barshan.is-a.dev/tags/machine-learning/</link>
       <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/machine-learning/</guid>
+      <guid>https://barshan.is-a.dev/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Medical Imaging</title>
-      <link>https://blueee04.github.io/blog/tags/medical-imaging/</link>
+      <link>https://barshan.is-a.dev/tags/medical-imaging/</link>
       <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/medical-imaging/</guid>
+      <guid>https://barshan.is-a.dev/tags/medical-imaging/</guid>
       <description></description>
     </item>
     <item>
       <title>Neural Networks</title>
-      <link>https://blueee04.github.io/blog/tags/neural-networks/</link>
+      <link>https://barshan.is-a.dev/tags/neural-networks/</link>
       <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/neural-networks/</guid>
+      <guid>https://barshan.is-a.dev/tags/neural-networks/</guid>
       <description></description>
     </item>
     <item>
       <title>U-Net</title>
-      <link>https://blueee04.github.io/blog/tags/u-net/</link>
+      <link>https://barshan.is-a.dev/tags/u-net/</link>
       <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/u-net/</guid>
+      <guid>https://barshan.is-a.dev/tags/u-net/</guid>
       <description></description>
     </item>
     <item>
       <title>BERT</title>
-      <link>https://blueee04.github.io/blog/tags/bert/</link>
+      <link>https://barshan.is-a.dev/tags/bert/</link>
       <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/bert/</guid>
+      <guid>https://barshan.is-a.dev/tags/bert/</guid>
       <description></description>
     </item>
     <item>
       <title>Fake News</title>
-      <link>https://blueee04.github.io/blog/tags/fake-news/</link>
+      <link>https://barshan.is-a.dev/tags/fake-news/</link>
       <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/fake-news/</guid>
+      <guid>https://barshan.is-a.dev/tags/fake-news/</guid>
       <description></description>
     </item>
     <item>
       <title>GNN</title>
-      <link>https://blueee04.github.io/blog/tags/gnn/</link>
+      <link>https://barshan.is-a.dev/tags/gnn/</link>
       <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/gnn/</guid>
+      <guid>https://barshan.is-a.dev/tags/gnn/</guid>
       <description></description>
     </item>
     <item>
       <title>GraphSAGE</title>
-      <link>https://blueee04.github.io/blog/tags/graphsage/</link>
+      <link>https://barshan.is-a.dev/tags/graphsage/</link>
       <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/graphsage/</guid>
+      <guid>https://barshan.is-a.dev/tags/graphsage/</guid>
       <description></description>
     </item>
     <item>
       <title>ML</title>
-      <link>https://blueee04.github.io/blog/tags/ml/</link>
+      <link>https://barshan.is-a.dev/tags/ml/</link>
       <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/ml/</guid>
+      <guid>https://barshan.is-a.dev/tags/ml/</guid>
       <description></description>
     </item>
     <item>
       <title>NLP</title>
-      <link>https://blueee04.github.io/blog/tags/nlp/</link>
+      <link>https://barshan.is-a.dev/tags/nlp/</link>
       <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/nlp/</guid>
+      <guid>https://barshan.is-a.dev/tags/nlp/</guid>
       <description></description>
     </item>
     <item>
       <title>Audio Analysis</title>
-      <link>https://blueee04.github.io/blog/tags/audio-analysis/</link>
+      <link>https://barshan.is-a.dev/tags/audio-analysis/</link>
       <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/audio-analysis/</guid>
+      <guid>https://barshan.is-a.dev/tags/audio-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>Content-Based Filtering</title>
-      <link>https://blueee04.github.io/blog/tags/content-based-filtering/</link>
+      <link>https://barshan.is-a.dev/tags/content-based-filtering/</link>
       <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/content-based-filtering/</guid>
+      <guid>https://barshan.is-a.dev/tags/content-based-filtering/</guid>
       <description></description>
     </item>
     <item>
       <title>Hybrid Systems</title>
-      <link>https://blueee04.github.io/blog/tags/hybrid-systems/</link>
+      <link>https://barshan.is-a.dev/tags/hybrid-systems/</link>
       <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/hybrid-systems/</guid>
+      <guid>https://barshan.is-a.dev/tags/hybrid-systems/</guid>
       <description></description>
     </item>
     <item>
       <title>Music Recommendation</title>
-      <link>https://blueee04.github.io/blog/tags/music-recommendation/</link>
+      <link>https://barshan.is-a.dev/tags/music-recommendation/</link>
       <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/music-recommendation/</guid>
+      <guid>https://barshan.is-a.dev/tags/music-recommendation/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Analysis</title>
-      <link>https://blueee04.github.io/blog/tags/data-analysis/</link>
+      <link>https://barshan.is-a.dev/tags/data-analysis/</link>
       <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/data-analysis/</guid>
+      <guid>https://barshan.is-a.dev/tags/data-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>Educational Research</title>
-      <link>https://blueee04.github.io/blog/tags/educational-research/</link>
+      <link>https://barshan.is-a.dev/tags/educational-research/</link>
       <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/educational-research/</guid>
+      <guid>https://barshan.is-a.dev/tags/educational-research/</guid>
       <description></description>
     </item>
     <item>
       <title>Mental Health</title>
-      <link>https://blueee04.github.io/blog/tags/mental-health/</link>
+      <link>https://barshan.is-a.dev/tags/mental-health/</link>
       <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/mental-health/</guid>
+      <guid>https://barshan.is-a.dev/tags/mental-health/</guid>
       <description></description>
     </item>
     <item>
       <title>Student Life</title>
-      <link>https://blueee04.github.io/blog/tags/student-life/</link>
+      <link>https://barshan.is-a.dev/tags/student-life/</link>
       <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/student-life/</guid>
+      <guid>https://barshan.is-a.dev/tags/student-life/</guid>
       <description></description>
     </item>
     <item>
       <title>CiscoPacketTracer</title>
-      <link>https://blueee04.github.io/blog/tags/ciscopackettracer/</link>
+      <link>https://barshan.is-a.dev/tags/ciscopackettracer/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/ciscopackettracer/</guid>
+      <guid>https://barshan.is-a.dev/tags/ciscopackettracer/</guid>
       <description></description>
     </item>
     <item>
       <title>Cybersecurity</title>
-      <link>https://blueee04.github.io/blog/tags/cybersecurity/</link>
+      <link>https://barshan.is-a.dev/tags/cybersecurity/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/cybersecurity/</guid>
+      <guid>https://barshan.is-a.dev/tags/cybersecurity/</guid>
       <description></description>
     </item>
     <item>
       <title>EdgeComputing</title>
-      <link>https://blueee04.github.io/blog/tags/edgecomputing/</link>
+      <link>https://barshan.is-a.dev/tags/edgecomputing/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/edgecomputing/</guid>
+      <guid>https://barshan.is-a.dev/tags/edgecomputing/</guid>
       <description></description>
     </item>
     <item>
       <title>Engineering</title>
-      <link>https://blueee04.github.io/blog/tags/engineering/</link>
+      <link>https://barshan.is-a.dev/tags/engineering/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/engineering/</guid>
+      <guid>https://barshan.is-a.dev/tags/engineering/</guid>
       <description></description>
     </item>
     <item>
       <title>Industry4.0</title>
-      <link>https://blueee04.github.io/blog/tags/industry4.0/</link>
+      <link>https://barshan.is-a.dev/tags/industry4.0/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/industry4.0/</guid>
+      <guid>https://barshan.is-a.dev/tags/industry4.0/</guid>
       <description></description>
     </item>
     <item>
       <title>IoT</title>
-      <link>https://blueee04.github.io/blog/tags/iot/</link>
+      <link>https://barshan.is-a.dev/tags/iot/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/iot/</guid>
+      <guid>https://barshan.is-a.dev/tags/iot/</guid>
       <description></description>
     </item>
     <item>
       <title>MQTT</title>
-      <link>https://blueee04.github.io/blog/tags/mqtt/</link>
+      <link>https://barshan.is-a.dev/tags/mqtt/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/mqtt/</guid>
+      <guid>https://barshan.is-a.dev/tags/mqtt/</guid>
       <description></description>
     </item>
     <item>
       <title>SmartFactory</title>
-      <link>https://blueee04.github.io/blog/tags/smartfactory/</link>
+      <link>https://barshan.is-a.dev/tags/smartfactory/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/smartfactory/</guid>
+      <guid>https://barshan.is-a.dev/tags/smartfactory/</guid>
       <description></description>
     </item>
     <item>
       <title>WirelessNetworks</title>
-      <link>https://blueee04.github.io/blog/tags/wirelessnetworks/</link>
+      <link>https://barshan.is-a.dev/tags/wirelessnetworks/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/wirelessnetworks/</guid>
+      <guid>https://barshan.is-a.dev/tags/wirelessnetworks/</guid>
       <description></description>
     </item>
     <item>
       <title>Automation</title>
-      <link>https://blueee04.github.io/blog/tags/automation/</link>
+      <link>https://barshan.is-a.dev/tags/automation/</link>
       <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/automation/</guid>
+      <guid>https://barshan.is-a.dev/tags/automation/</guid>
       <description></description>
     </item>
     <item>
       <title>Bot</title>
-      <link>https://blueee04.github.io/blog/tags/bot/</link>
+      <link>https://barshan.is-a.dev/tags/bot/</link>
       <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/bot/</guid>
+      <guid>https://barshan.is-a.dev/tags/bot/</guid>
       <description></description>
     </item>
     <item>
       <title>Discord</title>
-      <link>https://blueee04.github.io/blog/tags/discord/</link>
+      <link>https://barshan.is-a.dev/tags/discord/</link>
       <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/discord/</guid>
+      <guid>https://barshan.is-a.dev/tags/discord/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>https://blueee04.github.io/blog/tags/python/</link>
+      <link>https://barshan.is-a.dev/tags/python/</link>
       <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/python/</guid>
+      <guid>https://barshan.is-a.dev/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Task Management</title>
-      <link>https://blueee04.github.io/blog/tags/task-management/</link>
+      <link>https://barshan.is-a.dev/tags/task-management/</link>
       <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/task-management/</guid>
+      <guid>https://barshan.is-a.dev/tags/task-management/</guid>
       <description></description>
     </item>
     <item>
       <title>Healthcare AI</title>
-      <link>https://blueee04.github.io/blog/tags/healthcare-ai/</link>
+      <link>https://barshan.is-a.dev/tags/healthcare-ai/</link>
       <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/healthcare-ai/</guid>
+      <guid>https://barshan.is-a.dev/tags/healthcare-ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Leprosy Detection</title>
-      <link>https://blueee04.github.io/blog/tags/leprosy-detection/</link>
+      <link>https://barshan.is-a.dev/tags/leprosy-detection/</link>
       <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/leprosy-detection/</guid>
+      <guid>https://barshan.is-a.dev/tags/leprosy-detection/</guid>
       <description></description>
     </item>
     <item>
       <title>Transfer Learning</title>
-      <link>https://blueee04.github.io/blog/tags/transfer-learning/</link>
+      <link>https://barshan.is-a.dev/tags/transfer-learning/</link>
       <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/transfer-learning/</guid>
+      <guid>https://barshan.is-a.dev/tags/transfer-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>GANs</title>
-      <link>https://blueee04.github.io/blog/tags/gans/</link>
+      <link>https://barshan.is-a.dev/tags/gans/</link>
       <pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/gans/</guid>
+      <guid>https://barshan.is-a.dev/tags/gans/</guid>
       <description></description>
     </item>
     <item>
       <title>Generative AI</title>
-      <link>https://blueee04.github.io/blog/tags/generative-ai/</link>
+      <link>https://barshan.is-a.dev/tags/generative-ai/</link>
       <pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/generative-ai/</guid>
+      <guid>https://barshan.is-a.dev/tags/generative-ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Healthcare</title>
-      <link>https://blueee04.github.io/blog/tags/healthcare/</link>
+      <link>https://barshan.is-a.dev/tags/healthcare/</link>
       <pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/healthcare/</guid>
+      <guid>https://barshan.is-a.dev/tags/healthcare/</guid>
       <description></description>
     </item>
     <item>
       <title>Medical Technology</title>
-      <link>https://blueee04.github.io/blog/tags/medical-technology/</link>
+      <link>https://barshan.is-a.dev/tags/medical-technology/</link>
       <pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/medical-technology/</guid>
+      <guid>https://barshan.is-a.dev/tags/medical-technology/</guid>
       <description></description>
     </item>
     <item>
       <title>Artificial Intelligence</title>
-      <link>https://blueee04.github.io/blog/tags/artificial-intelligence/</link>
+      <link>https://barshan.is-a.dev/tags/artificial-intelligence/</link>
       <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/artificial-intelligence/</guid>
+      <guid>https://barshan.is-a.dev/tags/artificial-intelligence/</guid>
       <description></description>
     </item>
     <item>
       <title>Gradient Descent</title>
-      <link>https://blueee04.github.io/blog/tags/gradient-descent/</link>
+      <link>https://barshan.is-a.dev/tags/gradient-descent/</link>
       <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/gradient-descent/</guid>
+      <guid>https://barshan.is-a.dev/tags/gradient-descent/</guid>
       <description></description>
     </item>
     <item>
       <title>NumPy</title>
-      <link>https://blueee04.github.io/blog/tags/numpy/</link>
+      <link>https://barshan.is-a.dev/tags/numpy/</link>
       <pubDate>Sun, 05 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/numpy/</guid>
+      <guid>https://barshan.is-a.dev/tags/numpy/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Science</title>
-      <link>https://blueee04.github.io/blog/tags/data-science/</link>
+      <link>https://barshan.is-a.dev/tags/data-science/</link>
       <pubDate>Thu, 02 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/data-science/</guid>
+      <guid>https://barshan.is-a.dev/tags/data-science/</guid>
       <description></description>
     </item>
     <item>
       <title>Algorithim</title>
-      <link>https://blueee04.github.io/blog/tags/algorithim/</link>
+      <link>https://barshan.is-a.dev/tags/algorithim/</link>
       <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/algorithim/</guid>
+      <guid>https://barshan.is-a.dev/tags/algorithim/</guid>
       <description></description>
     </item>
     <item>
       <title>Mediapipe</title>
-      <link>https://blueee04.github.io/blog/tags/mediapipe/</link>
+      <link>https://barshan.is-a.dev/tags/mediapipe/</link>
       <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/mediapipe/</guid>
+      <guid>https://barshan.is-a.dev/tags/mediapipe/</guid>
       <description></description>
     </item>
     <item>
       <title>Object Detection</title>
-      <link>https://blueee04.github.io/blog/tags/object-detection/</link>
+      <link>https://barshan.is-a.dev/tags/object-detection/</link>
       <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/object-detection/</guid>
+      <guid>https://barshan.is-a.dev/tags/object-detection/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenCV</title>
-      <link>https://blueee04.github.io/blog/tags/opencv/</link>
+      <link>https://barshan.is-a.dev/tags/opencv/</link>
       <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/opencv/</guid>
+      <guid>https://barshan.is-a.dev/tags/opencv/</guid>
       <description></description>
     </item>
     <item>
       <title>Haarcascade</title>
-      <link>https://blueee04.github.io/blog/tags/haarcascade/</link>
+      <link>https://barshan.is-a.dev/tags/haarcascade/</link>
       <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/haarcascade/</guid>
+      <guid>https://barshan.is-a.dev/tags/haarcascade/</guid>
       <description></description>
     </item>
     <item>
       <title>CTF</title>
-      <link>https://blueee04.github.io/blog/tags/ctf/</link>
+      <link>https://barshan.is-a.dev/tags/ctf/</link>
       <pubDate>Mon, 12 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/ctf/</guid>
+      <guid>https://barshan.is-a.dev/tags/ctf/</guid>
       <description></description>
     </item>
     <item>
       <title>DFC</title>
-      <link>https://blueee04.github.io/blog/tags/dfc/</link>
+      <link>https://barshan.is-a.dev/tags/dfc/</link>
       <pubDate>Mon, 12 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/dfc/</guid>
+      <guid>https://barshan.is-a.dev/tags/dfc/</guid>
       <description></description>
     </item>
     <item>
       <title>Forensics</title>
-      <link>https://blueee04.github.io/blog/tags/forensics/</link>
+      <link>https://barshan.is-a.dev/tags/forensics/</link>
       <pubDate>Mon, 12 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/forensics/</guid>
+      <guid>https://barshan.is-a.dev/tags/forensics/</guid>
       <description></description>
     </item>
     <item>
       <title>Network</title>
-      <link>https://blueee04.github.io/blog/tags/network/</link>
+      <link>https://barshan.is-a.dev/tags/network/</link>
       <pubDate>Mon, 12 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/network/</guid>
+      <guid>https://barshan.is-a.dev/tags/network/</guid>
       <description></description>
     </item>
     <item>
       <title>Packet Capture</title>
-      <link>https://blueee04.github.io/blog/tags/packet-capture/</link>
+      <link>https://barshan.is-a.dev/tags/packet-capture/</link>
       <pubDate>Mon, 12 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/packet-capture/</guid>
+      <guid>https://barshan.is-a.dev/tags/packet-capture/</guid>
       <description></description>
     </item>
     <item>
       <title>Memory Forensics</title>
-      <link>https://blueee04.github.io/blog/tags/memory-forensics/</link>
+      <link>https://barshan.is-a.dev/tags/memory-forensics/</link>
       <pubDate>Mon, 15 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/memory-forensics/</guid>
+      <guid>https://barshan.is-a.dev/tags/memory-forensics/</guid>
       <description></description>
     </item>
     <item>
       <title>Writeup</title>
-      <link>https://blueee04.github.io/blog/tags/writeup/</link>
+      <link>https://barshan.is-a.dev/tags/writeup/</link>
       <pubDate>Mon, 15 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://blueee04.github.io/blog/tags/writeup/</guid>
+      <guid>https://barshan.is-a.dev/tags/writeup/</guid>
       <description></description>
     </item>
   </channel>
