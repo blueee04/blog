@@ -38,7 +38,7 @@ languages:
       profileMode:
         enabled: true
         title: Barshan Mondal
-        imageUrl: "profile/profile.png.png"
+        imageUrl: "https://github.com/blueee04/blog/blob/main/profile/profile.png.png"
         imageTitle: Profile image
         imageWidth: 120
         imageHeight: 120
