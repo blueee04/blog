@@ -2,25 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://barshan.is-a.dev/tags/ai/</loc>
+    <lastmod>2025-10-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/automation/</loc>
+    <lastmod>2025-10-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/</loc>
+    <lastmod>2025-10-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/posts/2025-10-12-got-bored-tried-n8n/</loc>
+    <lastmod>2025-10-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/job-search/</loc>
+    <lastmod>2025-10-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/n8n/</loc>
+    <lastmod>2025-10-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/posts/</loc>
+    <lastmod>2025-10-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/productivity/</loc>
+    <lastmod>2025-10-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/</loc>
+    <lastmod>2025-10-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://barshan.is-a.dev/tags/about/</loc>
     <lastmod>2025-09-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/posts/2025-09-14-about-me/</loc>
     <lastmod>2025-09-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://barshan.is-a.dev/</loc>
-    <lastmod>2025-09-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://barshan.is-a.dev/tags/personal/</loc>
     <lastmod>2025-09-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://barshan.is-a.dev/posts/</loc>
-    <lastmod>2025-09-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://barshan.is-a.dev/tags/skills/</loc>
-    <lastmod>2025-09-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/tags/</loc>
     <lastmod>2025-09-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/tech-stack/</loc>
@@ -151,9 +169,6 @@
   </url><url>
     <loc>https://barshan.is-a.dev/tags/wirelessnetworks/</loc>
     <lastmod>2025-02-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/tags/automation/</loc>
-    <lastmod>2024-08-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/bot/</loc>
     <lastmod>2024-08-22T00:00:00+00:00</lastmod>
