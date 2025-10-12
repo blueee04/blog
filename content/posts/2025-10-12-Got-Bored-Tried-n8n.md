@@ -1,6 +1,6 @@
 +++
 title = "Got Bored... Tried n8n"
-date = 2025-10-13
+date = 2025-10-12
 summary = "How I automated my job search so I can focus on applying."
 tags = ["n8n", "automation", "job-search", "AI", "productivity"]
 +++

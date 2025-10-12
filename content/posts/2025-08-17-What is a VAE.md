@@ -26,27 +26,15 @@ Why? Because treating the latent space as a distribution gives two big wins:
 
 ## Latent distributions and sampling
 
-The encoder produces two vectors: a mean $\mu(x)$ and a log-variance $\log \sigma^2(x)$. These define the Gaussian
+The encoder produces two vectors: a mean and a log-variance. These define the Gaussian
 
-$$
-q(z\mid x) = \mathcal{N}\big(z;\,\mu(x),\,\sigma^2(x)\big).
-$$
+and feed z to the decoder which tries to reconstruct x.
 
-During training we sample
+Naively sampling inside the network would break gradient flow. The trick that fixes this is the reparameterization trick: instead of sampling z directly, we sample and compute
 
-$$
-z \sim q(z\mid x)
-$$
 
-and feed $z$ to the decoder $p(x\mid z)$ which tries to reconstruct $x$.
 
-Naively sampling inside the network would break gradient flow. The trick that fixes this is the reparameterization trick: instead of sampling $z$ directly, we sample $\varepsilon \sim \mathcal{N}(0, I)$ and compute
-
-$$
-z = \mu(x) + \sigma(x) \odot \varepsilon.
-$$
-
-This operation is differentiable with respect to $\mu$ and $\sigma$, so we can train the whole model with backprop.
+This operation is differentiable with respect to mu and sigma, so we can train the whole model with backprop.
 
 ![VAE diagram](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-08-17-What%20is%20a%20VAE/vae_diagram.svg)
 
@@ -54,15 +42,14 @@ This operation is differentiable with respect to $\mu$ and $\sigma$, so we can t
 
 ## Training objective: ELBO (in short)
 
-The VAE is trained to maximize a lower bound on the data log-likelihood, commonly called the Evidence Lower Bound (ELBO). For each input $x$, the ELBO decomposes into two terms and can be written as:
+The VAE is trained to maximize a lower bound on the data log-likelihood, commonly called the Evidence Lower Bound (ELBO). For each input x, the ELBO decomposes into two terms.
 
-$$
-\log p(x) \ge \mathbb{E}_{q(z\mid x)}\big[\log p(x\mid z)\big] - \mathrm{KL}\big(q(z\mid x)\,\|\,p(z)\big).
-$$
+log p(x) >= E_{q(z|x)}[log p(x|z)] - KL(q(z|x) || p(z))
 
-The first term is the expected reconstruction log-likelihood and the second is the Kullback–Leibler divergence that pushes $q(z\mid x)$ toward the prior $p(z)$ (usually $\mathcal{N}(0,I)$).
 
-Maximizing the ELBO balances reconstruction quality and how close the latent distributions are to the prior. If the KL is too small, the model ignores $z$; if it's too large, reconstructions suffer. In practice you often see a weighted KL term ($\beta$-VAE) to trade off disentanglement and fidelity.
+The first term is the expected reconstruction log-likelihood and the second is the Kullback–Leibler divergence that pushes toward the prior.
+
+Maximizing the ELBO balances reconstruction quality and how close the latent distributions are to the prior. If the KL is too small, the model ignores z; if it's too large, reconstructions suffer. In practice you often see a weighted KL term to trade off disentanglement and fidelity.
 
 ## Minimal PyTorch VAE (snippet)
 
@@ -111,4 +98,6 @@ def vae_loss(x, x_hat, mu, logvar):
 - Anomaly detection (low-likelihood reconstructions indicate anomalies)
 - Conditional generation and semi-supervised learning (with slight extensions)
 
-![VAE demo gif](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-08-17-What%20is%20a%20VAE/last%20gif.gif)
+![VAE demo](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-08-17-What%20is%20a%20VAE/last%20gif.gif)
+
+If you want, I can also add a tiny training loop example for the snippet or generate a larger, annotated diagram for the post.
