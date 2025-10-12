@@ -7,10 +7,9 @@ tags = ["n8n", "automation", "job-search", "AI", "productivity"]
 
 # Got Bored... Tried n8n
 
-Job hunting was exhausting. Between scrolling through LinkedIn, tailoring my resume for each position, and keeping track of where I've applied, it felt like a full-time job 
-itself. So I did what any reasonable person would do—I automated the whole thing.
+Job hunting was exhausting. Between scrolling through LinkedIn, tailoring my resume for each position, and keeping track of where I've applied, it felt like a full-time job itself. So I did what any reasonable person would do—I automated the whole thing.
 
-I have been scrolling through twitter and n8n has really interested me for a while now wo i thought why not try in out....so i started going through some of the tutorials...took me an hour to figure it out almost but yea.
+I have been scrolling through Twitter and n8n has really interested me for a while, so I thought — why not try it out? I went through some tutorials; it took an hour to get the basics running.
 
 Here's what it does:
 
@@ -26,8 +25,7 @@ Here's what it does:
 
 i mean i could improve this more like adding more job boards more than linkedIn like naukri and all...but for now i should focus on other stuffs since some deadlines are really close lmao ...
 
-I didn't really checkout if it could apply on the job for me tho.
-I'll drop the JSON file below if you wanna try it for yourself — just ping me if you need help setting up any of the nodes.
+I didn't test auto-applying yet. I'll drop the JSON file below if you wanna try it for yourself — just ping me if you need help setting up any of the nodes.
 
 Blueprint: [here you go](https://raw.githubusercontent.com/blueee04/blog/main/content/Downloads/n8n-jobcheck.json)
 
