@@ -27,4 +27,4 @@ i mean i could improve this more like adding more job boards more than linkedIn 
 
 I didn't test auto-applying yet. I'll drop the JSON file below if you wanna try it for yourself — just ping me if you need help setting up any of the nodes.
 
-![Here You Go](https://raw.githubusercontent.com/blueee04/blog/main/content\Downloads\n8n-jobcheck.json)
+[Here You Go](https://raw.githubusercontent.com/blueee04/blog/main/content\Downloads\n8n-jobcheck.json)
