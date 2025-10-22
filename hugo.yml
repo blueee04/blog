@@ -36,7 +36,7 @@ languages:
     params:
       languageAltTitle: English
       profileMode:
-        enabled: true
+        enabled: false
         title: Barshan Mondal
         imageUrl: "https://raw.githubusercontent.com/blueee04/blog/main/profile/profile.png.png"
         imageTitle: Profile image
@@ -75,7 +75,7 @@ params:
   # comments: false
 
   profileMode:
-    enabled: false
+    enabled: true
     title: bluee
     imageUrl: "#"
     imageTitle: my image
