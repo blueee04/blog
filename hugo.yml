@@ -86,13 +86,9 @@ params:
         url: tags
 
   homeInfoParams:
-    Title: "Hey There, I am Barshan👋"
-    Content: 
-      - I am an aspiring cybersecurity enthusiast pursuing a B.Tech in Electronics and Communication Engineering at Amrita Vishwa Vidyapeetham, Amritapuri.
-
-      - Intrigued by the intersection of cybersecurity, machine learning, and data science, aiming to integrate these fields to fortify digital landscapes against emerging threats.
-
-      - Open to collaborations in cybersecurity, machine learning, and data science projects.
+    Title: Hey There, I am Barshan👋
+    Content: Ex-bi0s CTF Player | 1x Hackathon Winner | Learning By Doing
+      
 
   socialIcons:
     - name: github
