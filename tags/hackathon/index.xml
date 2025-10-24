@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Discord on bluee :)</title>
-    <link>https://barshan.is-a.dev/tags/discord/</link>
-    <description>Recent content in Discord on bluee :)</description>
+    <title>hackathon on bluee :)</title>
+    <link>https://barshan.is-a.dev/tags/hackathon/</link>
+    <description>Recent content in hackathon on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 22 Feb 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://barshan.is-a.dev/tags/discord/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://barshan.is-a.dev/tags/hackathon/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My First Hackathon Win</title>
       <link>https://barshan.is-a.dev/posts/2025-02-22-fosshacks/</link>
       <pubDate>Sat, 22 Feb 2025 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/posts/2025-02-22-fosshacks/</guid>
       <description>My hackathon experience at FossHacks hosted by FOSS United — a 36-hour sprint of code, food, and camaraderie.</description>
-    </item>
-    <item>
-      <title>EzProject: Discord Bot for Assignment and Task Management</title>
-      <link>https://barshan.is-a.dev/posts/2024-08-22-ezproject/</link>
-      <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://barshan.is-a.dev/posts/2024-08-22-ezproject/</guid>
-      <description>EzProject is a modular Python Discord bot that streamlines assignment, task, and deadline management for collaborative teams.</description>
     </item>
   </channel>
 </rss>
