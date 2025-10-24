@@ -30,7 +30,7 @@ Those mornings usually looked like laptops, noodles, and a shared sense of panic
 
 By the end of the hackathon we were swapping war stories about bugs that took hours to fix and features that miraculously worked on staging. The sense of accomplishment when a feature finally deployed is unbeatable.
 
-![Just Relaxing](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-02-22-FossHacks/relax.jpg))
+![Just Relaxing](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2025-02-22-FossHacks/relax.jpg)
 
 The return trip was another story — standing in the general compartment for four hours, tired and sweaty, but buzzing from the event. We had no idea yet that we'd finish in the top five teams.
 
@@ -39,4 +39,4 @@ The return trip was another story — standing in the general compartment for fo
 
 We ended up placing among the top teams — proof that late nights, teamwork, and a messy sprint can pay off. GGs — never give up.
 
-Check my blog on our code here : https://github.com/blueee04
+Check out our code here : https://github.com/Da-devs/mARK.it
