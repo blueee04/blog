@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>How does ChatGPT answer everything we ever ask  | bluee :)</title>
-<meta name="keywords" content="n8n, automation, job-search, AI, productivity">
-<meta name="description" content="Ever wondered how does ChatGpt have an answer to everything???">
+<meta name="keywords" content="RAG, retrieval-augmented-generation, embeddings, vector-search, AI">
+<meta name="description" content="How Retrieval-Augmented Generation (RAG) helps LLMs give accurate, up-to-date, and grounded answers without hallucinating.">
 <meta name="author" content="Barshan Mondal">
 <link rel="canonical" href="https://barshan.is-a.dev/posts/2025-10-24-wut-is-rag/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
@@ -55,7 +55,7 @@
 
     </style>
 </noscript><meta property="og:title" content="How does ChatGPT answer everything we ever ask " />
-<meta property="og:description" content="Ever wondered how does ChatGpt have an answer to everything???" />
+<meta property="og:description" content="How Retrieval-Augmented Generation (RAG) helps LLMs give accurate, up-to-date, and grounded answers without hallucinating." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://barshan.is-a.dev/posts/2025-10-24-wut-is-rag/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2025-10-24T00:00:00+00:00" />
@@ -63,7 +63,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How does ChatGPT answer everything we ever ask "/>
-<meta name="twitter:description" content="Ever wondered how does ChatGpt have an answer to everything???"/>
+<meta name="twitter:description" content="How Retrieval-Augmented Generation (RAG) helps LLMs give accurate, up-to-date, and grounded answers without hallucinating."/>
 
 
 <script type="application/ld+json">
@@ -92,12 +92,12 @@
   "@type": "BlogPosting",
   "headline": "How does ChatGPT answer everything we ever ask ",
   "name": "How does ChatGPT answer everything we ever ask ",
-  "description": "Ever wondered how does ChatGpt have an answer to everything???",
+  "description": "How Retrieval-Augmented Generation (RAG) helps LLMs give accurate, up-to-date, and grounded answers without hallucinating.",
   "keywords": [
-    "n8n", "automation", "job-search", "AI", "productivity"
+    "RAG", "retrieval-augmented-generation", "embeddings", "vector-search", "AI"
   ],
-  "articleBody": "In the models nowadays, reponses are generated mostly based on the pre-learned data and paterns during the training phase. However these models are limited to the data they were trained on, often leading to responses that don’t make any sense and is rubbish.\nHere comes in a Super Power called RAG(Retrieval Augmented Generation) which addresses this limitation by fetching external data from the model whenever needed.\nWhen a model doesnot know any context on what it is generating this scenario is called Halluciantions. It creates patterns or objects that are non-existent\nRAG ensures that the llms does not solely rely on static training data, It helps retrieve relevant documents at the query time and feeds them into the model as context. By recieving the new and context-aware data, AI can generate more accurate, current and domain-specific responses\nNow how does this RAG work???\nWhen a user submits a query, the system first engages the retieval model, which uses a vector database to identify and “retrieve” semantically similar documents, databases or other sources for relevant information. Once identified, it then combines those results with the original input prompt and sends it to a generative AI model, which synthesizes the new information into its own model.\nThis allows the LLM to produce more accurate, context-aware answers grounded in enterprise-specific or up-to-date data, rather than simply relying upon the model it was trained on.\nHere’s a good comparision chart i found between prompt engineering vs. RAG vs. fine-tune vs. pretrain\nNow you guys must think what is this vector space and embedding i am talking about\nIn vector search, data and queries are represented as vectors in a multi-dimensional space called embeddings from a Generative AI model. Let’s take a simple example where we want to use vector search to find semantically similar words in a large corpus of words. So, if you query the corpus with the word ‘dog’, you want words like ‘puppy’ to be returned. But, if you search for ‘car’, you want to retrieve words like ‘van’. In traditional search, you will have to maintain a list of synonyms or “similar words” which is hard to generate or scale. In order to use vector search, you can instead use a Generative AI model to convert these words into vectors in a n-dimensional space called embeddings. These vectors will have the property that semantically similar words like ‘dog’ and ‘puppy’ will be closer to each in the n-dimensional space than the words ‘dog’ and ‘car’.\nNow how do we calculate how similar the query is to the target document/context???\nCosine Similarity is the most typically used metrics which measures the cosine of the angle between the two vectors.\n",
-  "wordCount" : "448",
+  "articleBody": "Language models are amazing but they’re not magic. They generate responses based on patterns learned during training, which means they’re limited to the data they’ve seen. That leads to three common problems: outdated facts, domain-specific gaps, and the dreaded hallucinations confident-sounding but incorrect answers.\nEnter RAG: Retrieval-Augmented Generation. Think of it as giving the model a smart librarian. Instead of forcing the model to guess from its limited knowledge, RAG fetches relevant documents at query time and feeds them into the model as context. The result: answers that are more accurate, up-to-date, and grounded in real sources.\nHow RAG works (high-level)\nQuery: a user asks something. Retrieve: a retrieval system (usually using embeddings + a vector database) finds semantically related documents. Augment: those documents are appended to the prompt as context. Generate: the LLM consumes the augmented prompt and produces a grounded answer. ![RAG architecture diagram](/images/2025-10-24-wut is rag/RAG.png)\nWhy it matters: instead of inventing facts, the model can cite or rely on documents that actually contain the needed information. This is why RAG is being used in knowledge bases, enterprise search, customer support bots, and any system that needs factual accuracy.\nPrompt engineering, fine-tuning, and RAG\nPeople often ask whether to prompt-engineer or fine-tune a model. RAG sits beside those tools — it complements them. Prompt engineering nudges the model’s behavior, fine-tuning changes its weights permanently, and RAG supplies external signals at runtime. For many tasks where the knowledge evolves frequently, RAG is the most cost-effective way to keep answers current.\n![Comparison chart between approaches](/images/2025-10-24-wut is rag/Comparision.png)\nSo what is this vector space i keep talking about?\nIn vector search, documents and queries are converted into numeric vectors (embeddings) by a model. Semantically similar texts map to nearby points in that high-dimensional space. For example, the vectors for “dog” and “puppy” sit close together, while “dog” and “car” are further apart.\nThis lets you find related documents by looking for vectors that are near the query vector no brittle keyword lists required.\n![Visualization of similarity distances](/images/2025-10-24-wut is rag/similarity graph (1).png)\nHow we measure similarity?\nCosine similarity is the most common metric: it measures the cosine of the angle between two vectors, giving a value from -1 (opposite) to 1 (identical). In practice, you pick documents with the highest cosine score to pass as context to the LLM.\n![Cosine similarity example](/images/2025-10-24-wut is rag/cosine similarity.jpg)\nPutting it together\nRAG is powerful because it blends retrieval and generation: retrieval gives you relevant, grounded facts; generation composes them into readable answers. Want a bot that cites your docs, knows the latest company policy, or summarizes support tickets? RAG is your friend.\nAlso a fact: Your Favourite Research LLM “Perplexity” runs completely on these terms giving you trusted sources from all corners of the world\n",
+  "wordCount" : "460",
   "inLanguage": "en",
   "datePublished": "2025-10-24T00:00:00Z",
   "dateModified": "2025-10-24T00:00:00Z",
@@ -182,32 +182,41 @@
 </div>
   </header> 
 
-  <div class="post-content"><p>In the models nowadays, reponses are generated mostly based on the pre-learned data and paterns during the training phase. However these models are limited to the data they were trained on, often leading to responses that don&rsquo;t make any sense and is rubbish.</p>
-<p>Here comes in a Super Power called RAG(Retrieval Augmented Generation) which addresses this limitation by fetching external data from the model whenever needed.</p>
-<p>When a model doesnot know any context on what it is generating this scenario is called Halluciantions. It creates patterns or objects that are non-existent</p>
-<p>RAG ensures that the llms does not solely rely on static training data, It helps retrieve relevant documents at the query time and feeds them into the model as context.
-By recieving the new and context-aware data, AI can generate more accurate, current and domain-specific responses</p>
-<p>Now how does this RAG work???</p>
-<p>When a user submits a query, the system first engages the retieval model, which uses a vector database to identify and &ldquo;retrieve&rdquo; semantically similar documents, databases or other sources for relevant information.
-Once identified, it then combines those results with the original input prompt and sends it to a generative AI model, which synthesizes the new information into its own model.</p>
-<p>This allows the LLM to produce more accurate, context-aware answers grounded in enterprise-specific or up-to-date data, rather than simply relying upon the model it was trained on.</p>
-<p>Here&rsquo;s a good comparision chart i found between prompt engineering vs. RAG vs. fine-tune vs. pretrain</p>
-<p>Now you guys must think what is this vector space and embedding i am talking about</p>
-<p>In vector search, data and queries are represented as vectors in a multi-dimensional space called embeddings from a Generative AI model.
-Let’s take a simple example where we want to use vector search to find semantically similar words in a large corpus of words. So, if you query the corpus with the word ‘dog’, you want words like ‘puppy’ to be returned. But, if you search for ‘car’, you want to retrieve words like ‘van’. In traditional search, you will have to maintain a list of synonyms or “similar words” which is hard to generate or scale. In order to use vector search, you can instead use a Generative AI model to convert these words into vectors in a n-dimensional space called embeddings. These vectors will have the property that semantically similar words like ‘dog’ and ‘puppy’ will be closer to each in the n-dimensional space than the words ‘dog’ and ‘car’.</p>
-<p>Now how do we calculate how similar the query is to the target document/context???</p>
-<p>Cosine Similarity is the most typically used metrics which measures the cosine of the angle between the two vectors.</p>
+  <div class="post-content"><p>Language models are amazing but they&rsquo;re not magic. They generate responses based on patterns learned during training, which means they&rsquo;re limited to the data they&rsquo;ve seen. That leads to three common problems: outdated facts, domain-specific gaps, and the dreaded hallucinations confident-sounding but incorrect answers.</p>
+<p>Enter RAG: Retrieval-Augmented Generation. Think of it as giving the model a smart librarian. Instead of forcing the model to guess from its limited knowledge, RAG fetches relevant documents at query time and feeds them into the model as context. The result: answers that are more accurate, up-to-date, and grounded in real sources.</p>
+<p>How RAG works (high-level)</p>
+<ol>
+<li>Query: a user asks something.</li>
+<li>Retrieve: a retrieval system (usually using embeddings + a vector database) finds semantically related documents.</li>
+<li>Augment: those documents are appended to the prompt as context.</li>
+<li>Generate: the LLM consumes the augmented prompt and produces a grounded answer.</li>
+</ol>
+<p>![RAG architecture diagram](/images/2025-10-24-wut is rag/RAG.png)</p>
+<p>Why it matters: instead of inventing facts, the model can cite or rely on documents that actually contain the needed information. This is why RAG is being used in knowledge bases, enterprise search, customer support bots, and any system that needs factual accuracy.</p>
+<p>Prompt engineering, fine-tuning, and RAG</p>
+<p>People often ask whether to prompt-engineer or fine-tune a model. RAG sits beside those tools — it complements them. Prompt engineering nudges the model&rsquo;s behavior, fine-tuning changes its weights permanently, and RAG supplies external signals at runtime. For many tasks where the knowledge evolves frequently, RAG is the most cost-effective way to keep answers current.</p>
+<p>![Comparison chart between approaches](/images/2025-10-24-wut is rag/Comparision.png)</p>
+<p>So what is this vector space i keep talking about?</p>
+<p>In vector search, documents and queries are converted into numeric vectors (embeddings) by a model. Semantically similar texts map to nearby points in that high-dimensional space. For example, the vectors for “dog” and “puppy” sit close together, while “dog” and “car” are further apart.</p>
+<p>This lets you find related documents by looking for vectors that are near the query vector no brittle keyword lists required.</p>
+<p>![Visualization of similarity distances](/images/2025-10-24-wut is rag/similarity graph (1).png)</p>
+<p>How we measure similarity?</p>
+<p>Cosine similarity is the most common metric: it measures the cosine of the angle between two vectors, giving a value from -1 (opposite) to 1 (identical). In practice, you pick documents with the highest cosine score to pass as context to the LLM.</p>
+<p>![Cosine similarity example](/images/2025-10-24-wut is rag/cosine similarity.jpg)</p>
+<p>Putting it together</p>
+<p>RAG is powerful because it blends retrieval and generation: retrieval gives you relevant, grounded facts; generation composes them into readable answers. Want a bot that cites your docs, knows the latest company policy, or summarizes support tickets? RAG is your friend.</p>
+<p>Also a fact: Your Favourite Research LLM &ldquo;Perplexity&rdquo; runs completely on these terms giving you trusted sources from all corners of the world</p>
 
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://barshan.is-a.dev/tags/n8n/">n8n</a></li>
-      <li><a href="https://barshan.is-a.dev/tags/automation/">Automation</a></li>
-      <li><a href="https://barshan.is-a.dev/tags/job-search/">job-search</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/rag/">RAG</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/retrieval-augmented-generation/">retrieval-augmented-generation</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/embeddings/">embeddings</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/vector-search/">vector-search</a></li>
       <li><a href="https://barshan.is-a.dev/tags/ai/">AI</a></li>
-      <li><a href="https://barshan.is-a.dev/tags/productivity/">productivity</a></li>
     </ul>
 <nav class="paginav">
   <a class="next" href="https://barshan.is-a.dev/posts/2025-09-14-about-me/">
@@ -221,7 +230,7 @@ Let’s take a simple example where we want to use vector search to find semanti
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share How does ChatGPT answer everything we ever ask  on x"
-            href="https://x.com/intent/tweet/?text=How%20does%20ChatGPT%20answer%20everything%20we%20ever%20ask%20&amp;url=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2025-10-24-wut-is-rag%2f&amp;hashtags=n8n%2cautomation%2cjob-search%2cAI%2cproductivity">
+            href="https://x.com/intent/tweet/?text=How%20does%20ChatGPT%20answer%20everything%20we%20ever%20ask%20&amp;url=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2025-10-24-wut-is-rag%2f&amp;hashtags=RAG%2cretrieval-augmented-generation%2cembeddings%2cvector-search%2cAI">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
