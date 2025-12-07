@@ -9,12 +9,12 @@ Okay so as i baseline i'll be taking the GPT-2 style transformers. Now what do t
 
 We can call this type as "Auto-Regressive" since it predicts the future based only on past data.
 
-![Transformer Overview](https://raw.githubusercontent.com/blueee04\blog\content\images\2025-09-19-Transformers\transformer-overview-new.png)
+![Transformer Overview](https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-09-19-Transformers/transformer-overview-new.png)
 
 
 Here's a cool analogy i found where we have a series of people standing in a line, each with one word or chunk of the sentence. Each person has the ability to look up information from the people behind them (we'll explore how this works in later sections) but they can't look at any information in front of them. Their goal is to guess what word the person in front of them is holding.
 
-![Cool Analogy](https://raw.githubusercontent.com/blueee04\blog\content\images\2025-09-19-Transformers\intro-image-v2.png)
+![Cool Analogy](https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-09-19-Transformers/intro-image-v2.png)
 
 
 ## Inputs
