@@ -212,10 +212,10 @@
 
   <div class="post-content"><p>Okay so as i baseline i&rsquo;ll be taking the GPT-2 style transformers. Now what do they do&hellip;.They generate text,the user feeds in language and the model generates a proability distribution over the tokens and this is repeatedly sampled to generate more texts ahead</p>
 <p>We can call this type as &ldquo;Auto-Regressive&rdquo; since it predicts the future based only on past data.</p>
-<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04%5cblog%5ccontent%5cimages%5c2025-09-19-Transformers%5ctransformer-overview-new.png" alt="Transformer Overview"  />
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-09-19-Transformers/transformer-overview-new.png" alt="Transformer Overview"  />
 </p>
 <p>Here&rsquo;s a cool analogy i found where we have a series of people standing in a line, each with one word or chunk of the sentence. Each person has the ability to look up information from the people behind them (we&rsquo;ll explore how this works in later sections) but they can&rsquo;t look at any information in front of them. Their goal is to guess what word the person in front of them is holding.</p>
-<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04%5cblog%5ccontent%5cimages%5c2025-09-19-Transformers%5cintro-image-v2.png" alt="Cool Analogy"  />
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-09-19-Transformers/intro-image-v2.png" alt="Cool Analogy"  />
 </p>
 <h2 id="inputs">Inputs<a hidden class="anchor" aria-hidden="true" href="#inputs">#</a></h2>
 <p>Now the model cannot take language as input they take vectors so how do we do that?</p>
