@@ -1,25 +1,109 @@
 +++
 title = "Causal Criticality of Layers in Chain-of-Thought (CoT) — a Quick Dive"
 date = 2025-12-14
-summary = "Late layers matter. A probe into Qwen2-1.5B with activation patching, a logit lens, and targeted ablations found that the model's mid-to-late layers — especially around layer 24 — often synthesize intermediate chain-of-thought steps into the final answer."
+summary = "Late layers matter. A probe into Qwen2-1.5B with activation patching, a logit lens, and targeted ablations found that the mid-to-late layers — especially around layer 24 — often synthesize intermediate chain-of-thought steps into the final answer."
 tags = ["Chain-of-Thought", "CoT", "Interpretability", "LLM", "AI", "Qwen2"]
 +++
 
-Short version: late layers matter. I probed Qwen2-1.5B with activation patching, a logit lens, and targeted ablations, and found that the model's mid-to-late layers — especially around layer 24 — often synthesize intermediate chain-of-thought steps into the final answer while earlier layers do much of the foundational computation.
+Identifying the specific components responsible for reasoning in Large Language Models is a key step towards understanding (and improving) them. My recent research addresses a specific question: **Which components are causally critical for correct chain-of-thought (CoT) reasoning?**
 
-Chain-of-thought (CoT) gives models a way to reason out loud, but that raises a practical question: which parts of the network actually make the final call? I set out to answer that by selecting six GSM8K-style math problems where Qwen2-1.5B sometimes stumbles, then running two baselines and a targeted intervention. In the “noisy clean” baseline I corrupted early activations with Gaussian noise (σ=2.0) to break the chain; in the base run I cached activations at key source layers (16, 20, 24). During the noisy run I restored residuals from the base run into the late positions of layer 24 (last 50 tokens) and measured logit improvements for the correct token. That patching experiment was paired with a layer-wise logit lens that projects residuals to logits across layers and token positions, plus a few ablations (zeroing the layer-24 MLP) and neuron probes (notably neuron 609).
+Using **Qwen2-1.5B** as a testbed, I hypothesized that later layers are more crucial for synthesizing intermediate CoT steps into the final answer, while earlier layers perform foundational computations. To test this, I applied activation patching on GSM8K-style math problems where the model exhibits variable CoT performance, aiming to isolate layer-specific causal contributions.
 
-The results were consistent enough to be interesting. Patching into layer 24 produced the largest average logit improvement for the correct token (≈ +1.48), while layer 20 had a moderate positive effect (≈ +1.33). Patching from layer 16 was inconsistent and often harmful (avg ≈ -2.23), suggesting that not all residuals are interchangeable and that early/mid-layer interventions can introduce interference. Zero-ablating the MLP in layer 24 usually made things worse (avg logit change ≈ -0.20), and the logit-lens heatmaps show recurring spikes at positions like 50, 100, 150… where correct-token probability often “crystallizes” in mid-to-late layers.
+## Key Findings: The TL;DR
 
+*   **Late Layers Matter:** Patching into layer 24 produced the strongest causal recovery of correct answers (avg logit improvement +1.48), while earlier layers often introduced interference.
+*   **The "Crystallization" Point:** Logit lens analysis shows that probability for the correct token often spikes in mid-to-late layers (16-24) at specific token positions, suggesting a "resolution" phase in the reasoning chain.
+*   **Critical Subcomponents:** Zero-ablating the MLP in layer 24 degraded performance, and specific neurons (like **Neuron 609**) showed clear oscillatory patterns on math tokens, hinting at specialized symbolic processing roles.
 
+---
 
-![Fig.1 — How the model’s belief in the correct answer evolves across layers and token positions.](https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-12-14-Causal%20Criticality%20of%20Layers%20in%20Chain-of-Thought%20Reasoning/Logit%20Lens%20Probability%20Heatmap_wrong%20and%20right%20answer.png)
+## Setup and Motivation
 
-![Fig.2 — Patch improvements (Δlogit) by source layer showing layer-24 rescue effect.](https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-12-14-Causal%20Criticality%20of%20Layers%20in%20Chain-of-Thought%20Reasoning/avg_improvement_in_correct_token_logit.png)
+Chain-of-thought reasoning enhances LLM performance on complex tasks, but its internal mechanisms remain opaque. Inspired by works like Arditi et al. on single-direction mediation and sample projects on model diffing, I focused on the **causal criticality** of layers during CoT. Qwen2-1.5B was chosen for its tractability and baseline CoT capabilities.
 
-![Fig.3 — Activation trace for neuron 609, which spikes on math tokens in late positions.](https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-12-14-Causal%20Criticality%20of%20Layers%20in%20Chain-of-Thought%20Reasoning/Neuron%20609%20activation%20pattern.png)
+I used `NNsight` for tracing, with GSM8K problems filtered for cases where the model generates CoT but errs. My hypothesis was a progression from computation to integration across the model's 28 layers.
 
-A brief methods note: the experiments used Qwen2-1.5B on CUDA with torch (bfloat16). Prompts followed the simple template `Q: {question}\nA:` to elicit natural CoT. The logit-lens data and per-example arrays were saved to a `.pkl` (structure: per-example dicts with `layer_probs_correct`, `layer_probs_wrong`, `cot_length`, and metadata), and visualizations were generated by truncating sequences to a common length for averaging and plotting heatmaps and bar charts.
+### Detailed Methods
 
-Limitations: this was a quick exploratory sweep over a small set of problems (six core patching cases, ~100 aggregated CoTs for the logit lens). Noise-level choices (σ=2.0) were tuned empirically and may need calibration. The conclusions point to layered specialization in CoT, but they are preliminary and task-specific.
+1.  **Prompts & Problems:** I selected 6 GSM8K-style problems (e.g., "Solve x^2 + 5x + 6 = 0") where the model often stumbles. Prompts used the simple template `Q: {question}\nA:` to elicit natural CoT.
+2.  **Baselines:**
+    *   **Noisy Clean Run:** Added Gaussian noise (σ=2.0) to layer 0 activations to corrupt early reasoning. This effectively "broke" the chain.
+    *   **Base Run:** A normal forward pass (often yielding wrong answers in the selected set), caching activations at source layers 16, 20, and 24.
+3.  **Patching Intervention:** In the noisy run, I restored residuals from the base run into **target layer 24**, restricted to the last 50 tokens (late CoT positions).
+    *   *Metric:* Δlogit = patched_logit - clean_correct_logit.
+4.  **Logit Lens & Ablation:**
+    *   Projected residual streams to logits across all layers (0-27) to track token probabilities.
+    *   Zero-ablated MLP outputs in layer 24 to test subcomponent necessity.
+    *   Analyzed specific neuron activations (e.g., Neuron 609).
 
+---
+
+## Results and Analysis
+
+### 1. Patching: The Rescue Effect of Layer 24
+
+Patching effects varied significantly by source layer.
+
+*   **Layer 16:** Average logit improvement of **-2.23**. This was often harmful, suggesting that early/mid-layer residuals are not interchangeable and interventions here can cause interference.
+*   **Layer 20:** Moderate positive effect (+1.33).
+*   **Layer 24 (Control):** Strongest improvement (**+1.48**). This implies that late-layer "resolution" circuits are critical for the final output.
+
+![Fig 4: Average Improvement in Correct Token Logit (Residual Patching into Layer 24).](https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-12-14-Causal%20Criticality%20of%20Layers%20in%20Chain-of-Thought%20Reasoning/avg_improvement_in_correct_token_logit.png)
+
+In specific cases (like the quadratic equation problem), patching layer 24 improved the logit from ~-5.2 to ~-0.5, effectively restoring the reasoning chain.
+
+### 2. Ablation: The Role of the MLP
+
+To dig deeper, I zero-ablated the MLP output in layer 24 for the late positions. This usually resulted in a degradation of the correct logit (avg **-0.20**), confirming that the MLP block in this layer is actively contributing to the correct solution, not just passing information through.
+
+![Fig 3: Effect of Zero-Ablating MLP Output in Layer 24.](https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-12-14-Causal%20Criticality%20of%20Layers%20in%20Chain-of-Thought%20Reasoning/Effect%20of%20zero-ablating%20MLP%20Output%20in%20layer%2024.png)
+
+### 3. Logit Lens: Visualizing Belief Evolution
+
+The logit lens allows us to see what the model "believes" at every layer and token position. I aggregated data from ~100 CoT generations.
+
+**CoT Length & Accuracy:**
+Most CoT sequences clustered around 500 tokens. Interestingly, there was a slight negative correlation between length and accuracy—longer CoTs were slightly less likely to be correct.
+
+![Fig 1: Distribution of CoT Lengths](https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-12-14-Causal%20Criticality%20of%20Layers%20in%20Chain-of-Thought%20Reasoning/COT%20lengths%20before%20finetuning%20for%2080%20problems.png)
+
+![Fig 2: CoT Length vs Accuracy](https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-12-14-Causal%20Criticality%20of%20Layers%20in%20Chain-of-Thought%20Reasoning/Cot_length%20vs%20Acuracy_80%20problems_%20before%20finetuning.png)
+
+**Probability Heatmaps:**
+The heatmaps reveal "vertical bands" where the probability of the *wrong* or *correct* answer spikes.
+*   **Wrong Token:** Spikes in early-mid layers (0-12) at positions 50-150.
+*   **Correct Token:** Spikes in mid-late layers (12-24) at positions 100-300.
+
+This visualizes the "crystallization" of the correct answer in the later layers.
+
+![Fig 6/7: Average Logit Lens Probability Heatmap](https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-12-14-Causal%20Criticality%20of%20Layers%20in%20Chain-of-Thought%20Reasoning/Logit%20Lens%20Probability%20Heatmap_wrong%20and%20right%20answer.png)
+
+*(Note the dark vertical bands indicating high probability regions across layers)*
+
+### 4. Neuron Analysis: The Math Operator
+
+I identified specific neurons that seemed specialized. **Neuron 609 in Layer 24**, for instance, activates strongly on math formatting and operators (e.g., `=`, `*`, numbers). Its activation pattern oscillates in sync with the generation of mathematical steps.
+
+![Fig 5: Neuron 609 Activation Pattern](https://raw.githubusercontent.com/blueee04/blog/refs/heads/main/content/images/2025-12-14-Causal%20Criticality%20of%20Layers%20in%20Chain-of-Thought%20Reasoning/Neuron%20609%20activation%20pattern.png)
+
+---
+
+## Discussion & Future Directions
+
+The findings suggest a **"reasoning pipeline"** where late layers act as bottlenecks for CoT correctness. The logit lens analysis complements the patching results by showing how position-layer interactions evolve—errors often appear early, while resolution happens late.
+
+**Limitations:**
+*   **Small N:** The core patching was done on 6 problems.
+*   **Model Specifics:** Qwen2-1.5B is small and might not perfectly represent the reasoning circuits of larger models like DeepSeek-R1.
+*   **Variable CoT Lengths:** Averaging required truncation, which introduces some bias.
+
+**Learnings:**
+Activation patching is a powerful tool for causal tracing but is highly sensitive to noise levels. Over-correction can mask subtle effects, highlighting the need for calibrated interventions.
+
+In the future, I'd like to:
+*   Test on true "reasoning-tuned" models.
+*   Integrate Sparse Autoencoders (SAEs) for feature-level insights.
+*   Correlate the Logit Lens probabilities directly with patching improvements.
+
+## Epistemic Status
+*This was a quick exploratory sweep (approx. 1 week of research) using a small sample size. Results are preliminary. All code is reproducible in the associated [notebook/repo].*
