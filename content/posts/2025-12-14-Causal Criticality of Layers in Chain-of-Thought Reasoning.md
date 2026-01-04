@@ -108,4 +108,4 @@ In the future, I'd like to:
 ## Epistemic Status
 *This was a quick exploratory sweep (approx. 1 week of research) using a small sample size. Results are preliminary. All code is reproducible in the associated [notebook/repo](https://colab.research.google.com/drive/1b5nOLR4duhmBtOsHmwalYdmzXS-ux5j7?usp=sharing).
 
-For a detailed report check out my doc [Doc](https://docs.google.com/document/d/1AG7rOnjeIDMCd4-TDX7oDWUy0lE7IhWAR6XQ8U0_i5k/edit?tab=t.0).
+For a detailed report check out my [Doc](https://docs.google.com/document/d/1AG7rOnjeIDMCd4-TDX7oDWUy0lE7IhWAR6XQ8U0_i5k/edit?tab=t.0).
