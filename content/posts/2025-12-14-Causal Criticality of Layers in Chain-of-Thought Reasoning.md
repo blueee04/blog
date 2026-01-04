@@ -1,5 +1,5 @@
 +++
-title = "Causal Criticality of Layers in Chain-of-Thought (CoT) — a Quick Dive"
+title = "Causal Criticality of Layers in Chain-of-Thought"
 date = 2025-12-14
 summary = "Late layers matter. A probe into Qwen2-1.5B with activation patching, a logit lens, and targeted ablations found that the mid-to-late layers — especially around layer 24 — often synthesize intermediate chain-of-thought steps into the final answer."
 tags = ["Chain-of-Thought", "CoT", "Interpretability", "LLM", "AI", "Qwen2"]
@@ -106,4 +106,6 @@ In the future, I'd like to:
 *   Correlate the Logit Lens probabilities directly with patching improvements.
 
 ## Epistemic Status
-*This was a quick exploratory sweep (approx. 1 week of research) using a small sample size. Results are preliminary. All code is reproducible in the associated [notebook/repo].*
+*This was a quick exploratory sweep (approx. 1 week of research) using a small sample size. Results are preliminary. All code is reproducible in the associated [notebook/repo](https://colab.research.google.com/drive/1b5nOLR4duhmBtOsHmwalYdmzXS-ux5j7?usp=sharing).
+
+For a detailed report check out my doc [Doc](https://docs.google.com/document/d/1AG7rOnjeIDMCd4-TDX7oDWUy0lE7IhWAR6XQ8U0_i5k/edit?tab=t.0).
