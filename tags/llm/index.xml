@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>LLM on bluee :)</title>
+    <link>https://barshan.is-a.dev/tags/llm/</link>
+    <description>Recent content in LLM on bluee :)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 14 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://barshan.is-a.dev/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Causal Criticality of Layers in Chain-of-Thought (CoT) — a Quick Dive</title>
+      <link>https://barshan.is-a.dev/posts/2025-12-14-causal-criticality-of-layers-in-chain-of-thought-reasoning/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2025-12-14-causal-criticality-of-layers-in-chain-of-thought-reasoning/</guid>
+      <description>Late layers matter. A probe into Qwen2-1.5B with activation patching, a logit lens, and targeted ablations found that the model&amp;rsquo;s mid-to-late layers — especially around layer 24 — often synthesize intermediate chain-of-thought steps into the final answer.</description>
+    </item>
+  </channel>
+</rss>

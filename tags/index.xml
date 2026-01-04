@@ -6,13 +6,48 @@
     <description>Recent content in Tags on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 19 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 14 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://barshan.is-a.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://barshan.is-a.dev/tags/ai/</link>
-      <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Chain-of-Thought</title>
+      <link>https://barshan.is-a.dev/tags/chain-of-thought/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/chain-of-thought/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CoT</title>
+      <link>https://barshan.is-a.dev/tags/cot/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/cot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Interpretability</title>
+      <link>https://barshan.is-a.dev/tags/interpretability/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/interpretability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM</title>
+      <link>https://barshan.is-a.dev/tags/llm/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Qwen2</title>
+      <link>https://barshan.is-a.dev/tags/qwen2/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/qwen2/</guid>
       <description></description>
     </item>
     <item>

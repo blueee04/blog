@@ -6,8 +6,15 @@
     <description>Recent content in Posts on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 19 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 14 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://barshan.is-a.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Causal Criticality of Layers in Chain-of-Thought (CoT) — a Quick Dive</title>
+      <link>https://barshan.is-a.dev/posts/2025-12-14-causal-criticality-of-layers-in-chain-of-thought-reasoning/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2025-12-14-causal-criticality-of-layers-in-chain-of-thought-reasoning/</guid>
+      <description>Late layers matter. A probe into Qwen2-1.5B with activation patching, a logit lens, and targeted ablations found that the model&amp;rsquo;s mid-to-late layers — especially around layer 24 — often synthesize intermediate chain-of-thought steps into the final answer.</description>
+    </item>
     <item>
       <title>Before We Hop Onto TRANSFORMERS </title>
       <link>https://barshan.is-a.dev/posts/2025-11-19-transfomers/</link>
