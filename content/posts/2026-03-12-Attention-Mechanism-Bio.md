@@ -117,6 +117,8 @@ Here's where it gets wild: the network exhibits **emergent control over its own 
 
 This is the first step toward **truly autonomous, open-ended learning agents**—AI that doesn't need a human telling it what to do.
 
+![Self-Referential Graph HyperNetwork](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/Hypergraph_2.png)
+
 ### Why This Blows My Mind
 
 For developmental biology, this is conceptually similar to how organisms adapt during development. Neural plasticity, for example, is the brain's ability to rewire itself based on experience. If we can achieve something similar in AI, we're not just mimicking nature—we're understanding it at a deeper level.
