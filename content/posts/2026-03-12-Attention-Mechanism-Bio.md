@@ -9,7 +9,7 @@ tags = ["Attention", "GNN", "Developmental Biology", "AI", "GSOC", "C. elegans",
 
 ## Introduction
 
-If you're diving into research on biological systems, dynamic networks, or AI that learns from complex, time-evolving data, you've probably stumbled into a overwhelming jungle of papers. As I'm building my GSOC 2026 proposal for the Openworm Foundation, I realized there are some *game-changing* papers that fundamentally shift how we think about AI and biological systems.
+If you're diving into research on biological systems, dynamic networks, or AI that learns from complex, time-evolving data, you've probably stumbled into a overwhelming jungle of papers. As I'm building my GSOC 2026 proposal for the Openworm Foundation, I realized there are some papers that fundamentally shift how we think about AI and biological systems.
 
 Here's the reality: **most biological systems are not static**. Brains evolve, cells communicate, organisms adapt. Yet many traditional AI models treat the world like a frozen snapshot. These five papers challenge that assumption—and in doing so, they're reshaping the entire landscape of spatio-temporal AI and graph learning.
 
