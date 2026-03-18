@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Attention in Development Biology? | bluee :)</title>
+<meta name="keywords" content="Attention, GNN, Developmental Biology, AI, GSOC, C. elegans, Graph Neural Networks, Spatio-Temporal Learning, Research Overview">
+<meta name="description" content="My set of research while i build my proposal for GSOC 2026 at the Openworm Foundation">
+<meta name="author" content="Barshan Mondal">
+<link rel="canonical" href="https://barshan.is-a.dev/posts/2026-03-12-attention-mechanism-bio/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://barshan.is-a.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://barshan.is-a.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://barshan.is-a.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://barshan.is-a.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://barshan.is-a.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Attention in Development Biology?" />
+<meta property="og:description" content="My set of research while i build my proposal for GSOC 2026 at the Openworm Foundation" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://barshan.is-a.dev/posts/2026-03-12-attention-mechanism-bio/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2026-03-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2026-03-12T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Attention in Development Biology?"/>
+<meta name="twitter:description" content="My set of research while i build my proposal for GSOC 2026 at the Openworm Foundation"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://barshan.is-a.dev/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Attention in Development Biology?",
+      "item": "https://barshan.is-a.dev/posts/2026-03-12-attention-mechanism-bio/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Attention in Development Biology?",
+  "name": "Attention in Development Biology?",
+  "description": "My set of research while i build my proposal for GSOC 2026 at the Openworm Foundation",
+  "keywords": [
+    "Attention", "GNN", "Developmental Biology", "AI", "GSOC", "C. elegans", "Graph Neural Networks", "Spatio-Temporal Learning", "Research Overview"
+  ],
+  "articleBody": "Spatio-Temporal AI \u0026 Graph Learning: 5 Breakthrough Papers You Need to Know Introduction If you’re diving into research on biological systems, dynamic networks, or AI that learns from complex, time-evolving data, you’ve probably stumbled into a overwhelming jungle of papers. As I’m building my GSOC 2026 proposal for the Openworm Foundation, I realized there are some game-changing papers that fundamentally shift how we think about AI and biological systems.\nHere’s the reality: most biological systems are not static. Brains evolve, cells communicate, organisms adapt. Yet many traditional AI models treat the world like a frozen snapshot. These five papers challenge that assumption—and in doing so, they’re reshaping the entire landscape of spatio-temporal AI and graph learning.\nLet me break down what these papers do, why they matter, and why you should care about them.\n1. ESTGEL: Understanding How Brain Networks Evolve [1] Paper: Explainable Spatio-Temporal Graph Evolution Learning with Applications to Dynamic Brain Network Analysis During Development\nThe Big Picture Imagine your brain as a living, breathing network of connections. It’s not the same today as it was when you were 10—and it won’t be the same at 60. ESTGEL captures exactly this: how brain networks structurally and functionally reorganize as we grow.\nHow It Works Instead of traditional approaches that treat each time step independently, ESTGEL uses:\nEdge attention modules: Focuses on which connections matter most at each moment Dynamic gating mechanisms: Remembers past states and predicts future ones Explainability built-in: You can actually understand why the model made a decision The key insight? By analyzing functional MRI (fMRI) data from developing brains, ESTGEL reveals that as we age, our brain networks transition from highly dispersed to concentrated, efficient structures. It’s like watching the internet evolve—from a chaotic mess to an optimized highway system.\nESTGEL model architecture for analyzing dynamic brain network evolution.\nWhy This Excites Me From a developmental biology perspective, this is huge. For organisms like C. elegans, we have the complete connectome mapped, but we don’t fully understand how it changes over development. ESTGEL’s approach—combining graph attention with temporal dynamics—could unlock similar insights in simpler organisms.\n2. ESA: The Beauty of Simplicity in Graph AI [2] Paper: An End-to-End Attention-Based Approach for Learning on Graphs (Edge Set Attention)\nThe Big Picture Graph Neural Networks (GNNs) are notorious for their complexity: positional encodings, message-passing schemes, pre-processing pipelines… it’s a lot. ESA throws most of that away and proves that sometimes, simplicity wins.\nHow It Works Edge Set Attention (ESA) takes a radical approach:\nTreat a graph as a set of edges (connections between nodes) Use pure attention mechanisms (like ChatGPT uses) Alternate between: Masked attention: Only look at directly connected edges Self-attention: See the bigger picture That’s it. No complex pre-processing. No positional encodings. Yet…\nThe Stunning Results Despite being explicitly designed for simplicity, ESA outperforms heavily fine-tuned complex graph transformers across dozens of benchmarks:\nMolecular property prediction Vision tasks Classification problems This is the kind of result that makes you question everything. It proves that architectural elegance often defeats brute-force complexity.\nESA’s end-to-end attention mechanism for graph learning—simple yet powerful.\nWhy This Matters for Biology For biological systems (proteins, metabolic networks, gene interactions), we often need to represent them as graphs. ESA’s simplicity and effectiveness make it an ideal candidate for tasks like predicting protein-protein interactions or understanding metabolic pathways.\n3. Self-Referential GHNs: AI That Evolves Itself [3] Paper: Hypernetworks That Evolve Themselves\nThe Big Picture Here’s a mind-bending idea: What if your AI model could literally mutate itself?\nIn nature, organisms don’t get a PhD in optimization—they evolve through random mutation and environmental selection. This paper asks: why can’t neural networks do the same?\nHow It Works A Self-Referential Graph HyperNetwork (GHN) embeds evolution directly into its own code:\nThe network looks at its own structure Generates mutated versions of itself Tests them in the environment Keeps the winners, discards the losers No external algorithm tweaking weights. The network becomes the optimizer.\nHyperNetwork architecture enabling self-referential evolution.\nThe Emergent Magic Here’s where it gets wild: the network exhibits emergent control over its own evolvability:\nEnvironment stable? → Reduce mutation rate (fine-tune performance) Environment changing? → Crank up mutation rate (explore new solutions) Novel challenge? → The network figures out it needs to change strategies This is the first step toward truly autonomous, open-ended learning agents—AI that doesn’t need a human telling it what to do.\nWhy This Blows My Mind For developmental biology, this is conceptually similar to how organisms adapt during development. Neural plasticity, for example, is the brain’s ability to rewire itself based on experience. If we can achieve something similar in AI, we’re not just mimicking nature—we’re understanding it at a deeper level.\n4. Cell-STN: The Ultimate Cell Tracker [4] Paper: Spatio-Temporal Feature Based Deep Neural Network for Cell Lineage Analysis in Microscopy Images\nThe Big Picture Biologists spend hours—sometimes days—manually tracking cells under a microscope:\nWhere did this cell move? When did it divide (mitosis)? When did it die (apoptosis)? Cell-STN automates this nightmare.\nHow It Works Cells aren’t static objects; they change shape, move, and behave unpredictably. Standard computer vision isn’t enough. Cell-STN uses:\nBidirectional ConvLSTMs: Scan video frames both forward and backward in time Multi-task learning: Predict locations, divisions, and deaths simultaneously Visual + temporal features: Learn both what cells look like AND how they move The result? AI that understands cell behavior in a holistic way.\nCell-STN bidirectional ConvLSTM architecture for temporal cell tracking.\nThe Game-Changer Here’s what makes this special: it only requires weakly supervised, coarse labels. No need to perfectly trace every cell outline. This means researchers can use it on massive video datasets without spending their entire PhD on manual annotation.\nFor Developmental Biology This is perfect for studying organisms like C. elegans. We could use Cell-STN to:\nTrack cell divisions during development Understand cell migration patterns Study developmental abnormalities It bridges the gap between microscopy data and computational biology.\n5. CellNEST: Decoding Cellular “Gossip” [5] Paper: CellNEST Reveals Cell–Cell Relay Networks Using Attention Mechanisms on Spatial Transcriptomics\nThe Big Picture Cells communicate through a language of proteins (ligands) binding to receptors. Existing tools catch individual conversations, but they miss the plot: cells can relay messages to other cells, creating networks of communication.\nCellNEST decodes these relay networks.\nHow It Works Using Graph Attention Networks (GAT) trained in an unsupervised manner, CellNEST:\nAnalyzes spatial transcriptomic data Identifies which cells communicate with which Detects relay patterns (A → B → C) Outputs high-confidence communication maps CellNEST reveals relay networks and cell-cell communication patterns in tissue.\nReal-World Impact CellNEST successfully mapped:\nT cell homing signals in lymph nodes Aggressive communication networks in pancreatic and colorectal tumors For the first time, researchers could visualize not just who’s talking to whom, but how information cascades through tissues.\nWhy This Matters Cell-cell communication is the foundation of development, immunity, and disease. If we truly understand these relay networks, we can:\nPredict how diseases spread Design better immunotherapies Understand developmental signaling cascades What Connects All Five Papers? If I had to find the throughline, it’s this:\nModern AI for biology isn’t about finding static patterns; it’s about understanding dynamic, interconnected systems.\nESTGEL shows brain networks evolve ESA proves simplicity can beat complexity Self-Referential GHNs suggest AI can adapt on its own Cell-STN automates tracking over time CellNEST reveals hidden communication networks All five treat their respective domains (brains, graphs, AI itself, cells, tissues) as living, changing systems—not frozen snapshots.\nImplications for My GSOC Work As I work on my proposal for the Openworm Foundation, these papers are reshaping my thinking:\nGraph attention mechanisms (ESA, CellNEST) are probably the right tool for understanding C. elegans connectomics Spatio-temporal models (ESTGEL, Cell-STN) could help us understand how the connectome changes during development Self-referential learning (Self-Ref GHNs) hints at how neural systems might optimize themselves—something we could study in C. elegans The convergence is clear: the future of computational biology is about dynamic graphs, attention mechanisms, and systems that learn to evolve.\nFinal Thoughts When I first dove into these papers, I thought I was just gathering random research. But the more I read, the more I realized they’re not random at all. They’re all pieces of a larger puzzle: how do we build AI that understands biology as it actually is—dynamic, interconnected, and evolving?\nIf you’re working on anything related to:\nNeural networks Cell biology Developmental biology Graph learning Biological simulations …you need to know these papers.\nThey’re not just incremental improvements. They’re paradigm shifts.\nSo yeah, I’m excited about my GSOC proposal. These five papers just gave me a roadmap. 🚀\n",
+  "wordCount" : "1428",
+  "inLanguage": "en",
+  "datePublished": "2026-03-12T00:00:00Z",
+  "dateModified": "2026-03-12T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Barshan Mondal"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://barshan.is-a.dev/posts/2026-03-12-attention-mechanism-bio/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "bluee :)",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://barshan.is-a.dev/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://barshan.is-a.dev/" accesskey="h" title="bluee :) (Alt + H)">bluee :)</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://barshan.is-a.dev/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://barshan.is-a.dev/">Home</a>&nbsp;»&nbsp;<a href="https://barshan.is-a.dev/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Attention in Development Biology?
+    </h1>
+    <div class="post-meta"><span title='2026-03-12 00:00:00 +0000 UTC'>March 12, 2026</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Barshan Mondal
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#spatio-temporal-ai--graph-learning-5-breakthrough-papers-you-need-to-know" aria-label="Spatio-Temporal AI &amp; Graph Learning: 5 Breakthrough Papers You Need to Know">Spatio-Temporal AI &amp; Graph Learning: 5 Breakthrough Papers You Need to Know</a><ul>
+                        
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#1-estgel-understanding-how-brain-networks-evolve-1" aria-label="1. ESTGEL: Understanding How Brain Networks Evolve [1]">1. ESTGEL: Understanding How Brain Networks Evolve [1]</a><ul>
+                        
+                <li>
+                    <a href="#the-big-picture" aria-label="The Big Picture">The Big Picture</a></li>
+                <li>
+                    <a href="#how-it-works" aria-label="How It Works">How It Works</a></li>
+                <li>
+                    <a href="#why-this-excites-me" aria-label="Why This Excites Me">Why This Excites Me</a></li></ul>
+                </li>
+                <li>
+                    <a href="#2-esa-the-beauty-of-simplicity-in-graph-ai-2" aria-label="2. ESA: The Beauty of Simplicity in Graph AI [2]">2. ESA: The Beauty of Simplicity in Graph AI [2]</a><ul>
+                        
+                <li>
+                    <a href="#the-big-picture-1" aria-label="The Big Picture">The Big Picture</a></li>
+                <li>
+                    <a href="#how-it-works-1" aria-label="How It Works">How It Works</a></li>
+                <li>
+                    <a href="#the-stunning-results" aria-label="The Stunning Results">The Stunning Results</a></li>
+                <li>
+                    <a href="#why-this-matters-for-biology" aria-label="Why This Matters for Biology">Why This Matters for Biology</a></li></ul>
+                </li>
+                <li>
+                    <a href="#3-self-referential-ghns-ai-that-evolves-itself-3" aria-label="3. Self-Referential GHNs: AI That Evolves Itself [3]">3. Self-Referential GHNs: AI That Evolves Itself [3]</a><ul>
+                        
+                <li>
+                    <a href="#the-big-picture-2" aria-label="The Big Picture">The Big Picture</a></li>
+                <li>
+                    <a href="#how-it-works-2" aria-label="How It Works">How It Works</a></li>
+                <li>
+                    <a href="#the-emergent-magic" aria-label="The Emergent Magic">The Emergent Magic</a></li>
+                <li>
+                    <a href="#why-this-blows-my-mind" aria-label="Why This Blows My Mind">Why This Blows My Mind</a></li></ul>
+                </li>
+                <li>
+                    <a href="#4-cell-stn-the-ultimate-cell-tracker-4" aria-label="4. Cell-STN: The Ultimate Cell Tracker [4]">4. Cell-STN: The Ultimate Cell Tracker [4]</a><ul>
+                        
+                <li>
+                    <a href="#the-big-picture-3" aria-label="The Big Picture">The Big Picture</a></li>
+                <li>
+                    <a href="#how-it-works-3" aria-label="How It Works">How It Works</a></li>
+                <li>
+                    <a href="#the-game-changer" aria-label="The Game-Changer">The Game-Changer</a></li>
+                <li>
+                    <a href="#for-developmental-biology" aria-label="For Developmental Biology">For Developmental Biology</a></li></ul>
+                </li>
+                <li>
+                    <a href="#5-cellnest-decoding-cellular-gossip-5" aria-label="5. CellNEST: Decoding Cellular &ldquo;Gossip&rdquo; [5]">5. CellNEST: Decoding Cellular &ldquo;Gossip&rdquo; [5]</a><ul>
+                        
+                <li>
+                    <a href="#the-big-picture-4" aria-label="The Big Picture">The Big Picture</a></li>
+                <li>
+                    <a href="#how-it-works-4" aria-label="How It Works">How It Works</a></li>
+                <li>
+                    <a href="#real-world-impact" aria-label="Real-World Impact">Real-World Impact</a></li>
+                <li>
+                    <a href="#why-this-matters" aria-label="Why This Matters">Why This Matters</a></li></ul>
+                </li>
+                <li>
+                    <a href="#what-connects-all-five-papers" aria-label="What Connects All Five Papers?">What Connects All Five Papers?</a></li>
+                <li>
+                    <a href="#implications-for-my-gsoc-work" aria-label="Implications for My GSOC Work">Implications for My GSOC Work</a></li>
+                <li>
+                    <a href="#final-thoughts" aria-label="Final Thoughts">Final Thoughts</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="spatio-temporal-ai--graph-learning-5-breakthrough-papers-you-need-to-know">Spatio-Temporal AI &amp; Graph Learning: 5 Breakthrough Papers You Need to Know<a hidden class="anchor" aria-hidden="true" href="#spatio-temporal-ai--graph-learning-5-breakthrough-papers-you-need-to-know">#</a></h1>
+<h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
+<p>If you&rsquo;re diving into research on biological systems, dynamic networks, or AI that learns from complex, time-evolving data, you&rsquo;ve probably stumbled into a overwhelming jungle of papers. As I&rsquo;m building my GSOC 2026 proposal for the Openworm Foundation, I realized there are some <em>game-changing</em> papers that fundamentally shift how we think about AI and biological systems.</p>
+<p>Here&rsquo;s the reality: <strong>most biological systems are not static</strong>. Brains evolve, cells communicate, organisms adapt. Yet many traditional AI models treat the world like a frozen snapshot. These five papers challenge that assumption—and in doing so, they&rsquo;re reshaping the entire landscape of spatio-temporal AI and graph learning.</p>
+<p>Let me break down what these papers do, why they matter, and why you should care about them.</p>
+<hr>
+<h2 id="1-estgel-understanding-how-brain-networks-evolve-1">1. ESTGEL: Understanding How Brain Networks Evolve [1]<a hidden class="anchor" aria-hidden="true" href="#1-estgel-understanding-how-brain-networks-evolve-1">#</a></h2>
+<p><strong>Paper:</strong> <em>Explainable Spatio-Temporal Graph Evolution Learning with Applications to Dynamic Brain Network Analysis During Development</em></p>
+<h3 id="the-big-picture">The Big Picture<a hidden class="anchor" aria-hidden="true" href="#the-big-picture">#</a></h3>
+<p>Imagine your brain as a living, breathing network of connections. It&rsquo;s not the same today as it was when you were 10—and it won&rsquo;t be the same at 60. <strong>ESTGEL captures exactly this</strong>: how brain networks structurally and functionally reorganize as we grow.</p>
+<h3 id="how-it-works">How It Works<a hidden class="anchor" aria-hidden="true" href="#how-it-works">#</a></h3>
+<p>Instead of traditional approaches that treat each time step independently, ESTGEL uses:</p>
+<ul>
+<li><strong>Edge attention modules</strong>: Focuses on which connections matter most at each moment</li>
+<li><strong>Dynamic gating mechanisms</strong>: Remembers past states and predicts future ones</li>
+<li><strong>Explainability built-in</strong>: You can actually understand why the model made a decision</li>
+</ul>
+<p>The key insight? By analyzing functional MRI (fMRI) data from developing brains, ESTGEL reveals that <strong>as we age, our brain networks transition from highly dispersed to concentrated, efficient structures</strong>. It&rsquo;s like watching the internet evolve—from a chaotic mess to an optimized highway system.</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/ESTGEL.png" alt="ESTGEL: Explainable Spatio-Temporal Graph Evolution Learning"  />
+
+<em>ESTGEL model architecture for analyzing dynamic brain network evolution.</em></p>
+<h3 id="why-this-excites-me">Why This Excites Me<a hidden class="anchor" aria-hidden="true" href="#why-this-excites-me">#</a></h3>
+<p>From a developmental biology perspective, this is <em>huge</em>. For organisms like <em>C. elegans</em>, we have the complete connectome mapped, but we don&rsquo;t fully understand how it changes over development. ESTGEL&rsquo;s approach—combining graph attention with temporal dynamics—could unlock similar insights in simpler organisms.</p>
+<hr>
+<h2 id="2-esa-the-beauty-of-simplicity-in-graph-ai-2">2. ESA: The Beauty of Simplicity in Graph AI [2]<a hidden class="anchor" aria-hidden="true" href="#2-esa-the-beauty-of-simplicity-in-graph-ai-2">#</a></h2>
+<p><strong>Paper:</strong> <em>An End-to-End Attention-Based Approach for Learning on Graphs (Edge Set Attention)</em></p>
+<h3 id="the-big-picture-1">The Big Picture<a hidden class="anchor" aria-hidden="true" href="#the-big-picture-1">#</a></h3>
+<p>Graph Neural Networks (GNNs) are notorious for their complexity: positional encodings, message-passing schemes, pre-processing pipelines&hellip; it&rsquo;s a lot. <strong>ESA throws most of that away and proves that sometimes, simplicity wins.</strong></p>
+<h3 id="how-it-works-1">How It Works<a hidden class="anchor" aria-hidden="true" href="#how-it-works-1">#</a></h3>
+<p><strong>Edge Set Attention</strong> (ESA) takes a radical approach:</p>
+<ol>
+<li>Treat a graph as a <em>set of edges</em> (connections between nodes)</li>
+<li>Use pure attention mechanisms (like ChatGPT uses)</li>
+<li>Alternate between:
+<ul>
+<li><strong>Masked attention</strong>: Only look at directly connected edges</li>
+<li><strong>Self-attention</strong>: See the bigger picture</li>
+</ul>
+</li>
+</ol>
+<p>That&rsquo;s it. No complex pre-processing. No positional encodings. Yet&hellip;</p>
+<h3 id="the-stunning-results">The Stunning Results<a hidden class="anchor" aria-hidden="true" href="#the-stunning-results">#</a></h3>
+<p>Despite being <em>explicitly designed for simplicity</em>, ESA <strong>outperforms heavily fine-tuned complex graph transformers</strong> across dozens of benchmarks:</p>
+<ul>
+<li>Molecular property prediction</li>
+<li>Vision tasks</li>
+<li>Classification problems</li>
+</ul>
+<p>This is the kind of result that makes you question everything. It proves that <strong>architectural elegance often defeats brute-force complexity</strong>.</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/end%20to%20end.png" alt="ESA: Edge Set Attention Architecture"  />
+
+<em>ESA&rsquo;s end-to-end attention mechanism for graph learning—simple yet powerful.</em></p>
+<h3 id="why-this-matters-for-biology">Why This Matters for Biology<a hidden class="anchor" aria-hidden="true" href="#why-this-matters-for-biology">#</a></h3>
+<p>For biological systems (proteins, metabolic networks, gene interactions), we often need to represent them as graphs. ESA&rsquo;s simplicity and effectiveness make it an ideal candidate for tasks like predicting protein-protein interactions or understanding metabolic pathways.</p>
+<hr>
+<h2 id="3-self-referential-ghns-ai-that-evolves-itself-3">3. Self-Referential GHNs: AI That Evolves Itself [3]<a hidden class="anchor" aria-hidden="true" href="#3-self-referential-ghns-ai-that-evolves-itself-3">#</a></h2>
+<p><strong>Paper:</strong> <em>Hypernetworks That Evolve Themselves</em></p>
+<h3 id="the-big-picture-2">The Big Picture<a hidden class="anchor" aria-hidden="true" href="#the-big-picture-2">#</a></h3>
+<p>Here&rsquo;s a mind-bending idea: <strong>What if your AI model could literally mutate itself?</strong></p>
+<p>In nature, organisms don&rsquo;t get a PhD in optimization—they evolve through random mutation and environmental selection. This paper asks: why can&rsquo;t neural networks do the same?</p>
+<h3 id="how-it-works-2">How It Works<a hidden class="anchor" aria-hidden="true" href="#how-it-works-2">#</a></h3>
+<p>A <strong>Self-Referential Graph HyperNetwork (GHN)</strong> embeds evolution <em>directly</em> into its own code:</p>
+<ol>
+<li>The network looks at its own structure</li>
+<li>Generates mutated versions of itself</li>
+<li>Tests them in the environment</li>
+<li>Keeps the winners, discards the losers</li>
+</ol>
+<p>No external algorithm tweaking weights. The network <em>becomes the optimizer</em>.</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/Hypergraph.png" alt="Self-Referential Graph HyperNetwork"  />
+
+<em>HyperNetwork architecture enabling self-referential evolution.</em></p>
+<h3 id="the-emergent-magic">The Emergent Magic<a hidden class="anchor" aria-hidden="true" href="#the-emergent-magic">#</a></h3>
+<p>Here&rsquo;s where it gets wild: the network exhibits <strong>emergent control over its own evolvability</strong>:</p>
+<ul>
+<li><strong>Environment stable?</strong> → Reduce mutation rate (fine-tune performance)</li>
+<li><strong>Environment changing?</strong> → Crank up mutation rate (explore new solutions)</li>
+<li><strong>Novel challenge?</strong> → The network figures out it needs to change strategies</li>
+</ul>
+<p>This is the first step toward <strong>truly autonomous, open-ended learning agents</strong>—AI that doesn&rsquo;t need a human telling it what to do.</p>
+<h3 id="why-this-blows-my-mind">Why This Blows My Mind<a hidden class="anchor" aria-hidden="true" href="#why-this-blows-my-mind">#</a></h3>
+<p>For developmental biology, this is conceptually similar to how organisms adapt during development. Neural plasticity, for example, is the brain&rsquo;s ability to rewire itself based on experience. If we can achieve something similar in AI, we&rsquo;re not just mimicking nature—we&rsquo;re understanding it at a deeper level.</p>
+<hr>
+<h2 id="4-cell-stn-the-ultimate-cell-tracker-4">4. Cell-STN: The Ultimate Cell Tracker [4]<a hidden class="anchor" aria-hidden="true" href="#4-cell-stn-the-ultimate-cell-tracker-4">#</a></h2>
+<p><strong>Paper:</strong> <em>Spatio-Temporal Feature Based Deep Neural Network for Cell Lineage Analysis in Microscopy Images</em></p>
+<h3 id="the-big-picture-3">The Big Picture<a hidden class="anchor" aria-hidden="true" href="#the-big-picture-3">#</a></h3>
+<p>Biologists spend <em>hours</em>—sometimes <em>days</em>—manually tracking cells under a microscope:</p>
+<ul>
+<li>Where did this cell move?</li>
+<li>When did it divide (mitosis)?</li>
+<li>When did it die (apoptosis)?</li>
+</ul>
+<p>Cell-STN automates this nightmare.</p>
+<h3 id="how-it-works-3">How It Works<a hidden class="anchor" aria-hidden="true" href="#how-it-works-3">#</a></h3>
+<p>Cells aren&rsquo;t static objects; they change shape, move, and behave unpredictably. Standard computer vision isn&rsquo;t enough. <strong>Cell-STN uses:</strong></p>
+<ul>
+<li><strong>Bidirectional ConvLSTMs</strong>: Scan video frames both forward <em>and</em> backward in time</li>
+<li><strong>Multi-task learning</strong>: Predict locations, divisions, and deaths simultaneously</li>
+<li><strong>Visual + temporal features</strong>: Learn both what cells look like AND how they move</li>
+</ul>
+<p>The result? AI that understands cell behavior in a holistic way.</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/Spatio-temporal.png" alt="Cell-STN: Spatio-Temporal Feature Learning"  />
+
+<em>Cell-STN bidirectional ConvLSTM architecture for temporal cell tracking.</em></p>
+<h3 id="the-game-changer">The Game-Changer<a hidden class="anchor" aria-hidden="true" href="#the-game-changer">#</a></h3>
+<p>Here&rsquo;s what makes this special: it only requires <strong>weakly supervised, coarse labels</strong>. No need to perfectly trace every cell outline. This means researchers can use it on massive video datasets without spending their entire PhD on manual annotation.</p>
+<h3 id="for-developmental-biology">For Developmental Biology<a hidden class="anchor" aria-hidden="true" href="#for-developmental-biology">#</a></h3>
+<p>This is <em>perfect</em> for studying organisms like <em>C. elegans</em>. We could use Cell-STN to:</p>
+<ul>
+<li>Track cell divisions during development</li>
+<li>Understand cell migration patterns</li>
+<li>Study developmental abnormalities</li>
+</ul>
+<p>It bridges the gap between microscopy data and computational biology.</p>
+<hr>
+<h2 id="5-cellnest-decoding-cellular-gossip-5">5. CellNEST: Decoding Cellular &ldquo;Gossip&rdquo; [5]<a hidden class="anchor" aria-hidden="true" href="#5-cellnest-decoding-cellular-gossip-5">#</a></h2>
+<p><strong>Paper:</strong> <em>CellNEST Reveals Cell–Cell Relay Networks Using Attention Mechanisms on Spatial Transcriptomics</em></p>
+<h3 id="the-big-picture-4">The Big Picture<a hidden class="anchor" aria-hidden="true" href="#the-big-picture-4">#</a></h3>
+<p>Cells communicate through a language of proteins (ligands) binding to receptors. Existing tools catch individual conversations, but they miss the plot: <strong>cells can relay messages to other cells, creating networks of communication.</strong></p>
+<p>CellNEST decodes these relay networks.</p>
+<h3 id="how-it-works-4">How It Works<a hidden class="anchor" aria-hidden="true" href="#how-it-works-4">#</a></h3>
+<p>Using <strong>Graph Attention Networks (GAT)</strong> trained in an unsupervised manner, CellNEST:</p>
+<ol>
+<li>Analyzes spatial transcriptomic data</li>
+<li>Identifies which cells communicate with which</li>
+<li>Detects relay patterns (A → B → C)</li>
+<li>Outputs high-confidence communication maps</li>
+</ol>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/CellNEST.png" alt="CellNEST: Cell-Cell Communication Networks"  />
+
+<em>CellNEST reveals relay networks and cell-cell communication patterns in tissue.</em></p>
+<h3 id="real-world-impact">Real-World Impact<a hidden class="anchor" aria-hidden="true" href="#real-world-impact">#</a></h3>
+<p>CellNEST successfully mapped:</p>
+<ul>
+<li><strong>T cell homing signals</strong> in lymph nodes</li>
+<li><strong>Aggressive communication networks</strong> in pancreatic and colorectal tumors</li>
+</ul>
+<p>For the first time, researchers could visualize not just who&rsquo;s talking to whom, but how information cascades through tissues.</p>
+<h3 id="why-this-matters">Why This Matters<a hidden class="anchor" aria-hidden="true" href="#why-this-matters">#</a></h3>
+<p>Cell-cell communication is the foundation of development, immunity, and disease. If we truly understand these relay networks, we can:</p>
+<ul>
+<li>Predict how diseases spread</li>
+<li>Design better immunotherapies</li>
+<li>Understand developmental signaling cascades</li>
+</ul>
+<hr>
+<h2 id="what-connects-all-five-papers">What Connects All Five Papers?<a hidden class="anchor" aria-hidden="true" href="#what-connects-all-five-papers">#</a></h2>
+<p>If I had to find the throughline, it&rsquo;s this:</p>
+<p><strong>Modern AI for biology isn&rsquo;t about finding static patterns; it&rsquo;s about understanding dynamic, interconnected systems.</strong></p>
+<ul>
+<li>ESTGEL shows brain networks evolve</li>
+<li>ESA proves simplicity can beat complexity</li>
+<li>Self-Referential GHNs suggest AI can adapt on its own</li>
+<li>Cell-STN automates tracking over time</li>
+<li>CellNEST reveals hidden communication networks</li>
+</ul>
+<p>All five treat their respective domains (brains, graphs, AI itself, cells, tissues) as <strong>living, changing systems</strong>—not frozen snapshots.</p>
+<hr>
+<h2 id="implications-for-my-gsoc-work">Implications for My GSOC Work<a hidden class="anchor" aria-hidden="true" href="#implications-for-my-gsoc-work">#</a></h2>
+<p>As I work on my proposal for the Openworm Foundation, these papers are reshaping my thinking:</p>
+<ol>
+<li><strong>Graph attention mechanisms</strong> (ESA, CellNEST) are probably the right tool for understanding <em>C. elegans</em> connectomics</li>
+<li><strong>Spatio-temporal models</strong> (ESTGEL, Cell-STN) could help us understand how the connectome <em>changes</em> during development</li>
+<li><strong>Self-referential learning</strong> (Self-Ref GHNs) hints at how neural systems might optimize themselves—something we could study in <em>C. elegans</em></li>
+</ol>
+<p>The convergence is clear: <strong>the future of computational biology is about dynamic graphs, attention mechanisms, and systems that learn to evolve.</strong></p>
+<hr>
+<h2 id="final-thoughts">Final Thoughts<a hidden class="anchor" aria-hidden="true" href="#final-thoughts">#</a></h2>
+<p>When I first dove into these papers, I thought I was just gathering random research. But the more I read, the more I realized they&rsquo;re not random at all. They&rsquo;re all pieces of a larger puzzle: <strong>how do we build AI that understands biology as it actually is—dynamic, interconnected, and evolving?</strong></p>
+<p>If you&rsquo;re working on anything related to:</p>
+<ul>
+<li>Neural networks</li>
+<li>Cell biology</li>
+<li>Developmental biology</li>
+<li>Graph learning</li>
+<li>Biological simulations</li>
+</ul>
+<p>&hellip;you need to know these papers.</p>
+<p>They&rsquo;re not just incremental improvements. They&rsquo;re paradigm shifts.</p>
+<p>So yeah, I&rsquo;m excited about my GSOC proposal. These five papers just gave me a roadmap. 🚀</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://barshan.is-a.dev/tags/attention/">Attention</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/gnn/">GNN</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/developmental-biology/">Developmental Biology</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/ai/">AI</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/gsoc/">GSOC</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/c.-elegans/">C. elegans</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/graph-neural-networks/">Graph Neural Networks</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/spatio-temporal-learning/">Spatio-Temporal Learning</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/research-overview/">Research Overview</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://barshan.is-a.dev/posts/2025-12-14-causal-criticality-of-layers-in-chain-of-thought-reasoning/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Causal Criticality of Layers in Chain-of-Thought (CoT) — a Quick Dive</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Attention in Development Biology? on x"
+            href="https://x.com/intent/tweet/?text=Attention%20in%20Development%20Biology%3f&amp;url=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-03-12-attention-mechanism-bio%2f&amp;hashtags=Attention%2cGNN%2cDevelopmentalBiology%2cAI%2cGSOC%2cC.elegans%2cGraphNeuralNetworks%2cSpatio-TemporalLearning%2cResearchOverview">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Attention in Development Biology? on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-03-12-attention-mechanism-bio%2f&amp;title=Attention%20in%20Development%20Biology%3f&amp;summary=Attention%20in%20Development%20Biology%3f&amp;source=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-03-12-attention-mechanism-bio%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Attention in Development Biology? on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-03-12-attention-mechanism-bio%2f&title=Attention%20in%20Development%20Biology%3f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Attention in Development Biology? on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-03-12-attention-mechanism-bio%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Attention in Development Biology? on whatsapp"
+            href="https://api.whatsapp.com/send?text=Attention%20in%20Development%20Biology%3f%20-%20https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-03-12-attention-mechanism-bio%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Attention in Development Biology? on telegram"
+            href="https://telegram.me/share/url?text=Attention%20in%20Development%20Biology%3f&amp;url=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-03-12-attention-mechanism-bio%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Attention in Development Biology? on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Attention%20in%20Development%20Biology%3f&u=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-03-12-attention-mechanism-bio%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2026 <a href="https://barshan.is-a.dev/">bluee :)</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

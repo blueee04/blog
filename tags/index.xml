@@ -6,13 +6,69 @@
     <description>Recent content in Tags on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 14 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://barshan.is-a.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://barshan.is-a.dev/tags/ai/</link>
-      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Attention</title>
+      <link>https://barshan.is-a.dev/tags/attention/</link>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/attention/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C. elegans</title>
+      <link>https://barshan.is-a.dev/tags/c.-elegans/</link>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/c.-elegans/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Developmental Biology</title>
+      <link>https://barshan.is-a.dev/tags/developmental-biology/</link>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/developmental-biology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GNN</title>
+      <link>https://barshan.is-a.dev/tags/gnn/</link>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/gnn/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Graph Neural Networks</title>
+      <link>https://barshan.is-a.dev/tags/graph-neural-networks/</link>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/graph-neural-networks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GSOC</title>
+      <link>https://barshan.is-a.dev/tags/gsoc/</link>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/gsoc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research Overview</title>
+      <link>https://barshan.is-a.dev/tags/research-overview/</link>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/research-overview/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spatio-Temporal Learning</title>
+      <link>https://barshan.is-a.dev/tags/spatio-temporal-learning/</link>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/spatio-temporal-learning/</guid>
       <description></description>
     </item>
     <item>
@@ -230,13 +286,6 @@
       <link>https://barshan.is-a.dev/tags/fake-news/</link>
       <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/tags/fake-news/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>GNN</title>
-      <link>https://barshan.is-a.dev/tags/gnn/</link>
-      <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://barshan.is-a.dev/tags/gnn/</guid>
       <description></description>
     </item>
     <item>

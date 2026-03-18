@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>GNN on bluee :)</title>
-    <link>https://barshan.is-a.dev/tags/gnn/</link>
-    <description>Recent content in GNN on bluee :)</description>
+    <title>Attention on bluee :)</title>
+    <link>https://barshan.is-a.dev/tags/attention/</link>
+    <description>Recent content in Attention on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 12 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://barshan.is-a.dev/tags/gnn/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://barshan.is-a.dev/tags/attention/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Attention in Development Biology?</title>
       <link>https://barshan.is-a.dev/posts/2026-03-12-attention-mechanism-bio/</link>
       <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/posts/2026-03-12-attention-mechanism-bio/</guid>
       <description>My set of research while i build my proposal for GSOC 2026 at the Openworm Foundation</description>
-    </item>
-    <item>
-      <title>Graph-Based Fake News Detection with BERT and TF-IDF</title>
-      <link>https://barshan.is-a.dev/posts/2025-06-12-fake-news-detection/</link>
-      <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://barshan.is-a.dev/posts/2025-06-12-fake-news-detection/</guid>
-      <description>A detailed breakdown of a multi-modal Graph Neural Network framework for detecting fake news using BERT, TF-IDF, and community-aware feature fusion.</description>
     </item>
   </channel>
 </rss>
