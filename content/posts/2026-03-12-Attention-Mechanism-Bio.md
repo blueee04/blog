@@ -5,7 +5,7 @@ summary = "My set of research while i build my proposal for GSOC 2026 at the Ope
 tags = ["Attention", "GNN", "Developmental Biology", "AI", "GSOC", "C. elegans", "Graph Neural Networks", "Spatio-Temporal Learning", "Research Overview"]
 +++
 
-# Spatio-Temporal AI & Graph Learning: 5 Breakthrough Papers You Need to Know
+# Spatio-Temporal AI & Graph Learning: Some papers that i went through
 
 ## Introduction
 
@@ -38,8 +38,6 @@ The key insight? By analyzing functional MRI (fMRI) data from developing brains,
 ![ESTGEL: Explainable Spatio-Temporal Graph Evolution Learning](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/ESTGEL.png)
 *ESTGEL model architecture for analyzing dynamic brain network evolution.*
 
-### Why This Excites Me
-
 From a developmental biology perspective, this is *huge*. For organisms like *C. elegans*, we have the complete connectome mapped, but we don't fully understand how it changes over development. ESTGEL's approach—combining graph attention with temporal dynamics—could unlock similar insights in simpler organisms.
 
 ---
@@ -47,8 +45,6 @@ From a developmental biology perspective, this is *huge*. For organisms like *C.
 ## 2. ESA: The Beauty of Simplicity in Graph AI [2]
 
 **Paper:** *An End-to-End Attention-Based Approach for Learning on Graphs (Edge Set Attention)*
-
-### The Big Picture
 
 Graph Neural Networks (GNNs) are notorious for their complexity: positional encodings, message-passing schemes, pre-processing pipelines... it's a lot. **ESA throws most of that away and proves that sometimes, simplicity wins.**
 
@@ -64,8 +60,6 @@ Graph Neural Networks (GNNs) are notorious for their complexity: positional enco
 
 That's it. No complex pre-processing. No positional encodings. Yet...
 
-### The Stunning Results
-
 Despite being *explicitly designed for simplicity*, ESA **outperforms heavily fine-tuned complex graph transformers** across dozens of benchmarks:
 
 - Molecular property prediction
@@ -77,8 +71,6 @@ This is the kind of result that makes you question everything. It proves that **
 ![ESA: Edge Set Attention Architecture](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/end%20to%20end.png)
 *ESA's end-to-end attention mechanism for graph learning—simple yet powerful.*
 
-### Why This Matters for Biology
-
 For biological systems (proteins, metabolic networks, gene interactions), we often need to represent them as graphs. ESA's simplicity and effectiveness make it an ideal candidate for tasks like predicting protein-protein interactions or understanding metabolic pathways.
 
 ---
@@ -86,8 +78,6 @@ For biological systems (proteins, metabolic networks, gene interactions), we oft
 ## 3. Self-Referential GHNs: AI That Evolves Itself [3]
 
 **Paper:** *Hypernetworks That Evolve Themselves*
-
-### The Big Picture
 
 Here's a mind-bending idea: **What if your AI model could literally mutate itself?**
 
@@ -107,8 +97,6 @@ No external algorithm tweaking weights. The network *becomes the optimizer*.
 ![Self-Referential Graph HyperNetwork](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/Hypergraph.png)
 *HyperNetwork architecture enabling self-referential evolution.*
 
-### The Emergent Magic
-
 Here's where it gets wild: the network exhibits **emergent control over its own evolvability**:
 
 - **Environment stable?** → Reduce mutation rate (fine-tune performance)
@@ -119,8 +107,6 @@ This is the first step toward **truly autonomous, open-ended learning agents**�
 
 ![Self-Referential Graph HyperNetwork](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/Hypergraph_2.png)
 
-### Why This Blows My Mind
-
 For developmental biology, this is conceptually similar to how organisms adapt during development. Neural plasticity, for example, is the brain's ability to rewire itself based on experience. If we can achieve something similar in AI, we're not just mimicking nature—we're understanding it at a deeper level.
 
 ---
@@ -128,8 +114,6 @@ For developmental biology, this is conceptually similar to how organisms adapt d
 ## 4. Cell-STN: The Ultimate Cell Tracker [4]
 
 **Paper:** *Spatio-Temporal Feature Based Deep Neural Network for Cell Lineage Analysis in Microscopy Images*
-
-### The Big Picture
 
 Biologists spend *hours*—sometimes *days*—manually tracking cells under a microscope:
 
@@ -152,8 +136,6 @@ The result? AI that understands cell behavior in a holistic way.
 ![Cell-STN: Spatio-Temporal Feature Learning](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/Spatio-temporal.png)
 *Cell-STN bidirectional ConvLSTM architecture for temporal cell tracking.*
 
-### The Game-Changer
-
 Here's what makes this special: it only requires **weakly supervised, coarse labels**. No need to perfectly trace every cell outline. This means researchers can use it on massive video datasets without spending their entire PhD on manual annotation.
 
 ### For Developmental Biology
@@ -171,7 +153,6 @@ It bridges the gap between microscopy data and computational biology.
 
 **Paper:** *CellNEST Reveals Cell–Cell Relay Networks Using Attention Mechanisms on Spatial Transcriptomics*
 
-### The Big Picture
 
 Cells communicate through a language of proteins (ligands) binding to receptors. Existing tools catch individual conversations, but they miss the plot: **cells can relay messages to other cells, creating networks of communication.**
 
@@ -197,8 +178,6 @@ CellNEST successfully mapped:
 - **Aggressive communication networks** in pancreatic and colorectal tumors
 
 For the first time, researchers could visualize not just who's talking to whom, but how information cascades through tissues.
-
-### Why This Matters
 
 Cell-cell communication is the foundation of development, immunity, and disease. If we truly understand these relay networks, we can:
 - Predict how diseases spread
@@ -248,7 +227,5 @@ If you're working on anything related to:
 
 ...you need to know these papers.
 
-They're not just incremental improvements. They're paradigm shifts.
-
-So yeah, I'm excited about my GSOC proposal. These five papers just gave me a roadmap. 🚀
+So yeah, I'm excited about my GSOC proposal. These five papers just gave me a great insight!
 
