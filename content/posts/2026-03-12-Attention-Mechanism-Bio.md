@@ -23,7 +23,7 @@ Let me break down what these papers do, why they matter, and why you should care
 
 ### The Big Picture
 
-Imagine your brain as a living, breathing network of connections. It's not the same today as it was when you were 10—and it won't be the same at 60. **ESTGEL captures exactly this**: how brain networks structurally and functionally reorganize as we grow.
+Imagine your brain as a living, breathing network of connections. It's not the same today as it was when you were 10 and it won't be the same at 60. **ESTGEL captures exactly this**: how brain networks structurally and functionally reorganize as we grow.
 
 ### How It Works
 
@@ -33,12 +33,12 @@ Instead of traditional approaches that treat each time step independently, ESTGE
 - **Dynamic gating mechanisms**: Remembers past states and predicts future ones
 - **Explainability built-in**: You can actually understand why the model made a decision
 
-The key insight? By analyzing functional MRI (fMRI) data from developing brains, ESTGEL reveals that **as we age, our brain networks transition from highly dispersed to concentrated, efficient structures**. It's like watching the internet evolve—from a chaotic mess to an optimized highway system.
+The key insight? By analyzing functional MRI (fMRI) data from developing brains, ESTGEL reveals that **as we age, our brain networks transition from highly dispersed to concentrated, efficient structures**. It's like watching the internet evolve from a chaotic mess to an optimized highway system.
 
 ![ESTGEL: Explainable Spatio-Temporal Graph Evolution Learning](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/ESTGEL.png)
 *ESTGEL model architecture for analyzing dynamic brain network evolution.*
 
-From a developmental biology perspective, this is *huge*. For organisms like *C. elegans*, we have the complete connectome mapped, but we don't fully understand how it changes over development. ESTGEL's approach—combining graph attention with temporal dynamics—could unlock similar insights in simpler organisms.
+From a developmental biology perspective, this is *huge*. For organisms like *C. elegans*, we have the complete connectome mapped, but we don't fully understand how it changes over development. ESTGEL's approach combining graph attention with temporal dynamics could unlock similar insights in simpler organisms.
 
 ---
 
@@ -69,7 +69,7 @@ Despite being *explicitly designed for simplicity*, ESA **outperforms heavily fi
 This is the kind of result that makes you question everything. It proves that **architectural elegance often defeats brute-force complexity**.
 
 ![ESA: Edge Set Attention Architecture](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/end%20to%20end.png)
-*ESA's end-to-end attention mechanism for graph learning—simple yet powerful.*
+*ESA's end-to-end attention mechanism for graph learning simple yet powerful.*
 
 For biological systems (proteins, metabolic networks, gene interactions), we often need to represent them as graphs. ESA's simplicity and effectiveness make it an ideal candidate for tasks like predicting protein-protein interactions or understanding metabolic pathways.
 
@@ -81,7 +81,7 @@ For biological systems (proteins, metabolic networks, gene interactions), we oft
 
 Here's a mind-bending idea: **What if your AI model could literally mutate itself?**
 
-In nature, organisms don't get a PhD in optimization—they evolve through random mutation and environmental selection. This paper asks: why can't neural networks do the same?
+In nature, organisms don't get a PhD in optimization they evolve through random mutation and environmental selection. This paper asks: why can't neural networks do the same?
 
 ### How It Works
 
@@ -103,11 +103,11 @@ Here's where it gets wild: the network exhibits **emergent control over its own 
 - **Environment changing?** → Crank up mutation rate (explore new solutions)
 - **Novel challenge?** → The network figures out it needs to change strategies
 
-This is the first step toward **truly autonomous, open-ended learning agents**—AI that doesn't need a human telling it what to do.
+This is the first step toward **truly autonomous, open-ended learning agents** AI that doesn't need a human telling it what to do.
 
 ![Self-Referential Graph HyperNetwork](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-03-12-Attention-Mechanism-Bio/Hypergraph_2.png)
 
-For developmental biology, this is conceptually similar to how organisms adapt during development. Neural plasticity, for example, is the brain's ability to rewire itself based on experience. If we can achieve something similar in AI, we're not just mimicking nature—we're understanding it at a deeper level.
+For developmental biology, this is conceptually similar to how organisms adapt during development. Neural plasticity, for example, is the brain's ability to rewire itself based on experience. If we can achieve something similar in AI, we're not just mimicking nature we're understanding it at a deeper level.
 
 ---
 
@@ -115,7 +115,7 @@ For developmental biology, this is conceptually similar to how organisms adapt d
 
 **Paper:** *Spatio-Temporal Feature Based Deep Neural Network for Cell Lineage Analysis in Microscopy Images*
 
-Biologists spend *hours*—sometimes *days*—manually tracking cells under a microscope:
+Biologists spend *hours* sometimes *days* manually tracking cells under a microscope:
 
 - Where did this cell move?
 - When did it divide (mitosis)?
@@ -198,7 +198,7 @@ If I had to find the throughline, it's this:
 - Cell-STN automates tracking over time
 - CellNEST reveals hidden communication networks
 
-All five treat their respective domains (brains, graphs, AI itself, cells, tissues) as **living, changing systems**—not frozen snapshots.
+All five treat their respective domains (brains, graphs, AI itself, cells, tissues) as **living, changing systems** not frozen snapshots.
 
 ---
 
@@ -208,7 +208,7 @@ As I work on my proposal for the Openworm Foundation, these papers are reshaping
 
 1. **Graph attention mechanisms** (ESA, CellNEST) are probably the right tool for understanding *C. elegans* connectomics
 2. **Spatio-temporal models** (ESTGEL, Cell-STN) could help us understand how the connectome *changes* during development
-3. **Self-referential learning** (Self-Ref GHNs) hints at how neural systems might optimize themselves—something we could study in *C. elegans*
+3. **Self-referential learning** (Self-Ref GHNs) hints at how neural systems might optimize themselves something we could study in *C. elegans*
 
 The convergence is clear: **the future of computational biology is about dynamic graphs, attention mechanisms, and systems that learn to evolve.**
 
@@ -216,7 +216,7 @@ The convergence is clear: **the future of computational biology is about dynamic
 
 ## Final Thoughts
 
-When I first dove into these papers, I thought I was just gathering random research. But the more I read, the more I realized they're not random at all. They're all pieces of a larger puzzle: **how do we build AI that understands biology as it actually is—dynamic, interconnected, and evolving?**
+When I first dove into these papers, I thought I was just gathering random research. But the more I read, the more I realized they're not random at all. They're all pieces of a larger puzzle: **how do we build AI that understands biology as it actually is dynamic, interconnected, and evolving?**
 
 If you're working on anything related to:
 - Neural networks
