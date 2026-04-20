@@ -5,19 +5,8 @@ summary = "Complete guide to preprocessing and analyzing C. elegans embryonic de
 tags = ["dataset", "C. elegans", "graph-neural-networks", "microscopy", "bioinformatics", "data-preprocessing"]
 +++
 
-# EPIC Dataset: Complete Preprocessing & Analysis Guide
+## EPIC Dataset: Complete Preprocessing & Analysis Guide
 
-## Table of Contents
-
-1. [Quick Start (5 minutes)](#-quick-start)
-2. [Now in Depth](#-the-big-picture)
-3. [Raw Data Format](#-raw-data-format-what-comes-in)
-4. [Processing Pipeline](#-processing-pipeline-the-transformation)
-5. [Output Specification](#-output-specification-what-goes-out)
-6. [Data Structures](#-data-structures--shapes)
-7. [Practical Usage](#-practical-usage)
-8. [Validation & Quality Control](#-validation--quality-control)
-9. [Troubleshooting](#-troubleshooting)
 10. [File Manifest](#-complete-file-manifest)
 
 ---
