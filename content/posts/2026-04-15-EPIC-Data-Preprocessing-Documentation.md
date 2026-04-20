@@ -136,7 +136,7 @@ This means: *Cell named ABal at timepoint 25 is located at position (166 px, 257
 
 ---
 
-## ⚙️ Processing Pipeline: The Transformation
+## Processing Pipeline: The Transformation
 
 ### System Overview
 
@@ -760,18 +760,18 @@ Processing time (all):            ~2–4 hours (varies by hardware)
 
 ---
 
-## 📝 Metadata
+## Metadata
 
 - **Author**: Barshan Mondal
 - **Last Updated**: April 15, 2026
 - **Version**: 1.0
-- **Source Dataset**: EPIC (eMbryo Project Imaging Consortium) *C. elegans* embryo microscopy
+- **Source Dataset**: EPIC (Expression Patterns In Caenorhabditis) *C. elegans* embryo microscopy
 - **Organism**: *Caenorhabditis elegans* L4 stage embryos
 - **Microscopy**: Fluorescence imaging (brightfield + confocal channels)
 
 ---
 
-## 🤝 Contributing & Feedback
+## Contributing & Feedback
 
 Found an issue? Have suggestions?
 - Check [Troubleshooting](#-troubleshooting) first
