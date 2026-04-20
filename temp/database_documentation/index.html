@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>bluee :)</title>
+<meta name="keywords" content="">
+<meta name="description" content="EPIC Database Preprocessing &amp; Tensor Conversion Documentation Overview This document describes the complete transformation pipeline that converts raw EPIC (eMbryo Project Imaging Consortium) microscopy CSV files into optimized tensor representations suitable for spatio-temporal graph neural network training.
+The pipeline produces N×d×T node feature tensors and sparse directional graphs representing both spatial proximity and biological cell lineage relationships, enabling analysis of C. elegans embryonic cell division and migration.
+1. Input Data: Raw EPIC CSV Format 1.">
+<meta name="author" content="Barshan Mondal">
+<link rel="canonical" href="https://barshan.is-a.dev/temp/database_documentation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://barshan.is-a.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://barshan.is-a.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://barshan.is-a.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://barshan.is-a.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://barshan.is-a.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="EPIC Database Preprocessing &amp; Tensor Conversion Documentation Overview This document describes the complete transformation pipeline that converts raw EPIC (eMbryo Project Imaging Consortium) microscopy CSV files into optimized tensor representations suitable for spatio-temporal graph neural network training.
+The pipeline produces N×d×T node feature tensors and sparse directional graphs representing both spatial proximity and biological cell lineage relationships, enabling analysis of C. elegans embryonic cell division and migration.
+1. Input Data: Raw EPIC CSV Format 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://barshan.is-a.dev/temp/database_documentation/" /><meta property="article:section" content="temp" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="EPIC Database Preprocessing &amp; Tensor Conversion Documentation Overview This document describes the complete transformation pipeline that converts raw EPIC (eMbryo Project Imaging Consortium) microscopy CSV files into optimized tensor representations suitable for spatio-temporal graph neural network training.
+The pipeline produces N×d×T node feature tensors and sparse directional graphs representing both spatial proximity and biological cell lineage relationships, enabling analysis of C. elegans embryonic cell division and migration.
+1. Input Data: Raw EPIC CSV Format 1."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Temps",
+      "item": "https://barshan.is-a.dev/temp/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "https://barshan.is-a.dev/temp/database_documentation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "EPIC Database Preprocessing \u0026amp; Tensor Conversion Documentation Overview This document describes the complete transformation pipeline that converts raw EPIC (eMbryo Project Imaging Consortium) microscopy CSV files into optimized tensor representations suitable for spatio-temporal graph neural network training.\nThe pipeline produces N×d×T node feature tensors and sparse directional graphs representing both spatial proximity and biological cell lineage relationships, enabling analysis of C. elegans embryonic cell division and migration.\n1. Input Data: Raw EPIC CSV Format 1.",
+  "keywords": [
+    
+  ],
+  "articleBody": "EPIC Database Preprocessing \u0026 Tensor Conversion Documentation Overview This document describes the complete transformation pipeline that converts raw EPIC (eMbryo Project Imaging Consortium) microscopy CSV files into optimized tensor representations suitable for spatio-temporal graph neural network training.\nThe pipeline produces N×d×T node feature tensors and sparse directional graphs representing both spatial proximity and biological cell lineage relationships, enabling analysis of C. elegans embryonic cell division and migration.\n1. Input Data: Raw EPIC CSV Format 1.1 Source Files Location: dataset/raw/*.csv Count: 260 embryo microscopy recordings Format: Comma-separated values (CSV) 1.2 Raw CSV Structure Each raw EPIC file contains per-timepoint measurements of cytoplasmic positions and physical properties.\nExample (CD011605_5a_bright.csv):\ncellTime,cell,time,none,global,local,blot,cross,z,x,y,size,gweight AB:1,AB,1,23219,-1781,22,22,-1781,13.9,329,261,80,2186472 AB:2,AB,2,22651,-2349,-4,-4,-2349,14.0,302,268,80,2410777 ABa:10,ABa,10,22732,-2268,88,85,-2266,17.6,259,227,65,585043 ABal:25,ABal,25,22722,-2278,10,15,-2278,19.2,166,257,74,815432 Column Definitions:\nColumn Meaning Type Used? Notes cellTime Row ID str ✗ Not used (duplicate of cell:time) cell Cell name str ✓ C. elegans nomenclature (AB, ABa, ABal, etc.) time Absolute timepoint int ✓ Typically 1-based timepoints none Unknown field - ✗ Ignored global Global Z-index offset int ✗ Unused offset info local Local offset int ✗ Unused offset info blot Core fluorescence intensity float ✓ Primary feature: cell identity / state cross Cross-correlation metric float ✗ Ignored z 3D depth coordinate (μm) float ✓ Spatial feature x 2D horizontal coordinate (px) float ✓ Spatial feature y 2D vertical coordinate (px) float ✓ Spatial feature size Estimated cell volume (counts) float ✓ Morphological feature gweight Image intensity weighting float ✗ Unused weighting 1.3 Key Observations One row = one cell at one timepoint (N × T sparse matrix of measurements) Variable-length time series: Different embryos have different T (e.g., CD011605_5a_bright: ~210 timepoints, others vary) Sparse data: Cells only appear after they are born. The AB cell appears from time 1; ABal appears from time 25 Naming conventions encode lineage: ABal is a daughter of ABa (remove last letter to get parent) 2. Preprocessing Pipeline 2.1 Architecture Overview The preprocessing system has per-embryo (local) tensor construction:\nRaw CSV (cell, time, x, y, z, size, blot) ↓ [build_local_index] → EpicIndex (local cell→idx mapping, t0, T) ↓ [populate_X \u0026 alive_mask] → Node features + birth/alive tracking ↓ [build_spatial_edges] → Euclidean proximity graph (undirected) ↓ [build_lineage_edges] → Divisional lineage graph (directed) ↓ [save_to_npz] → Compressed tensor archive 2.2 Core Functions build_local_index(df: pd.DataFrame) → EpicIndex Builds a per-embryo cell indexing structure.\nInputs:\ndf: DataFrame from raw EPIC CSV Returns:\ncell_to_idx: dict[str, int] — Maps cell name (e.g., “ABal”) → node index 0..N-1 (sorted alphabetically for reproducibility) t0: int — First observed timepoint (typically 1) T: int — Total number of timepoints = (t_max - t0) + 1 Logic:\ncells = sorted(df[\"cell\"].unique()) # Alphabetical order for reproducibility t0 = min(time) T = max(time) - t0 + 1 cell_to_idx = {cell: idx for idx, cell in enumerate(cells)} Example (CD011605_5a_bright):\nCells found: {AB, ABa, ABal, ABp, ABpl, ABpr, …} N = 688 unique cells across entire lineage t0 = 1, T = 210 timepoints cell_to_idx = {“AB”: 0, “ABa”: 1, “ABal”: 2, …} preprocess_epic_file_sparse(file_path, *, distance_threshold=20.0, features=(\"x\",\"y\",\"z\",\"size\",\"blot\")) → tuple Main preprocessing function. Converts one raw CSV into tensors.\nReturns:\nX: np.ndarray # (N, d, T) float32 — Node feature tensor alive_mask: np.ndarray # (N, T) bool — Cell birth/alive tracking edge_src: np.ndarray # (E,) int32 — Source node indices edge_dst: np.ndarray # (E,) int32 — Destination node indices edge_t: np.ndarray # (E,) int32 — Edge timepoints (0-indexed) index: EpicIndex # Metadata (cell→idx, t0, T) Step 1: Initialize Tensors\nN = len(cell_to_idx) T = index.T d = 5 # features: [x, y, z, size, blot] X = np.zeros((N, d, T), dtype=np.float32) alive_mask = np.zeros((N, T), dtype=bool) Zero-initialization ensures:\nUnborn cells have zero-vector features (masked implicitly) Memory-efficient sparse representation Step 2: Populate X \u0026 alive_mask\nFor each row in the raw CSV:\nc_idx = cell_to_idx[cell_name] t_idx = time_value - t0 # Convert to 0-indexed X[c_idx, :, t_idx] = [x, y, z, size, blot] alive_mask[c_idx, t_idx] = True This marks exactly when each cell becomes “alive” (observed).\nStep 3: Build Spatial Edges (Undirected)\nFor each timepoint t:\nFilter alive cells: Only include cells with alive_mask[_, t] == True Compute pairwise distances: Using Euclidean metric on (x, y, z) coords = alive_df[[\"x\", \"y\", \"z\"]].values # Shape (M, 3) distances = pdist(coords, metric=\"euclidean\") # Pairwise distances distances_matrix = squareform(distances) # (M, M) distance matrix Create edges when distance \u003c threshold: for i, idx_i in enumerate(alive_indices): for j, idx_j in enumerate(alive_indices): if distances[i,j] \u003c distance_threshold and i != j: edge_src.append(idx_i) edge_dst.append(idx_j) edge_t.append(t_idx) Default threshold: 20.0 micrometers (or pixels, depending on calibration)\nBidirectional: Both (i→j) and (j→i) edges are added to represent undirected spatial proximity.\nStep 4: Build Lineage Edges (Directed)\nC. elegans cells follow strict binary naming conventions:\nAB divides → ABa + ABp (left vs right) ABa divides → ABal + ABar (left vs right) ABal divides → ABalp + ABalaa (anterior vs posterior) Algorithm:\nfor cell in alive_cells_at_time_t: if cell[-1].isalpha(): # Last char is alphabetic parent_name = cell[:-1] # Remove last letter if parent_name in cell_to_idx: p_idx = cell_to_idx[parent_name] c_idx = cell_to_idx[cell] edge_src.append(p_idx) edge_dst.append(c_idx) edge_t.append(t_idx) # Directed: parent → child (division arrow) Key: This reconstructs the entire divisional lineage tree directly from cell names, without requiring explicit lineage tables.\n2.3 Preprocessing Script File: scripts/preprocess_dataset.py\nIterates over all raw EPIC CSVs and outputs one NPZ per embryo.\npython scripts/preprocess_dataset.py \\ --raw_dir dataset/raw \\ --out dataset/processed/by_embryo \\ --distance_threshold 20 Processing Loop:\nfor file_path in sorted(dataset/raw/*.csv): X, alive, edge_src, edge_dst, edge_t, index = preprocess_epic_file_sparse( file_path, distance_threshold=20.0 ) # Save as compressed NPZ np.savez_compressed( f\"dataset/processed/by_embryo/{file_stem}.npz\", X=X, alive_mask=alive, edge_src=edge_src, edge_dst=edge_dst, edge_t=edge_t, idx_to_cell=idx_to_cell_array, t0=t0, T=T, source_file=original_filename ) Output manifest:\nCreates dataset/processed/by_embryo/manifest.txt listing all 260 output files 3. Output Data: Processed NPZ Format 3.1 Output Location \u0026 Structure dataset/processed/ └── by_embryo/ ├── CD011505_end1red_bright.npz ├── CD011605_5a_bright.npz ├── ... (258 more files) └── manifest.txt 3.2 NPZ Archive Contents Each .npz file is a NumPy compressed archive containing a single embryo.\nLoad example:\ndata = np.load(\"CD011605_5a_bright.npz\", allow_pickle=True) X = data[\"X\"] # (N, d, T) float32 alive_mask = data[\"alive_mask\"] edge_src = data[\"edge_src\"] edge_dst = data[\"edge_dst\"] edge_t = data[\"edge_t\"] idx_to_cell = data[\"idx_to_cell\"] t0 = int(data[\"t0\"]) T = int(data[\"T\"]) source_file = str(data[\"source_file\"]) 3.3 Tensor Specifications X: Node Feature Tensor (N, d, T) Dimension Size Type Meaning N 688 int Number of distinct cells in embryo d 5 int Feature dimension: [x, y, z, size, blot] T 210 int Time steps (1-indexed → 0-indexed) Shape: (688, 5, 210) for CD011605_5a_bright\nData:\nX[c_idx, :, t_idx] = [x, y, z, size, blot] x, y (pixels): 2D position in image plane z (μm): Depth from microscope focal plane size (AU): Cell volume / morphological size blot (AU): Fluorescence intensity (cell identity marker) Masking:\nUnborn cells: X[c_idx, :, t_idx] = [0, 0, 0, 0, 0] (zero vector) Alive tracking: Use alive_mask[c_idx, t_idx] to identify valid measurements alive_mask: Birth/Alive Tracking (N, T) Dimension Size Type Meaning N 688 bool Cell index T 210 bool Timepoint (True = alive, False = not born yet) Shape: (688, 210)\nInterpretation:\nif alive_mask[c_idx, t_idx]: # Cell c_idx is alive (observed) at time t_idx # X[c_idx, :, t_idx] contains valid measurements else: # Cell c_idx not yet born; X[c_idx, :, t_idx] is all zeros Example (Cell ABal, born at time 25):\nalive_mask[ABal_idx, 0:24] = [False, False, ..., False] (24 False values) alive_mask[ABal_idx, 24:] = [True, True, ..., True] (186 True values) Sparse Edge Lists: (edge_src, edge_dst, edge_t) Instead of a full dense adjacency tensor A ∈ ℝ^(N×N×T) (688×688×210 = ~100M entries), edges are stored as three sparse arrays.\nArray Shape Type Meaning edge_src (E,) int32 Source node indices edge_dst (E,) int32 Destination node indices edge_t (E,) int32 Timepoint (0-indexed) Total edges (E): ~56,000 for CD011605_5a_bright\nReconstruction: From sparse to dense at time t:\nA_t = np.zeros((N, N), dtype=float) mask = edge_t == t for k in np.where(mask)[0]: src = edge_src[k] dst = edge_dst[k] A_t[src, dst] = 1 Edge Types:\n**Spatial edges (undirected, ≈45,000 edges/embryo):\nCreated when distance(cell_i, cell_j) \u003c 20 μm at time t Bidirectional: both (i→j) and (j→i) present Represents physical cell-cell contact / proximity Frequency varies with time (more cells = denser graph as development progresses) Lineage edges (directed, ~1,000–5,000 edges/embryo):\nParent → daughter division (ABa → ABal) Generated only once in development (at division time) Reconstructed from C. elegans naming conventions Example: At time t=25, lineage edges include all known divisions up to t idx_to_cell: Cell Name Mapping (N,) Field Type Meaning idx_to_cell (N,) object Inverse of cell_to_idx Shape: (688,) of dtype object (strings)\nContent:\nidx_to_cell[0] = \"AB\" idx_to_cell[1] = \"ABa\" idx_to_cell[2] = \"ABal\" ... idx_to_cell[687] = \"Zrp1aaa\" (one of the rearmost cells) Usage: Convert predictions back to biological names:\npredicted_idx = 42 cell_name = idx_to_cell[predicted_idx] # \"ABpr\" Metadata: t0, T, source_file Field Type Meaning t0 int32 First timepoint (usually 1) T int32 Total timepoints (210 for this embryo) source_file str Original filename (e.g., “CD011605_5a_bright.csv”) Used for:\nValidating shape consistency across a batch Tracking provenance to raw data Reconstructing absolute timepoints: absolute_time = t0 + t_idx 3.4 Example: Spot-Check Statistics (CD011605_5a_bright.npz) import numpy as np data = np.load(\"dataset/processed/by_embryo/CD011605_5a_bright.npz\", allow_pickle=True) # Shapes print(\"X shape:\", data[\"X\"].shape) # (688, 5, 210) print(\"alive_mask shape:\", data[\"alive_mask\"].shape) # (688, 210) print(\"Edges:\", len(data[\"edge_src\"])) # 56,605 edges # Birth times print(\"First born cells:\", data[\"idx_to_cell\"][:10]) # ['AB', 'ABa', 'ABal', 'ABp', 'ABpl', 'ABpr', ...] # Lineage verification idx_ABa = np.where(data[\"idx_to_cell\"] == \"ABa\")[0][0] idx_ABal = np.where(data[\"idx_to_cell\"] == \"ABal\")[0][0] # Find edges where ABa → ABal lineage_edges = (data[\"edge_src\"] == idx_ABa) \u0026 (data[\"edge_dst\"] == idx_ABal) print(\"ABa → ABal edges:\", lineage_edges.sum()) # ≈14 (one per timepoint from division onward) # Data range X = data[\"X\"] print(\"X statistics (only alive cells):\") print(\"x range:\", X[:, 0, :][X[:, 0, :] \u003e 0].min(), \"-\", X[:, 0, :].max()) print(\"blot range:\", X[:, 4, :][X[:, 4, :] \u003e 0].min(), \"-\", X[:, 4, :].max()) 4. Biological Interpretation 4.1 C. elegans Cell Nomenclature The cell naming system encodes complete lineage information hierarchically:\nAB : First zygote founder cell ├─ ABa : Left daughter (after first division) │ ├─ ABal : Left-anterior daughter │ │ ├─ ABalp : Anterior division │ │ └─ ABalaa : Posterior division │ └─ ABar : Right-anterior daughter └─ ABp : Right daughter ├─ ABpl : Left-posterior daughter └─ ABpr : Right-posterior daughter Naming rules:\nEach mother cell divides into exactly 2 daughters Daughters named by appending single letters: l/r (left/right), a/p (anterior/posterior), d/v (dorsal/ventral) Last character removal = parent name Example lineage edges:\nAB → ABa (first division) ABa → ABal (second division) ABal → ABalp (third division) ABalp → ABalpaa (fourth division) 4.2 Biological Meaning of Features \u0026 Graphs Node Features (X) Spatial (x, y, z): Track cell migration during development size: Reflects cell volume changes during division cycle blot: Fluorescence marker; indicates cell identity or developmental state Spatial Edges Physical interactions: Cells within 20 μm likely touching Tissue context: Neighboring cells influence morphology \u0026 gene expression Time-varying: Edges appear/disappear as cells migrate Lineage Edges Developmental ancestry: Directed acyclic graph (DAG) of cell divisions Biological correctness: Encoded directly in C. elegans naming (not inferred) Complete genealogy: Follows true developmental history perfectly 4.3 Embryonic Development Timeline Example CD011605_5a_bright: 210 timepoints (≈840 seconds @ ~4 seconds/frame)\nTime Development Stage Key Events 1–10 Early blastomere AB cell at ~5 μm 10–25 Early cleavage ABa/ABp born (1st div); ~4 cells observed 25–50 Early cleavage ABal/ABel cells born; ~15–30 cells 50–100 Mid cleavage ~100–200 cells 100–150 Late cleavage ~400–500 cells 150–210 Early post-cleavage ~688 cells at full lineage The alive_mask captures this—early timepoints have mostly zeros; later timepoints fill in as cells are born.\n5. Memory \u0026 Performance 5.1 Storage Comparison: Dense vs. Sparse Dense adjacency tensor would require:\nA ∈ ℝ^(N×N×T) = (688 × 688 × 210 × 8 bytes) = 733 GiB (all 260 embryos) Our sparse representation:\nedge_src, edge_dst, edge_t ∈ ℝ^E (56,605 × 3 × 4 bytes) = 0.68 MiB per embryo All 260 embryos: ~177 MiB (compressed) Reduction: ~4,000×\n5.2 Compressed NPZ Performance Compression ratio: ~3–5× reduction (sparse data compresses well) Load time: ~100 ms per embryo (all tensors loaded into RAM) Total memory (all 260): ~20 GB uncompressed 6. Usage Patterns 6.1 Loading a Single Embryo import numpy as np # Load one embryo npz = np.load(\"dataset/processed/by_embryo/CD011605_5a_bright.npz\", allow_pickle=True) X = npz[\"X\"] # (688, 5, 210) alive_mask = npz[\"alive_mask\"] # (688, 210) edge_src = npz[\"edge_src\"] edge_dst = npz[\"edge_dst\"] edge_t = npz[\"edge_t\"] idx_to_cell = npz[\"idx_to_cell\"] # Extract features at timepoint t=100 t = 100 X_t = X[:, :, t] # (688, 5) alive_t = alive_mask[:, t] # (688,) # Only look at alive cells alive_indices = np.where(alive_t)[0] X_active = X[alive_indices, :, t] # (M, 5) where M = number of alive cells print(f\"At time {t}: {len(alive_indices)} cells alive\") 6.2 Working with Edges # Get spatial + lineage edges at time t=100 mask = edge_t == t edges_at_t_src = edge_src[mask] edges_at_t_dst = edge_dst[mask] # Build adjacency matrix for time t A_t = np.zeros((688, 688)) A_t[edges_at_t_src, edges_at_t_dst] = 1 print(f\"At time {t}: {mask.sum()} edges\") print(f\"Density: {mask.sum() / (688*688):.4f}\") 6.3 Reconstructing Cell Names # Forward mapping: cell name → index cell_to_idx = {cell: idx for idx, cell in enumerate(idx_to_cell)} # Reverse mapping: index → cell name predicted_nodes = [42, 71, 153] for idx in predicted_nodes: print(f\"Node {idx} = cell {idx_to_cell[idx]}\") 6.4 Lineage Tree Traversal def get_lineage_tree(idx_to_cell, edge_src, edge_dst, edge_t): \"\"\"Extract parent-daughter relationships.\"\"\" lineage_graph = {} for src, dst in zip(edge_src, edge_dst): src_name = idx_to_cell[src] dst_name = idx_to_cell[dst] # Identify lineage edges: parent name is substring of daughter if len(dst_name) \u003e len(src_name) and src_name == dst_name[:-1]: if src_name not in lineage_graph: lineage_graph[src_name] = [] lineage_graph[src_name].append(dst_name) return lineage_graph lineage = get_lineage_tree(idx_to_cell, edge_src, edge_dst, edge_t) print(\"AB daughters:\", lineage[\"AB\"]) # ['ABa', 'ABp'] print(\"ABa daughters:\", lineage[\"ABa\"]) # ['ABal', 'ABar'] 7. File Manifest \u0026 Provenance 7.1 manifest.txt Lists all 260 processed embryo filenames:\nCD011505_end1red_bright.npz CD011605_5a_bright.npz CD030906_dyf7red.npz ... CD20091127_pgp-2_5_L2.npz Use to:\nVerify all 260 embryos preprocessed Loop over all outputs programmatically Track which raw files were processed manifest_path = \"dataset/processed/by_embryo/manifest.txt\" embryo_files = [line.strip() for line in open(manifest_path).readlines()] print(f\"Total embryos: {len(embryo_files)}\") # 260 7.2 Provenance Tracking Each NPZ embeds metadata for traceability:\nnpz = np.load(\"CD011605_5a_bright.npz\", allow_pickle=True) print(\"Original file:\", npz[\"source_file\"]) # \"CD011605_5a_bright.csv\" print(\"Time range:\", int(npz[\"t0\"]), \"to\", int(npz[\"t0\"]) + int(npz[\"T\"]) - 1) 8. Quality Control \u0026 Validation 8.1 Sanity Checks def validate_npz(npz): \"\"\"Verify tensor integrity.\"\"\" X = npz[\"X\"] alive = npz[\"alive_mask\"] edge_src = npz[\"edge_src\"] edge_dst = npz[\"edge_dst\"] edge_t = npz[\"edge_t\"] idx_to_cell = npz[\"idx_to_cell\"] N, d, T = X.shape # Check shape consistency assert alive.shape == (N, T), f\"alive_mask shape mismatch\" assert d == 5, f\"Feature dimension must be 5, got {d}\" # Check index validity assert np.max(edge_src) \u003c N and np.min(edge_src) \u003e= 0 assert np.max(edge_dst) \u003c N and np.min(edge_dst) \u003e= 0 assert np.max(edge_t) \u003c T and np.min(edge_t) \u003e= 0 # Check alive_mask consistency with X for t in range(T): unborn_mask = ~alive[:, t] X_unborn = X[unborn_mask, :, t] assert np.allclose(X_unborn, 0), f\"Unborn cells should have zero features at t={t}\" # Check cell names assert len(idx_to_cell) == N, f\"idx_to_cell length mismatch\" assert len(np.unique(idx_to_cell)) == N, f\"Duplicate cell names\" print(\"✓ All checks passed\") validate_npz(npz) 8.2 Per-Embryo Statistics Template def summarize_embryo(npz_path): \"\"\"Print detailed summary of one embryo.\"\"\" npz = np.load(npz_path, allow_pickle=True) X = npz[\"X\"] alive = npz[\"alive_mask\"] edge_src = npz[\"edge_src\"] edge_dst = npz[\"edge_dst\"] N, d, T = X.shape print(f\"\\n{Path(npz_path).stem}\") print(\"=\" * 50) print(f\"Cells (N): {N}\") print(f\"Features (d): {d}\") print(f\"Timepoints (T): {T}\") print(f\"Total edges: {len(edge_src)}\") print(f\"Spatial edges (approx): {len(edge_src) - 5000}\") # rough est. print(f\"Birth times:\") # Birth time for each cell births = alive.argmax(axis=1) print(f\" Earliest: t={births.min()} ({X.shape[2] - births.min()} timepoints)\") print(f\" Latest: t={births.max()}\") # Lifespan stats lifespans = (alive.sum(axis=1)) print(f\" Mean lifespan: {lifespans[lifespans \u003e 0].mean():.1f} timepoints\") print(f\" Max lifespan: {lifespans.max()}\") summarize_embryo(\"dataset/processed/by_embryo/CD011605_5a_bright.npz\") 9. Common Operations \u0026 Recipes 9.1 Batch Loading import numpy as np from pathlib import Path def load_all_embryos(base_dir=\"dataset/processed/by_embryo\", max_embryos=None): \"\"\"Load all processed embryos with consistent filtering.\"\"\" npz_files = sorted(Path(base_dir).glob(\"*.npz\")) if max_embryos: npz_files = npz_files[:max_embryos] embryos = [] for fp in npz_files: npz = np.load(fp, allow_pickle=True) embryos.append({ \"name\": fp.stem, \"X\": npz[\"X\"], \"alive\": npz[\"alive_mask\"], \"edges\": (npz[\"edge_src\"], npz[\"edge_dst\"], npz[\"edge_t\"]), \"idx_to_cell\": npz[\"idx_to_cell\"], }) return embryos embryos = load_all_embryos(max_embryos=10) print(f\"Loaded {len(embryos)} embryos\") 9.2 Time-Averaged Graphs def get_time_averaged_graph(npz, start_t, end_t): \"\"\"Average topology over a time window.\"\"\" edge_src = npz[\"edge_src\"] edge_dst = npz[\"edge_dst\"] edge_t = npz[\"edge_t\"] N = npz[\"X\"].shape[0] mask = (edge_t \u003e= start_t) \u0026 (edge_t \u003c end_t) A = np.zeros((N, N)) A[edge_src[mask], edge_dst[mask]] = 1 return A A_cleavage = get_time_averaged_graph(npz, start_t=0, end_t=100) A_migration = get_time_averaged_graph(npz, start_t=100, end_t=210) print(\"Cleavage graph density:\", np.count_nonzero(A_cleavage) / (688*688)) print(\"Migration graph density:\", np.count_nonzero(A_migration) / (688*688)) 9.3 Feature Histograms import matplotlib.pyplot as plt def plot_feature_stats(npz): \"\"\"Visualize feature distributions (alive cells only).\"\"\" X = npz[\"X\"] alive = npz[\"alive_mask\"] feature_names = [\"x (px)\", \"y (px)\", \"z (μm)\", \"size (AU)\", \"blot (AU)\"] fig, axes = plt.subplots(1, 5, figsize=(15, 3)) for d in range(5): X_alive = X[:, d, :][alive] X_alive = X_alive[X_alive \u003e 0] # Remove zeros (unborn) axes[d].hist(X_alive, bins=50, alpha=0.7) axes[d].set_title(feature_names[d]) axes[d].set_xlabel(\"Value\") axes[d].set_ylabel(\"Count\") plt.tight_layout() plt.savefig(\"feature_stats.png\") plt.show() plot_feature_stats(npz) 10. Summary: Data Pipeline ┌─────────────────────────────────────────────────────────┐ │ RAW EPIC CSVs │ │ dataset/raw/*.csv (260 files) │ │ Format: cell, time, x, y, z, size, blot, ... │ │ N×T sparse observations per embryo │ └────────────────────┬────────────────────────────────────┘ │ │ scripts/preprocess_dataset.py │ + src/epic_preprocess.py │ ┌────────────▼────────────┐ │ Per-Embryo Conversion │ │ │ │ • build_local_index │ │ • populate_X,alive_mk │ │ • spatial_edges │ │ • lineage_edges │ │ │ └────────────┬────────────┘ │ ┌────────────────────▼────────────────────────────────────┐ │ PROCESSED NPZ TENSORS │ │ dataset/processed/by_embryo/*.npz (260 files) │ │ │ │ Per-embryo (local): │ │ • X[N, d=5, T]: node features (sparse via mask) │ │ • alive_mask[N, T]: cell birth/lifespan tracking │ │ • edge_src/dst/t: sparse timepoint graphs │ │ • idx_to_cell[N]: cell name mapping │ │ • Metadata: t0, T, source_file │ │ │ │ Total: 260 embryos × ~57k edges × 688 cells │ │ Memory: ~177 MiB (compressed) │ └────────────────────┬────────────────────────────────────┘ │ │ Model training / analysis │ ┌────────────▼────────────┐ │ Graph Neural Network │ │ Training \u0026 Inference │ │ │ │ • Spatio-temporal GNN │ │ • Supervised learning │ │ • Cell prediction │ │ • Edge attention │ │ │ └─────────────────────────┘ 11. Troubleshooting Issue: Missing cells in early times Cause: Cells not yet born (before division)\nSolution: Check alive_mask before using X data\nIssue: Disconnected spatial graph Cause: distance_threshold too small\nSolution: Increase threshold (e.g., 30 instead of 20)\nIssue: Memory error loading all 260 embryos Cause: RAM limit (need ~20 GB for full batch)\nSolution: Load per-embryo or use data generator\nIssue: Cell names don’t match lineage Cause: Malformed cell names in raw CSV\nSolution: Preprocess cell names (strip whitespace, uppercase)\nReferences EPIC Consortium: http://epic.gs.washington.edu/ C. elegans anatomy: http://www.wormatlas.org/ Cell nomenclature standard: Sulston et al. (1983). Phil Trans R Soc London Document Version: 1.0\nLast Updated: April 2026\nPipeline Code: src/epic_preprocess.py\n",
+  "wordCount" : "3048",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Barshan Mondal"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://barshan.is-a.dev/temp/database_documentation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "bluee :)",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://barshan.is-a.dev/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://barshan.is-a.dev/" accesskey="h" title="bluee :) (Alt + H)">bluee :)</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://barshan.is-a.dev/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://barshan.is-a.dev/">Home</a>&nbsp;»&nbsp;<a href="https://barshan.is-a.dev/temp/">Temps</a></div>
+    <h1 class="post-title entry-hint-parent">
+      
+    </h1>
+    <div class="post-meta">15 min&nbsp;·&nbsp;Barshan Mondal
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#epic-database-preprocessing--tensor-conversion-documentation" aria-label="EPIC Database Preprocessing &amp; Tensor Conversion Documentation">EPIC Database Preprocessing &amp; Tensor Conversion Documentation</a><ul>
+                        
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a></li>
+                <li>
+                    <a href="#1-input-data-raw-epic-csv-format" aria-label="1. Input Data: Raw EPIC CSV Format">1. Input Data: Raw EPIC CSV Format</a><ul>
+                        
+                <li>
+                    <a href="#11-source-files" aria-label="1.1 Source Files">1.1 Source Files</a></li>
+                <li>
+                    <a href="#12-raw-csv-structure" aria-label="1.2 Raw CSV Structure">1.2 Raw CSV Structure</a></li>
+                <li>
+                    <a href="#13-key-observations" aria-label="1.3 Key Observations">1.3 Key Observations</a></li></ul>
+                </li>
+                <li>
+                    <a href="#2-preprocessing-pipeline" aria-label="2. Preprocessing Pipeline">2. Preprocessing Pipeline</a><ul>
+                        
+                <li>
+                    <a href="#21-architecture-overview" aria-label="2.1 Architecture Overview">2.1 Architecture Overview</a></li>
+                <li>
+                    <a href="#22-core-functions" aria-label="2.2 Core Functions">2.2 Core Functions</a><ul>
+                        
+                <li>
+                    <a href="#build_local_indexdf-pddataframe--epicindex" aria-label="build_local_index(df: pd.DataFrame) → EpicIndex">build_local_index(df: pd.DataFrame) → EpicIndex</a></li>
+                <li>
+                    <a href="#preprocess_epic_file_sparsefile_path--distance_threshold200-featuresxyzsizeblot--tuple" aria-label="preprocess_epic_file_sparse(file_path, *, distance_threshold=20.0, features=(&quot;x&quot;,&quot;y&quot;,&quot;z&quot;,&quot;size&quot;,&quot;blot&quot;)) → tuple">preprocess_epic_file_sparse(file_path, *, distance_threshold=20.0, features=(&quot;x&quot;,&quot;y&quot;,&quot;z&quot;,&quot;size&quot;,&quot;blot&quot;)) → tuple</a></li></ul>
+                </li>
+                <li>
+                    <a href="#23-preprocessing-script" aria-label="2.3 Preprocessing Script">2.3 Preprocessing Script</a></li></ul>
+                </li>
+                <li>
+                    <a href="#3-output-data-processed-npz-format" aria-label="3. Output Data: Processed NPZ Format">3. Output Data: Processed NPZ Format</a><ul>
+                        
+                <li>
+                    <a href="#31-output-location--structure" aria-label="3.1 Output Location &amp; Structure">3.1 Output Location &amp; Structure</a></li>
+                <li>
+                    <a href="#32-npz-archive-contents" aria-label="3.2 NPZ Archive Contents">3.2 NPZ Archive Contents</a></li>
+                <li>
+                    <a href="#33-tensor-specifications" aria-label="3.3 Tensor Specifications">3.3 Tensor Specifications</a><ul>
+                        
+                <li>
+                    <a href="#x-node-feature-tensor-n-d-t" aria-label="X: Node Feature Tensor (N, d, T)">X: Node Feature Tensor (N, d, T)</a></li>
+                <li>
+                    <a href="#alive_mask-birthalive-tracking-n-t" aria-label="alive_mask: Birth/Alive Tracking (N, T)">alive_mask: Birth/Alive Tracking (N, T)</a></li>
+                <li>
+                    <a href="#sparse-edge-lists-edge_src-edge_dst-edge_t" aria-label="Sparse Edge Lists: (edge_src, edge_dst, edge_t)">Sparse Edge Lists: (edge_src, edge_dst, edge_t)</a></li>
+                <li>
+                    <a href="#idx_to_cell-cell-name-mapping-n" aria-label="idx_to_cell: Cell Name Mapping (N,)">idx_to_cell: Cell Name Mapping (N,)</a></li>
+                <li>
+                    <a href="#metadata-t0-t-source_file" aria-label="Metadata: t0, T, source_file">Metadata: t0, T, source_file</a></li></ul>
+                </li>
+                <li>
+                    <a href="#34-example-spot-check-statistics-cd011605_5a_brightnpz" aria-label="3.4 Example: Spot-Check Statistics (CD011605_5a_bright.npz)">3.4 Example: Spot-Check Statistics (CD011605_5a_bright.npz)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#4-biological-interpretation" aria-label="4. Biological Interpretation">4. Biological Interpretation</a><ul>
+                        
+                <li>
+                    <a href="#41-c-elegans-cell-nomenclature" aria-label="4.1 C. elegans Cell Nomenclature">4.1 C. elegans Cell Nomenclature</a></li>
+                <li>
+                    <a href="#42-biological-meaning-of-features--graphs" aria-label="4.2 Biological Meaning of Features &amp; Graphs">4.2 Biological Meaning of Features &amp; Graphs</a><ul>
+                        
+                <li>
+                    <a href="#node-features-x" aria-label="Node Features (X)">Node Features (X)</a></li>
+                <li>
+                    <a href="#spatial-edges" aria-label="Spatial Edges">Spatial Edges</a></li>
+                <li>
+                    <a href="#lineage-edges" aria-label="Lineage Edges">Lineage Edges</a></li></ul>
+                </li>
+                <li>
+                    <a href="#43-embryonic-development-timeline-example" aria-label="4.3 Embryonic Development Timeline Example">4.3 Embryonic Development Timeline Example</a></li></ul>
+                </li>
+                <li>
+                    <a href="#5-memory--performance" aria-label="5. Memory &amp; Performance">5. Memory &amp; Performance</a><ul>
+                        
+                <li>
+                    <a href="#51-storage-comparison-dense-vs-sparse" aria-label="5.1 Storage Comparison: Dense vs. Sparse">5.1 Storage Comparison: Dense vs. Sparse</a></li>
+                <li>
+                    <a href="#52-compressed-npz-performance" aria-label="5.2 Compressed NPZ Performance">5.2 Compressed NPZ Performance</a></li></ul>
+                </li>
+                <li>
+                    <a href="#6-usage-patterns" aria-label="6. Usage Patterns">6. Usage Patterns</a><ul>
+                        
+                <li>
+                    <a href="#61-loading-a-single-embryo" aria-label="6.1 Loading a Single Embryo">6.1 Loading a Single Embryo</a></li>
+                <li>
+                    <a href="#62-working-with-edges" aria-label="6.2 Working with Edges">6.2 Working with Edges</a></li>
+                <li>
+                    <a href="#63-reconstructing-cell-names" aria-label="6.3 Reconstructing Cell Names">6.3 Reconstructing Cell Names</a></li>
+                <li>
+                    <a href="#64-lineage-tree-traversal" aria-label="6.4 Lineage Tree Traversal">6.4 Lineage Tree Traversal</a></li></ul>
+                </li>
+                <li>
+                    <a href="#7-file-manifest--provenance" aria-label="7. File Manifest &amp; Provenance">7. File Manifest &amp; Provenance</a><ul>
+                        
+                <li>
+                    <a href="#71-manifesttxt" aria-label="7.1 manifest.txt">7.1 manifest.txt</a></li>
+                <li>
+                    <a href="#72-provenance-tracking" aria-label="7.2 Provenance Tracking">7.2 Provenance Tracking</a></li></ul>
+                </li>
+                <li>
+                    <a href="#8-quality-control--validation" aria-label="8. Quality Control &amp; Validation">8. Quality Control &amp; Validation</a><ul>
+                        
+                <li>
+                    <a href="#81-sanity-checks" aria-label="8.1 Sanity Checks">8.1 Sanity Checks</a></li>
+                <li>
+                    <a href="#82-per-embryo-statistics-template" aria-label="8.2 Per-Embryo Statistics Template">8.2 Per-Embryo Statistics Template</a></li></ul>
+                </li>
+                <li>
+                    <a href="#9-common-operations--recipes" aria-label="9. Common Operations &amp; Recipes">9. Common Operations &amp; Recipes</a><ul>
+                        
+                <li>
+                    <a href="#91-batch-loading" aria-label="9.1 Batch Loading">9.1 Batch Loading</a></li>
+                <li>
+                    <a href="#92-time-averaged-graphs" aria-label="9.2 Time-Averaged Graphs">9.2 Time-Averaged Graphs</a></li>
+                <li>
+                    <a href="#93-feature-histograms" aria-label="9.3 Feature Histograms">9.3 Feature Histograms</a></li></ul>
+                </li>
+                <li>
+                    <a href="#10-summary-data-pipeline" aria-label="10. Summary: Data Pipeline">10. Summary: Data Pipeline</a></li>
+                <li>
+                    <a href="#11-troubleshooting" aria-label="11. Troubleshooting">11. Troubleshooting</a><ul>
+                        
+                <li>
+                    <a href="#issue-missing-cells-in-early-times" aria-label="Issue: Missing cells in early times">Issue: Missing cells in early times</a></li>
+                <li>
+                    <a href="#issue-disconnected-spatial-graph" aria-label="Issue: Disconnected spatial graph">Issue: Disconnected spatial graph</a></li>
+                <li>
+                    <a href="#issue-memory-error-loading-all-260-embryos" aria-label="Issue: Memory error loading all 260 embryos">Issue: Memory error loading all 260 embryos</a></li>
+                <li>
+                    <a href="#issue-cell-names-dont-match-lineage" aria-label="Issue: Cell names don&rsquo;t match lineage">Issue: Cell names don&rsquo;t match lineage</a></li></ul>
+                </li>
+                <li>
+                    <a href="#references" aria-label="References">References</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="epic-database-preprocessing--tensor-conversion-documentation">EPIC Database Preprocessing &amp; Tensor Conversion Documentation<a hidden class="anchor" aria-hidden="true" href="#epic-database-preprocessing--tensor-conversion-documentation">#</a></h1>
+<h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>This document describes the complete transformation pipeline that converts raw <strong>EPIC (eMbryo Project Imaging Consortium) microscopy CSV files</strong> into optimized tensor representations suitable for spatio-temporal graph neural network training.</p>
+<p>The pipeline produces <strong>N×d×T</strong> node feature tensors and sparse directional graphs representing both spatial proximity and biological cell lineage relationships, enabling analysis of <em>C. elegans</em> embryonic cell division and migration.</p>
+<hr>
+<h2 id="1-input-data-raw-epic-csv-format">1. Input Data: Raw EPIC CSV Format<a hidden class="anchor" aria-hidden="true" href="#1-input-data-raw-epic-csv-format">#</a></h2>
+<h3 id="11-source-files">1.1 Source Files<a hidden class="anchor" aria-hidden="true" href="#11-source-files">#</a></h3>
+<ul>
+<li><strong>Location</strong>: <code>dataset/raw/*.csv</code></li>
+<li><strong>Count</strong>: 260 embryo microscopy recordings</li>
+<li><strong>Format</strong>: Comma-separated values (CSV)</li>
+</ul>
+<h3 id="12-raw-csv-structure">1.2 Raw CSV Structure<a hidden class="anchor" aria-hidden="true" href="#12-raw-csv-structure">#</a></h3>
+<p>Each raw EPIC file contains per-timepoint measurements of cytoplasmic positions and physical properties.</p>
+<p><strong>Example (CD011605_5a_bright.csv):</strong></p>
+<pre tabindex="0"><code>cellTime,cell,time,none,global,local,blot,cross,z,x,y,size,gweight
+AB:1,AB,1,23219,-1781,22,22,-1781,13.9,329,261,80,2186472
+AB:2,AB,2,22651,-2349,-4,-4,-2349,14.0,302,268,80,2410777
+ABa:10,ABa,10,22732,-2268,88,85,-2266,17.6,259,227,65,585043
+ABal:25,ABal,25,22722,-2278,10,15,-2278,19.2,166,257,74,815432
+</code></pre><p><strong>Column Definitions:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Meaning</th>
+<th>Type</th>
+<th>Used?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cellTime</code></td>
+<td>Row ID</td>
+<td>str</td>
+<td>✗</td>
+<td>Not used (duplicate of cell:time)</td>
+</tr>
+<tr>
+<td><code>cell</code></td>
+<td>Cell name</td>
+<td>str</td>
+<td>✓</td>
+<td>C. elegans nomenclature (AB, ABa, ABal, etc.)</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>Absolute timepoint</td>
+<td>int</td>
+<td>✓</td>
+<td>Typically 1-based timepoints</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>Unknown field</td>
+<td>-</td>
+<td>✗</td>
+<td>Ignored</td>
+</tr>
+<tr>
+<td><code>global</code></td>
+<td>Global Z-index offset</td>
+<td>int</td>
+<td>✗</td>
+<td>Unused offset info</td>
+</tr>
+<tr>
+<td><code>local</code></td>
+<td>Local offset</td>
+<td>int</td>
+<td>✗</td>
+<td>Unused offset info</td>
+</tr>
+<tr>
+<td><code>blot</code></td>
+<td>Core fluorescence intensity</td>
+<td>float</td>
+<td>✓</td>
+<td><strong>Primary feature:</strong> cell identity / state</td>
+</tr>
+<tr>
+<td><code>cross</code></td>
+<td>Cross-correlation metric</td>
+<td>float</td>
+<td>✗</td>
+<td>Ignored</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td>3D depth coordinate (μm)</td>
+<td>float</td>
+<td>✓</td>
+<td>Spatial feature</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>2D horizontal coordinate (px)</td>
+<td>float</td>
+<td>✓</td>
+<td>Spatial feature</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>2D vertical coordinate (px)</td>
+<td>float</td>
+<td>✓</td>
+<td>Spatial feature</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Estimated cell volume (counts)</td>
+<td>float</td>
+<td>✓</td>
+<td>Morphological feature</td>
+</tr>
+<tr>
+<td><code>gweight</code></td>
+<td>Image intensity weighting</td>
+<td>float</td>
+<td>✗</td>
+<td>Unused weighting</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-key-observations">1.3 Key Observations<a hidden class="anchor" aria-hidden="true" href="#13-key-observations">#</a></h3>
+<ul>
+<li><strong>One row = one cell at one timepoint</strong> (N × T sparse matrix of measurements)</li>
+<li><strong>Variable-length time series:</strong> Different embryos have different T (e.g., CD011605_5a_bright: ~210 timepoints, others vary)</li>
+<li><strong>Sparse data:</strong> Cells only appear <em>after they are born</em>. The AB cell appears from time 1; ABal appears from time 25</li>
+<li><strong>Naming conventions encode lineage:</strong> <code>ABal</code> is a daughter of <code>ABa</code> (remove last letter to get parent)</li>
+</ul>
+<hr>
+<h2 id="2-preprocessing-pipeline">2. Preprocessing Pipeline<a hidden class="anchor" aria-hidden="true" href="#2-preprocessing-pipeline">#</a></h2>
+<h3 id="21-architecture-overview">2.1 Architecture Overview<a hidden class="anchor" aria-hidden="true" href="#21-architecture-overview">#</a></h3>
+<p>The preprocessing system has <strong>per-embryo</strong> (local) tensor construction:</p>
+<pre tabindex="0"><code>Raw CSV (cell, time, x, y, z, size, blot)
+    ↓
+[build_local_index] → EpicIndex (local cell→idx mapping, t0, T)
+    ↓
+[populate_X &amp; alive_mask] → Node features + birth/alive tracking
+    ↓
+[build_spatial_edges] → Euclidean proximity graph (undirected)
+    ↓
+[build_lineage_edges] → Divisional lineage graph (directed)
+    ↓
+[save_to_npz] → Compressed tensor archive
+</code></pre><h3 id="22-core-functions">2.2 Core Functions<a hidden class="anchor" aria-hidden="true" href="#22-core-functions">#</a></h3>
+<h4 id="build_local_indexdf-pddataframe--epicindex"><code>build_local_index(df: pd.DataFrame) → EpicIndex</code><a hidden class="anchor" aria-hidden="true" href="#build_local_indexdf-pddataframe--epicindex">#</a></h4>
+<p>Builds a per-embryo cell indexing structure.</p>
+<p><strong>Inputs:</strong></p>
+<ul>
+<li><code>df</code>: DataFrame from raw EPIC CSV</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><code>cell_to_idx: dict[str, int]</code> — Maps cell name (e.g., &ldquo;ABal&rdquo;) → node index 0..N-1 (sorted alphabetically for reproducibility)</li>
+<li><code>t0: int</code> — First observed timepoint (typically 1)</li>
+<li><code>T: int</code> — Total number of timepoints = (t_max - t0) + 1</li>
+</ul>
+<p><strong>Logic:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cells</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&#34;cell&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>  <span class="c1"># Alphabetical order for reproducibility</span>
+</span></span><span class="line"><span class="cl"><span class="n">t0</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">T</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">-</span> <span class="n">t0</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">cell_to_idx</span> <span class="o">=</span> <span class="p">{</span><span class="n">cell</span><span class="p">:</span> <span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cells</span><span class="p">)}</span>
+</span></span></code></pre></div><p><strong>Example (CD011605_5a_bright):</strong></p>
+<ul>
+<li>Cells found: {AB, ABa, ABal, ABp, ABpl, ABpr, &hellip;}</li>
+<li>N = 688 unique cells across entire lineage</li>
+<li>t0 = 1, T = 210 timepoints</li>
+<li>cell_to_idx = {&ldquo;AB&rdquo;: 0, &ldquo;ABa&rdquo;: 1, &ldquo;ABal&rdquo;: 2, &hellip;}</li>
+</ul>
+<hr>
+<h4 id="preprocess_epic_file_sparsefile_path--distance_threshold200-featuresxyzsizeblot--tuple"><code>preprocess_epic_file_sparse(file_path, *, distance_threshold=20.0, features=(&quot;x&quot;,&quot;y&quot;,&quot;z&quot;,&quot;size&quot;,&quot;blot&quot;)) → tuple</code><a hidden class="anchor" aria-hidden="true" href="#preprocess_epic_file_sparsefile_path--distance_threshold200-featuresxyzsizeblot--tuple">#</a></h4>
+<p>Main preprocessing function. Converts one raw CSV into tensors.</p>
+<p><strong>Returns:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>              <span class="c1"># (N, d, T) float32  — Node feature tensor</span>
+</span></span><span class="line"><span class="cl"><span class="n">alive_mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>     <span class="c1"># (N, T) bool        — Cell birth/alive tracking</span>
+</span></span><span class="line"><span class="cl"><span class="n">edge_src</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>       <span class="c1"># (E,) int32         — Source node indices</span>
+</span></span><span class="line"><span class="cl"><span class="n">edge_dst</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>       <span class="c1"># (E,) int32         — Destination node indices</span>
+</span></span><span class="line"><span class="cl"><span class="n">edge_t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>         <span class="c1"># (E,) int32         — Edge timepoints (0-indexed)</span>
+</span></span><span class="line"><span class="cl"><span class="n">index</span><span class="p">:</span> <span class="n">EpicIndex</span>           <span class="c1"># Metadata (cell→idx, t0, T)</span>
+</span></span></code></pre></div><p><strong>Step 1: Initialize Tensors</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cell_to_idx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">T</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">T</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># features: [x, y, z, size, blot]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">alive_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+</span></span></code></pre></div><p>Zero-initialization ensures:</p>
+<ul>
+<li>Unborn cells have zero-vector features (masked implicitly)</li>
+<li>Memory-efficient sparse representation</li>
+</ul>
+<p><strong>Step 2: Populate X &amp; alive_mask</strong></p>
+<p>For each row in the raw CSV:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">c_idx</span> <span class="o">=</span> <span class="n">cell_to_idx</span><span class="p">[</span><span class="n">cell_name</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">t_idx</span> <span class="o">=</span> <span class="n">time_value</span> <span class="o">-</span> <span class="n">t0</span>  <span class="c1"># Convert to 0-indexed</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span><span class="p">[</span><span class="n">c_idx</span><span class="p">,</span> <span class="p">:,</span> <span class="n">t_idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">blot</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">alive_mask</span><span class="p">[</span><span class="n">c_idx</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span></code></pre></div><p>This marks exactly when each cell becomes &ldquo;alive&rdquo; (observed).</p>
+<p><strong>Step 3: Build Spatial Edges (Undirected)</strong></p>
+<p>For each timepoint t:</p>
+<ol>
+<li><strong>Filter alive cells:</strong> Only include cells with <code>alive_mask[_, t] == True</code></li>
+<li><strong>Compute pairwise distances:</strong> Using Euclidean metric on (x, y, z)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">coords</span> <span class="o">=</span> <span class="n">alive_df</span><span class="p">[[</span><span class="s2">&#34;x&#34;</span><span class="p">,</span> <span class="s2">&#34;y&#34;</span><span class="p">,</span> <span class="s2">&#34;z&#34;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Shape (M, 3)</span>
+</span></span><span class="line"><span class="cl"><span class="n">distances</span> <span class="o">=</span> <span class="n">pdist</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&#34;euclidean&#34;</span><span class="p">)</span>  <span class="c1"># Pairwise distances</span>
+</span></span><span class="line"><span class="cl"><span class="n">distances_matrix</span> <span class="o">=</span> <span class="n">squareform</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>  <span class="c1"># (M, M) distance matrix</span>
+</span></span></code></pre></div></li>
+<li><strong>Create edges when distance &lt; threshold:</strong>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">idx_i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">alive_indices</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">idx_j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">alive_indices</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">distances</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">distance_threshold</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">edge_src</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx_i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">edge_dst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx_j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">edge_t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_idx</span><span class="p">)</span>
+</span></span></code></pre></div></li>
+</ol>
+<p><strong>Default threshold:</strong> 20.0 micrometers (or pixels, depending on calibration)</p>
+<p><strong>Bidirectional:</strong> Both (i→j) and (j→i) edges are added to represent undirected spatial proximity.</p>
+<p><strong>Step 4: Build Lineage Edges (Directed)</strong></p>
+<p>C. elegans cells follow <strong>strict binary naming conventions</strong>:</p>
+<ul>
+<li><strong>AB</strong> divides → <strong>ABa</strong> + <strong>ABp</strong> (left vs right)</li>
+<li><strong>ABa</strong> divides → <strong>ABal</strong> + <strong>ABar</strong> (left vs right)</li>
+<li><strong>ABal</strong> divides → <strong>ABalp</strong> + <strong>ABalaa</strong> (anterior vs posterior)</li>
+</ul>
+<p><strong>Algorithm:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">alive_cells_at_time_t</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">cell</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>  <span class="c1"># Last char is alphabetic</span>
+</span></span><span class="line"><span class="cl">        <span class="n">parent_name</span> <span class="o">=</span> <span class="n">cell</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Remove last letter</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">parent_name</span> <span class="ow">in</span> <span class="n">cell_to_idx</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">p_idx</span> <span class="o">=</span> <span class="n">cell_to_idx</span><span class="p">[</span><span class="n">parent_name</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">c_idx</span> <span class="o">=</span> <span class="n">cell_to_idx</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">edge_src</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_idx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">edge_dst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c_idx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">edge_t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_idx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># Directed: parent → child (division arrow)</span>
+</span></span></code></pre></div><p><strong>Key:</strong> This reconstructs the entire divisional lineage tree <strong>directly from cell names</strong>, without requiring explicit lineage tables.</p>
+<hr>
+<h3 id="23-preprocessing-script">2.3 Preprocessing Script<a hidden class="anchor" aria-hidden="true" href="#23-preprocessing-script">#</a></h3>
+<p><strong>File:</strong> <a href="../scripts/preprocess_dataset.py">scripts/preprocess_dataset.py</a></p>
+<p>Iterates over all raw EPIC CSVs and outputs one NPZ per embryo.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python scripts/preprocess_dataset.py <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --raw_dir dataset/raw <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --out dataset/processed/by_embryo <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --distance_threshold <span class="m">20</span>
+</span></span></code></pre></div><p><strong>Processing Loop:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dataset</span><span class="o">/</span><span class="n">raw</span><span class="o">/*.</span><span class="n">csv</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">X</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">edge_src</span><span class="p">,</span> <span class="n">edge_dst</span><span class="p">,</span> <span class="n">edge_t</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">preprocess_epic_file_sparse</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file_path</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">distance_threshold</span><span class="o">=</span><span class="mf">20.0</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Save as compressed NPZ</span>
+</span></span><span class="line"><span class="cl">    <span class="n">np</span><span class="o">.</span><span class="n">savez_compressed</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="sa">f</span><span class="s2">&#34;dataset/processed/by_embryo/</span><span class="si">{</span><span class="n">file_stem</span><span class="si">}</span><span class="s2">.npz&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">alive_mask</span><span class="o">=</span><span class="n">alive</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">edge_src</span><span class="o">=</span><span class="n">edge_src</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">edge_dst</span><span class="o">=</span><span class="n">edge_dst</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">edge_t</span><span class="o">=</span><span class="n">edge_t</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">idx_to_cell</span><span class="o">=</span><span class="n">idx_to_cell_array</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t0</span><span class="o">=</span><span class="n">t0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">source_file</span><span class="o">=</span><span class="n">original_filename</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span></code></pre></div><p><strong>Output manifest:</strong></p>
+<ul>
+<li>Creates <code>dataset/processed/by_embryo/manifest.txt</code> listing all 260 output files</li>
+</ul>
+<hr>
+<h2 id="3-output-data-processed-npz-format">3. Output Data: Processed NPZ Format<a hidden class="anchor" aria-hidden="true" href="#3-output-data-processed-npz-format">#</a></h2>
+<h3 id="31-output-location--structure">3.1 Output Location &amp; Structure<a hidden class="anchor" aria-hidden="true" href="#31-output-location--structure">#</a></h3>
+<pre tabindex="0"><code>dataset/processed/
+└── by_embryo/
+    ├── CD011505_end1red_bright.npz
+    ├── CD011605_5a_bright.npz
+    ├── ...  (258 more files)
+    └── manifest.txt
+</code></pre><h3 id="32-npz-archive-contents">3.2 NPZ Archive Contents<a hidden class="anchor" aria-hidden="true" href="#32-npz-archive-contents">#</a></h3>
+<p>Each <code>.npz</code> file is a NumPy compressed archive containing a single embryo.</p>
+<p><strong>Load example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&#34;CD011605_5a_bright.npz&#34;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;X&#34;</span><span class="p">]</span>              <span class="c1"># (N, d, T) float32</span>
+</span></span><span class="line"><span class="cl"><span class="n">alive_mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;alive_mask&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">edge_src</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;edge_src&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">edge_dst</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;edge_dst&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">edge_t</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;edge_t&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">idx_to_cell</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;idx_to_cell&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">t0</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&#34;t0&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">T</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&#34;T&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">source_file</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&#34;source_file&#34;</span><span class="p">])</span>
+</span></span></code></pre></div><h3 id="33-tensor-specifications">3.3 Tensor Specifications<a hidden class="anchor" aria-hidden="true" href="#33-tensor-specifications">#</a></h3>
+<h4 id="x-node-feature-tensor-n-d-t"><strong>X: Node Feature Tensor (N, d, T)</strong><a hidden class="anchor" aria-hidden="true" href="#x-node-feature-tensor-n-d-t">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Size</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N</strong></td>
+<td>688</td>
+<td>int</td>
+<td>Number of distinct cells in embryo</td>
+</tr>
+<tr>
+<td><strong>d</strong></td>
+<td>5</td>
+<td>int</td>
+<td>Feature dimension: [x, y, z, size, blot]</td>
+</tr>
+<tr>
+<td><strong>T</strong></td>
+<td>210</td>
+<td>int</td>
+<td>Time steps (1-indexed → 0-indexed)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Shape:</strong> <code>(688, 5, 210)</code> for CD011605_5a_bright</p>
+<p><strong>Data:</strong></p>
+<pre tabindex="0"><code>X[c_idx, :, t_idx] = [x, y, z, size, blot]
+</code></pre><ul>
+<li><strong>x, y</strong> (pixels): 2D position in image plane</li>
+<li><strong>z</strong> (μm): Depth from microscope focal plane</li>
+<li><strong>size</strong> (AU): Cell volume / morphological size</li>
+<li><strong>blot</strong> (AU): Fluorescence intensity (cell identity marker)</li>
+</ul>
+<p><strong>Masking:</strong></p>
+<ul>
+<li>Unborn cells: <code>X[c_idx, :, t_idx] = [0, 0, 0, 0, 0]</code> (zero vector)</li>
+<li>Alive tracking: Use <code>alive_mask[c_idx, t_idx]</code> to identify valid measurements</li>
+</ul>
+<hr>
+<h4 id="alive_mask-birthalive-tracking-n-t"><strong>alive_mask: Birth/Alive Tracking (N, T)</strong><a hidden class="anchor" aria-hidden="true" href="#alive_mask-birthalive-tracking-n-t">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Size</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N</strong></td>
+<td>688</td>
+<td>bool</td>
+<td>Cell index</td>
+</tr>
+<tr>
+<td><strong>T</strong></td>
+<td>210</td>
+<td>bool</td>
+<td>Timepoint (True = alive, False = not born yet)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Shape:</strong> <code>(688, 210)</code></p>
+<p><strong>Interpretation:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="n">alive_mask</span><span class="p">[</span><span class="n">c_idx</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Cell c_idx is alive (observed) at time t_idx</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># X[c_idx, :, t_idx] contains valid measurements</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Cell c_idx not yet born; X[c_idx, :, t_idx] is all zeros</span>
+</span></span></code></pre></div><p><strong>Example (Cell ABal, born at time 25):</strong></p>
+<pre tabindex="0"><code>alive_mask[ABal_idx, 0:24]  = [False, False, ..., False]  (24 False values)
+alive_mask[ABal_idx, 24:]   = [True, True, ..., True]     (186 True values)
+</code></pre><hr>
+<h4 id="sparse-edge-lists-edge_src-edge_dst-edge_t"><strong>Sparse Edge Lists: (edge_src, edge_dst, edge_t)</strong><a hidden class="anchor" aria-hidden="true" href="#sparse-edge-lists-edge_src-edge_dst-edge_t">#</a></h4>
+<p>Instead of a full dense adjacency tensor <strong>A ∈ ℝ^(N×N×T)</strong> (688×688×210 = ~100M entries), edges are stored as three sparse arrays.</p>
+<table>
+<thead>
+<tr>
+<th>Array</th>
+<th>Shape</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>edge_src</strong></td>
+<td>(E,)</td>
+<td>int32</td>
+<td>Source node indices</td>
+</tr>
+<tr>
+<td><strong>edge_dst</strong></td>
+<td>(E,)</td>
+<td>int32</td>
+<td>Destination node indices</td>
+</tr>
+<tr>
+<td><strong>edge_t</strong></td>
+<td>(E,)</td>
+<td>int32</td>
+<td>Timepoint (0-indexed)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total edges (E):</strong> ~56,000 for CD011605_5a_bright</p>
+<p><strong>Reconstruction:</strong> From sparse to dense at time t:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">A_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mask</span> <span class="o">=</span> <span class="n">edge_t</span> <span class="o">==</span> <span class="n">t</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">src</span> <span class="o">=</span> <span class="n">edge_src</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dst</span> <span class="o">=</span> <span class="n">edge_dst</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">A_t</span><span class="p">[</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span></code></pre></div><p><strong>Edge Types:</strong></p>
+<ol>
+<li>
+<p>**Spatial edges (undirected, <strong>≈45,000 edges/embryo):</strong></p>
+<ul>
+<li>Created when distance(cell_i, cell_j) &lt; 20 μm at time t</li>
+<li>Bidirectional: both (i→j) and (j→i) present</li>
+<li>Represents physical cell-cell contact / proximity</li>
+<li>Frequency varies with time (more cells = denser graph as development progresses)</li>
+</ul>
+</li>
+<li>
+<p><strong>Lineage edges (directed, ~1,000–5,000 edges/embryo):</strong></p>
+<ul>
+<li>Parent → daughter division (ABa → ABal)</li>
+<li>Generated only once in development (at division time)</li>
+<li>Reconstructed from C. elegans naming conventions</li>
+<li>Example: At time t=25, lineage edges include all known divisions up to t</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="idx_to_cell-cell-name-mapping-n"><strong>idx_to_cell: Cell Name Mapping (N,)</strong><a hidden class="anchor" aria-hidden="true" href="#idx_to_cell-cell-name-mapping-n">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>idx_to_cell</strong></td>
+<td>(N,) object</td>
+<td>Inverse of cell_to_idx</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Shape:</strong> <code>(688,)</code> of dtype <code>object</code> (strings)</p>
+<p><strong>Content:</strong></p>
+<pre tabindex="0"><code>idx_to_cell[0] = &#34;AB&#34;
+idx_to_cell[1] = &#34;ABa&#34;
+idx_to_cell[2] = &#34;ABal&#34;
+...
+idx_to_cell[687] = &#34;Zrp1aaa&#34;  (one of the rearmost cells)
+</code></pre><p><strong>Usage:</strong> Convert predictions back to biological names:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">predicted_idx</span> <span class="o">=</span> <span class="mi">42</span>
+</span></span><span class="line"><span class="cl"><span class="n">cell_name</span> <span class="o">=</span> <span class="n">idx_to_cell</span><span class="p">[</span><span class="n">predicted_idx</span><span class="p">]</span>  <span class="c1"># &#34;ABpr&#34;</span>
+</span></span></code></pre></div><hr>
+<h4 id="metadata-t0-t-source_file"><strong>Metadata: t0, T, source_file</strong><a hidden class="anchor" aria-hidden="true" href="#metadata-t0-t-source_file">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>t0</strong></td>
+<td>int32</td>
+<td>First timepoint (usually 1)</td>
+</tr>
+<tr>
+<td><strong>T</strong></td>
+<td>int32</td>
+<td>Total timepoints (210 for this embryo)</td>
+</tr>
+<tr>
+<td><strong>source_file</strong></td>
+<td>str</td>
+<td>Original filename (e.g., &ldquo;CD011605_5a_bright.csv&rdquo;)</td>
+</tr>
+</tbody>
+</table>
+<p>Used for:</p>
+<ul>
+<li>Validating shape consistency across a batch</li>
+<li>Tracking provenance to raw data</li>
+<li>Reconstructing absolute timepoints: <code>absolute_time = t0 + t_idx</code></li>
+</ul>
+<hr>
+<h3 id="34-example-spot-check-statistics-cd011605_5a_brightnpz">3.4 Example: Spot-Check Statistics (CD011605_5a_bright.npz)<a hidden class="anchor" aria-hidden="true" href="#34-example-spot-check-statistics-cd011605_5a_brightnpz">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&#34;dataset/processed/by_embryo/CD011605_5a_bright.npz&#34;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Shapes</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;X shape:&#34;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;X&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>              <span class="c1"># (688, 5, 210)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;alive_mask shape:&#34;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;alive_mask&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (688, 210)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Edges:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&#34;edge_src&#34;</span><span class="p">]))</span>          <span class="c1"># 56,605 edges</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Birth times</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;First born cells:&#34;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;idx_to_cell&#34;</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># [&#39;AB&#39;, &#39;ABa&#39;, &#39;ABal&#39;, &#39;ABp&#39;, &#39;ABpl&#39;, &#39;ABpr&#39;, ...]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Lineage verification</span>
+</span></span><span class="line"><span class="cl"><span class="n">idx_ABa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&#34;idx_to_cell&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;ABa&#34;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">idx_ABal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&#34;idx_to_cell&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;ABal&#34;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Find edges where ABa → ABal</span>
+</span></span><span class="line"><span class="cl"><span class="n">lineage_edges</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&#34;edge_src&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="n">idx_ABa</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&#34;edge_dst&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="n">idx_ABal</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;ABa → ABal edges:&#34;</span><span class="p">,</span> <span class="n">lineage_edges</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>  <span class="c1"># ≈14 (one per timepoint from division onward)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Data range</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;X&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;X statistics (only alive cells):&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;x range:&#34;</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:][</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s2">&#34;-&#34;</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;blot range:&#34;</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">:][</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">:]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s2">&#34;-&#34;</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</span></span></code></pre></div><hr>
+<h2 id="4-biological-interpretation">4. Biological Interpretation<a hidden class="anchor" aria-hidden="true" href="#4-biological-interpretation">#</a></h2>
+<h3 id="41-c-elegans-cell-nomenclature">4.1 C. elegans Cell Nomenclature<a hidden class="anchor" aria-hidden="true" href="#41-c-elegans-cell-nomenclature">#</a></h3>
+<p>The cell naming system encodes <strong>complete lineage information</strong> hierarchically:</p>
+<pre tabindex="0"><code>AB          : First zygote founder cell
+├─ ABa      : Left daughter (after first division)
+│  ├─ ABal  : Left-anterior daughter
+│  │ ├─ ABalp   : Anterior division
+│  │ └─ ABalaa  : Posterior division
+│  └─ ABar  : Right-anterior daughter
+└─ ABp      : Right daughter
+   ├─ ABpl  : Left-posterior daughter
+   └─ ABpr  : Right-posterior daughter
+</code></pre><p><strong>Naming rules:</strong></p>
+<ol>
+<li>Each mother cell divides into exactly 2 daughters</li>
+<li>Daughters named by appending single letters: <strong>l/r</strong> (left/right), <strong>a/p</strong> (anterior/posterior), <strong>d/v</strong> (dorsal/ventral)</li>
+<li>Last character removal = parent name</li>
+</ol>
+<p><strong>Example lineage edges:</strong></p>
+<ul>
+<li>AB → ABa (first division)</li>
+<li>ABa → ABal (second division)</li>
+<li>ABal → ABalp (third division)</li>
+<li>ABalp → ABalpaa (fourth division)</li>
+</ul>
+<hr>
+<h3 id="42-biological-meaning-of-features--graphs">4.2 Biological Meaning of Features &amp; Graphs<a hidden class="anchor" aria-hidden="true" href="#42-biological-meaning-of-features--graphs">#</a></h3>
+<h4 id="node-features-x"><strong>Node Features (X)</strong><a hidden class="anchor" aria-hidden="true" href="#node-features-x">#</a></h4>
+<ul>
+<li><strong>Spatial (x, y, z):</strong> Track <strong>cell migration</strong> during development</li>
+<li><strong>size:</strong> Reflects <strong>cell volume</strong> changes during division cycle</li>
+<li><strong>blot:</strong> Fluorescence marker; indicates <strong>cell identity</strong> or developmental state</li>
+</ul>
+<h4 id="spatial-edges"><strong>Spatial Edges</strong><a hidden class="anchor" aria-hidden="true" href="#spatial-edges">#</a></h4>
+<ul>
+<li><strong>Physical interactions:</strong> Cells within 20 μm likely touching</li>
+<li><strong>Tissue context:</strong> Neighboring cells influence morphology &amp; gene expression</li>
+<li><strong>Time-varying:</strong> Edges appear/disappear as cells migrate</li>
+</ul>
+<h4 id="lineage-edges"><strong>Lineage Edges</strong><a hidden class="anchor" aria-hidden="true" href="#lineage-edges">#</a></h4>
+<ul>
+<li><strong>Developmental ancestry:</strong> Directed acyclic graph (DAG) of cell divisions</li>
+<li><strong>Biological correctness:</strong> Encoded directly in C. elegans naming (not inferred)</li>
+<li><strong>Complete genealogy:</strong> Follows true developmental history perfectly</li>
+</ul>
+<hr>
+<h3 id="43-embryonic-development-timeline-example">4.3 Embryonic Development Timeline Example<a hidden class="anchor" aria-hidden="true" href="#43-embryonic-development-timeline-example">#</a></h3>
+<p><strong>CD011605_5a_bright: 210 timepoints (≈840 seconds @ ~4 seconds/frame)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Development Stage</th>
+<th>Key Events</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–10</td>
+<td>Early blastomere</td>
+<td>AB cell at ~5 μm</td>
+</tr>
+<tr>
+<td>10–25</td>
+<td>Early cleavage</td>
+<td>ABa/ABp born (1st div); ~4 cells observed</td>
+</tr>
+<tr>
+<td>25–50</td>
+<td>Early cleavage</td>
+<td>ABal/ABel cells born; ~15–30 cells</td>
+</tr>
+<tr>
+<td>50–100</td>
+<td>Mid cleavage</td>
+<td>~100–200 cells</td>
+</tr>
+<tr>
+<td>100–150</td>
+<td>Late cleavage</td>
+<td>~400–500 cells</td>
+</tr>
+<tr>
+<td>150–210</td>
+<td>Early post-cleavage</td>
+<td>~688 cells at full lineage</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>alive_mask</code> captures this—early timepoints have mostly zeros; later timepoints fill in as cells are born.</p>
+<hr>
+<h2 id="5-memory--performance">5. Memory &amp; Performance<a hidden class="anchor" aria-hidden="true" href="#5-memory--performance">#</a></h2>
+<h3 id="51-storage-comparison-dense-vs-sparse">5.1 Storage Comparison: Dense vs. Sparse<a hidden class="anchor" aria-hidden="true" href="#51-storage-comparison-dense-vs-sparse">#</a></h3>
+<p><strong>Dense adjacency tensor would require:</strong></p>
+<pre tabindex="0"><code>A ∈ ℝ^(N×N×T) = (688 × 688 × 210 × 8 bytes)
+                = 733 GiB (all 260 embryos)
+</code></pre><p><strong>Our sparse representation:</strong></p>
+<pre tabindex="0"><code>edge_src, edge_dst, edge_t ∈ ℝ^E (56,605 × 3 × 4 bytes)
+                               = 0.68 MiB per embryo
+All 260 embryos: ~177 MiB (compressed)
+</code></pre><p><strong>Reduction: ~4,000×</strong></p>
+<hr>
+<h3 id="52-compressed-npz-performance">5.2 Compressed NPZ Performance<a hidden class="anchor" aria-hidden="true" href="#52-compressed-npz-performance">#</a></h3>
+<ul>
+<li><strong>Compression ratio:</strong> ~3–5× reduction (sparse data compresses well)</li>
+<li><strong>Load time:</strong> ~100 ms per embryo (all tensors loaded into RAM)</li>
+<li><strong>Total memory (all 260):</strong> ~20 GB uncompressed</li>
+</ul>
+<hr>
+<h2 id="6-usage-patterns">6. Usage Patterns<a hidden class="anchor" aria-hidden="true" href="#6-usage-patterns">#</a></h2>
+<h3 id="61-loading-a-single-embryo">6.1 Loading a Single Embryo<a hidden class="anchor" aria-hidden="true" href="#61-loading-a-single-embryo">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load one embryo</span>
+</span></span><span class="line"><span class="cl"><span class="n">npz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&#34;dataset/processed/by_embryo/CD011605_5a_bright.npz&#34;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;X&#34;</span><span class="p">]</span>              <span class="c1"># (688, 5, 210)</span>
+</span></span><span class="line"><span class="cl"><span class="n">alive_mask</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;alive_mask&#34;</span><span class="p">]</span>  <span class="c1"># (688, 210)</span>
+</span></span><span class="line"><span class="cl"><span class="n">edge_src</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_src&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">edge_dst</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_dst&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">edge_t</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_t&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">idx_to_cell</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;idx_to_cell&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Extract features at timepoint t=100</span>
+</span></span><span class="line"><span class="cl"><span class="n">t</span> <span class="o">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_t</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">t</span><span class="p">]</span>       <span class="c1"># (688, 5)</span>
+</span></span><span class="line"><span class="cl"><span class="n">alive_t</span> <span class="o">=</span> <span class="n">alive_mask</span><span class="p">[:,</span> <span class="n">t</span><span class="p">]</span>  <span class="c1"># (688,)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Only look at alive cells</span>
+</span></span><span class="line"><span class="cl"><span class="n">alive_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">alive_t</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_active</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">alive_indices</span><span class="p">,</span> <span class="p">:,</span> <span class="n">t</span><span class="p">]</span>  <span class="c1"># (M, 5) where M = number of alive cells</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;At time </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">alive_indices</span><span class="p">)</span><span class="si">}</span><span class="s2"> cells alive&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><hr>
+<h3 id="62-working-with-edges">6.2 Working with Edges<a hidden class="anchor" aria-hidden="true" href="#62-working-with-edges">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Get spatial + lineage edges at time t=100</span>
+</span></span><span class="line"><span class="cl"><span class="n">mask</span> <span class="o">=</span> <span class="n">edge_t</span> <span class="o">==</span> <span class="n">t</span>
+</span></span><span class="line"><span class="cl"><span class="n">edges_at_t_src</span> <span class="o">=</span> <span class="n">edge_src</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">edges_at_t_dst</span> <span class="o">=</span> <span class="n">edge_dst</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Build adjacency matrix for time t</span>
+</span></span><span class="line"><span class="cl"><span class="n">A_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">688</span><span class="p">,</span> <span class="mi">688</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">A_t</span><span class="p">[</span><span class="n">edges_at_t_src</span><span class="p">,</span> <span class="n">edges_at_t_dst</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;At time </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> edges&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Density: </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="mi">688</span><span class="o">*</span><span class="mi">688</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><hr>
+<h3 id="63-reconstructing-cell-names">6.3 Reconstructing Cell Names<a hidden class="anchor" aria-hidden="true" href="#63-reconstructing-cell-names">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Forward mapping: cell name → index</span>
+</span></span><span class="line"><span class="cl"><span class="n">cell_to_idx</span> <span class="o">=</span> <span class="p">{</span><span class="n">cell</span><span class="p">:</span> <span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">idx_to_cell</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Reverse mapping: index → cell name</span>
+</span></span><span class="line"><span class="cl"><span class="n">predicted_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">153</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">predicted_nodes</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Node </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2"> = cell </span><span class="si">{</span><span class="n">idx_to_cell</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><hr>
+<h3 id="64-lineage-tree-traversal">6.4 Lineage Tree Traversal<a hidden class="anchor" aria-hidden="true" href="#64-lineage-tree-traversal">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_lineage_tree</span><span class="p">(</span><span class="n">idx_to_cell</span><span class="p">,</span> <span class="n">edge_src</span><span class="p">,</span> <span class="n">edge_dst</span><span class="p">,</span> <span class="n">edge_t</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Extract parent-daughter relationships.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lineage_graph</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">edge_src</span><span class="p">,</span> <span class="n">edge_dst</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">src_name</span> <span class="o">=</span> <span class="n">idx_to_cell</span><span class="p">[</span><span class="n">src</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dst_name</span> <span class="o">=</span> <span class="n">idx_to_cell</span><span class="p">[</span><span class="n">dst</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Identify lineage edges: parent name is substring of daughter</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dst_name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">src_name</span><span class="p">)</span> <span class="ow">and</span> <span class="n">src_name</span> <span class="o">==</span> <span class="n">dst_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">src_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lineage_graph</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">lineage_graph</span><span class="p">[</span><span class="n">src_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">lineage_graph</span><span class="p">[</span><span class="n">src_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dst_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">lineage_graph</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">lineage</span> <span class="o">=</span> <span class="n">get_lineage_tree</span><span class="p">(</span><span class="n">idx_to_cell</span><span class="p">,</span> <span class="n">edge_src</span><span class="p">,</span> <span class="n">edge_dst</span><span class="p">,</span> <span class="n">edge_t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;AB daughters:&#34;</span><span class="p">,</span> <span class="n">lineage</span><span class="p">[</span><span class="s2">&#34;AB&#34;</span><span class="p">])</span>       <span class="c1"># [&#39;ABa&#39;, &#39;ABp&#39;]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;ABa daughters:&#34;</span><span class="p">,</span> <span class="n">lineage</span><span class="p">[</span><span class="s2">&#34;ABa&#34;</span><span class="p">])</span>     <span class="c1"># [&#39;ABal&#39;, &#39;ABar&#39;]</span>
+</span></span></code></pre></div><hr>
+<h2 id="7-file-manifest--provenance">7. File Manifest &amp; Provenance<a hidden class="anchor" aria-hidden="true" href="#7-file-manifest--provenance">#</a></h2>
+<h3 id="71-manifesttxt">7.1 manifest.txt<a hidden class="anchor" aria-hidden="true" href="#71-manifesttxt">#</a></h3>
+<p>Lists all 260 processed embryo filenames:</p>
+<pre tabindex="0"><code>CD011505_end1red_bright.npz
+CD011605_5a_bright.npz
+CD030906_dyf7red.npz
+...
+CD20091127_pgp-2_5_L2.npz
+</code></pre><p>Use to:</p>
+<ul>
+<li>Verify all 260 embryos preprocessed</li>
+<li>Loop over all outputs programmatically</li>
+<li>Track which raw files were processed</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">manifest_path</span> <span class="o">=</span> <span class="s2">&#34;dataset/processed/by_embryo/manifest.txt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">embryo_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Total embryos: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">embryo_files</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>  <span class="c1"># 260</span>
+</span></span></code></pre></div><hr>
+<h3 id="72-provenance-tracking">7.2 Provenance Tracking<a hidden class="anchor" aria-hidden="true" href="#72-provenance-tracking">#</a></h3>
+<p>Each NPZ embeds metadata for traceability:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">npz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&#34;CD011605_5a_bright.npz&#34;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Original file:&#34;</span><span class="p">,</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;source_file&#34;</span><span class="p">])</span>  <span class="c1"># &#34;CD011605_5a_bright.csv&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Time range:&#34;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">npz</span><span class="p">[</span><span class="s2">&#34;t0&#34;</span><span class="p">]),</span> <span class="s2">&#34;to&#34;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">npz</span><span class="p">[</span><span class="s2">&#34;t0&#34;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">npz</span><span class="p">[</span><span class="s2">&#34;T&#34;</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><hr>
+<h2 id="8-quality-control--validation">8. Quality Control &amp; Validation<a hidden class="anchor" aria-hidden="true" href="#8-quality-control--validation">#</a></h2>
+<h3 id="81-sanity-checks">8.1 Sanity Checks<a hidden class="anchor" aria-hidden="true" href="#81-sanity-checks">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">validate_npz</span><span class="p">(</span><span class="n">npz</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Verify tensor integrity.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">X</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;X&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">alive</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;alive_mask&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_src</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_src&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_dst</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_dst&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_t</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_t&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">idx_to_cell</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;idx_to_cell&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">N</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Check shape consistency</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">alive</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&#34;alive_mask shape mismatch&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;Feature dimension must be 5, got </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Check index validity</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">edge_src</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">edge_src</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">edge_dst</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">edge_dst</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">edge_t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">T</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">edge_t</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Check alive_mask consistency with X</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unborn_mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">alive</span><span class="p">[:,</span> <span class="n">t</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">X_unborn</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">unborn_mask</span><span class="p">,</span> <span class="p">:,</span> <span class="n">t</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">X_unborn</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&#34;Unborn cells should have zero features at t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Check cell names</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx_to_cell</span><span class="p">)</span> <span class="o">==</span> <span class="n">N</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;idx_to_cell length mismatch&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">idx_to_cell</span><span class="p">))</span> <span class="o">==</span> <span class="n">N</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;Duplicate cell names&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;✓ All checks passed&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">validate_npz</span><span class="p">(</span><span class="n">npz</span><span class="p">)</span>
+</span></span></code></pre></div><hr>
+<h3 id="82-per-embryo-statistics-template">8.2 Per-Embryo Statistics Template<a hidden class="anchor" aria-hidden="true" href="#82-per-embryo-statistics-template">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">summarize_embryo</span><span class="p">(</span><span class="n">npz_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Print detailed summary of one embryo.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">npz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">npz_path</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">X</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;X&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">alive</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;alive_mask&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_src</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_src&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_dst</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_dst&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">N</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">npz_path</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;=&#34;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Cells (N):                </span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Features (d):             </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Timepoints (T):           </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Total edges:              </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_src</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Spatial edges (approx):   </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_src</span><span class="p">)</span> <span class="o">-</span> <span class="mi">5000</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>  <span class="c1"># rough est.</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Birth times:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Birth time for each cell</span>
+</span></span><span class="line"><span class="cl">    <span class="n">births</span> <span class="o">=</span> <span class="n">alive</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;  Earliest: t=</span><span class="si">{</span><span class="n">births</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">births</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s2"> timepoints)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;  Latest:   t=</span><span class="si">{</span><span class="n">births</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Lifespan stats</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lifespans</span> <span class="o">=</span> <span class="p">(</span><span class="n">alive</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;  Mean lifespan: </span><span class="si">{</span><span class="n">lifespans</span><span class="p">[</span><span class="n">lifespans</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> timepoints&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;  Max lifespan:  </span><span class="si">{</span><span class="n">lifespans</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">summarize_embryo</span><span class="p">(</span><span class="s2">&#34;dataset/processed/by_embryo/CD011605_5a_bright.npz&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><hr>
+<h2 id="9-common-operations--recipes">9. Common Operations &amp; Recipes<a hidden class="anchor" aria-hidden="true" href="#9-common-operations--recipes">#</a></h2>
+<h3 id="91-batch-loading">9.1 Batch Loading<a hidden class="anchor" aria-hidden="true" href="#91-batch-loading">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">load_all_embryos</span><span class="p">(</span><span class="n">base_dir</span><span class="o">=</span><span class="s2">&#34;dataset/processed/by_embryo&#34;</span><span class="p">,</span> <span class="n">max_embryos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Load all processed embryos with consistent filtering.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">npz_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">base_dir</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&#34;*.npz&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">max_embryos</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">npz_files</span> <span class="o">=</span> <span class="n">npz_files</span><span class="p">[:</span><span class="n">max_embryos</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">embryos</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">fp</span> <span class="ow">in</span> <span class="n">npz_files</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">npz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">embryos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="n">fp</span><span class="o">.</span><span class="n">stem</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;X&#34;</span><span class="p">:</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;X&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;alive&#34;</span><span class="p">:</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;alive_mask&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;edges&#34;</span><span class="p">:</span> <span class="p">(</span><span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_src&#34;</span><span class="p">],</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_dst&#34;</span><span class="p">],</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_t&#34;</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;idx_to_cell&#34;</span><span class="p">:</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;idx_to_cell&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">embryos</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">embryos</span> <span class="o">=</span> <span class="n">load_all_embryos</span><span class="p">(</span><span class="n">max_embryos</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Loaded </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">embryos</span><span class="p">)</span><span class="si">}</span><span class="s2"> embryos&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><hr>
+<h3 id="92-time-averaged-graphs">9.2 Time-Averaged Graphs<a hidden class="anchor" aria-hidden="true" href="#92-time-averaged-graphs">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_time_averaged_graph</span><span class="p">(</span><span class="n">npz</span><span class="p">,</span> <span class="n">start_t</span><span class="p">,</span> <span class="n">end_t</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Average topology over a time window.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_src</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_src&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_dst</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_dst&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_t</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;edge_t&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">N</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;X&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">edge_t</span> <span class="o">&gt;=</span> <span class="n">start_t</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">edge_t</span> <span class="o">&lt;</span> <span class="n">end_t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">A</span><span class="p">[</span><span class="n">edge_src</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">edge_dst</span><span class="p">[</span><span class="n">mask</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">A</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">A_cleavage</span> <span class="o">=</span> <span class="n">get_time_averaged_graph</span><span class="p">(</span><span class="n">npz</span><span class="p">,</span> <span class="n">start_t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_t</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">A_migration</span> <span class="o">=</span> <span class="n">get_time_averaged_graph</span><span class="p">(</span><span class="n">npz</span><span class="p">,</span> <span class="n">start_t</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">end_t</span><span class="o">=</span><span class="mi">210</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Cleavage graph density:&#34;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">A_cleavage</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">688</span><span class="o">*</span><span class="mi">688</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Migration graph density:&#34;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">A_migration</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">688</span><span class="o">*</span><span class="mi">688</span><span class="p">))</span>
+</span></span></code></pre></div><hr>
+<h3 id="93-feature-histograms">9.3 Feature Histograms<a hidden class="anchor" aria-hidden="true" href="#93-feature-histograms">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">plot_feature_stats</span><span class="p">(</span><span class="n">npz</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Visualize feature distributions (alive cells only).&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">X</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;X&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">alive</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;alive_mask&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;x (px)&#34;</span><span class="p">,</span> <span class="s2">&#34;y (px)&#34;</span><span class="p">,</span> <span class="s2">&#34;z (μm)&#34;</span><span class="p">,</span> <span class="s2">&#34;size (AU)&#34;</span><span class="p">,</span> <span class="s2">&#34;blot (AU)&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">X_alive</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">d</span><span class="p">,</span> <span class="p">:][</span><span class="n">alive</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">X_alive</span> <span class="o">=</span> <span class="n">X_alive</span><span class="p">[</span><span class="n">X_alive</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Remove zeros (unborn)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axes</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_alive</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axes</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">feature_names</span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axes</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&#34;Value&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axes</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&#34;Count&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&#34;feature_stats.png&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plot_feature_stats</span><span class="p">(</span><span class="n">npz</span><span class="p">)</span>
+</span></span></code></pre></div><hr>
+<h2 id="10-summary-data-pipeline">10. Summary: Data Pipeline<a hidden class="anchor" aria-hidden="true" href="#10-summary-data-pipeline">#</a></h2>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────┐
+│                    RAW EPIC CSVs                         │
+│  dataset/raw/*.csv (260 files)                           │
+│  Format: cell, time, x, y, z, size, blot, ...           │
+│  N×T sparse observations per embryo                     │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     │ scripts/preprocess_dataset.py
+                     │ + src/epic_preprocess.py
+                     │
+        ┌────────────▼────────────┐
+        │  Per-Embryo Conversion  │
+        │                         │
+        │  • build_local_index    │
+        │  • populate_X,alive_mk  │
+        │  • spatial_edges        │
+        │  • lineage_edges        │
+        │                         │
+        └────────────┬────────────┘
+                     │
+┌────────────────────▼────────────────────────────────────┐
+│          PROCESSED NPZ TENSORS                           │
+│  dataset/processed/by_embryo/*.npz (260 files)          │
+│                                                          │
+│  Per-embryo (local):                                    │
+│  • X[N, d=5, T]: node features (sparse via mask)       │
+│  • alive_mask[N, T]: cell birth/lifespan tracking       │
+│  • edge_src/dst/t: sparse timepoint graphs              │
+│  • idx_to_cell[N]: cell name mapping                    │
+│  • Metadata: t0, T, source_file                         │
+│                                                          │
+│  Total: 260 embryos × ~57k edges × 688 cells           │
+│  Memory: ~177 MiB (compressed)                          │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     │ Model training / analysis
+                     │
+        ┌────────────▼────────────┐
+        │  Graph Neural Network   │
+        │  Training &amp; Inference   │
+        │                         │
+        │  • Spatio-temporal GNN  │
+        │  • Supervised learning  │
+        │  • Cell prediction      │
+        │  • Edge attention       │
+        │                         │
+        └─────────────────────────┘
+</code></pre><hr>
+<h2 id="11-troubleshooting">11. Troubleshooting<a hidden class="anchor" aria-hidden="true" href="#11-troubleshooting">#</a></h2>
+<h3 id="issue-missing-cells-in-early-times">Issue: Missing cells in early times<a hidden class="anchor" aria-hidden="true" href="#issue-missing-cells-in-early-times">#</a></h3>
+<p><strong>Cause:</strong> Cells not yet born (before division)<br>
+<strong>Solution:</strong> Check <code>alive_mask</code> before using X data</p>
+<h3 id="issue-disconnected-spatial-graph">Issue: Disconnected spatial graph<a hidden class="anchor" aria-hidden="true" href="#issue-disconnected-spatial-graph">#</a></h3>
+<p><strong>Cause:</strong> distance_threshold too small<br>
+<strong>Solution:</strong> Increase threshold (e.g., 30 instead of 20)</p>
+<h3 id="issue-memory-error-loading-all-260-embryos">Issue: Memory error loading all 260 embryos<a hidden class="anchor" aria-hidden="true" href="#issue-memory-error-loading-all-260-embryos">#</a></h3>
+<p><strong>Cause:</strong> RAM limit (need ~20 GB for full batch)<br>
+<strong>Solution:</strong> Load per-embryo or use data generator</p>
+<h3 id="issue-cell-names-dont-match-lineage">Issue: Cell names don&rsquo;t match lineage<a hidden class="anchor" aria-hidden="true" href="#issue-cell-names-dont-match-lineage">#</a></h3>
+<p><strong>Cause:</strong> Malformed cell names in raw CSV<br>
+<strong>Solution:</strong> Preprocess cell names (strip whitespace, uppercase)</p>
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<ul>
+<li><strong>EPIC Consortium:</strong> <a href="http://epic.gs.washington.edu/">http://epic.gs.washington.edu/</a></li>
+<li><strong>C. elegans anatomy:</strong> <a href="http://www.wormatlas.org/">http://www.wormatlas.org/</a></li>
+<li><strong>Cell nomenclature standard:</strong> Sulston et al. (1983). <em>Phil Trans R Soc London</em></li>
+</ul>
+<hr>
+<p><strong>Document Version:</strong> 1.0<br>
+<strong>Last Updated:</strong> April 2026<br>
+<strong>Pipeline Code:</strong> <a href="../src/epic_preprocess.py">src/epic_preprocess.py</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on x"
+            href="https://x.com/intent/tweet/?text=&amp;url=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fdatabase_documentation%2f&amp;hashtags=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fdatabase_documentation%2f&amp;title=&amp;summary=&amp;source=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fdatabase_documentation%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fdatabase_documentation%2f&title=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fdatabase_documentation%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on whatsapp"
+            href="https://api.whatsapp.com/send?text=%20-%20https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fdatabase_documentation%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on telegram"
+            href="https://telegram.me/share/url?text=&amp;url=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fdatabase_documentation%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=&u=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fdatabase_documentation%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2026 <a href="https://barshan.is-a.dev/">bluee :)</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

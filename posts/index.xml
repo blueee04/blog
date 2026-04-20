@@ -6,8 +6,15 @@
     <description>Recent content in Posts on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://barshan.is-a.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EPIC Dataset: From Microscopy to Graph Neural Networks</title>
+      <link>https://barshan.is-a.dev/posts/2026-04-15-epic-data-preprocessing-documentation/</link>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2026-04-15-epic-data-preprocessing-documentation/</guid>
+      <description>Complete guide to preprocessing and analyzing C. elegans embryonic development using spatio-temporal graph data</description>
+    </item>
     <item>
       <title>Just a little overview on me</title>
       <link>https://barshan.is-a.dev/posts/2025-09-14-about-me/</link>

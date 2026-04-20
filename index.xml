@@ -6,8 +6,50 @@
     <description>Recent content on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://barshan.is-a.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Documentation Improvement Summary: EPIC Dataset Project</title>
+      <link>https://barshan.is-a.dev/temp/documentation_improvement_summary/</link>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/temp/documentation_improvement_summary/</guid>
+      <description>Executive summary of writing style analysis, documentation improvements, and visual enhancement recommendations</description>
+    </item>
+    <item>
+      <title>EPIC Dataset Documentation - Master Index</title>
+      <link>https://barshan.is-a.dev/temp/master_index/</link>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/temp/master_index/</guid>
+      <description>Complete navigation guide to all documentation files with recommended reading paths</description>
+    </item>
+    <item>
+      <title>Visual Enhancement Guide: EPIC Dataset Documentation</title>
+      <link>https://barshan.is-a.dev/temp/visual_enhancement_guide/</link>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/temp/visual_enhancement_guide/</guid>
+      <description>Detailed guide on where to add images, screenshots, and diagrams to improve visual clarity</description>
+    </item>
+    <item>
+      <title>Writing Style Analysis: EPIC Dataset Documentation</title>
+      <link>https://barshan.is-a.dev/temp/writing_style_analysis/</link>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/temp/writing_style_analysis/</guid>
+      <description>Comprehensive analysis of your technical writing style with recommendations for consistency</description>
+    </item>
+    <item>
+      <title>EPIC Dataset: From Microscopy to Graph Neural Networks</title>
+      <link>https://barshan.is-a.dev/posts/2026-04-15-epic-data-preprocessing-documentation/</link>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2026-04-15-epic-data-preprocessing-documentation/</guid>
+      <description>Complete guide to preprocessing and analyzing C. elegans embryonic development using spatio-temporal graph data</description>
+    </item>
+    <item>
+      <title>EPIC Dataset: From Microscopy to Graph Neural Networks</title>
+      <link>https://barshan.is-a.dev/temp/epic_complete_guide/</link>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/temp/epic_complete_guide/</guid>
+      <description>Complete guide to preprocessing and analyzing C. elegans embryonic development using spatio-temporal graph data</description>
+    </item>
     <item>
       <title>Just a little overview on me</title>
       <link>https://barshan.is-a.dev/posts/2025-09-14-about-me/</link>
@@ -182,6 +224,46 @@
       <pubDate>Mon, 15 May 2023 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/posts/2023-05-15-complete-memlabs-writeup/</guid>
       <description>Complete Writeup Of Memlabs</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://barshan.is-a.dev/temp/architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/temp/architecture/</guid>
+      <description>Data Pipeline &amp;amp; Architecture Documentation System Architecture Diagram ┌─────────────────────────────────────┐ │ C. elegans Embryo Microscopy │ │ (EPIC fluorescence video) │ └──────────────┬──────────────────────┘ │ ↓ ┌─────────────────────────────────────┐ │ Raw EPIC CSV Files (260) │ │ dataset/raw/*.csv │ │ │ │ Columns: │ │ cell, time, x, y, z, size, blot │ │ (+ unused metadata columns) │ │ │ │ Format: N×T sparse table │ │ (only alive cells per timepoint) │ └──────────────┬──────────────────────┘ │ ┌──────────────────────┴──────────────────────┐ │ │ [preprocess_dataset.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://barshan.is-a.dev/temp/database_documentation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/temp/database_documentation/</guid>
+      <description>EPIC Database Preprocessing &amp;amp; Tensor Conversion Documentation Overview This document describes the complete transformation pipeline that converts raw EPIC (eMbryo Project Imaging Consortium) microscopy CSV files into optimized tensor representations suitable for spatio-temporal graph neural network training.
+The pipeline produces N×d×T node feature tensors and sparse directional graphs representing both spatial proximity and biological cell lineage relationships, enabling analysis of C. elegans embryonic cell division and migration.
+1. Input Data: Raw EPIC CSV Format 1.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://barshan.is-a.dev/temp/quick_reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/temp/quick_reference/</guid>
+      <description>EPIC Database Quick Reference One-Liner File Structure Raw EPIC CSV (260 files) ↓ preprocess_dataset.py Processed NPZ (260 per-embryo tensors) ↓ np.load() X[N, d=5, T], alive_mask[N, T], edge_src/dst/t, idx_to_cell[N] Dimensions at a Glance Variable Shape Dtype Meaning X (N, 5, T) float32 Node features: x, y, z, size, blot alive_mask (N, T) bool Cell is alive at time t edge_src (E,) int32 Edge source node edge_dst (E,) int32 Edge destination node edge_t (E,) int32 Edge timepoint idx_to_cell (N,) object Cell name for node index Example (CD011605_5a_bright): N = 688 cells d = 5 features T = 210 timepoints E ≈ 56,605 edges Minimal Working Example import numpy as np # Load npz = np.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://barshan.is-a.dev/temp/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/temp/readme/</guid>
+      <description>EPIC Database Documentation Index Quick Navigation 📖 For First-Time Users Start here: QUICK_REFERENCE.md — 5-minute overview Then read: DATABASE_DOCUMENTATION.md — Sections 1–3 (input, processing, output) Try this: Run python scripts/usage_examples.py to see working code 🏗️ For System Design ARCHITECTURE.md — Data flow diagrams, tensor construction, edge building logic 💻 For Implementation Database_DOCUMENTATION.md — Code recipes and patterns scripts/usage_examples.py — 7 runnable examples src/epic_preprocess.py — Core preprocessing functions 🔍 For Debugging &amp;amp; Validation DATABASE_DOCUMENTATION.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://barshan.is-a.dev/temp/schema/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/temp/schema/</guid>
+      <description>EPIC Database Schema Reference Dataset Specification Project: Spatio-Temporal Evolution (C. elegans EPIC embryos)
+Format Version: 1.0
+Schema Date: April 2026
+Overview Raw Data (260 CSV files) ↓ Per-embryo processing ↓ Processed Data (260 NPZ archives) 1. Input Schema: Raw EPIC CSV File Format Location: dataset/raw/*.csv Format: CSV (comma-delimited) Count: 260 files (one per embryo) Encoding: UTF-8 Column Specification Column Type Unit Range Required Used? Notes cellTime string — — ✓ ✗ Row ID (e.</description>
     </item>
   </channel>
 </rss>

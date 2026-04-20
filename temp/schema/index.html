@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>bluee :)</title>
+<meta name="keywords" content="">
+<meta name="description" content="EPIC Database Schema Reference Dataset Specification Project: Spatio-Temporal Evolution (C. elegans EPIC embryos)
+Format Version: 1.0
+Schema Date: April 2026
+Overview Raw Data (260 CSV files) ↓ Per-embryo processing ↓ Processed Data (260 NPZ archives) 1. Input Schema: Raw EPIC CSV File Format Location: dataset/raw/*.csv Format: CSV (comma-delimited) Count: 260 files (one per embryo) Encoding: UTF-8 Column Specification Column Type Unit Range Required Used? Notes cellTime string — — ✓ ✗ Row ID (e.">
+<meta name="author" content="Barshan Mondal">
+<link rel="canonical" href="https://barshan.is-a.dev/temp/schema/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://barshan.is-a.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://barshan.is-a.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://barshan.is-a.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://barshan.is-a.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://barshan.is-a.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="EPIC Database Schema Reference Dataset Specification Project: Spatio-Temporal Evolution (C. elegans EPIC embryos)
+Format Version: 1.0
+Schema Date: April 2026
+Overview Raw Data (260 CSV files) ↓ Per-embryo processing ↓ Processed Data (260 NPZ archives) 1. Input Schema: Raw EPIC CSV File Format Location: dataset/raw/*.csv Format: CSV (comma-delimited) Count: 260 files (one per embryo) Encoding: UTF-8 Column Specification Column Type Unit Range Required Used? Notes cellTime string — — ✓ ✗ Row ID (e." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://barshan.is-a.dev/temp/schema/" /><meta property="article:section" content="temp" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="EPIC Database Schema Reference Dataset Specification Project: Spatio-Temporal Evolution (C. elegans EPIC embryos)
+Format Version: 1.0
+Schema Date: April 2026
+Overview Raw Data (260 CSV files) ↓ Per-embryo processing ↓ Processed Data (260 NPZ archives) 1. Input Schema: Raw EPIC CSV File Format Location: dataset/raw/*.csv Format: CSV (comma-delimited) Count: 260 files (one per embryo) Encoding: UTF-8 Column Specification Column Type Unit Range Required Used? Notes cellTime string — — ✓ ✗ Row ID (e."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Temps",
+      "item": "https://barshan.is-a.dev/temp/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "",
+      "item": "https://barshan.is-a.dev/temp/schema/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "EPIC Database Schema Reference Dataset Specification Project: Spatio-Temporal Evolution (C. elegans EPIC embryos)\nFormat Version: 1.0\nSchema Date: April 2026\nOverview Raw Data (260 CSV files) ↓ Per-embryo processing ↓ Processed Data (260 NPZ archives) 1. Input Schema: Raw EPIC CSV File Format Location: dataset/raw/*.csv Format: CSV (comma-delimited) Count: 260 files (one per embryo) Encoding: UTF-8 Column Specification Column Type Unit Range Required Used? Notes cellTime string — — ✓ ✗ Row ID (e.",
+  "keywords": [
+    
+  ],
+  "articleBody": "EPIC Database Schema Reference Dataset Specification Project: Spatio-Temporal Evolution (C. elegans EPIC embryos)\nFormat Version: 1.0\nSchema Date: April 2026\nOverview Raw Data (260 CSV files) ↓ Per-embryo processing ↓ Processed Data (260 NPZ archives) 1. Input Schema: Raw EPIC CSV File Format Location: dataset/raw/*.csv Format: CSV (comma-delimited) Count: 260 files (one per embryo) Encoding: UTF-8 Column Specification Column Type Unit Range Required Used? Notes cellTime string — — ✓ ✗ Row ID (e.g., “AB:1”); duplicate of cell:time cell string — — ✓ ✓ C. elegans cell name (e.g., “AB”, “ABal”, “Zrp1aaa”) time integer frame 1–210 ✓ ✓ Absolute timepoint (1-indexed) none integer — — ✓ ✗ Unknown field; ignored global integer — — ✓ ✗ Global offset; unused local integer — — ✓ ✗ Local offset; unused blot float AU 100–10M ✓ ✓ Primary identifier: fluorescence intensity cross float — — ✓ ✗ Cross-correlation; unused z float μm 0–200 ✓ ✓ Depth (focal plane offset) x float pixel 0–512 ✓ ✓ Horizontal position (X-axis) y float pixel 0–512 ✓ ✓ Vertical position (Y-axis) size float AU 10–5000 ✓ ✓ Cell volume / morphological size gweight float — — ✓ ✗ Image intensity weight; unused Constraints Unique key: (cell, time) — only one measurement per cell per timepoint Cell naming: C. elegans nomenclature compliant (alphanumeric + letters encode lineage) Time ordering: Rows typically in chronological order but not guaranteed No missing values: All columns present in every row (though some unused) Sparse data: Only living cells appear; births create new rows Example Record cellTime,cell,time,none,global,local,blot,cross,z,x,y,size,gweight ABal:25,ABal,25,22722,-2278,10,815432,-2278,19.2,166,257,74,815432 2. Processing Schema: Transformation Rules Input Transformation Cell Name Normalization Input: arbitrary string from CSV ProcessProcessing: 1. Strip whitespace 2. Ensure alphabetic characters only (or underscores for legacy names) 3. Preserve case (C. elegans uses ABa vs ABp, not aba vs abp) Output: cell_to_idx mapping (sorted alphabetically) Time Indexing Input: time (1-indexed, 1 to T_max) Processing: 1. t0 = min(time_in_csv) 2. T = max(time_in_csv) - t0 + 1 3. t_idx = time - t0 (convert to 0-indexed) Output: t_idx in range [0, T-1] Feature Extraction Input: x, y, z, size, blot columns Processing: - Convert all to float32 - Verify non-negative (except z can be ~0) - Stack into features array [x, y, z, size, blot] Output: X[c_idx, :, t_idx] = [x, y, z, size, blot] Alive Masking Input: presence of (cell, time) row in CSV Processing: - If row exists: alive_mask[c_idx, t_idx] = True - If no row: alive_mask[c_idx, t_idx] = False (never populated) Output: alive_mask[N, T] boolean array Edge Construction Spatial edges (undirected proximity):\nInput: (x, y, z) coordinates of all alive cells at time t Processing: 1. Compute pairwise Euclidean distance 2. For each pair (i, j) with distance \u003c threshold (20 μm): - Add edge i → j - Add edge j → i (undirected) 3. Store as (edge_src, edge_dst, edge_t) triplets Output: ~45,000 edges per embryo (mostly spatial) Lineage edges (directed ancestry):\nInput: cell names at time t Processing: 1. For each cell alive at time t: - If last character is alphabetic: parent = cell[:-1] (remove last character) if parent exists and is alive: add edge: parent → cell 2. Store as (edge_src, edge_dst, edge_t) triplets Output: ~5,000 edges per embryo (genealogy) Caveat: Only applies when last char is alpha (not for \"P1\", cells with underscores, etc.) 3. Output Schema: Processed NPZ Archive Archive Format Type: NumPy .npz (compressed NumPy archive, ZIP format) Compression: DEFLATE (automatic via np.savez_compressed()) Compression ratio: ~3–5× typical for this data Archive Contents X: Node Feature Tensor Path in NPZ: X\nType: np.ndarray\nDType: float32\nShape: (N, d, T) where:\nN = number of cells (varies per embryo, typically 600–750) d = 5 (fixed feature dimension) T = number of timepoints (varies per embryo, typically 150–250) Semantics:\nX[c_idx, f_idx, t_idx] = value where: c_idx ∈ [0, N-1] — cell index f_idx ∈ {0,1,2,3,4} — feature: 0=x, 1=y, 2=z, 3=size, 4=blot t_idx ∈ [0, T-1] — timepoint (0-indexed) value ∈ ℝ or 0 — feature value or 0 if unborn Constraints:\nif alive_mask[c_idx, t_idx] == False: X[c_idx, :, t_idx] == [0, 0, 0, 0, 0] (all zeros) if alive_mask[c_idx, t_idx] == True: X[c_idx, 0, t_idx] ∈ [0, ~512] (x, pixels) X[c_idx, 1, t_idx] ∈ [0, ~512] (y, pixels) X[c_idx, 2, t_idx] ∈ [0, ~200] (z, micrometers) X[c_idx, 3, t_idx] ∈ [10, ~5000] (size, arbitrary units) X[c_idx, 4, t_idx] ∈ [100, 10M] (blot, arbitrary units) Feature Definitions:\nIndex Name Unit Physical Meaning 0 x pixels Horizontal position 1 y pixels Vertical position 2 z micrometers Depth from focal plane 3 size AU Cell volume / morphology 4 blot AU Fluorescence intensity (identity marker) alive_mask: Birth/Alive Tracking Path in NPZ: alive_mask\nType: np.ndarray\nDType: bool\nShape: (N, T)\nSemantics:\nalive_mask[c_idx, t_idx] = True if cell is observed at this timepoint alive_mask[c_idx, t_idx] = False if cell not yet born or unobserved Constraints:\nMonotonicity: Once False, always False before first True (no resurrection) if alive_mask[c_idx, t] == True and t' \u003c t: then ∃ t0 such that: alive_mask[c_idx, 0:t0] == False alive_mask[c_idx, t0:] == True Use Cases:\nIdentify cell birth time: t_birth = argmax(alive_mask[c_idx]) Extract valid features: X_valid = X[alive_mask] Compute lifespan: lifespan = alive_mask.sum(axis=1) edge_src, edge_dst, edge_t: Sparse Edge Lists Paths in NPZ:\nedge_src — source node indices edge_dst — destination node indices edge_t — timepoint indices Type: np.ndarray\nDType: int32\nShape: (E,) where E ≈ 56,000 per embryo\nSemantics:\nAn edge exists between node edge_src[k] → edge_dst[k] at time edge_t[k] if and only if k ∈ [0, E-1] Constraints:\nedge_src[k] ∈ [0, N-1] for all k edge_dst[k] ∈ [0, N-1] for all k edge_t[k] ∈ [0, T-1] for all k Assumption: No duplicate edges (same src, dst, t) Edge Type Classification:\nTo distinguish spatial from lineage edges:\ndef classify_edge(src_idx, dst_idx, idx_to_cell): src_name = idx_to_cell[src_idx] dst_name = idx_to_cell[dst_idx] # Lineage: daughter is parent + one letter if (len(dst_name) == len(src_name) + 1 and dst_name.startswith(src_name)): return \"lineage\" else: return \"spatial\" idx_to_cell: Cell Name Mapping Path in NPZ: idx_to_cell\nType: np.ndarray\nDType: object (Python strings)\nShape: (N,)\nSemantics:\nidx_to_cell[c_idx] = cell_name (string) Example: idx_to_cell[0] = \"AB\" idx_to_cell[1] = \"ABa\" idx_to_cell[2] = \"ABal\" ... idx_to_cell[687] = \"Zrp1aaa\" Constraints:\nAll unique (no duplicate cell names) All alphabetic characters (and hyphens for legacy names) Sorted alphabetically (for reproducibility) len(idx_to_cell) == N Inverse Mapping (derived):\ncell_to_idx = {cell: idx for idx, cell in enumerate(idx_to_cell)} t0, T: Time Metadata Paths in NPZ:\nt0 — first absolute timepoint T — total number of timepoints Type: np.ndarray (scalar or 0-d array)\nDType: int32\nShape: () (scalar)\nSemantics:\nt0 = t_min from CSV (typically 1) T = t_max - t_min + 1 Conversion: t_absolute = t0 + t_index t_index = t_absolute - t0 Example:\nRaw CSV times: 1, 2, 3, ..., 210 t0 = 1 T = 210 t_index = 24 → t_absolute = 1 + 24 = 25 source_file: Provenance Path in NPZ: source_file\nType: np.ndarray\nDType: object (Python string)\nShape: () (scalar)\nValue: Original CSV filename (e.g., “CD011605_5a_bright.csv”)\nUse: Trace back to raw data for reprocessing or verification\nNPZ Summary Table Field Shape DType Size (MB) Purpose X (N, 5, T) float32 ~13 Node features alive_mask (N, T) bool ~0.2 Birth tracking edge_src (E,) int32 ~0.2 Edge list edge_dst (E,) int32 ~0.2 Edge list edge_t (E,) int32 ~0.2 Edge list idx_to_cell (N,) object ~0.02 Name mapping t0 () int32 ~0.00001 Metadata T () int32 ~0.00001 Metadata source_file () object ~0.00003 Provenance Total (uncompressed) — — ~14 — Total (compressed) — — ~0.7 ~20× compression 4. Relationships \u0026 Constraints Dimension Consistency X.shape[0] == alive_mask.shape[0] == len(idx_to_cell) == N X.shape[1] == 5 (features) X.shape[2] == alive_mask.shape[1] == T Index Validity ∀ k ∈ [0, E-1]: edge_src[k] \u003c N edge_dst[k] \u003c N edge_t[k] \u003c T Data Integrity ∀ c ∈ [0, N-1], t ∈ [0, T-1]: if alive_mask[c, t] == False: X[c, :, t] == [0, 0, 0, 0, 0] Uniqueness len(unique(idx_to_cell)) == N (no duplicate names) ∀ (src, dst, t): unique triplets (no multi-edges) Temporal Ordering t0 ≤ t0 + 1 ≤ ... ≤ t0 + T - 1 (times monotonic) Lineage Consistency ∀ lineage edge (parent_idx, daughter_idx): parent_name = idx_to_cell[parent_idx] daughter_name = idx_to_cell[daughter_idx] daughter_name == parent_name + single_letter 5. Serialization Details NPZ Format (ZIP-based) file.npz (actually a ZIP archive) ├── X.npy ├── alive_mask.npy ├── edge_src.npy ├── edge_dst.npy ├── edge_t.npy ├── idx_to_cell.npy ├── t0.npy ├── T.npy └── source_file.npy Loading import numpy as np # Load npz = np.load(\"file.npz\", allow_pickle=True) # Access (two equivalent ways) X = npz[\"X\"] # Dictionary-like X = npz.files[\"X\"] # Via file listing # Close (optional but recommended) npz.close() Saving import numpy as np np.savez_compressed( \"file.npz\", X=X, alive_mask=alive_mask, edge_src=edge_src, edge_dst=edge_dst, edge_t=edge_t, idx_to_cell=idx_to_cell, t0=np.int32(t0), T=np.int32(T), source_file=source_file ) 6. Data Quality Standards Validation Checklist Shape consistency (must pass)\nassert X.shape[0] == alive.shape[0] == len(idx_to_cell) assert X.shape[1] == 5 assert X.shape[2] == alive.shape[1] assert len(edge_src) == len(edge_dst) == len(edge_t) Index validity (must pass)\nassert 0 \u003c= edge_src.min() and edge_src.max() \u003c N assert 0 \u003c= edge_dst.min() and edge_dst.max() \u003c N assert 0 \u003c= edge_t.min() and edge_t.max() \u003c T Masking consistency (must pass)\nassert (X[~alive] == 0).all() # Unborn cells all zero Name uniqueness (must pass)\nassert len(np.unique(idx_to_cell)) == N Reasonable ranges (should pass)\nX_alive = X[alive] assert 0 \u003c= X_alive[:, :3].max() \u003c 1000 # Coordinates assert 0 \u003c X_alive[:, 3:].min() # Size, blot positive 7. Version History Version Date Changes 1.0 April 2026 Initial schema definition; per-embryo tensors, sparse edges 8. References Raw EPIC data source: http://epic.gs.washington.edu/\nC. elegans nomenclature: Sulston et al. (1983)\nDistance threshold: 20 micrometers (standard contact distance)\nSchema Document Version: 1.0\nLast Updated: April 2026\n",
+  "wordCount" : "1580",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Barshan Mondal"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://barshan.is-a.dev/temp/schema/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "bluee :)",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://barshan.is-a.dev/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://barshan.is-a.dev/" accesskey="h" title="bluee :) (Alt + H)">bluee :)</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://barshan.is-a.dev/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://barshan.is-a.dev/">Home</a>&nbsp;»&nbsp;<a href="https://barshan.is-a.dev/temp/">Temps</a></div>
+    <h1 class="post-title entry-hint-parent">
+      
+    </h1>
+    <div class="post-meta">8 min&nbsp;·&nbsp;Barshan Mondal
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#epic-database-schema-reference" aria-label="EPIC Database Schema Reference">EPIC Database Schema Reference</a><ul>
+                        
+                <li>
+                    <a href="#dataset-specification" aria-label="Dataset Specification">Dataset Specification</a></li>
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a></li>
+                <li>
+                    <a href="#1-input-schema-raw-epic-csv" aria-label="1. Input Schema: Raw EPIC CSV">1. Input Schema: Raw EPIC CSV</a><ul>
+                        
+                <li>
+                    <a href="#file-format" aria-label="File Format">File Format</a></li>
+                <li>
+                    <a href="#column-specification" aria-label="Column Specification">Column Specification</a></li>
+                <li>
+                    <a href="#constraints" aria-label="Constraints">Constraints</a></li>
+                <li>
+                    <a href="#example-record" aria-label="Example Record">Example Record</a></li></ul>
+                </li>
+                <li>
+                    <a href="#2-processing-schema-transformation-rules" aria-label="2. Processing Schema: Transformation Rules">2. Processing Schema: Transformation Rules</a><ul>
+                        
+                <li>
+                    <a href="#input-transformation" aria-label="Input Transformation">Input Transformation</a><ul>
+                        
+                <li>
+                    <a href="#cell-name-normalization" aria-label="Cell Name Normalization">Cell Name Normalization</a></li>
+                <li>
+                    <a href="#time-indexing" aria-label="Time Indexing">Time Indexing</a></li>
+                <li>
+                    <a href="#feature-extraction" aria-label="Feature Extraction">Feature Extraction</a></li>
+                <li>
+                    <a href="#alive-masking" aria-label="Alive Masking">Alive Masking</a></li>
+                <li>
+                    <a href="#edge-construction" aria-label="Edge Construction">Edge Construction</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#3-output-schema-processed-npz-archive" aria-label="3. Output Schema: Processed NPZ Archive">3. Output Schema: Processed NPZ Archive</a><ul>
+                        
+                <li>
+                    <a href="#archive-format" aria-label="Archive Format">Archive Format</a></li>
+                <li>
+                    <a href="#archive-contents" aria-label="Archive Contents">Archive Contents</a><ul>
+                        
+                <li>
+                    <a href="#x-node-feature-tensor" aria-label="X: Node Feature Tensor">X: Node Feature Tensor</a></li>
+                <li>
+                    <a href="#alive_mask-birthalive-tracking" aria-label="alive_mask: Birth/Alive Tracking">alive_mask: Birth/Alive Tracking</a></li>
+                <li>
+                    <a href="#edge_src-edge_dst-edge_t-sparse-edge-lists" aria-label="edge_src, edge_dst, edge_t: Sparse Edge Lists">edge_src, edge_dst, edge_t: Sparse Edge Lists</a></li>
+                <li>
+                    <a href="#idx_to_cell-cell-name-mapping" aria-label="idx_to_cell: Cell Name Mapping">idx_to_cell: Cell Name Mapping</a></li>
+                <li>
+                    <a href="#t0-t-time-metadata" aria-label="t0, T: Time Metadata">t0, T: Time Metadata</a></li>
+                <li>
+                    <a href="#source_file-provenance" aria-label="source_file: Provenance">source_file: Provenance</a></li></ul>
+                </li>
+                <li>
+                    <a href="#npz-summary-table" aria-label="NPZ Summary Table">NPZ Summary Table</a></li></ul>
+                </li>
+                <li>
+                    <a href="#4-relationships--constraints" aria-label="4. Relationships &amp; Constraints">4. Relationships &amp; Constraints</a><ul>
+                        
+                <li>
+                    <a href="#dimension-consistency" aria-label="Dimension Consistency">Dimension Consistency</a></li>
+                <li>
+                    <a href="#index-validity" aria-label="Index Validity">Index Validity</a></li>
+                <li>
+                    <a href="#data-integrity" aria-label="Data Integrity">Data Integrity</a></li>
+                <li>
+                    <a href="#uniqueness" aria-label="Uniqueness">Uniqueness</a></li>
+                <li>
+                    <a href="#temporal-ordering" aria-label="Temporal Ordering">Temporal Ordering</a></li>
+                <li>
+                    <a href="#lineage-consistency" aria-label="Lineage Consistency">Lineage Consistency</a></li></ul>
+                </li>
+                <li>
+                    <a href="#5-serialization-details" aria-label="5. Serialization Details">5. Serialization Details</a><ul>
+                        
+                <li>
+                    <a href="#npz-format-zip-based" aria-label="NPZ Format (ZIP-based)">NPZ Format (ZIP-based)</a></li>
+                <li>
+                    <a href="#loading" aria-label="Loading">Loading</a></li>
+                <li>
+                    <a href="#saving" aria-label="Saving">Saving</a></li></ul>
+                </li>
+                <li>
+                    <a href="#6-data-quality-standards" aria-label="6. Data Quality Standards">6. Data Quality Standards</a><ul>
+                        
+                <li>
+                    <a href="#validation-checklist" aria-label="Validation Checklist">Validation Checklist</a></li></ul>
+                </li>
+                <li>
+                    <a href="#7-version-history" aria-label="7. Version History">7. Version History</a></li>
+                <li>
+                    <a href="#8-references" aria-label="8. References">8. References</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="epic-database-schema-reference">EPIC Database Schema Reference<a hidden class="anchor" aria-hidden="true" href="#epic-database-schema-reference">#</a></h1>
+<h2 id="dataset-specification">Dataset Specification<a hidden class="anchor" aria-hidden="true" href="#dataset-specification">#</a></h2>
+<p><strong>Project:</strong> Spatio-Temporal Evolution (C. elegans EPIC embryos)<br>
+<strong>Format Version:</strong> 1.0<br>
+<strong>Schema Date:</strong> April 2026</p>
+<hr>
+<h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<pre tabindex="0"><code>Raw Data (260 CSV files)
+         ↓
+Per-embryo processing
+         ↓
+Processed Data (260 NPZ archives)
+</code></pre><hr>
+<h2 id="1-input-schema-raw-epic-csv">1. Input Schema: Raw EPIC CSV<a hidden class="anchor" aria-hidden="true" href="#1-input-schema-raw-epic-csv">#</a></h2>
+<h3 id="file-format">File Format<a hidden class="anchor" aria-hidden="true" href="#file-format">#</a></h3>
+<ul>
+<li><strong>Location:</strong> <code>dataset/raw/*.csv</code></li>
+<li><strong>Format:</strong> CSV (comma-delimited)</li>
+<li><strong>Count:</strong> 260 files (one per embryo)</li>
+<li><strong>Encoding:</strong> UTF-8</li>
+</ul>
+<h3 id="column-specification">Column Specification<a hidden class="anchor" aria-hidden="true" href="#column-specification">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Unit</th>
+<th>Range</th>
+<th>Required</th>
+<th>Used?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cellTime</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+<td>✗</td>
+<td>Row ID (e.g., &ldquo;AB:1&rdquo;); duplicate of cell:time</td>
+</tr>
+<tr>
+<td><code>cell</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+<td>✓</td>
+<td>C. elegans cell name (e.g., &ldquo;AB&rdquo;, &ldquo;ABal&rdquo;, &ldquo;Zrp1aaa&rdquo;)</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>integer</td>
+<td>frame</td>
+<td>1–210</td>
+<td>✓</td>
+<td>✓</td>
+<td>Absolute timepoint (1-indexed)</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>integer</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+<td>✗</td>
+<td>Unknown field; ignored</td>
+</tr>
+<tr>
+<td><code>global</code></td>
+<td>integer</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+<td>✗</td>
+<td>Global offset; unused</td>
+</tr>
+<tr>
+<td><code>local</code></td>
+<td>integer</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+<td>✗</td>
+<td>Local offset; unused</td>
+</tr>
+<tr>
+<td><code>blot</code></td>
+<td>float</td>
+<td>AU</td>
+<td>100–10M</td>
+<td>✓</td>
+<td>✓</td>
+<td><strong>Primary identifier:</strong> fluorescence intensity</td>
+</tr>
+<tr>
+<td><code>cross</code></td>
+<td>float</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+<td>✗</td>
+<td>Cross-correlation; unused</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td>float</td>
+<td>μm</td>
+<td>0–200</td>
+<td>✓</td>
+<td>✓</td>
+<td>Depth (focal plane offset)</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>float</td>
+<td>pixel</td>
+<td>0–512</td>
+<td>✓</td>
+<td>✓</td>
+<td>Horizontal position (X-axis)</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>float</td>
+<td>pixel</td>
+<td>0–512</td>
+<td>✓</td>
+<td>✓</td>
+<td>Vertical position (Y-axis)</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>float</td>
+<td>AU</td>
+<td>10–5000</td>
+<td>✓</td>
+<td>✓</td>
+<td>Cell volume / morphological size</td>
+</tr>
+<tr>
+<td><code>gweight</code></td>
+<td>float</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+<td>✗</td>
+<td>Image intensity weight; unused</td>
+</tr>
+</tbody>
+</table>
+<h3 id="constraints">Constraints<a hidden class="anchor" aria-hidden="true" href="#constraints">#</a></h3>
+<ul>
+<li><strong>Unique key:</strong> (cell, time) — only one measurement per cell per timepoint</li>
+<li><strong>Cell naming:</strong> C. elegans nomenclature compliant (alphanumeric + letters encode lineage)</li>
+<li><strong>Time ordering:</strong> Rows typically in chronological order but not guaranteed</li>
+<li><strong>No missing values:</strong> All columns present in every row (though some unused)</li>
+<li><strong>Sparse data:</strong> Only living cells appear; births create new rows</li>
+</ul>
+<h3 id="example-record">Example Record<a hidden class="anchor" aria-hidden="true" href="#example-record">#</a></h3>
+<pre tabindex="0"><code class="language-csv" data-lang="csv">cellTime,cell,time,none,global,local,blot,cross,z,x,y,size,gweight
+ABal:25,ABal,25,22722,-2278,10,815432,-2278,19.2,166,257,74,815432
+</code></pre><hr>
+<h2 id="2-processing-schema-transformation-rules">2. Processing Schema: Transformation Rules<a hidden class="anchor" aria-hidden="true" href="#2-processing-schema-transformation-rules">#</a></h2>
+<h3 id="input-transformation">Input Transformation<a hidden class="anchor" aria-hidden="true" href="#input-transformation">#</a></h3>
+<h4 id="cell-name-normalization">Cell Name Normalization<a hidden class="anchor" aria-hidden="true" href="#cell-name-normalization">#</a></h4>
+<pre tabindex="0"><code>Input:  arbitrary string from CSV
+ProcessProcessing:
+  1. Strip whitespace
+  2. Ensure alphabetic characters only (or underscores for legacy names)
+  3. Preserve case (C. elegans uses ABa vs ABp, not aba vs abp)
+Output: cell_to_idx mapping (sorted alphabetically)
+</code></pre><h4 id="time-indexing">Time Indexing<a hidden class="anchor" aria-hidden="true" href="#time-indexing">#</a></h4>
+<pre tabindex="0"><code>Input:  time (1-indexed, 1 to T_max)
+Processing:
+  1. t0 = min(time_in_csv)
+  2. T = max(time_in_csv) - t0 + 1
+  3. t_idx = time - t0  (convert to 0-indexed)
+Output: t_idx in range [0, T-1]
+</code></pre><h4 id="feature-extraction">Feature Extraction<a hidden class="anchor" aria-hidden="true" href="#feature-extraction">#</a></h4>
+<pre tabindex="0"><code>Input:  x, y, z, size, blot columns
+Processing:
+  - Convert all to float32
+  - Verify non-negative (except z can be ~0)
+  - Stack into features array [x, y, z, size, blot]
+Output:  X[c_idx, :, t_idx] = [x, y, z, size, blot]
+</code></pre><h4 id="alive-masking">Alive Masking<a hidden class="anchor" aria-hidden="true" href="#alive-masking">#</a></h4>
+<pre tabindex="0"><code>Input:  presence of (cell, time) row in CSV
+Processing:
+  - If row exists: alive_mask[c_idx, t_idx] = True
+  - If no row:      alive_mask[c_idx, t_idx] = False (never populated)
+Output:  alive_mask[N, T] boolean array
+</code></pre><h4 id="edge-construction">Edge Construction<a hidden class="anchor" aria-hidden="true" href="#edge-construction">#</a></h4>
+<p><strong>Spatial edges (undirected proximity):</strong></p>
+<pre tabindex="0"><code>Input:  (x, y, z) coordinates of all alive cells at time t
+Processing:
+  1. Compute pairwise Euclidean distance
+  2. For each pair (i, j) with distance &lt; threshold (20 μm):
+     - Add edge i → j
+     - Add edge j → i (undirected)
+  3. Store as (edge_src, edge_dst, edge_t) triplets
+Output: ~45,000 edges per embryo (mostly spatial)
+</code></pre><p><strong>Lineage edges (directed ancestry):</strong></p>
+<pre tabindex="0"><code>Input:  cell names at time t
+Processing:
+  1. For each cell alive at time t:
+     - If last character is alphabetic:
+        parent = cell[:-1]  (remove last character)
+        if parent exists and is alive:
+           add edge: parent → cell
+  2. Store as (edge_src, edge_dst, edge_t) triplets
+Output: ~5,000 edges per embryo (genealogy)
+Caveat: Only applies when last char is alpha (not for &#34;P1&#34;, cells with underscores, etc.)
+</code></pre><hr>
+<h2 id="3-output-schema-processed-npz-archive">3. Output Schema: Processed NPZ Archive<a hidden class="anchor" aria-hidden="true" href="#3-output-schema-processed-npz-archive">#</a></h2>
+<h3 id="archive-format">Archive Format<a hidden class="anchor" aria-hidden="true" href="#archive-format">#</a></h3>
+<ul>
+<li><strong>Type:</strong> NumPy <code>.npz</code> (compressed NumPy archive, ZIP format)</li>
+<li><strong>Compression:</strong> DEFLATE (automatic via <code>np.savez_compressed()</code>)</li>
+<li><strong>Compression ratio:</strong> ~3–5× typical for this data</li>
+</ul>
+<h3 id="archive-contents">Archive Contents<a hidden class="anchor" aria-hidden="true" href="#archive-contents">#</a></h3>
+<h4 id="x-node-feature-tensor">X: Node Feature Tensor<a hidden class="anchor" aria-hidden="true" href="#x-node-feature-tensor">#</a></h4>
+<p><strong>Path in NPZ:</strong> <code>X</code><br>
+<strong>Type:</strong> <code>np.ndarray</code><br>
+<strong>DType:</strong> <code>float32</code><br>
+<strong>Shape:</strong> <code>(N, d, T)</code> where:</p>
+<ul>
+<li>N = number of cells (varies per embryo, typically 600–750)</li>
+<li>d = 5 (fixed feature dimension)</li>
+<li>T = number of timepoints (varies per embryo, typically 150–250)</li>
+</ul>
+<p><strong>Semantics:</strong></p>
+<pre tabindex="0"><code>X[c_idx, f_idx, t_idx] = value
+
+where:
+  c_idx ∈ [0, N-1]           — cell index
+  f_idx ∈ {0,1,2,3,4}        — feature: 0=x, 1=y, 2=z, 3=size, 4=blot
+  t_idx ∈ [0, T-1]           — timepoint (0-indexed)
+  value ∈ ℝ or 0             — feature value or 0 if unborn
+</code></pre><p><strong>Constraints:</strong></p>
+<pre tabindex="0"><code>if alive_mask[c_idx, t_idx] == False:
+    X[c_idx, :, t_idx] == [0, 0, 0, 0, 0]  (all zeros)
+    
+if alive_mask[c_idx, t_idx] == True:
+    X[c_idx, 0, t_idx] ∈ [0, ~512]          (x, pixels)
+    X[c_idx, 1, t_idx] ∈ [0, ~512]          (y, pixels)
+    X[c_idx, 2, t_idx] ∈ [0, ~200]          (z, micrometers)
+    X[c_idx, 3, t_idx] ∈ [10, ~5000]        (size, arbitrary units)
+    X[c_idx, 4, t_idx] ∈ [100, 10M]         (blot, arbitrary units)
+</code></pre><p><strong>Feature Definitions:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Name</th>
+<th>Unit</th>
+<th>Physical Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>x</td>
+<td>pixels</td>
+<td>Horizontal position</td>
+</tr>
+<tr>
+<td>1</td>
+<td>y</td>
+<td>pixels</td>
+<td>Vertical position</td>
+</tr>
+<tr>
+<td>2</td>
+<td>z</td>
+<td>micrometers</td>
+<td>Depth from focal plane</td>
+</tr>
+<tr>
+<td>3</td>
+<td>size</td>
+<td>AU</td>
+<td>Cell volume / morphology</td>
+</tr>
+<tr>
+<td>4</td>
+<td>blot</td>
+<td>AU</td>
+<td>Fluorescence intensity (identity marker)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="alive_mask-birthalive-tracking">alive_mask: Birth/Alive Tracking<a hidden class="anchor" aria-hidden="true" href="#alive_mask-birthalive-tracking">#</a></h4>
+<p><strong>Path in NPZ:</strong> <code>alive_mask</code><br>
+<strong>Type:</strong> <code>np.ndarray</code><br>
+<strong>DType:</strong> <code>bool</code><br>
+<strong>Shape:</strong> <code>(N, T)</code></p>
+<p><strong>Semantics:</strong></p>
+<pre tabindex="0"><code>alive_mask[c_idx, t_idx] = True   if cell is observed at this timepoint
+alive_mask[c_idx, t_idx] = False  if cell not yet born or unobserved
+</code></pre><p><strong>Constraints:</strong></p>
+<pre tabindex="0"><code>Monotonicity: Once False, always False before first True (no resurrection)
+if alive_mask[c_idx, t] == True and t&#39; &lt; t:
+    then ∃ t0 such that:
+        alive_mask[c_idx, 0:t0] == False
+        alive_mask[c_idx, t0:] == True
+</code></pre><p><strong>Use Cases:</strong></p>
+<ol>
+<li>Identify cell birth time: <code>t_birth = argmax(alive_mask[c_idx])</code></li>
+<li>Extract valid features: <code>X_valid = X[alive_mask]</code></li>
+<li>Compute lifespan: <code>lifespan = alive_mask.sum(axis=1)</code></li>
+</ol>
+<hr>
+<h4 id="edge_src-edge_dst-edge_t-sparse-edge-lists">edge_src, edge_dst, edge_t: Sparse Edge Lists<a hidden class="anchor" aria-hidden="true" href="#edge_src-edge_dst-edge_t-sparse-edge-lists">#</a></h4>
+<p><strong>Paths in NPZ:</strong></p>
+<ul>
+<li><code>edge_src</code> — source node indices</li>
+<li><code>edge_dst</code> — destination node indices</li>
+<li><code>edge_t</code> — timepoint indices</li>
+</ul>
+<p><strong>Type:</strong> <code>np.ndarray</code><br>
+<strong>DType:</strong> <code>int32</code><br>
+<strong>Shape:</strong> <code>(E,)</code> where E ≈ 56,000 per embryo</p>
+<p><strong>Semantics:</strong></p>
+<pre tabindex="0"><code>An edge exists between node edge_src[k] → edge_dst[k] at time edge_t[k]
+if and only if k ∈ [0, E-1]
+</code></pre><p><strong>Constraints:</strong></p>
+<pre tabindex="0"><code>edge_src[k] ∈ [0, N-1]    for all k
+edge_dst[k] ∈ [0, N-1]    for all k
+edge_t[k]   ∈ [0, T-1]    for all k
+
+Assumption: No duplicate edges (same src, dst, t)
+</code></pre><p><strong>Edge Type Classification:</strong></p>
+<p>To distinguish spatial from lineage edges:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">classify_edge</span><span class="p">(</span><span class="n">src_idx</span><span class="p">,</span> <span class="n">dst_idx</span><span class="p">,</span> <span class="n">idx_to_cell</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">src_name</span> <span class="o">=</span> <span class="n">idx_to_cell</span><span class="p">[</span><span class="n">src_idx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dst_name</span> <span class="o">=</span> <span class="n">idx_to_cell</span><span class="p">[</span><span class="n">dst_idx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Lineage: daughter is parent + one letter</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dst_name</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">src_name</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="ow">and</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">dst_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">src_name</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;lineage&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;spatial&#34;</span>
+</span></span></code></pre></div><hr>
+<h4 id="idx_to_cell-cell-name-mapping">idx_to_cell: Cell Name Mapping<a hidden class="anchor" aria-hidden="true" href="#idx_to_cell-cell-name-mapping">#</a></h4>
+<p><strong>Path in NPZ:</strong> <code>idx_to_cell</code><br>
+<strong>Type:</strong> <code>np.ndarray</code><br>
+<strong>DType:</strong> <code>object</code> (Python strings)<br>
+<strong>Shape:</strong> <code>(N,)</code></p>
+<p><strong>Semantics:</strong></p>
+<pre tabindex="0"><code>idx_to_cell[c_idx] = cell_name (string)
+
+Example:
+  idx_to_cell[0]   = &#34;AB&#34;
+  idx_to_cell[1]   = &#34;ABa&#34;
+  idx_to_cell[2]   = &#34;ABal&#34;
+  ...
+  idx_to_cell[687] = &#34;Zrp1aaa&#34;
+</code></pre><p><strong>Constraints:</strong></p>
+<pre tabindex="0"><code>All unique (no duplicate cell names)
+All alphabetic characters (and hyphens for legacy names)
+Sorted alphabetically (for reproducibility)
+len(idx_to_cell) == N
+</code></pre><p><strong>Inverse Mapping (derived):</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cell_to_idx</span> <span class="o">=</span> <span class="p">{</span><span class="n">cell</span><span class="p">:</span> <span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">idx_to_cell</span><span class="p">)}</span>
+</span></span></code></pre></div><hr>
+<h4 id="t0-t-time-metadata">t0, T: Time Metadata<a hidden class="anchor" aria-hidden="true" href="#t0-t-time-metadata">#</a></h4>
+<p><strong>Paths in NPZ:</strong></p>
+<ul>
+<li><code>t0</code> — first absolute timepoint</li>
+<li><code>T</code> — total number of timepoints</li>
+</ul>
+<p><strong>Type:</strong> <code>np.ndarray</code> (scalar or 0-d array)<br>
+<strong>DType:</strong> <code>int32</code><br>
+<strong>Shape:</strong> <code>()</code> (scalar)</p>
+<p><strong>Semantics:</strong></p>
+<pre tabindex="0"><code>t0 = t_min from CSV (typically 1)
+T  = t_max - t_min + 1
+
+Conversion:
+  t_absolute = t0 + t_index
+  t_index = t_absolute - t0
+</code></pre><p><strong>Example:</strong></p>
+<pre tabindex="0"><code>Raw CSV times: 1, 2, 3, ..., 210
+t0 = 1
+T  = 210
+t_index = 24 → t_absolute = 1 + 24 = 25
+</code></pre><hr>
+<h4 id="source_file-provenance">source_file: Provenance<a hidden class="anchor" aria-hidden="true" href="#source_file-provenance">#</a></h4>
+<p><strong>Path in NPZ:</strong> <code>source_file</code><br>
+<strong>Type:</strong> <code>np.ndarray</code><br>
+<strong>DType:</strong> <code>object</code> (Python string)<br>
+<strong>Shape:</strong> <code>()</code> (scalar)</p>
+<p><strong>Value:</strong> Original CSV filename (e.g., &ldquo;CD011605_5a_bright.csv&rdquo;)</p>
+<p><strong>Use:</strong> Trace back to raw data for reprocessing or verification</p>
+<hr>
+<h3 id="npz-summary-table">NPZ Summary Table<a hidden class="anchor" aria-hidden="true" href="#npz-summary-table">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Shape</th>
+<th>DType</th>
+<th>Size (MB)</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>(N, 5, T)</td>
+<td>float32</td>
+<td>~13</td>
+<td>Node features</td>
+</tr>
+<tr>
+<td>alive_mask</td>
+<td>(N, T)</td>
+<td>bool</td>
+<td>~0.2</td>
+<td>Birth tracking</td>
+</tr>
+<tr>
+<td>edge_src</td>
+<td>(E,)</td>
+<td>int32</td>
+<td>~0.2</td>
+<td>Edge list</td>
+</tr>
+<tr>
+<td>edge_dst</td>
+<td>(E,)</td>
+<td>int32</td>
+<td>~0.2</td>
+<td>Edge list</td>
+</tr>
+<tr>
+<td>edge_t</td>
+<td>(E,)</td>
+<td>int32</td>
+<td>~0.2</td>
+<td>Edge list</td>
+</tr>
+<tr>
+<td>idx_to_cell</td>
+<td>(N,)</td>
+<td>object</td>
+<td>~0.02</td>
+<td>Name mapping</td>
+</tr>
+<tr>
+<td>t0</td>
+<td>()</td>
+<td>int32</td>
+<td>~0.00001</td>
+<td>Metadata</td>
+</tr>
+<tr>
+<td>T</td>
+<td>()</td>
+<td>int32</td>
+<td>~0.00001</td>
+<td>Metadata</td>
+</tr>
+<tr>
+<td>source_file</td>
+<td>()</td>
+<td>object</td>
+<td>~0.00003</td>
+<td>Provenance</td>
+</tr>
+<tr>
+<td><strong>Total (uncompressed)</strong></td>
+<td>—</td>
+<td>—</td>
+<td><strong>~14</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Total (compressed)</strong></td>
+<td>—</td>
+<td>—</td>
+<td><strong>~0.7</strong></td>
+<td>~20× compression</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-relationships--constraints">4. Relationships &amp; Constraints<a hidden class="anchor" aria-hidden="true" href="#4-relationships--constraints">#</a></h2>
+<h3 id="dimension-consistency">Dimension Consistency<a hidden class="anchor" aria-hidden="true" href="#dimension-consistency">#</a></h3>
+<pre tabindex="0"><code>X.shape[0] == alive_mask.shape[0] == len(idx_to_cell) == N
+X.shape[1] == 5  (features)
+X.shape[2] == alive_mask.shape[1] == T
+</code></pre><h3 id="index-validity">Index Validity<a hidden class="anchor" aria-hidden="true" href="#index-validity">#</a></h3>
+<pre tabindex="0"><code>∀ k ∈ [0, E-1]:
+  edge_src[k] &lt; N
+  edge_dst[k] &lt; N
+  edge_t[k] &lt; T
+</code></pre><h3 id="data-integrity">Data Integrity<a hidden class="anchor" aria-hidden="true" href="#data-integrity">#</a></h3>
+<pre tabindex="0"><code>∀ c ∈ [0, N-1], t ∈ [0, T-1]:
+  if alive_mask[c, t] == False:
+    X[c, :, t] == [0, 0, 0, 0, 0]
+</code></pre><h3 id="uniqueness">Uniqueness<a hidden class="anchor" aria-hidden="true" href="#uniqueness">#</a></h3>
+<pre tabindex="0"><code>len(unique(idx_to_cell)) == N  (no duplicate names)
+∀ (src, dst, t): unique triplets (no multi-edges)
+</code></pre><h3 id="temporal-ordering">Temporal Ordering<a hidden class="anchor" aria-hidden="true" href="#temporal-ordering">#</a></h3>
+<pre tabindex="0"><code>t0 ≤ t0 + 1 ≤ ... ≤ t0 + T - 1  (times monotonic)
+</code></pre><h3 id="lineage-consistency">Lineage Consistency<a hidden class="anchor" aria-hidden="true" href="#lineage-consistency">#</a></h3>
+<pre tabindex="0"><code>∀ lineage edge (parent_idx, daughter_idx):
+  parent_name = idx_to_cell[parent_idx]
+  daughter_name = idx_to_cell[daughter_idx]
+  daughter_name == parent_name + single_letter
+</code></pre><hr>
+<h2 id="5-serialization-details">5. Serialization Details<a hidden class="anchor" aria-hidden="true" href="#5-serialization-details">#</a></h2>
+<h3 id="npz-format-zip-based">NPZ Format (ZIP-based)<a hidden class="anchor" aria-hidden="true" href="#npz-format-zip-based">#</a></h3>
+<pre tabindex="0"><code>file.npz (actually a ZIP archive)
+├── X.npy
+├── alive_mask.npy
+├── edge_src.npy
+├── edge_dst.npy
+├── edge_t.npy
+├── idx_to_cell.npy
+├── t0.npy
+├── T.npy
+└── source_file.npy
+</code></pre><h3 id="loading">Loading<a hidden class="anchor" aria-hidden="true" href="#loading">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load</span>
+</span></span><span class="line"><span class="cl"><span class="n">npz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&#34;file.npz&#34;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Access (two equivalent ways)</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">npz</span><span class="p">[</span><span class="s2">&#34;X&#34;</span><span class="p">]</span>  <span class="c1"># Dictionary-like</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">npz</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="s2">&#34;X&#34;</span><span class="p">]</span>  <span class="c1"># Via file listing</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Close (optional but recommended)</span>
+</span></span><span class="line"><span class="cl"><span class="n">npz</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div><h3 id="saving">Saving<a hidden class="anchor" aria-hidden="true" href="#saving">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">savez_compressed</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;file.npz&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">alive_mask</span><span class="o">=</span><span class="n">alive_mask</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_src</span><span class="o">=</span><span class="n">edge_src</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_dst</span><span class="o">=</span><span class="n">edge_dst</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_t</span><span class="o">=</span><span class="n">edge_t</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">idx_to_cell</span><span class="o">=</span><span class="n">idx_to_cell</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">t0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">T</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">T</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">source_file</span><span class="o">=</span><span class="n">source_file</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><hr>
+<h2 id="6-data-quality-standards">6. Data Quality Standards<a hidden class="anchor" aria-hidden="true" href="#6-data-quality-standards">#</a></h2>
+<h3 id="validation-checklist">Validation Checklist<a hidden class="anchor" aria-hidden="true" href="#validation-checklist">#</a></h3>
+<p><strong>Shape consistency</strong> (must pass)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">assert</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">alive</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx_to_cell</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">alive</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_src</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_dst</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_t</span><span class="p">)</span>
+</span></span></code></pre></div><p><strong>Index validity</strong> (must pass)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">edge_src</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="ow">and</span> <span class="n">edge_src</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">N</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">edge_dst</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="ow">and</span> <span class="n">edge_dst</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">N</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">edge_t</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="ow">and</span> <span class="n">edge_t</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">T</span>
+</span></span></code></pre></div><p><strong>Masking consistency</strong> (must pass)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">assert</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="o">~</span><span class="n">alive</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># Unborn cells all zero</span>
+</span></span></code></pre></div><p><strong>Name uniqueness</strong> (must pass)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">idx_to_cell</span><span class="p">))</span> <span class="o">==</span> <span class="n">N</span>
+</span></span></code></pre></div><p><strong>Reasonable ranges</strong> (should pass)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">X_alive</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">alive</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">X_alive</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">1000</span>  <span class="c1"># Coordinates</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">X_alive</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>  <span class="c1"># Size, blot positive</span>
+</span></span></code></pre></div><hr>
+<h2 id="7-version-history">7. Version History<a hidden class="anchor" aria-hidden="true" href="#7-version-history">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>April 2026</td>
+<td>Initial schema definition; per-embryo tensors, sparse edges</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="8-references">8. References<a hidden class="anchor" aria-hidden="true" href="#8-references">#</a></h2>
+<p><strong>Raw EPIC data source:</strong> <a href="http://epic.gs.washington.edu/">http://epic.gs.washington.edu/</a><br>
+<strong>C. elegans nomenclature:</strong> Sulston et al. (1983)<br>
+<strong>Distance threshold:</strong> 20 micrometers (standard contact distance)</p>
+<hr>
+<p><strong>Schema Document Version:</strong> 1.0<br>
+<strong>Last Updated:</strong> April 2026</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on x"
+            href="https://x.com/intent/tweet/?text=&amp;url=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fschema%2f&amp;hashtags=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fschema%2f&amp;title=&amp;summary=&amp;source=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fschema%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fschema%2f&title=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fschema%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on whatsapp"
+            href="https://api.whatsapp.com/send?text=%20-%20https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fschema%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on telegram"
+            href="https://telegram.me/share/url?text=&amp;url=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fschema%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share  on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=&u=https%3a%2f%2fbarshan.is-a.dev%2ftemp%2fschema%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2026 <a href="https://barshan.is-a.dev/">bluee :)</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
