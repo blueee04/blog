@@ -7,9 +7,7 @@ tags = ["dataset", "C. elegans", "graph-neural-networks", "microscopy", "bioinfo
 
 ## EPIC Dataset: Complete Preprocessing & Analysis Guide
 
-10. [File Manifest](#-complete-file-manifest)
 
----
 
 ## Quick Start
 
