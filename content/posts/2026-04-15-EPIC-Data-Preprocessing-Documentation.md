@@ -5,13 +5,9 @@ summary = "Complete guide to preprocessing and analyzing C. elegans embryonic de
 tags = ["dataset", "C. elegans", "graph-neural-networks", "microscopy", "bioinformatics", "data-preprocessing"]
 +++
 
-# 🧬 EPIC Dataset: Complete Preprocessing & Analysis Guide
+# EPIC Dataset: Complete Preprocessing & Analysis Guide
 
-> **Warning:** This is a living document. Last updated: April 20, 2026
-
----
-
-## 📚 Table of Contents
+## Table of Contents
 
 1. [Quick Start (5 minutes)](#-quick-start)
 2. [The Big Picture](#-the-big-picture)
@@ -26,13 +22,13 @@ tags = ["dataset", "C. elegans", "graph-neural-networks", "microscopy", "bioinfo
 
 ---
 
-## ⚡ Quick Start
+## Quick Start
 
-**In a hurry?** Here's what you need to know in 5 minutes:
+Here's what you need to know in 5 minutes:
 
 ### What is this dataset?
 
-We've processed **260 embryos** of *C. elegans* using **EPIC (eMbryo Project Imaging Consortium)** fluorescence microscopy. The output is spatio-temporal graph data perfect for training graph neural networks (GNNs).
+I've processed **260 embryos** of *C. elegans* using **EPIC (eMbryo Project Imaging Consortium)** fluorescence microscopy. The output is spatio-temporal graph data perfect for training graph neural networks (GNNs).
 
 ### The loop in 10 lines:
 
@@ -61,17 +57,16 @@ print(f"At time {t}: {len(alive)} cells alive")
 - **Something broke?** → See [Troubleshooting](#-troubleshooting)
 
 ---
-
-## 🔬 The Big Picture
+## Now in Depth
 
 ### Why this dataset matters
 
 *C. elegans* embryonic development is one of the most well-characterized biological systems:
 
-- **🎯 Perfect model system**: Complete lineage is known (959 cells at stage end)
-- **🔬 Observable in real-time**: Fluorescence microscopy captures cell division, migration, and differentiation
-- **📊 Rich structure**: Both *spatial* (proximity-based) and *temporal* (lineage-based) relationships
-- **🧠 GNN-friendly**: Natural graph representation (cells as nodes, adjacencies as edges)
+- Complete lineage is known (959 cells at stage end)
+- Fluorescence microscopy captures cell division, migration, and differentiation
+- Both *spatial* (proximity-based) and *temporal* (lineage-based) relationships
+- Natural graph representation (cells as nodes, adjacencies as edges)
 
 ### What EPIC gives us
 
@@ -85,7 +80,7 @@ Tensor Archives (260 compressed NPZ files)
 Spatio-Temporal Graphs (Ready for GNNs)
 ```
 
-### Key facts at a glance
+### Key facts
 
 | Metric | Value | Notes |
 |--------|-------|-------|
@@ -100,7 +95,7 @@ Spatio-Temporal Graphs (Ready for GNNs)
 
 ---
 
-## 📥 Raw Data Format: What Comes In
+## Raw Data Format: What Comes In
 
 ### Source: EPIC CSV Files
 
@@ -114,21 +109,21 @@ Each embryo is stored as a comma-separated table in `dataset/raw/*.csv`.
 
 Here's what each column means:
 
-| Column | Type | Unit | Used? | What it tells us |
+| Column | Type | What it tells us |
 |--------|------|------|-------|------------------|
-| `cellTime` | str | — | ❌ | Row ID (artifact; removed) |
-| **`cell`** | str | — | ✅ | Cell name in C. elegans nomenclature (e.g., "ABal", "Zrp1aaa") |
-| **`time`** | int | frame | ✅ | Timepoint (1-indexed, typically 1–210) |
-| `none` | int | — | ❌ | Unknown field (legacy; ignored) |
-| `global` | int | — | ❌ | Unused metadata offset |
-| `local` | int | — | ❌ | Unused metadata offset |
-| **`blot`** | float | AU | ✅ | **Fluorescence intensity**: brightfield/dark-field marker. Primary cell identity. Range: ~100 to 10M arbitrary units |
-| `cross` | float | — | ❌ | Cross-correlation metric (unused) |
-| **`z`** | float | μm | ✅ | Depth coordinate (focal plane offset relative to reference). Range: 0–200 μm |
-| **`x`** | float | px | ✅ | Horizontal position (X-axis, pixels). Range: 0–512 px |
-| **`y`** | float | px | ✅ | Vertical position (Y-axis, pixels). Range: 0–512 px |
-| **`size`** | float | AU | ✅ | Cell volume / morphological size (estimated counts). Range: ~10–5000 AU |
-| `gweight` | float | — | ❌ | Image intensity weight (unused) |
+| `cellTime` | str | Row ID (artifact; removed) |
+| **`cell`** | str | Cell name in C. elegans nomenclature (e.g., "ABal", "Zrp1aaa") |
+| **`time`** | int | Timepoint (1-indexed, typically 1–210) |
+| `none` | int | Unknown field (legacy; ignored) |
+| `global` | int | Unused metadata offset |
+| `local` | int | Unused metadata offset |
+| **`blot`** | float | **Fluorescence intensity**: brightfield/dark-field marker. Primary cell identity. Range: ~100 to 10M arbitrary units |
+| `cross` | float | Cross-correlation metric (unused) |
+| **`z`** | float | Depth coordinate (focal plane offset relative to reference). Range: 0–200 μm |
+| **`x`** | float | Horizontal position (X-axis, pixels). Range: 0–512 px |
+| **`y`** | float | Vertical position (Y-axis, pixels). Range: 0–512 px |
+| **`size`** | float | Cell volume / morphological size (estimated counts). Range: ~10–5000 AU |
+| `gweight` | float | Image intensity weight (unused) |
 
 ### Example Raw Record
 
@@ -138,14 +133,6 @@ ABal:25,ABal,25,22722,-2278,10,815432,-2278,19.2,166,257,74,815432
 ```
 
 This means: *Cell named ABal at timepoint 25 is located at position (166 px, 257 px, 19.2 μm) with fluorescence intensity 815432 AU and volume ~74 AU.*
-
-### Key observations
-
-1. **One row = one cell at one timepoint**
-2. **Sparse data**: Cells only appear *after birth*. Cell "ABa" might start at timepoint 5, while "AB" starts at timepoint 1
-3. **Lineage encoding**: Cell names nest hierarchically. "ABal" is a daughter of "ABa" (remove last letter = parent)
-4. **Variable embryo length**: Some embryos have 180 timepoints, others 250+
-5. **No missing values**: Every row has all columns
 
 ---
 
@@ -254,11 +241,6 @@ for t in range(T):
 edge_src, edge_dst, edge_t = zip(*edges)
 ```
 
-**Key facts**:
-- **Undirected**: If (A, B) is an edge, so is (B, A). Counts as 2 edges.
-- **Time-varying**: Edges change because cells move and new cells are born
-- **~45k edges per embryo**: Sparse but non-trivial graph density
-- **Threshold 20 μm**: Based on typical cell contact distance in *C. elegans*
 
 ### Step 4: Lineage Edges (`build_lineage_edges`)
 
@@ -303,7 +285,7 @@ for cell, idx in cell_to_idx.items():
 
 ---
 
-## 📤 Output Specification: What Goes Out
+## Output Specification: What Goes Out
 
 ### File Format: NPZ Archive
 
@@ -444,7 +426,7 @@ Typical contents:
 
 ---
 
-## 📊 Data Structures & Shapes
+## Data Structures & Shapes
 
 ### At a Glance
 
@@ -493,7 +475,7 @@ All 260 embryos:     ~180 MiB (on disk)
 
 ---
 
-## 💻 Practical Usage
+## Practical Usage
 
 ### Loading Data
 
@@ -620,9 +602,9 @@ print(df_stats.describe())
 
 ---
 
-## ✅ Validation & Quality Control
+## Validation & Quality Control
 
-### What we check
+### What I checked
 
 1. **No NaN values**: X, alive_mask, and edges are all valid
 2. **Edge consistency**: Nodes in edges exist (< N)
@@ -673,7 +655,7 @@ for npz_file in sorted(Path("dataset/processed/by_embryo").glob("*.npz")):
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -724,7 +706,7 @@ for cell in idx_to_cell:
 
 ---
 
-## 📂 Complete File Manifest
+## Complete File Manifest
 
 ### Directory Structure
 
@@ -746,7 +728,7 @@ for cell in idx_to_cell:
 ├── scripts/
 │   ├── preprocess_dataset.py         (Main pipeline runner)
 │   ├── usage_examples.py             (7 working examples)
-│   └── make_figures.py               (Visualization utilities)
+│   
 │
 ├── src/
 │   └── epic_preprocess.py            (Core preprocessing functions)
@@ -760,9 +742,6 @@ for cell in idx_to_cell:
 └── docs/
     ├── README.md                     (Navigation & overview)
     ├── QUICK_REFERENCE.md            (5-minute lookup)
-    ├── DATABASE_DOCUMENTATION.md     (Comprehensive reference)
-    ├── ARCHITECTURE.md               (System design & diagrams)
-    └── EPIC_COMPLETE_GUIDE.md        (This file — full narrative)
 ```
 
 ### Key Statistics
