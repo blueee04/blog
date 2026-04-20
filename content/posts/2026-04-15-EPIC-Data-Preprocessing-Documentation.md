@@ -760,20 +760,10 @@ Processing time (all):            ~2–4 hours (varies by hardware)
 
 ---
 
-## 🔗 Cross-References
-
-**Need more details?**
-- [QUICK_REFERENCE.md](QUICK_REFERENCE.md) — 5-minute lookup table
-- [DATABASE_DOCUMENTATION.md](DATABASE_DOCUMENTATION.md) — Exhaustive reference (11 sections)
-- [ARCHITECTURE.md](ARCHITECTURE.md) — System design & pipelines
-- [Usage Examples](../scripts/usage_examples.py) — 7 runnable code samples
-
----
-
 ## 📝 Metadata
 
-- **Author**: EPIC Preprocessing Pipeline v1.0
-- **Last Updated**: April 20, 2026
+- **Author**: Barshan Mondal
+- **Last Updated**: April 15, 2026
 - **Version**: 1.0
 - **Source Dataset**: EPIC (eMbryo Project Imaging Consortium) *C. elegans* embryo microscopy
 - **Organism**: *Caenorhabditis elegans* L4 stage embryos
