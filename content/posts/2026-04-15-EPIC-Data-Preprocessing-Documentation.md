@@ -15,7 +15,7 @@ Here's what you need to know in 5 minutes:
 
 ### What is this dataset?
 
-I've processed **260 embryos** of *C. elegans* using **EPIC (eMbryo Project Imaging Consortium)** fluorescence microscopy. The output is spatio-temporal graph data perfect for training graph neural networks (GNNs).
+I've processed **260 embryos** of *C. elegans* using **EPIC (Expression Patterns In Caenorhabditis)** fluorescence microscopy. The output is spatio-temporal graph data perfect for training graph neural networks (GNNs).
 
 ### The loop in 10 lines:
 
