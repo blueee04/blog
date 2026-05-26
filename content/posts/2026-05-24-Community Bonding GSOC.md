@@ -21,13 +21,13 @@ This blog post is mostly a small recap of what the past few months looked like a
 
 ## The Last Few Months
 
-Before the official coding period even began, I spent quite a lot of time attending discussions, interviews, paper reading sessions, and random deep dives into developmental biology.
+Before the official coding period even began, I spent a lot of time attending discussions, meetings, paper reading sessions, and falling into random rabbit holes around developmental biology. But the interesting part was that it never felt limited to just neuroscience or research. A huge part of the experience was also about learning how to communicate ideas better presenting papers, explaining complicated concepts simply, storytelling, managing time, and learning how to work openly with a community. Honestly, those are the kinds of skills that don’t get talked about enough in technical spaces, but end up mattering just as much.
 
 Most of my recent weeks have looked something like this:
 
 - reading papers at 2 AM
 - trying to understand why cells move the way they do
-- opening Napari and staring at embryogenesis visualizations for unhealthy amounts of time
+- opening Napari documentation and staring at embryogenesis visualizations for unhealthy amounts of time
 - pretending I fully understand dynamical systems
 - discovering that biology people casually use words that sound like boss fights
 
