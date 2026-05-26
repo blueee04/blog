@@ -50,7 +50,7 @@ The dataset itself contains things like:
 
 All of this in one .npz (Numpy Array) file.
 
-You can find my data [here](https://github.com/blueee04/Spatio-Temporal-Evolution)
+You can find the dataset [here](https://github.com/blueee04/Spatio-Temporal-Evolution)
 
 I wrote a dedicated technical blog about this pipeline because there’s a lot to unpack there.
 
