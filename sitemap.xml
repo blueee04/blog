@@ -2,10 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://barshan.is-a.dev/tags/best-practices/</loc>
-    <lastmod>2026-04-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://barshan.is-a.dev/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/c.-elegans/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/data-preprocessing/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/deep-learning/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/graph-neural-networks/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/gsoc/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/openworm/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/posts/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/posts/2026-05-24-community-bonding-gsoc/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/best-practices/</loc>
     <lastmod>2026-04-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/diagrams/</loc>
@@ -38,9 +65,6 @@
     <loc>https://barshan.is-a.dev/tags/quality-assurance/</loc>
     <lastmod>2026-04-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://barshan.is-a.dev/tags/</loc>
-    <lastmod>2026-04-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://barshan.is-a.dev/tags/technical-writing/</loc>
     <lastmod>2026-04-20T00:00:00+00:00</lastmod>
   </url><url>
@@ -62,12 +86,6 @@
     <loc>https://barshan.is-a.dev/tags/bioinformatics/</loc>
     <lastmod>2026-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://barshan.is-a.dev/tags/c.-elegans/</loc>
-    <lastmod>2026-04-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/tags/data-preprocessing/</loc>
-    <lastmod>2026-04-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://barshan.is-a.dev/tags/dataset/</loc>
     <lastmod>2026-04-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -77,13 +95,7 @@
     <loc>https://barshan.is-a.dev/temp/epic_complete_guide/</loc>
     <lastmod>2026-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://barshan.is-a.dev/tags/graph-neural-networks/</loc>
-    <lastmod>2026-04-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://barshan.is-a.dev/tags/microscopy/</loc>
-    <lastmod>2026-04-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/posts/</loc>
     <lastmod>2026-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/about/</loc>
@@ -114,9 +126,6 @@
     <lastmod>2026-03-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/gnn/</loc>
-    <lastmod>2026-03-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/tags/gsoc/</loc>
     <lastmod>2026-03-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/research-overview/</loc>
@@ -195,9 +204,6 @@
     <lastmod>2025-08-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/computer-vision/</loc>
-    <lastmod>2025-08-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/tags/deep-learning/</loc>
     <lastmod>2025-08-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/image-segmentation/</loc>

@@ -6,8 +6,15 @@
     <description>Recent content in Posts on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 15 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://barshan.is-a.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tiny Worms and Large Graphs</title>
+      <link>https://barshan.is-a.dev/posts/2026-05-24-community-bonding-gsoc/</link>
+      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2026-05-24-community-bonding-gsoc/</guid>
+      <description>So, I Started Working on OpenWorm</description>
+    </item>
     <item>
       <title>EPIC Dataset: From Microscopy to Graph Neural Networks</title>
       <link>https://barshan.is-a.dev/posts/2026-04-15-epic-data-preprocessing-documentation/</link>

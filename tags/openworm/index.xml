@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>GSOC on bluee :)</title>
-    <link>https://barshan.is-a.dev/tags/gsoc/</link>
-    <description>Recent content in GSOC on bluee :)</description>
+    <title>OpenWorm on bluee :)</title>
+    <link>https://barshan.is-a.dev/tags/openworm/</link>
+    <description>Recent content in OpenWorm on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://barshan.is-a.dev/tags/gsoc/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://barshan.is-a.dev/tags/openworm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tiny Worms and Large Graphs</title>
       <link>https://barshan.is-a.dev/posts/2026-05-24-community-bonding-gsoc/</link>
       <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/posts/2026-05-24-community-bonding-gsoc/</guid>
       <description>So, I Started Working on OpenWorm</description>
-    </item>
-    <item>
-      <title>Attention in Development Biology?</title>
-      <link>https://barshan.is-a.dev/posts/2026-03-12-attention-mechanism-bio/</link>
-      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://barshan.is-a.dev/posts/2026-03-12-attention-mechanism-bio/</guid>
-      <description>My set of research while i build my proposal for GSOC 2026 at the Openworm Foundation</description>
     </item>
   </channel>
 </rss>
