@@ -3,7 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://barshan.is-a.dev/</loc>
-    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+    <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/devolearn/</loc>
+    <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/dynamic-masking/</loc>
+    <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/gnn/</loc>
+    <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/gsoc/</loc>
+    <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/posts/2026-06-06-gsoc-week-2/</loc>
+    <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/posts/</loc>
+    <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/pytorch-geometric/</loc>
+    <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/</loc>
+    <lastmod>2026-06-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/c.-elegans/</loc>
     <lastmod>2026-05-24T00:00:00+00:00</lastmod>
@@ -17,16 +41,7 @@
     <loc>https://barshan.is-a.dev/tags/graph-neural-networks/</loc>
     <lastmod>2026-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://barshan.is-a.dev/tags/gsoc/</loc>
-    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://barshan.is-a.dev/tags/openworm/</loc>
-    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/posts/</loc>
-    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/tags/</loc>
     <lastmod>2026-05-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/posts/2026-05-24-community-bonding-gsoc/</loc>
@@ -123,9 +138,6 @@
     <lastmod>2026-03-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/developmental-biology/</loc>
-    <lastmod>2026-03-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/tags/gnn/</loc>
     <lastmod>2026-03-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/research-overview/</loc>
