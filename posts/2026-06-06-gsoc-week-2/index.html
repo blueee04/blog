@@ -96,8 +96,8 @@
   "keywords": [
     "GSoC", "DevoLearn", "PyTorch Geometric", "dynamic masking", "GNN"
   ],
-  "articleBody": "Every embryo now uses the same tensor dimensions and dynamic masking for consistent GNN and PyTorch Geometric compatibility.\nThe image below shows the local(single cell) and the global(multi cell) analysis Now, every embryo in the dataset has the exact same tensor dimensions. Unborn or dead cell features are set to 0.\nThis is the dynamic masking required so that the GNN or spatial-temporal network can accept the entire developmental tree of any embryo into a unified neural architecture.\nThe global and local modes avoid any extra padding or dimensionality overhead. It is perfect when I am doing analysis or evaluation on single embryos individually.\nAlso a bit of visualisation of the point cloud to validate the dataset It also makes the dataset compatible with the PyTorch Geometric batching pipeline.\nPyTorch Geometric is mostly used to collate multiple graph samples into a single large disjoint graph structure.\n",
-  "wordCount" : "146",
+  "articleBody": "Every embryo now uses the same tensor dimensions and dynamic masking for consistent GNN and PyTorch Geometric compatibility.\nThe image below shows the local(single cell) and the global(multi cell) analysis Now, every embryo in the dataset has the exact same tensor dimensions. Unborn or dead cell features are set to 0.\nThis is the dynamic masking required so that the GNN or spatial-temporal network can accept the entire developmental tree of any embryo into a unified neural architecture.\nThe global and local modes avoid any extra padding or dimensionality overhead. It is perfect when I am doing analysis or evaluation on single embryos individually.\nAlso a bit of visualisation of the point cloud to validate the dataset It also makes the dataset compatible with the PyTorch Geometric batching pipeline.\nAnd also the growth of a single embryo\nPyTorch Geometric is mostly used to collate multiple graph samples into a single large disjoint graph structure.\n",
+  "wordCount" : "154",
   "inLanguage": "en",
   "datePublished": "2026-06-06T00:00:00Z",
   "dateModified": "2026-06-06T00:00:00Z",
@@ -197,6 +197,9 @@
 <img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-06-GSOC%20Week%202/pointcloud.png" alt="pointcloud"  />
 
 It also makes the dataset compatible with the PyTorch Geometric batching pipeline.</p>
+<p>And also the growth of a single embryo</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-06-GSOC%20Week%202/Embryo%20Growth.png" alt="pointcloud"  />
+</p>
 <p><em>PyTorch Geometric is mostly used to collate multiple graph samples into a single large disjoint graph structure.</em></p>
 
 
