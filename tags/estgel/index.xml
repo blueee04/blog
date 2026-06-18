@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>OpenWorm on bluee :)</title>
-    <link>https://barshan.is-a.dev/tags/openworm/</link>
-    <description>Recent content in OpenWorm on bluee :)</description>
+    <title>ESTGEL on bluee :)</title>
+    <link>https://barshan.is-a.dev/tags/estgel/</link>
+    <description>Recent content in ESTGEL on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 13 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://barshan.is-a.dev/tags/openworm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://barshan.is-a.dev/tags/estgel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GSOC Week 3: ESTGEL Explained with a Social Network Analogy</title>
       <link>https://barshan.is-a.dev/posts/2026-06-13-gsoc-week-3/</link>
       <pubDate>Sat, 13 Jun 2026 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/posts/2026-06-13-gsoc-week-3/</guid>
       <description>A plain-English breakdown of ESTGEL&amp;rsquo;s three modules using a student friendship network analogy.</description>
-    </item>
-    <item>
-      <title>Tiny Worms and Large Graphs</title>
-      <link>https://barshan.is-a.dev/posts/2026-05-24-community-bonding-gsoc/</link>
-      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://barshan.is-a.dev/posts/2026-05-24-community-bonding-gsoc/</guid>
-      <description>So, I Started Working on OpenWorm</description>
     </item>
   </channel>
 </rss>
