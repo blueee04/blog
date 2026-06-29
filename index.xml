@@ -6,8 +6,15 @@
     <description>Recent content on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://barshan.is-a.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSOC Week 4: Training the ESTGEL Pipeline</title>
+      <link>https://barshan.is-a.dev/posts/2026-06-20-gsoc-week-4/</link>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2026-06-20-gsoc-week-4/</guid>
+      <description>Connected the data, model, loss, and checkpointing into a working training flow.</description>
+    </item>
     <item>
       <title>GSOC Week 3: ESTGEL Explained with a Social Network Analogy</title>
       <link>https://barshan.is-a.dev/posts/2026-06-13-gsoc-week-3/</link>
