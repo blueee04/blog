@@ -188,6 +188,8 @@
 <p>I also added a stratified train-validation split so the classes stay balanced, and class-weighted cross-entropy to handle imbalance automatically. On the model side, I made most training settings configurable through command-line arguments, which makes it much easier to run different experiments without changing the code every time.</p>
 <p>The training loop itself is fairly straightforward: load an embryo, run a forward pass, compute loss, backpropagate, clip gradients, and update the weights. I also added checkpointing for both the latest and best model states, along with the config and training history.</p>
 <p>The first smoke test was small, just four embryos for one epoch, but it was enough to confirm that the full pipeline works. The accuracy was around 50%, which is expected for a random initialization on such a tiny run, but the important part is that training, validation, and checkpoint saving all completed successfully.</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-20-GSOC%20Week%204/training.png" alt="Training"  />
+</p>
 
 
   </div>
