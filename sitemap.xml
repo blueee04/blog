@@ -3,27 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://barshan.is-a.dev/</loc>
-    <lastmod>2026-06-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/c.-elegans/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/devolearn/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/estgel/</loc>
-    <lastmod>2026-06-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/graph-neural-networks/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/gsoc/</loc>
-    <lastmod>2026-06-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/posts/2026-07-10-gsoc-midterm/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/openworm/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/posts/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://barshan.is-a.dev/tags/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/posts/2026-06-20-gsoc-week-4/</loc>
     <lastmod>2026-06-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://barshan.is-a.dev/tags/openworm/</loc>
-    <lastmod>2026-06-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/posts/</loc>
-    <lastmod>2026-06-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://barshan.is-a.dev/tags/pytorch/</loc>
-    <lastmod>2026-06-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/tags/</loc>
     <lastmod>2026-06-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/training-pipeline/</loc>
@@ -32,14 +44,8 @@
     <loc>https://barshan.is-a.dev/tags/biological-ai/</loc>
     <lastmod>2026-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://barshan.is-a.dev/tags/graph-neural-networks/</loc>
-    <lastmod>2026-06-13T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://barshan.is-a.dev/posts/2026-06-13-gsoc-week-3/</loc>
     <lastmod>2026-06-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/tags/devolearn/</loc>
-    <lastmod>2026-06-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/dynamic-masking/</loc>
     <lastmod>2026-06-06T00:00:00+00:00</lastmod>
@@ -52,9 +58,6 @@
   </url><url>
     <loc>https://barshan.is-a.dev/tags/pytorch-geometric/</loc>
     <lastmod>2026-06-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://barshan.is-a.dev/tags/c.-elegans/</loc>
-    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://barshan.is-a.dev/tags/data-preprocessing/</loc>
     <lastmod>2026-05-24T00:00:00+00:00</lastmod>

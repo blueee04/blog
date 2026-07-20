@@ -6,26 +6,47 @@
     <description>Recent content in Tags on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://barshan.is-a.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C. elegans</title>
+      <link>https://barshan.is-a.dev/tags/c.-elegans/</link>
+      <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/c.-elegans/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DevoLearn</title>
+      <link>https://barshan.is-a.dev/tags/devolearn/</link>
+      <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/devolearn/</guid>
+      <description></description>
+    </item>
     <item>
       <title>ESTGEL</title>
       <link>https://barshan.is-a.dev/tags/estgel/</link>
-      <pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/tags/estgel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Graph Neural Networks</title>
+      <link>https://barshan.is-a.dev/tags/graph-neural-networks/</link>
+      <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/tags/graph-neural-networks/</guid>
       <description></description>
     </item>
     <item>
       <title>GSOC</title>
       <link>https://barshan.is-a.dev/tags/gsoc/</link>
-      <pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/tags/gsoc/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenWorm</title>
       <link>https://barshan.is-a.dev/tags/openworm/</link>
-      <pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/tags/openworm/</guid>
       <description></description>
     </item>
@@ -51,20 +72,6 @@
       <description></description>
     </item>
     <item>
-      <title>Graph Neural Networks</title>
-      <link>https://barshan.is-a.dev/tags/graph-neural-networks/</link>
-      <pubDate>Sat, 13 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>https://barshan.is-a.dev/tags/graph-neural-networks/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>DevoLearn</title>
-      <link>https://barshan.is-a.dev/tags/devolearn/</link>
-      <pubDate>Sat, 06 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>https://barshan.is-a.dev/tags/devolearn/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>dynamic masking</title>
       <link>https://barshan.is-a.dev/tags/dynamic-masking/</link>
       <pubDate>Sat, 06 Jun 2026 00:00:00 +0000</pubDate>
@@ -83,13 +90,6 @@
       <link>https://barshan.is-a.dev/tags/pytorch-geometric/</link>
       <pubDate>Sat, 06 Jun 2026 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/tags/pytorch-geometric/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>C. elegans</title>
-      <link>https://barshan.is-a.dev/tags/c.-elegans/</link>
-      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://barshan.is-a.dev/tags/c.-elegans/</guid>
       <description></description>
     </item>
     <item>
