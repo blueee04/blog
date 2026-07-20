@@ -1,6 +1,6 @@
 +++
 title = "GSoC Midterm: Everything I've Built So Far"
-date = 2026-07-27
+date = 2026-07-10
 summary = "A walk through the work done till the midterm evaluation — from raw C. elegans microscopy to a trained ESTGEL model, attention maps, and an interactive embryo dashboard."
 tags = ["GSoC", "OpenWorm", "Graph Neural Networks", "ESTGEL", "C. elegans", "DevoLearn"]
 +++
