@@ -46,10 +46,11 @@ Loaded sample 1: CD011605_5a_bright.csv       (t0=1, T=374)
 To sanity-check it, I rendered the spatio-temporal evolution of an embryo directly from the loader's output — from a handful of active cells early on to a couple hundred packed together by the end. If the loader is wrong, this plot looks wrong, so it doubled as a test.
 
 <!-- Placeholder: Week 2 — loader console output (shapes / global N,T) -->
-![Week 2 — dataset loader output showing tensor shapes and the global frame](PLACEHOLDER_03_week2_loader_output.png)
+![single cell analysis](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-06-GSOC%20Week%202/singlecell.png)
 
+![global cell analysis](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-06-GSOC%20Week%202/global.png)
 <!-- Placeholder: Week 2 — spatio-temporal evolution of the embryo (t=22, t=110, t=198) -->
-![Week 2 — spatio-temporal evolution of a C. elegans embryo across three timesteps](PLACEHOLDER_04_week2_spatiotemporal.png)
+![Week 2 — spatio-temporal evolution of a C. elegans embryo across three timesteps](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-06-GSOC%20Week%202/pointcloud.png)
 
 ## Week 4 — Training the ESTGEL classifier
 
@@ -85,7 +86,7 @@ I want to be honest about what this does and doesn't mean: with six embryos, tha
 ![Week 4 — ESTGEL classifier training/validation loss and accuracy curves](PLACEHOLDER_05_week4_training_curves.png)
 
 <!-- Placeholder: Week 4 — training config + per-epoch console logs -->
-![Week 4 — training configuration and per-epoch logs](PLACEHOLDER_06_week4_logs.png)
+![Training](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-20-GSOC%20Week%204/training.png)
 
 ## Week 5 — Reading the attention
 
