@@ -21,10 +21,10 @@ The embryo data starts life as a noisy volumetric scan — a cloud of blobs wher
 None of this is the model yet. But it's the part that tells you whether your data is even trustworthy — and it caught a few things early.
 
 <!-- Placeholder: Week 1 — three 3D embryo reconstructions (side by side) -->
-![Week 1 — 3D reconstructions of the tracked embryo over time](PLACEHOLDER_01_week1_3d_reconstructions.png)
+![Week 1 — 3D reconstructions of the tracked embryo over time](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-07-10-gsoc-midterm/3D.png)
 
 <!-- Placeholder: Week 1 — raw embryo frame 0 + micro-dynamics + behavioral state space -->
-![Week 1 — raw frame, length-fluctuation micro-dynamics, and behavioral state space](PLACEHOLDER_02_week1_dynamics.png)
+![Week 1 — raw frame, length-fluctuation micro-dynamics, and behavioral state space](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-07-10-gsoc-midterm/dynamics.png)
 
 ## Week 2 — Building the dataset loader
 
