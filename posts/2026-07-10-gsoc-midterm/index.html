@@ -232,10 +232,12 @@ Loaded sample 1: CD011605_5a_bright.csv       (t0=1, T=374)
   sample_1 x shape: [2769, 5, 374]
 </code></pre><p>To sanity-check it, I rendered the spatio-temporal evolution of an embryo directly from the loader&rsquo;s output — from a handful of active cells early on to a couple hundred packed together by the end. If the loader is wrong, this plot looks wrong, so it doubled as a test.</p>
 <!-- Placeholder: Week 2 — loader console output (shapes / global N,T) -->
-<p><img loading="lazy" src="PLACEHOLDER_03_week2_loader_output.png" alt="Week 2 — dataset loader output showing tensor shapes and the global frame"  />
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-06-GSOC%20Week%202/singlecell.png" alt="single cell analysis"  />
+</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-06-GSOC%20Week%202/global.png" alt="global cell analysis"  />
 </p>
 <!-- Placeholder: Week 2 — spatio-temporal evolution of the embryo (t=22, t=110, t=198) -->
-<p><img loading="lazy" src="PLACEHOLDER_04_week2_spatiotemporal.png" alt="Week 2 — spatio-temporal evolution of a C. elegans embryo across three timesteps"  />
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-06-GSOC%20Week%202/pointcloud.png" alt="Week 2 — spatio-temporal evolution of a C. elegans embryo across three timesteps"  />
 </p>
 <h2 id="week-4--training-the-estgel-classifier">Week 4 — Training the ESTGEL classifier<a hidden class="anchor" aria-hidden="true" href="#week-4--training-the-estgel-classifier">#</a></h2>
 <p>With the data flowing, Week 4 was about wiring everything into an actual training loop and getting the first real numbers out.</p>
@@ -259,7 +261,7 @@ Epoch 004 | train loss 0.3705 acc 0.962 | val loss 0.3197 acc 0.962 | 305.4s
 <p><img loading="lazy" src="PLACEHOLDER_05_week4_training_curves.png" alt="Week 4 — ESTGEL classifier training/validation loss and accuracy curves"  />
 </p>
 <!-- Placeholder: Week 4 — training config + per-epoch console logs -->
-<p><img loading="lazy" src="PLACEHOLDER_06_week4_logs.png" alt="Week 4 — training configuration and per-epoch logs"  />
+<p><img loading="lazy" src="https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-20-GSOC%20Week%204/training.png" alt="Training"  />
 </p>
 <h2 id="week-5--reading-the-attention">Week 5 — Reading the attention<a hidden class="anchor" aria-hidden="true" href="#week-5--reading-the-attention">#</a></h2>
 <p>A classifier that says &ldquo;control&rdquo; or &ldquo;perturbed&rdquo; isn&rsquo;t that interesting on its own. The whole point of ESTGEL is the <em>edges</em> — which cell-cell interactions the model leans on to make that call. Week 5 was about pulling those attention weights back out and making them legible.</p>
