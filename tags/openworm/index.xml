@@ -13,7 +13,7 @@
       <link>https://barshan.is-a.dev/posts/2026-07-10-gsoc-midterm/</link>
       <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/posts/2026-07-10-gsoc-midterm/</guid>
-      <description>A walk through the work done till the midterm evaluation — from raw C. elegans microscopy to a trained ESTGEL model, attention maps, and an interactive embryo dashboard.</description>
+      <description>A walk through the work done till the midterm evaluation from raw C. elegans microscopy to a trained ESTGEL model, attention maps, and an interactive embryo dashboard.</description>
     </item>
     <item>
       <title>GSOC Week 4: Training the ESTGEL Pipeline</title>
