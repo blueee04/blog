@@ -10,7 +10,7 @@ We're at the midterm mark of GSoC, which means it's time to stop and look back a
 So here's the honest tour — week by week, what I started with, what broke, and where things stand now. The project, if you're new here, is **ESTGEL (Enhanced Spatial-Temporal Graph Edge Learning)** for OpenWorm: a graph neural network that watches a *C. elegans* embryo develop cell by cell and learns which cell-to-cell interactions actually matter.
 
 <!-- Placeholder: title slide / project banner -->
-![ESTGEL — Spatio-Temporal GNN for C. elegans development](PLACEHOLDER_00_banner.png)
+![ESTGEL — Spatio-Temporal GNN for C. elegans development](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-13-GSOC%20Week%203/ALL.png)
 
 ## Week 1 — Getting eyes on the data
 
