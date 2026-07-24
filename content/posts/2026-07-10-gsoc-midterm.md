@@ -83,7 +83,7 @@ Epoch 004 | train loss 0.3705 acc 0.962 | val loss 0.3197 acc 0.962 | 305.4s
 I want to be honest about what this does and doesn't mean: with six embryos, that 0.962 validation accuracy is a "the plumbing works" result, not a "we've solved developmental biology" result. What matters here is that loss decreases smoothly on both train and validation, nothing explodes, and the whole forward → loss → backprop → checkpoint loop runs end to end. That's the foundation everything after this stands on.
 
 <!-- Placeholder: Week 4 — training & validation loss and accuracy curves -->
-![Week 4 — ESTGEL classifier training/validation loss and accuracy curves](PLACEHOLDER_05_week4_training_curves.png)
+![Week 4 — ESTGEL classifier training/validation loss and accuracy curves](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-07-10-gsoc-midterm/training.png)
 
 <!-- Placeholder: Week 4 — training config + per-epoch console logs -->
 ![Training](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-06-20-GSOC%20Week%204/training.png)
