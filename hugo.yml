@@ -59,6 +59,10 @@ params:
   author: Barshan Mondal
   # author: ["Me", "You"] # multiple authors
 
+  # Migrated from the removed top-level `.Site.Social` (Hugo v0.141+).
+  social:
+    facebook_admin: ""
+
   defaultTheme: auto
   # disableThemeToggle: true
   ShowShareButtons: true
@@ -173,5 +177,5 @@ markup:
 services:
   instagram:
     disableInlineCSS: true
-  twitter:
+  x:
     disableInlineCSS: true
