@@ -6,8 +6,15 @@
     <description>Recent content on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://barshan.is-a.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSOC Week 8: Turning One Spreadsheet Into 2,769 Answers</title>
+      <link>https://barshan.is-a.dev/posts/2026-07-31-gsoc-week-8/</link>
+      <pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2026-07-31-gsoc-week-8/</guid>
+      <description>Turning a DevoWorm reference sheet into 2,506 honest cell fate training labels, and the four ways it fought back.</description>
+    </item>
     <item>
       <title>GSOC Week 7: The 96% That Wasn&#39;t</title>
       <link>https://barshan.is-a.dev/posts/2026-07-25-gsoc-week-7/</link>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>DevoWorm on bluee :)</title>
+    <link>https://barshan.is-a.dev/tags/devoworm/</link>
+    <description>Recent content in DevoWorm on bluee :)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 31 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://barshan.is-a.dev/tags/devoworm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSOC Week 8: Turning One Spreadsheet Into 2,769 Answers</title>
+      <link>https://barshan.is-a.dev/posts/2026-07-31-gsoc-week-8/</link>
+      <pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2026-07-31-gsoc-week-8/</guid>
+      <description>Turning a DevoWorm reference sheet into 2,506 honest cell fate training labels, and the four ways it fought back.</description>
+    </item>
+  </channel>
+</rss>
