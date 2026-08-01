@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Leprosy Detection on bluee :)</title>
+    <link>http://localhost:1313/tags/leprosy-detection/</link>
+    <description>Recent content in Leprosy Detection on bluee :)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/leprosy-detection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leprosy Detection using Deep Learning</title>
+      <link>http://localhost:1313/posts/2024-6-21-leprosy-detection/</link>
+      <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024-6-21-leprosy-detection/</guid>
+      <description>Deep learning pipeline for classifying leprosy vs non-leprosy images using EfficientNet, VGG16, MobileNet, and Xception with hinge loss integration.</description>
+    </item>
+  </channel>
+</rss>
