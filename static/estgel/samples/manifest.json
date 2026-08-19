@@ -1,0 +1,23 @@
+[
+  {
+    "file": "CD20070219_Ges1-4.csv",
+    "label": "Ges1-4",
+    "cells": 210,
+    "timepoints": 274,
+    "kb": 179
+  },
+  {
+    "file": "CD20080221_tbx-9_8.csv",
+    "label": "tbx-9 8",
+    "cells": 719,
+    "timepoints": 205,
+    "kb": 767
+  },
+  {
+    "file": "CD20089219_unc-130_9E1_8_L2.csv",
+    "label": "unc-130 9E1 8 L2",
+    "cells": 920,
+    "timepoints": 160,
+    "kb": 859
+  }
+]

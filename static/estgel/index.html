@@ -100,6 +100,32 @@
   .up-btn:disabled{opacity:.55;cursor:progress}
   .up-hint{margin:0;font-size:11.5px;color:var(--faint);line-height:1.5}
   .up-hint code{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+  /* sample chips */
+  .samples{width:100%;display:flex;flex-direction:column;gap:8px}
+  .samp-lead{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .samp-row{display:flex;flex-direction:column;gap:6px}
+  .samp{display:flex;align-items:center;gap:10px;width:100%;text-align:left;cursor:pointer;
+    background:var(--panel-2);border:1px solid var(--line);border-radius:var(--r-sm);
+    padding:9px 11px;color:var(--ink);font-family:var(--sans);font-size:12.5px;transition:.14s}
+  .samp:hover:not(:disabled){border-color:var(--accent);background:#7cc4ff12;transform:translateX(2px)}
+  .samp:disabled{opacity:.5;cursor:progress}
+  .samp .nm{flex:1;font-weight:500}
+  .samp .mt{font-family:var(--mono);font-size:10.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .samp .go{color:var(--accent);font-size:13px;opacity:0;transition:.14s}
+  .samp:hover .go{opacity:1}
+
+  /* pipeline progress */
+  .pipeline{list-style:none;margin:2px 0 0;padding:0;width:100%;display:flex;flex-direction:column;gap:0}
+  .pipeline li{display:flex;align-items:center;gap:9px;font-size:11.5px;color:var(--faint);
+    font-family:var(--mono);padding:3px 0;transition:.2s}
+  .pipeline li i{width:7px;height:7px;border-radius:50%;background:var(--line);flex:none;transition:.2s}
+  .pipeline li.active{color:var(--accent)}
+  .pipeline li.active i{background:var(--accent);box-shadow:0 0 0 3px #7cc4ff26;
+    animation:pulse 1.1s ease-in-out infinite}
+  .pipeline li.done{color:var(--good)}
+  .pipeline li.done i{background:var(--good)}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.65}}
+
   .up-status{font-family:var(--mono);font-size:11.5px;min-height:1em}
   .up-status.err{color:var(--bad)} .up-status.ok{color:var(--good)} .up-status.busy{color:var(--accent)}
   .results{padding:14px 16px;display:flex;flex-direction:column;gap:8px}
@@ -199,9 +225,20 @@
       <div class="card">
         <h2>Analyse your own embryo <span class="note">EPIC csv</span></h2>
         <div class="upload" id="drop">
+          <div class="samples">
+            <span class="samp-lead">Try a real embryo</span>
+            <div class="samp-row" id="sampleRow"></div>
+          </div>
           <input type="file" id="fileInput" accept=".csv" hidden>
-          <button class="up-btn" id="uploadBtn">Choose a CSV</button>
-          <p class="up-hint">or drop it here. Needs columns<br><code>cell, time, x, y, z, size, blot</code></p>
+          <button class="up-btn" id="uploadBtn">or upload your own CSV</button>
+          <p class="up-hint">drop a file here too. Needs columns<br><code>cell, time, x, y, z, size, blot</code></p>
+          <ol class="pipeline" id="pipeline" hidden>
+            <li data-step="fetch"><i></i>Loading embryo</li>
+            <li data-step="parse"><i></i>Reading lineage</li>
+            <li data-step="graph"><i></i>Building contact graph</li>
+            <li data-step="model"><i></i>Running ESTGEL</li>
+            <li data-step="render"><i></i>Drawing predictions</li>
+          </ol>
           <div class="up-status" id="upStatus"></div>
         </div>
         <div class="results" id="results" hidden></div>
@@ -528,32 +565,115 @@
         drop=document.getElementById('drop'),
         status=document.getElementById('upStatus');
 
+  const pipeline=document.getElementById('pipeline'),
+        sampleRow=document.getElementById('sampleRow');
+
   function setStatus(msg, kind){ status.textContent=msg; status.className='up-status'+(kind?' '+kind:''); }
+
+  /* pipeline stage indicator. Stages before the request are real; the ones during
+     the single API call are paced so the wait shows what the server is doing. */
+  let stageTimers=[];
+  function stages(reset){
+    stageTimers.forEach(clearTimeout); stageTimers=[];
+    pipeline.querySelectorAll('li').forEach(li=>li.className='');
+    if(reset){ pipeline.hidden=true; return; }
+    pipeline.hidden=false;
+  }
+  function stage(name){
+    const items=[...pipeline.querySelectorAll('li')];
+    const i=items.findIndex(li=>li.dataset.step===name);
+    items.forEach((li,j)=>li.className = j<i?'done' : j===i?'active' : '');
+  }
+  function stageDone(){ pipeline.querySelectorAll('li').forEach(li=>li.className='done'); }
+
+  function busy(on){
+    uploadBtn.disabled=on;
+    sampleRow.querySelectorAll('.samp').forEach(b=>b.disabled=on);
+  }
 
   if(!API_BASE){
     uploadBtn.disabled=true;
     setStatus('Upload needs the prediction API. Set window.ESTGEL_API.', '');
   }
 
-  async function sendCSV(file){
+  async function sendCSV(file, label){
     if(!API_BASE) return;
     if(!file.name.toLowerCase().endsWith('.csv')){ setStatus('That is not a .csv file.','err'); return; }
-    uploadBtn.disabled=true;
-    setStatus('Analysing '+file.name+'. First run may take ~30s while the server wakes.','busy');
+    busy(true);
+    stages(false);
+    stage('parse');
+    setStatus('Analysing '+(label||file.name)+'. First run can take ~30s while the server wakes.','busy');
+    // pace the stages that happen inside the one request
+    stageTimers.push(setTimeout(()=>stage('graph'), 700));
+    stageTimers.push(setTimeout(()=>stage('model'), 1800));
+
     const fd=new FormData(); fd.append('file',file);
     try{
       const r=await fetch(API_BASE.replace(/\/$/,'')+'/predict',{method:'POST',body:fd});
       const body=await r.json().catch(()=>null);
-      if(!r.ok){ setStatus((body&&body.detail)||('Server error '+r.status),'err'); return; }
+      if(!r.ok){ stages(true); setStatus((body&&body.detail)||('Server error '+r.status),'err'); return; }
+      stageTimers.forEach(clearTimeout); stageTimers=[];
+      stage('render');
       playing=false; document.getElementById('play').textContent='▶';
       applyData(body);
-      setStatus('Done: '+body.n_cells+' cells analysed.','ok');
+      flashStage();
+      stageDone();
+      const a=body.analysis||{};
+      setStatus(a.accuracy!=null
+        ? `${body.n_cells} cells · ${(a.accuracy*100).toFixed(1)}% correct`
+        : `${body.n_cells} cells analysed`, 'ok');
+      stageTimers.push(setTimeout(()=>{pipeline.hidden=true;}, 2600));
     }catch(err){
+      stages(true);
       setStatus('Could not reach the prediction server.','err');
     }finally{
-      uploadBtn.disabled=false;
+      busy(false);
     }
   }
+
+  /* brief zoom-in so a newly loaded embryo visibly arrives */
+  function flashStage(){
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    const target=zoom; zoom=target*0.72; autoRot=true;
+    const t0=performance.now();
+    (function ease(){
+      const k=Math.min(1,(performance.now()-t0)/650);
+      zoom=target*(0.72+0.28*(1-Math.pow(1-k,3)));
+      if(k<1) requestAnimationFrame(ease);
+    })();
+  }
+
+  /* one-click sample embryos */
+  async function loadSample(btn, meta){
+    busy(true); stages(false); stage('fetch');
+    setStatus('Fetching '+meta.label+'…','busy');
+    try{
+      const r=await fetch('samples/'+meta.file);
+      if(!r.ok) throw new Error('missing');
+      const blob=await r.blob();
+      await sendCSV(new File([blob], meta.file, {type:'text/csv'}), meta.label);
+    }catch(e){
+      stages(true); setStatus('Could not load that sample.','err'); busy(false);
+    }
+  }
+
+  (async function initSamples(){
+    if(!API_BASE) return;
+    try{
+      const r=await fetch('samples/manifest.json');
+      if(!r.ok) return;
+      const list=await r.json();
+      sampleRow.innerHTML=list.map((m,i)=>
+        `<button class="samp" data-i="${i}">
+           <span class="nm">${m.label}</span>
+           <span class="mt">${m.cells} cells</span>
+           <span class="go">→</span>
+         </button>`).join('');
+      sampleRow.querySelectorAll('.samp').forEach(btn=>{
+        btn.onclick=()=>loadSample(btn, list[+btn.dataset.i]);
+      });
+    }catch(e){ /* samples are optional */ }
+  })();
 
   uploadBtn.onclick=()=>fileInput.click();
   fileInput.onchange=e=>{ if(e.target.files[0]) sendCSV(e.target.files[0]); fileInput.value=''; };
