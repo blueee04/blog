@@ -2,14 +2,14 @@
 title = "Tiny Worms and Large Graphs"
 date = 2026-05-24
 summary = "So, I Started Working on OpenWorm"
-tags = ["Deep Learning", "C. elegans", "graph-neural-networks", "OpenWorm", "GSOC", "data-preprocessing"]
+tags = ["Deep Learning", "C. elegans", "graph-neural-networks", "OpenWorm", "Google Summer of Code", "data-preprocessing"]
 +++
 
 A few months ago, I somehow ended up spending my evenings reading about worms, dynamical systems, graph learning, and embryogenesis.
 
 And now I’m here.
 
-This summer, I’ll be working with the OpenWorm Foundation as a GSoC contributor on the project:
+This summer, I’ll be working with the OpenWorm Foundation as a Google Summer of Code contributor on the project:
 
 [**Explainable Spatio-Temporal Graph Evolution for Developmental Neuroscience**](https://summerofcode.withgoogle.com/programs/2026/projects/A289WZd0)
 

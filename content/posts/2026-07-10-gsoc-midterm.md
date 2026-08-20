@@ -1,11 +1,11 @@
 +++
-title = "GSoC Midterm: Everything I've Built So Far"
+title = "Google Summer of Code Midterm: Everything I've Built So Far"
 date = 2026-07-10
 summary = "A walk through the work done till the midterm evaluation from raw C. elegans microscopy to a trained ESTGEL model, attention maps, and an interactive embryo dashboard."
-tags = ["GSoC", "OpenWorm", "Graph Neural Networks", "ESTGEL", "C. elegans", "DevoLearn"]
+tags = ["Google Summer of Code", "OpenWorm", "Graph Neural Networks", "ESTGEL", "C. elegans", "DevoLearn"]
 +++
 
-We're at the midterm mark of GSoC, which means it's time to stop and look back at what actually got built. I put together a "Work Done Till Now" presentation for the evaluation, and instead of letting those slides quietly die in a Google Drive folder, I figured I'd turn them into a proper post.
+We're at the midterm mark of Google Summer of Code, which means it's time to stop and look back at what actually got built. I put together a "Work Done Till Now" presentation for the evaluation, and instead of letting those slides quietly die in a Google Drive folder, I figured I'd turn them into a proper post.
 
 So here's the honest tour week by week, what I started with, what broke, and where things stand now. The project, if you're new here, is **ESTGEL (Enhanced Spatial-Temporal Graph Edge Learning)** for OpenWorm: a graph neural network that watches a *C. elegans* embryo develop cell by cell and learns which cell-to-cell interactions actually matter.
 

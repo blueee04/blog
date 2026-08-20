@@ -2,7 +2,7 @@
 title = "ESTGEL Is Live: Go Click a Cell"
 date = 2026-08-20
 summary = "The cell-fate model is off my GPU and on the internet. An interactive 3D embryo you can scrub through, and a Space where you can upload your own."
-tags = ["GSOC", "OpenWorm", "ESTGEL", "C. elegans", "DevoLearn", "Demo"]
+tags = ["Google Summer of Code", "OpenWorm", "ESTGEL", "C. elegans", "DevoLearn", "Demo"]
 +++
 
 **New here?** I'm spending Google Summer of Code with [OpenWorm / DevoWorm](https://github.com/DevoLearn/DevoGraph) working on *C. elegans*, a millimetre-long worm whose embryo is so predictable that biologists have mapped every single cell division it makes. I'm training a graph neural network to watch that embryo develop and predict what each cell grows up to become: a neuron, muscle, gut, skin. It gets to see where a cell sits in 3D, how big it is, when it appears and which cells it's touching. It never gets to see the cell's name, because in this worm the name *is* the answer.

@@ -1,15 +1,15 @@
 +++
 title = "Attention in Development Biology?"
 date = 2026-03-12
-summary = "My set of research while i build my proposal for GSOC 2026 at the Openworm Foundation"
-tags = ["Attention", "GNN", "Developmental Biology", "AI", "GSOC", "C. elegans", "Graph Neural Networks", "Spatio-Temporal Learning", "Research Overview"]
+summary = "My set of research while i build my proposal for Google Summer of Code 2026 at the Openworm Foundation"
+tags = ["Attention", "GNN", "Developmental Biology", "AI", "Google Summer of Code", "C. elegans", "Graph Neural Networks", "Spatio-Temporal Learning", "Research Overview"]
 +++
 
 # Spatio-Temporal AI & Graph Learning: Some papers that i went through
 
 ## Introduction
 
-If you're diving into research on biological systems, dynamic networks, or AI that learns from complex, time-evolving data, you've probably stumbled into a overwhelming jungle of papers. As I'm building my GSOC 2026 proposal for the Openworm Foundation, I realized there are some papers that fundamentally shift how we think about AI and biological systems.
+If you're diving into research on biological systems, dynamic networks, or AI that learns from complex, time-evolving data, you've probably stumbled into a overwhelming jungle of papers. As I'm building my Google Summer of Code 2026 proposal for the Openworm Foundation, I realized there are some papers that fundamentally shift how we think about AI and biological systems.
 
 Here's the reality: **most biological systems are not static**. Brains evolve, cells communicate, organisms adapt. Yet many traditional AI models treat the world like a frozen snapshot. These five papers challenge that assumption and in doing so, they're reshaping the entire landscape of spatio-temporal AI and graph learning.
 
@@ -202,7 +202,7 @@ All five treat their respective domains (brains, graphs, AI itself, cells, tissu
 
 ---
 
-## Implications for My GSOC Work
+## Implications for My Google Summer of Code Work
 
 As I work on my proposal for the Openworm Foundation, these papers are reshaping my thinking:
 
@@ -227,5 +227,5 @@ If you're working on anything related to:
 
 ...you need to know these papers.
 
-So yeah, I'm excited about my GSOC proposal. These five papers just gave me a great insight!
+So yeah, I'm excited about my Google Summer of Code proposal. These five papers just gave me a great insight!
 
