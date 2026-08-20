@@ -282,6 +282,426 @@
 </script>
 
 
+    <section class="proj-widgets">
+  <div class="proj-head">
+    <h2>Things I've built</h2>
+    <span class="proj-hint">hover them, they all do something</span>
+  </div>
+  <div class="proj-grid">
+    <a class="proj-card" data-w="layers" href="/posts/2025-12-14-causal-criticality-of-layers-in-chain-of-thought-reasoning/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>Which layer does the thinking?</b><span>Ablating a transformer, layer by layer</span></div>
+    </a>
+    <a class="proj-card" data-w="graph" href="/posts/2025-06-12-fake-news-detection/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>Fake news, by community</b><span>Graph nets over how a story spreads</span></div>
+    </a>
+    <a class="proj-card" data-w="vectors" href="/posts/2025-10-24-wut-is-rag/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>Nearest neighbours</b><span>What retrieval actually retrieves</span></div>
+    </a>
+    <a class="proj-card" data-w="unet" href="/posts/2025-07-23-unet/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>Segment the noise</b><span>U-Net, encoder down, decoder up</span></div>
+    </a>
+    <a class="proj-card" data-w="latent" href="/posts/2025-08-17-what-is-a-vae/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>Walk the latent space</b><span>Every point is a different sample</span></div>
+    </a>
+    <a class="proj-card" data-w="spectrum" href="/posts/2025-06-10-music-recommendation-system/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>Songs as spectra</b><span>MFCC features, then find the match</span></div>
+    </a>
+  </div>
+</section>
+
+<style>
+.proj-widgets{ margin:1.6rem 0 .2rem; }
+.proj-head{ display:flex; align-items:baseline; gap:.6rem; flex-wrap:wrap; margin-bottom:.6rem; }
+.proj-head h2{ font-size:1rem; margin:0; color:var(--primary); }
+.proj-hint{ font-size:.76rem; color:var(--secondary); opacity:.8; }
+.proj-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(198px,1fr)); gap:12px; }
+.proj-card{
+  display:block; text-decoration:none !important;
+  border:1px solid rgba(128,128,128,.22); border-radius:11px; overflow:hidden;
+  background:rgba(128,128,128,.05);
+  transition:border-color .22s ease, background .22s ease, transform .22s ease;
+}
+.proj-card:hover{ border-color:rgba(128,128,128,.48); background:rgba(128,128,128,.09); }
+.proj-card canvas{ display:block; width:100%; height:112px; touch-action:none; }
+.proj-meta{ padding:8px 11px 11px; }
+.proj-meta b{ display:block; font-size:.83rem; color:var(--primary); line-height:1.25; }
+.proj-meta span{ display:block; font-size:.72rem; color:var(--secondary); opacity:.85; margin-top:2px; }
+@media (max-width:520px){ .proj-card canvas{ height:96px; } }
+
+ 
+@media (min-width:1200px){
+  .proj-card.railed{
+    position:absolute; width:190px; z-index:2;
+    transition:opacity .55s ease, transform .55s ease, border-color .22s ease, background .22s ease;
+  }
+   
+  body.proj-reveal .proj-card.railed{ opacity:0; transform:translateY(22px); }
+  body.proj-reveal .proj-card.railed.in{ opacity:1; transform:translateY(0); }
+  .proj-card.railed canvas{ height:96px; }
+  .proj-card.railed:hover{ transform:translateY(-3px); }
+  body.proj-railed .proj-head{ display:none; }
+  body.proj-railed .proj-widgets{ margin:0; }
+}
+</style>
+
+<script>
+(function () {
+  var section = document.querySelector('.proj-widgets');
+  if (!section) return;
+  var grid = section.querySelector('.proj-grid');
+  var cards = Array.prototype.slice.call(section.querySelectorAll('.proj-card'));
+  if (!cards.length) return;
+
+  var P = { y:'#f4b942', r:'#ef5a5a', t:'#2fc3b4', p:'#b57be8', g:'#6cc24a', b:'#4d9de0' };
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function rnd(seed) {
+    var s = seed;
+    return function () { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; };
+  }
+
+  var DRAW = {
+    layers: function (c, s) {
+      var n = 9, pad = 9, gap = 3;
+      var bh = (s.h - pad * 2 - gap * (n - 1)) / n;
+      var hov = s.hover ? Math.min(n - 1, Math.max(0, Math.floor((s.my - pad) / (bh + gap)))) : -1;
+      var crit = [0.05, 0.08, 0.12, 0.2, 0.35, 0.62, 0.95, 0.7, 0.3];
+      var drop = hov >= 0 ? crit[hov] : 0;
+      for (var i = 0; i < n; i++) {
+        var y = pad + i * (bh + gap), w = s.w * 0.60;
+        var on = i === hov;
+        if (on) { c.fillStyle = 'rgba(239,90,90,.16)'; c.fillRect(pad, y, w, bh); }
+        c.fillStyle = on ? P.r : 'rgba(128,128,128,' + (0.18 + crit[i] * 0.30) + ')';
+        c.fillRect(pad, y, w * (0.45 + crit[i] * 0.55), bh);
+      }
+      var bx = s.w - 30, bt = pad + 8, bb = s.h - pad;
+      c.fillStyle = 'rgba(128,128,128,.16)';
+      c.fillRect(bx, bt, 12, bb - bt);
+      var conf = 1 - drop * 0.9, hgt = (bb - bt) * conf;
+      c.fillStyle = drop > 0.5 ? P.r : P.t;
+      c.fillRect(bx, bb - hgt, 12, hgt);
+      c.fillStyle = s.ink;
+      c.font = '600 9px system-ui,sans-serif';
+      c.textAlign = 'center';
+      c.globalAlpha = 0.75;
+      c.fillText(hov >= 0 ? Math.round(conf * 100) + '%' : 'conf', bx + 6, bt - 2);
+      c.globalAlpha = 1;
+      c.textAlign = 'start';
+    },
+
+    graph: function (c, s) {
+      if (!s.nodes) {
+        var R = rnd(7);
+        s.nodes = [];
+        s.edges = [];
+        for (var i = 0; i < 15; i++) s.nodes.push({ x: 12 + R() * (s.w - 24), y: 12 + R() * (s.h - 24) });
+        for (var a = 0; a < 15; a++) {
+          for (var b2 = a + 1; b2 < 15; b2++) {
+            var dd0 = Math.hypot(s.nodes[a].x - s.nodes[b2].x, s.nodes[a].y - s.nodes[b2].y);
+            if (dd0 < s.w * 0.34) s.edges.push([a, b2]);
+          }
+        }
+      }
+      var src = 0, best = 1e9;
+      for (var k = 0; k < s.nodes.length; k++) {
+        var dd = Math.hypot(s.nodes[k].x - s.mx, s.nodes[k].y - s.my);
+        if (dd < best) { best = dd; src = k; }
+      }
+      var dist = s.nodes.map(function () { return 99; });
+      dist[src] = 0;
+      for (var it = 0; it < 5; it++) {
+        s.edges.forEach(function (e) {
+          if (dist[e[0]] + 1 < dist[e[1]]) dist[e[1]] = dist[e[0]] + 1;
+          if (dist[e[1]] + 1 < dist[e[0]]) dist[e[0]] = dist[e[1]] + 1;
+        });
+      }
+      var wave = (s.t * 1.5) % 4.2;
+      c.lineWidth = 1;
+      s.edges.forEach(function (e) {
+        var lit = Math.min(dist[e[0]], dist[e[1]]) < wave;
+        c.strokeStyle = lit ? 'rgba(180,123,232,.55)' : 'rgba(128,128,128,.20)';
+        c.beginPath();
+        c.moveTo(s.nodes[e[0]].x, s.nodes[e[0]].y);
+        c.lineTo(s.nodes[e[1]].x, s.nodes[e[1]].y);
+        c.stroke();
+      });
+      s.nodes.forEach(function (nd, i2) {
+        var lit = dist[i2] < wave;
+        var pulse = lit ? 1 + 0.3 * Math.sin(s.t * 5 - dist[i2]) : 1;
+        c.beginPath();
+        c.arc(nd.x, nd.y, (i2 === src ? 5.2 : 3.4) * pulse, 0, 6.284);
+        c.fillStyle = i2 === src ? P.r : (lit ? P.p : 'rgba(128,128,128,.42)');
+        c.fill();
+      });
+    },
+
+    vectors: function (c, s) {
+      if (!s.pts) {
+        var R = rnd(21);
+        s.pts = [];
+        for (var i = 0; i < 42; i++) s.pts.push({ x: 10 + R() * (s.w - 20), y: 10 + R() * (s.h - 20) });
+      }
+      var qx = s.hover ? s.mx : s.w / 2 + Math.cos(s.t * 0.7) * s.w * 0.24;
+      var qy = s.hover ? s.my : s.h / 2 + Math.sin(s.t * 0.9) * s.h * 0.24;
+      var d = s.pts.map(function (p, i) { return { i: i, d: Math.hypot(p.x - qx, p.y - qy) }; });
+      d.sort(function (a, b2) { return a.d - b2.d; });
+      var top = d.slice(0, 3), rad = top[2].d;
+      c.beginPath();
+      c.arc(qx, qy, rad, 0, 6.284);
+      c.strokeStyle = 'rgba(45,195,180,.45)';
+      c.setLineDash([3, 3]);
+      c.lineWidth = 1;
+      c.stroke();
+      c.setLineDash([]);
+      s.pts.forEach(function (p, i) {
+        var hit = top[0].i === i || top[1].i === i || top[2].i === i;
+        if (hit) {
+          c.beginPath();
+          c.moveTo(qx, qy);
+          c.lineTo(p.x, p.y);
+          c.strokeStyle = 'rgba(45,195,180,.6)';
+          c.lineWidth = 1.2;
+          c.stroke();
+        }
+        c.beginPath();
+        c.arc(p.x, p.y, hit ? 4 : 2.2, 0, 6.284);
+        c.fillStyle = hit ? P.t : 'rgba(128,128,128,.38)';
+        c.fill();
+      });
+      c.beginPath();
+      c.arc(qx, qy, 5, 0, 6.284);
+      c.fillStyle = P.y;
+      c.fill();
+    },
+
+    unet: function (c, s) {
+      if (!s.cells) {
+        var R = rnd(5);
+        s.cells = [];
+        var step = 9;
+        for (var y = 0; y < Math.ceil(s.h / step); y++) {
+          for (var x = 0; x < Math.ceil(s.w / step); x++) {
+            var cx2 = x * step + step / 2, cy2 = y * step + step / 2;
+            var inside = Math.hypot(cx2 - s.w * 0.5, (cy2 - s.h * 0.5) * 1.5) < s.w * 0.20
+                      || Math.hypot(cx2 - s.w * 0.27, (cy2 - s.h * 0.64) * 1.5) < s.w * 0.11;
+            s.cells.push({ x: x * step, y: y * step, n: R(), inside: inside });
+          }
+        }
+      }
+      var bx = s.hover ? s.mx : s.w / 2 + Math.cos(s.t * 0.8) * s.w * 0.30;
+      var by = s.hover ? s.my : s.h / 2 + Math.sin(s.t * 1.1) * s.h * 0.28;
+      var br = Math.min(s.w, s.h) * 0.32;
+      s.cells.forEach(function (cell) {
+        var dx = cell.x + 4.5 - bx, dy = cell.y + 4.5 - by;
+        if (Math.hypot(dx, dy) < br) c.fillStyle = cell.inside ? P.g : 'rgba(128,128,128,.13)';
+        else c.fillStyle = 'rgba(128,128,128,' + (0.10 + cell.n * 0.22) + ')';
+        c.fillRect(cell.x + 0.5, cell.y + 0.5, 8, 8);
+      });
+      c.beginPath();
+      c.arc(bx, by, br, 0, 6.284);
+      c.strokeStyle = 'rgba(108,194,74,.75)';
+      c.lineWidth = 1.4;
+      c.stroke();
+    },
+
+    latent: function (c, s) {
+      var zx = ((s.hover ? s.mx : s.w / 2 + Math.cos(s.t * 0.6) * s.w * 0.30) / s.w - 0.5) * 2;
+      var zy = ((s.hover ? s.my : s.h / 2 + Math.sin(s.t * 0.8) * s.h * 0.30) / s.h - 0.5) * 2;
+      c.strokeStyle = 'rgba(128,128,128,.16)';
+      c.lineWidth = 1;
+      for (var g = 0; g <= 4; g++) {
+        c.beginPath(); c.moveTo(g / 4 * s.w, 0); c.lineTo(g / 4 * s.w, s.h); c.stroke();
+        c.beginPath(); c.moveTo(0, g / 4 * s.h); c.lineTo(s.w, g / 4 * s.h); c.stroke();
+      }
+      var cx3 = s.w / 2, cy3 = s.h / 2, base = Math.min(s.w, s.h) * 0.26;
+      c.beginPath();
+      for (var a2 = 0; a2 <= 64; a2++) {
+        var th = a2 / 64 * 6.284;
+        var rr = base * (1 + 0.34 * Math.sin(th * (2 + zx * 2) + s.t * 0.6)
+                           + 0.26 * Math.cos(th * (3 + zy * 2) - s.t * 0.4));
+        var px = cx3 + Math.cos(th) * rr, py = cy3 + Math.sin(th) * rr * 0.82;
+        if (a2) c.lineTo(px, py); else c.moveTo(px, py);
+      }
+      c.closePath();
+      c.fillStyle = 'rgba(180,123,232,.30)';
+      c.fill();
+      c.strokeStyle = P.p;
+      c.lineWidth = 1.6;
+      c.stroke();
+      c.beginPath();
+      c.arc(cx3 + zx * s.w * 0.38, cy3 + zy * s.h * 0.38, 3.2, 0, 6.284);
+      c.fillStyle = P.y;
+      c.fill();
+    },
+
+    spectrum: function (c, s) {
+      var n = 24, bw = s.w / n;
+      var peak = (s.hover ? s.mx : s.w / 2 + Math.cos(s.t * 0.9) * s.w * 0.33) / s.w * n;
+      for (var i = 0; i < n; i++) {
+        var env = Math.exp(-Math.pow(i - peak, 2) / 24);
+        var h = (0.16 + env * 0.70 + 0.11 * Math.abs(Math.sin(s.t * 2.4 + i * 0.7))) * s.h * 0.84;
+        var near = Math.abs(i - peak) < 2.2;
+        c.fillStyle = near ? P.y : 'rgba(77,157,224,' + (0.30 + env * 0.55) + ')';
+        c.fillRect(i * bw + 1, s.h - h - 6, bw - 2, h);
+      }
+      c.fillStyle = 'rgba(128,128,128,.30)';
+      c.fillRect(0, s.h - 5, s.w, 1);
+    }
+  };
+
+  var live = [];
+  cards.forEach(function (card) {
+    var cv = card.querySelector('canvas');
+    var kind = card.getAttribute('data-w');
+    if (!cv || !DRAW[kind]) return;
+    var ctx = cv.getContext('2d');
+    var st = { w: 0, h: 0, mx: 0, my: 0, hover: false, t: Math.random() * 5, ink: '#888' };
+    var item = { card: card, cv: cv, ctx: ctx, st: st, fn: DRAW[kind], visible: true };
+
+    item.resize = function () {
+      var r = cv.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = Math.round(r.width * dpr);
+      cv.height = Math.round(r.height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      st.w = r.width;
+      st.h = r.height;
+      st.mx = st.w / 2;
+      st.my = st.h / 2;
+      st.ink = getComputedStyle(card).color || '#888';
+      st.cells = null; st.nodes = null; st.pts = null;
+    };
+    item.render = function () {
+      if (!st.w) item.resize();
+      if (!st.w) return;
+      ctx.clearRect(0, 0, st.w, st.h);
+      item.fn(ctx, st);
+    };
+
+    card.addEventListener('pointermove', function (e) {
+      var r = cv.getBoundingClientRect();
+      if (!r.width) return;
+      st.hover = true;
+      st.mx = e.clientX - r.left;
+      st.my = e.clientY - r.top;
+    }, { passive: true });
+    card.addEventListener('pointerleave', function () { st.hover = false; }, { passive: true });
+
+    item.resize();
+    item.render();
+    live.push(item);
+  });
+  if (!live.length) return;
+
+   
+  var main = document.querySelector('main.main');
+  var RAIL_MIN = 1200, GUTTER = 24, CARD_W = 190;
+  var railed = false;
+
+  function layoutRail() {
+    if (!main) return;
+    var wide = window.innerWidth >= RAIL_MIN;
+    if (!wide) {
+      if (railed) {
+        railed = false;
+        document.body.classList.remove('proj-railed');
+        cards.forEach(function (c2) {
+          c2.classList.remove('railed', 'in');
+          c2.style.cssText = '';
+          grid.appendChild(c2);
+        });
+        live.forEach(function (it) { it.resize(); it.render(); });
+      }
+      return;
+    }
+    if (!railed) {
+      railed = true;
+      document.body.classList.add('proj-railed');
+      if (getComputedStyle(main).position === 'static') main.style.position = 'relative';
+      cards.forEach(function (c2) { c2.classList.add('railed'); main.appendChild(c2); });
+    }
+    var entries = document.querySelectorAll('article.post-entry');
+    var mainRect = main.getBoundingClientRect();
+    var mw = main.clientWidth;
+    cards.forEach(function (c2, i) {
+      var anchor = entries[Math.min(i + 1, entries.length - 1)];
+      var top = anchor
+        ? anchor.getBoundingClientRect().top - mainRect.top
+        : 120 + i * 190;
+      c2.style.top = Math.max(0, Math.round(top)) + 'px';
+      c2.style.left = (i % 2 === 0)
+        ? -(CARD_W + GUTTER) + 'px'
+        : (mw + GUTTER) + 'px';
+    });
+    live.forEach(function (it) { it.resize(); it.render(); });
+  }
+
+  layoutRail();
+  var rt = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(layoutRail, 120);
+  }, { passive: true });
+  window.addEventListener('load', layoutRail);
+
+  
+  var mq = window.matchMedia('(min-width:' + RAIL_MIN + 'px)');
+  if (mq.addEventListener) mq.addEventListener('change', layoutRail);
+  else if (mq.addListener) mq.addListener(layoutRail);
+
+   
+  function revealAll() { cards.forEach(function (c2) { c2.classList.add('in'); }); }
+
+  if ('IntersectionObserver' in window) {
+    document.body.classList.add('proj-reveal');
+    var io = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) {
+        live.forEach(function (it) {
+          if (it.card !== en.target) return;
+          it.visible = en.isIntersecting;
+          if (en.isIntersecting) en.target.classList.add('in');
+        });
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+    live.forEach(function (it) { io.observe(it.card); });
+    
+    setTimeout(function () {
+      var shown = 0;
+      cards.forEach(function (c2) { if (c2.classList.contains('in')) shown++; });
+      if (!shown) revealAll();
+    }, 2500);
+  } else {
+    revealAll();
+  }
+
+  if (reduce) { cards.forEach(function (c2) { c2.classList.add('in'); }); return; }
+
+  var raf = null;
+  function tick() {
+    live.forEach(function (it) {
+      if (!it.visible) return;
+      it.st.t += 0.016;
+      it.render();
+    });
+    raf = requestAnimationFrame(tick);
+  }
+  function start() { if (raf === null) raf = requestAnimationFrame(tick); }
+  function stop() { if (raf !== null) { cancelAnimationFrame(raf); raf = null; } }
+  start();
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
+  });
+})();
+</script>
+
+
     <footer class="entry-footer">
         <div class="social-icons" >
     <a href="https://github.com/blueee04" target="_blank" rel="noopener noreferrer me"
