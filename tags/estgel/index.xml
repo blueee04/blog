@@ -6,8 +6,15 @@
     <description>Recent content in ESTGEL on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://barshan.is-a.dev/tags/estgel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ESTGEL Is Live: Go Click a Cell</title>
+      <link>https://barshan.is-a.dev/posts/2026-08-20-estgel-live/</link>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2026-08-20-estgel-live/</guid>
+      <description>The cell-fate model is off my GPU and on the internet. An interactive 3D embryo you can scrub through, and a Space where you can upload your own.</description>
+    </item>
     <item>
       <title>GSOC Week 7: The 96% That Wasn&#39;t</title>
       <link>https://barshan.is-a.dev/posts/2026-07-25-gsoc-week-7/</link>
