@@ -591,6 +591,40 @@
     sampleRow.querySelectorAll('.samp').forEach(b=>b.disabled=on);
   }
 
+  /* The prediction Space runs on ZeroGPU, which only starts through Gradio's own
+     launch path, so there is no plain REST route to post to. Gradio's API is a
+     three-step protocol: upload the file, start the call, then read the result off
+     an SSE stream. Errors come back as an SSE "error" event, not an HTTP status. */
+  async function callSpace(file){
+    const base=API_BASE.replace(/\/$/,'');
+    const fd=new FormData(); fd.append('files', file);
+    const up=await fetch(base+'/gradio_api/upload',{method:'POST',body:fd});
+    if(!up.ok) return {__error:'Upload failed ('+up.status+').'};
+    const paths=await up.json();
+    const path=Array.isArray(paths)?paths[0]:paths;
+
+    const start=await fetch(base+'/gradio_api/call/predict',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({data:[path]})
+    });
+    if(!start.ok) return {__error:'Server rejected the request ('+start.status+').'};
+    const {event_id}=await start.json();
+
+    const res=await fetch(base+'/gradio_api/call/predict/'+event_id);
+    const text=await res.text();
+    let payload=null, errMsg=null;
+    for(const block of text.split('\n\n')){
+      const ev=(block.match(/^event:\s*(\w+)/m)||[])[1];
+      const dataLine=(block.match(/^data:\s*(.*)$/m)||[])[1];
+      if(!ev||!dataLine) continue;
+      if(ev==='error'){ try{ errMsg=JSON.parse(dataLine); }catch(e){ errMsg=dataLine; } }
+      if(ev==='complete'){ try{ payload=JSON.parse(dataLine); }catch(e){} }
+    }
+    if(errMsg) return {__error: typeof errMsg==='string'? errMsg : 'The server rejected that file.'};
+    if(!payload) return {__error:'No result returned. The Space may still be waking up.'};
+    return Array.isArray(payload)? payload[0] : payload;
+  }
+
   if(!API_BASE){
     uploadBtn.disabled=true;
     setStatus('Upload needs the prediction API. Set window.ESTGEL_API.', '');
@@ -607,11 +641,9 @@
     stageTimers.push(setTimeout(()=>stage('graph'), 700));
     stageTimers.push(setTimeout(()=>stage('model'), 1800));
 
-    const fd=new FormData(); fd.append('file',file);
     try{
-      const r=await fetch(API_BASE.replace(/\/$/,'')+'/predict',{method:'POST',body:fd});
-      const body=await r.json().catch(()=>null);
-      if(!r.ok){ stages(true); setStatus((body&&body.detail)||('Server error '+r.status),'err'); return; }
+      const body=await callSpace(file);
+      if(body && body.__error){ stages(true); setStatus(body.__error,'err'); return; }
       stageTimers.forEach(clearTimeout); stageTimers=[];
       stage('render');
       playing=false; document.getElementById('play').textContent='▶';
