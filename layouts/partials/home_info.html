@@ -9,6 +9,8 @@
 
     {{ partial "worm_strip.html" . }}
 
+    {{ partial "project_widgets.html" . }}
+
     <footer class="entry-footer">
         {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
     </footer>
