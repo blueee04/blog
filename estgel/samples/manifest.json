@@ -1,23 +1,23 @@
 [
   {
-    "file": "CD20070219_Ges1-4.csv",
-    "label": "Ges1-4",
-    "cells": 210,
-    "timepoints": 274,
-    "kb": 179
+    "file": "CD20081002_F28C6_1_2_L1.csv",
+    "label": "F28C6 1 2 L1",
+    "cells": 716,
+    "accuracy": 0.7897,
+    "kb": 586
   },
   {
-    "file": "CD20080221_tbx-9_8.csv",
-    "label": "tbx-9 8",
-    "cells": 719,
-    "timepoints": 205,
-    "kb": 767
+    "file": "CD20071105_tbx-11_8.csv",
+    "label": "tbx-11 8",
+    "cells": 714,
+    "accuracy": 0.7774,
+    "kb": 884
   },
   {
-    "file": "CD20089219_unc-130_9E1_8_L2.csv",
-    "label": "unc-130 9E1 8 L2",
-    "cells": 920,
-    "timepoints": 160,
-    "kb": 859
+    "file": "CD20071015_lin-39_9.csv",
+    "label": "lin-39 9",
+    "cells": 730,
+    "accuracy": 0.7728,
+    "kb": 896
   }
 ]

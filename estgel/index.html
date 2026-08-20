@@ -103,6 +103,7 @@
   /* sample chips */
   .samples{width:100%;display:flex;flex-direction:column;gap:8px}
   .samp-lead{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .samp-note{font-size:11px;color:var(--faint);margin-top:-5px}
   .samp-row{display:flex;flex-direction:column;gap:6px}
   .samp{display:flex;align-items:center;gap:10px;width:100%;text-align:left;cursor:pointer;
     background:var(--panel-2);border:1px solid var(--line);border-radius:var(--r-sm);
@@ -110,7 +111,10 @@
   .samp:hover:not(:disabled){border-color:var(--accent);background:#7cc4ff12;transform:translateX(2px)}
   .samp:disabled{opacity:.5;cursor:progress}
   .samp .nm{flex:1;font-weight:500}
-  .samp .mt{font-family:var(--mono);font-size:10.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .samp .nm .sub{display:block;font-family:var(--mono);font-size:10px;color:var(--faint);
+    font-weight:400;margin-top:1px}
+  .samp .acc{font-family:var(--mono);font-size:11px;font-variant-numeric:tabular-nums;
+    color:var(--good);background:#5ec27a1a;border-radius:20px;padding:2px 7px}
   .samp .go{color:var(--accent);font-size:13px;opacity:0;transition:.14s}
   .samp:hover .go{opacity:1}
 
@@ -227,6 +231,7 @@
         <div class="upload" id="drop">
           <div class="samples">
             <span class="samp-lead">Try a real embryo</span>
+            <span class="samp-note">accuracy the model reaches on each</span>
             <div class="samp-row" id="sampleRow"></div>
           </div>
           <input type="file" id="fileInput" accept=".csv" hidden>
@@ -697,8 +702,8 @@
       const list=await r.json();
       sampleRow.innerHTML=list.map((m,i)=>
         `<button class="samp" data-i="${i}">
-           <span class="nm">${m.label}</span>
-           <span class="mt">${m.cells} cells</span>
+           <span class="nm">${m.label}<span class="sub">${m.cells} cells</span></span>
+           ${m.accuracy!=null?`<span class="acc">${(m.accuracy*100).toFixed(0)}%</span>`:''}
            <span class="go">→</span>
          </button>`).join('');
       sampleRow.querySelectorAll('.samp').forEach(btn=>{
