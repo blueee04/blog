@@ -28,6 +28,30 @@
       <canvas></canvas>
       <div class="proj-meta"><b>Songs as spectra</b><span>MFCC features, then find the match</span></div>
     </a>
+    <a class="proj-card" data-w="attention" href="/posts/2025-11-19-transfomers/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>Who attends to whom</b><span>A causal attention matrix, row by row</span></div>
+    </a>
+    <a class="proj-card" data-w="mlp" href="/posts/2023-11-05-a-neural-network-from-scratch/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>A net from scratch</b><span>Watch a forward pass go through</span></div>
+    </a>
+    <a class="proj-card" data-w="regression" href="/posts/2023-11-02-a-simple-linear-regression/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>Fit the line</b><span>Move it and watch the loss react</span></div>
+    </a>
+    <a class="proj-card" data-w="scanner" href="/posts/2023-10-22-face-detection/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>Find the face</b><span>Drag the detector until it locks on</span></div>
+    </a>
+    <a class="proj-card" data-w="packets" href="/posts/2025-02-23-adaptive-multi-zone-iot-security-framework/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>Drop the bad packets</b><span>Move the firewall across the zones</span></div>
+    </a>
+    <a class="proj-card" data-w="hexdump" href="/posts/2023-05-15-complete-memlabs-writeup/">
+      <canvas></canvas>
+      <div class="proj-meta"><b>Carve the memory dump</b><span>Sweep for artifacts in the bytes</span></div>
+    </a>
   </div>
 </section>
 
@@ -271,6 +295,200 @@
       }
       c.fillStyle = 'rgba(128,128,128,.30)';
       c.fillRect(0, s.h - 5, s.w, 1);
+    },
+
+    attention: function (c, s) {
+      var n = 8, cell = Math.min((s.w - 16) / n, (s.h - 14) / n);
+      var ox = (s.w - cell * n) / 2, oy = (s.h - cell * n) / 2;
+      var qr = s.hover
+        ? Math.min(n - 1, Math.max(0, Math.floor((s.my - oy) / cell)))
+        : Math.floor((s.t * 0.8) % n);
+      for (var r = 0; r < n; r++) {
+        var row = [], sum = 0;
+        for (var k = 0; k <= r; k++) {
+          // a token only attends to itself and what came before it
+          var wgt = Math.exp(-(r - k) * 0.55) * (0.6 + 0.4 * Math.abs(Math.sin(k * 1.7 + r)));
+          row.push(wgt); sum += wgt;
+        }
+        for (var k2 = 0; k2 < n; k2++) {
+          var v = k2 <= r ? row[k2] / sum : 0;
+          if (k2 > r) c.fillStyle = 'rgba(128,128,128,.06)';
+          else if (r === qr) c.fillStyle = 'rgba(180,123,232,' + Math.min(0.95, 0.22 + v * 2.1) + ')';
+          else c.fillStyle = 'rgba(128,128,128,' + (0.11 + v * 0.85) + ')';
+          c.fillRect(ox + k2 * cell + 0.5, oy + r * cell + 0.5, cell - 1, cell - 1);
+        }
+      }
+      c.strokeStyle = P.p;
+      c.lineWidth = 1.4;
+      c.strokeRect(ox + 0.5, oy + qr * cell + 0.5, cell * n - 1, cell - 1);
+    },
+
+    mlp: function (c, s) {
+      var L = [4, 5, 3], pad = 18;
+      if (!s.net) {
+        s.net = L.map(function (cnt, li) {
+          var col = [];
+          for (var i = 0; i < cnt; i++) {
+            col.push({
+              x: pad + (s.w - pad * 2) * (li / (L.length - 1)),
+              y: s.h * ((i + 1) / (cnt + 1))
+            });
+          }
+          return col;
+        });
+      }
+      var pulse = (s.t * 0.5) % 1.4;
+      for (var li2 = 0; li2 < L.length - 1; li2++) {
+        var seg = li2 / (L.length - 1);
+        var lit = pulse > seg && pulse < seg + 0.5;
+        s.net[li2].forEach(function (a3) {
+          s.net[li2 + 1].forEach(function (b3) {
+            c.strokeStyle = lit ? 'rgba(45,195,180,.5)' : 'rgba(128,128,128,.16)';
+            c.lineWidth = lit ? 1.3 : 0.8;
+            c.beginPath(); c.moveTo(a3.x, a3.y); c.lineTo(b3.x, b3.y); c.stroke();
+          });
+        });
+      }
+      s.net.forEach(function (col, li3) {
+        var seg2 = li3 / (L.length - 1);
+        var lit2 = pulse > seg2 - 0.08 && pulse < seg2 + 0.42;
+        col.forEach(function (nd) {
+          var near = s.hover && Math.hypot(nd.x - s.mx, nd.y - s.my) < 17;
+          c.beginPath(); c.arc(nd.x, nd.y, near ? 7 : 5, 0, 6.284);
+          c.fillStyle = near ? P.y : (lit2 ? P.t : 'rgba(128,128,128,.40)');
+          c.fill();
+        });
+      });
+    },
+
+    regression: function (c, s) {
+      if (!s.data) {
+        var R = rnd(33);
+        s.data = [];
+        for (var i = 0; i < 16; i++) {
+          var xx = (i + 0.5) / 16;
+          s.data.push({ x: xx, y: 0.24 + xx * 0.52 + (R() - 0.5) * 0.20 });
+        }
+      }
+      var pad2 = 11, W2 = s.w - pad2 * 2, H2 = s.h - pad2 * 2 - 6;
+      var slope = s.hover ? (1 - s.my / s.h) * 1.5 - 0.10 : 0.52 + Math.sin(s.t * 0.7) * 0.22;
+      var inter = 0.24;
+      function px(x) { return pad2 + x * W2; }
+      function py(y) { return pad2 + 6 + (1 - y) * H2; }
+      var loss = 0;
+      s.data.forEach(function (d) {
+        var yh = inter + slope * d.x;
+        loss += (yh - d.y) * (yh - d.y);
+        c.strokeStyle = 'rgba(239,90,90,.42)';
+        c.lineWidth = 1;
+        c.beginPath(); c.moveTo(px(d.x), py(d.y)); c.lineTo(px(d.x), py(yh)); c.stroke();
+      });
+      loss /= s.data.length;
+      c.strokeStyle = P.t;
+      c.lineWidth = 2;
+      c.beginPath(); c.moveTo(px(0), py(inter)); c.lineTo(px(1), py(inter + slope)); c.stroke();
+      s.data.forEach(function (d) {
+        c.beginPath(); c.arc(px(d.x), py(d.y), 2.8, 0, 6.284);
+        c.fillStyle = P.b; c.fill();
+      });
+      var bw2 = s.w * 0.44;
+      c.fillStyle = 'rgba(128,128,128,.18)';
+      c.fillRect(pad2, 4, bw2, 3);
+      c.fillStyle = loss < 0.014 ? P.g : P.r;
+      c.fillRect(pad2, 4, Math.max(2, Math.min(bw2, bw2 * loss / 0.06)), 3);
+    },
+
+    scanner: function (c, s) {
+      if (!s.blobs) {
+        var R = rnd(11);
+        s.blobs = [];
+        for (var i = 0; i < 64; i++) s.blobs.push({ x: R(), y: R(), r: 3 + R() * 7, a: 0.05 + R() * 0.12 });
+      }
+      s.blobs.forEach(function (b3) {
+        c.beginPath(); c.arc(b3.x * s.w, b3.y * s.h, b3.r, 0, 6.284);
+        c.fillStyle = 'rgba(128,128,128,' + b3.a + ')'; c.fill();
+      });
+      var tx2 = s.w * 0.63, ty2 = s.h * 0.45;
+      var bx = s.hover ? s.mx : tx2 + Math.cos(s.t * 0.9) * s.w * 0.24;
+      var by = s.hover ? s.my : ty2 + Math.sin(s.t * 1.3) * s.h * 0.20;
+      var hit = Math.hypot(bx - tx2, by - ty2) < 24;
+      c.beginPath(); c.arc(tx2, ty2, 16, 0, 6.284);
+      c.fillStyle = hit ? 'rgba(108,194,74,.30)' : 'rgba(128,128,128,.15)';
+      c.fill();
+      var bw3 = 44, bh3 = 38, k3 = 10;
+      var x0 = bx - bw3 / 2, y0 = by - bh3 / 2;
+      c.strokeStyle = hit ? P.g : 'rgba(128,128,128,.55)';
+      c.lineWidth = 1.6;
+      var corners = [[x0, y0, 1, 1], [x0 + bw3, y0, -1, 1], [x0, y0 + bh3, 1, -1], [x0 + bw3, y0 + bh3, -1, -1]];
+      corners.forEach(function (q) {
+        c.beginPath();
+        c.moveTo(q[0] + q[2] * k3, q[1]);
+        c.lineTo(q[0], q[1]);
+        c.lineTo(q[0], q[1] + q[3] * k3);
+        c.stroke();
+      });
+    },
+
+    packets: function (c, s) {
+      if (!s.lanes) {
+        var R = rnd(41);
+        s.lanes = [];
+        for (var l = 0; l < 4; l++) {
+          var ps = [];
+          for (var i = 0; i < 5; i++) ps.push({ o: R(), bad: R() < 0.24, sp: 0.10 + R() * 0.10 });
+          s.lanes.push(ps);
+        }
+      }
+      var fw = s.hover ? Math.max(22, Math.min(s.w - 12, s.mx)) : s.w * 0.66;
+      var pad3 = 9, lh = (s.h - pad3 * 2) / 4;
+      c.strokeStyle = 'rgba(128,128,128,.16)';
+      c.lineWidth = 1;
+      for (var l2 = 0; l2 < 4; l2++) {
+        var yy = pad3 + lh * (l2 + 0.5);
+        c.beginPath(); c.moveTo(pad3, yy); c.lineTo(s.w - pad3, yy); c.stroke();
+      }
+      s.lanes.forEach(function (ps2, l3) {
+        var y2 = pad3 + lh * (l3 + 0.5);
+        ps2.forEach(function (pk) {
+          var x = pad3 + ((pk.o + s.t * pk.sp) % 1) * (s.w - pad3 * 2);
+          var blocked = pk.bad && x > fw;
+          if (blocked) x = fw - 5;
+          c.fillStyle = pk.bad ? (blocked ? P.r : 'rgba(239,90,90,.7)') : 'rgba(77,157,224,.75)';
+          c.fillRect(x - 4, y2 - 3, 8, 6);
+        });
+      });
+      c.strokeStyle = P.y;
+      c.lineWidth = 1.6;
+      c.setLineDash([4, 3]);
+      c.beginPath(); c.moveTo(fw, 4); c.lineTo(fw, s.h - 4); c.stroke();
+      c.setLineDash([]);
+    },
+
+    hexdump: function (c, s) {
+      if (!s.bytes) {
+        var R = rnd(63);
+        s.bytes = [];
+        for (var i = 0; i < 160; i++) s.bytes.push({ v: R(), hit: R() < 0.11 });
+      }
+      var cols = 16, rows = 8, pad4 = 7;
+      var cw = (s.w - pad4 * 2) / cols, ch = (s.h - pad4 * 2) / rows;
+      var scan = s.hover ? (s.my - pad4) / (s.h - pad4 * 2) : (s.t * 0.26) % 1;
+      var row2 = Math.max(0, Math.min(rows - 1, Math.floor(scan * rows)));
+      for (var r = 0; r < rows; r++) {
+        for (var k = 0; k < cols; k++) {
+          var b4 = s.bytes[r * cols + k];
+          if (!b4) continue;
+          if (r === row2 && b4.hit) c.fillStyle = P.g;
+          else if (b4.hit && r < row2) c.fillStyle = 'rgba(108,194,74,.34)';
+          else c.fillStyle = 'rgba(128,128,128,' + (0.10 + b4.v * 0.20) + ')';
+          c.fillRect(pad4 + k * cw + 0.6, pad4 + r * ch + 0.6, cw - 1.2, ch - 1.2);
+        }
+      }
+      c.fillStyle = 'rgba(244,185,66,.15)';
+      c.fillRect(pad4, pad4 + row2 * ch, s.w - pad4 * 2, ch);
+      c.strokeStyle = P.y;
+      c.lineWidth = 1.2;
+      c.strokeRect(pad4 + 0.5, pad4 + row2 * ch + 0.5, s.w - pad4 * 2 - 1, ch - 1);
     }
   };
 
@@ -295,7 +513,7 @@
       st.mx = st.w / 2;
       st.my = st.h / 2;
       st.ink = getComputedStyle(card).color || '#888';
-      st.cells = null; st.nodes = null; st.pts = null;
+      st.cells = st.nodes = st.pts = st.net = st.data = st.lanes = st.blobs = st.bytes = null;
     };
     item.render = function () {
       if (!st.w) item.resize();
@@ -349,15 +567,22 @@
     var entries = document.querySelectorAll('article.post-entry');
     var mainRect = main.getBoundingClientRect();
     var mw = main.clientWidth;
+    // spread evenly down the feed rather than one per post, so the widget count
+    // and the post count do not have to match
+    var first = entries[0];
+    var startY = first ? (first.getBoundingClientRect().top - mainRect.top) : 300;
+    var endY = Math.max(startY + 220, main.scrollHeight - 200);
+    var perSide = Math.ceil(cards.length / 2);
+    // the right column is nudged down by 0.45 of a step, so budget for that
+    // or the last card overhangs the bottom of the feed
+    var step = perSide > 1 ? (endY - startY) / (perSide - 1 + 0.45) : 0;
+    if (step < 172) step = 172;            // never let same-side cards collide
     cards.forEach(function (c2, i) {
-      var anchor = entries[Math.min(i + 1, entries.length - 1)];
-      var top = anchor
-        ? anchor.getBoundingClientRect().top - mainRect.top
-        : 120 + i * 190;
-      c2.style.top = Math.max(0, Math.round(top)) + 'px';
-      c2.style.left = (i % 2 === 0)
-        ? -(CARD_W + GUTTER) + 'px'
-        : (mw + GUTTER) + 'px';
+      var right = i % 2 === 1;
+      var slot = Math.floor(i / 2);
+      var top = startY + slot * step + (right ? step * 0.45 : 0);
+      c2.style.top = Math.round(Math.max(0, top)) + 'px';
+      c2.style.left = right ? (mw + GUTTER) + 'px' : -(CARD_W + GUTTER) + 'px';
     });
     live.forEach(function (it) { it.resize(); it.render(); });
   }
