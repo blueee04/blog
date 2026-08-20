@@ -1,0 +1,143 @@
+<a class="worm-strip" href="/estgel/" aria-label="Open the interactive C. elegans cell-fate dashboard">
+  <svg class="worm-svg" viewBox="0 0 640 130" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"></svg>
+  <span class="worm-badge">GSoC 2026 &middot; OpenWorm</span>
+  <span class="worm-cta"><span class="worm-cta-main">poke the worm</span><span class="worm-cta-sub">live cell-fate model &rarr;</span></span>
+</a>
+
+<style>
+.worm-strip{
+  display:block; position:relative; margin:1.1rem 0 .4rem;
+  border:1px solid rgba(128,128,128,.22); border-radius:12px;
+  background:rgba(128,128,128,.05);
+  overflow:hidden; text-decoration:none !important; cursor:pointer;
+  transition:border-color .25s ease, background .25s ease, transform .25s ease;
+}
+.worm-strip:hover{ border-color:rgba(128,128,128,.45); background:rgba(128,128,128,.09); }
+.worm-svg{ display:block; width:100%; height:130px; touch-action:none; }
+.worm-badge{
+  position:absolute; left:14px; top:11px;
+  font-size:.68rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--secondary); opacity:.75; pointer-events:none;
+  border:1px solid rgba(128,128,128,.28); border-radius:999px; padding:3px 9px;
+  background:rgba(128,128,128,.06);
+}
+.worm-strip:hover .worm-badge{ opacity:1; }
+.worm-cta{
+  position:absolute; right:14px; bottom:10px;
+  display:flex; flex-direction:column; align-items:flex-end; gap:1px;
+  pointer-events:none; text-align:right;
+}
+.worm-cta-main{ font-size:.86rem; font-weight:700; color:var(--primary); letter-spacing:.01em; }
+.worm-cta-sub{ font-size:.72rem; color:var(--secondary); opacity:.85; }
+.worm-strip:hover .worm-cta-sub{ opacity:1; }
+@media (max-width:640px){ .worm-svg{ height:104px; } .worm-cta-sub{ display:none; } }
+</style>
+
+<script>
+(function () {
+  var me = document.currentScript;
+  var strip = me && me.previousElementSibling && me.previousElementSibling.tagName === 'STYLE'
+    ? me.parentNode.querySelector('.worm-strip')
+    : document.querySelector('.worm-strip');
+  if (!strip) return;
+  var svg = strip.querySelector('.worm-svg');
+  if (!svg) return;
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var W = 640, H = 130;
+  var N = 20, SPACING = 21;
+  // tissue colours, same palette the dashboard uses
+  var PALETTE = ['#f4b942','#ef5a5a','#2fc3b4','#b57be8','#6cc24a','#4d9de0','#e879c0'];
+
+  var pts = [], dots = [];
+  for (var i = 0; i < N; i++) {
+    // start in a readable S-curve so the very first paint already looks like a worm
+    pts.push({
+      x: W * 0.72 - i * SPACING,
+      y: H * 0.5 + Math.sin(i * 0.5) * 16
+    });
+    var c = document.createElementNS(NS, 'circle');
+    c.setAttribute('r', Math.max(3.4, 11 - i * 0.34).toFixed(2));
+    c.setAttribute('fill', PALETTE[i % PALETTE.length]);
+    c.setAttribute('opacity', (0.95 - i * 0.022).toFixed(3));
+    svg.appendChild(c);
+    dots.push(c);
+  }
+  var eyeL = document.createElementNS(NS, 'circle');
+  var eyeR = document.createElementNS(NS, 'circle');
+  [eyeL, eyeR].forEach(function (e) {
+    e.setAttribute('r', '1.9');
+    e.setAttribute('fill', '#1b1b1b');
+    e.setAttribute('opacity', '.85');
+    svg.appendChild(e);
+  });
+
+  function draw() {
+    for (var j = 0; j < N; j++) {
+      dots[j].setAttribute('cx', pts[j].x.toFixed(2));
+      dots[j].setAttribute('cy', pts[j].y.toFixed(2));
+    }
+    var hx = pts[0].x, hy = pts[0].y;
+    var ax = hx - pts[1].x, ay = hy - pts[1].y;
+    var al = Math.sqrt(ax * ax + ay * ay) || 1;
+    var nx = -ay / al, ny = ax / al;
+    eyeL.setAttribute('cx', (hx + nx * 3.6 + ax / al * 2.6).toFixed(2));
+    eyeL.setAttribute('cy', (hy + ny * 3.6 + ay / al * 2.6).toFixed(2));
+    eyeR.setAttribute('cx', (hx - nx * 3.6 + ax / al * 2.6).toFixed(2));
+    eyeR.setAttribute('cy', (hy - ny * 3.6 + ay / al * 2.6).toFixed(2));
+  }
+  // paint once up front: if rAF is delayed (background tab) the worm still looks right
+  draw();
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+
+  var tx = pts[0].x, ty = pts[0].y, hovering = false, t = 0, raf = null;
+
+  function toLocal(evt) {
+    var b = svg.getBoundingClientRect();
+    if (!b.width || !b.height) return null;
+    var p = evt.touches && evt.touches[0] ? evt.touches[0] : evt;
+    return { x: (p.clientX - b.left) / b.width * W, y: (p.clientY - b.top) / b.height * H };
+  }
+  strip.addEventListener('pointermove', function (e) {
+    var l = toLocal(e);
+    if (!l) return;
+    hovering = true; tx = l.x; ty = l.y;
+  }, { passive: true });
+  strip.addEventListener('pointerleave', function () { hovering = false; }, { passive: true });
+
+  function frame() {
+    t += 0.016;
+    if (!hovering) {
+      // lazy patrol when nobody is playing with it
+      tx = W * 0.5 + Math.cos(t * 0.55) * (W * 0.34);
+      ty = H * 0.5 + Math.sin(t * 1.15) * (H * 0.22);
+    }
+    var head = pts[0];
+    head.x += (tx - head.x) * 0.085;
+    head.y += (ty - head.y) * 0.085;
+
+    for (var i = 1; i < N; i++) {
+      var p = pts[i - 1], q = pts[i];
+      var dx = p.x - q.x, dy = p.y - q.y;
+      var d = Math.sqrt(dx * dx + dy * dy) || 1;
+      // trail the segment ahead, keeping a fixed body spacing
+      q.x = p.x - (dx / d) * SPACING;
+      q.y = p.y - (dy / d) * SPACING;
+      // a little swim wobble so it never looks rigid
+      q.y += Math.sin(t * 3.1 - i * 0.55) * 1.5;
+    }
+    draw();
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start() { if (raf === null) raf = requestAnimationFrame(frame); }
+  function stop() { if (raf !== null) { cancelAnimationFrame(raf); raf = null; } }
+
+  start();
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { stop(); } else { start(); }
+  });
+})();
+</script>
