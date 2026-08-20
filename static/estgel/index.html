@@ -622,7 +622,13 @@
       const ev=(block.match(/^event:\s*(\w+)/m)||[])[1];
       const dataLine=(block.match(/^data:\s*(.*)$/m)||[])[1];
       if(!ev||!dataLine) continue;
-      if(ev==='error'){ try{ errMsg=JSON.parse(dataLine); }catch(e){ errMsg=dataLine; } }
+      if(ev==='error'){
+        // Gradio sends {"error": "..."} for a rejected file, or {"error": null}
+        // when the server hit an unexpected exception.
+        try{ const d=JSON.parse(dataLine); errMsg=(d && d.error) || null; }
+        catch(e){ errMsg=dataLine || null; }
+        if(!errMsg) errMsg='The server could not process that file. Check the logs if this repeats.';
+      }
       if(ev==='complete'){ try{ payload=JSON.parse(dataLine); }catch(e){} }
     }
     if(errMsg) return {__error: typeof errMsg==='string'? errMsg : 'The server rejected that file.'};
