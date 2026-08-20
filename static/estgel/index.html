@@ -46,7 +46,7 @@
   .stage-card{display:flex;flex-direction:column}
   .stage{position:relative;background:
       radial-gradient(circle at 50% 42%,#0a121d 0%,var(--stage) 70%);
-    aspect-ratio:16/11;min-height:340px}
+    aspect-ratio:16/9;min-height:300px}
   #view{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none}
   #view:active{cursor:grabbing}
   .hint{position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:10.5px;
@@ -337,7 +337,7 @@
 
   /* mutable view state, reset whenever new data is loaded */
   let cells=[], frames=[], edges=[], NF=0;
-  let cx=0, cy=0, cz=0, spread=1;
+  let cx=0, cy=0, cz=0, spread=1, fitPts=[];
   let hidden=new Set();
   let yaw=0.6, pitch=-0.35, zoom=1, dragging=false, autoRot=true, sel=-1, hover=-1;
   let lx=0,ly=0, dpr=Math.min(window.devicePixelRatio||1,2);
@@ -355,6 +355,13 @@
     let sp=0,n2=0;
     cells.forEach(c=>c.pos.forEach(p=>{if(p){sp+=(p[0]-cx)**2+(p[1]-cy)**2+(p[2]-cz)**2;n2++;}}));
     spread=Math.sqrt(sp/(n2||1))||1;
+
+    // outline of the fully grown embryo, used to fit the view to the frame
+    fitPts=[];
+    cells.forEach(c=>{
+      const q=c.pos[NF-1]||[...c.pos].reverse().find(Boolean);
+      if(q) fitPts.push([q[0]-cx,q[1]-cy,q[2]-cz]);
+    });
 
     // chips: model-level metrics stay, cell/tissue counts follow the embryo
     const hist=(DATA.metrics&&DATA.metrics.history)||[], last=hist[hist.length-1]||{};
@@ -410,7 +417,7 @@
   }
 
   function resize(){const r=cv.getBoundingClientRect();cv.width=r.width*dpr;cv.height=r.height*dpr;}
-  window.addEventListener('resize',resize);
+  window.addEventListener('resize',()=>{resize();draw();});
 
   function sample(c,tt){
     const f0=Math.floor(tt), f1=Math.min(f0+1,NF-1), a=tt-f0;
@@ -423,14 +430,37 @@
   }
   let rot={};
   function setRot(){rot={cyw:Math.cos(yaw),syw:Math.sin(yaw),cp:Math.cos(pitch),sp2:Math.sin(pitch)};}
-  function project(P,W,H,R){const {cyw,syw,cp,sp2}=rot; let X=P[0]-cx,Y=P[1]-cy,Z=P[2]-cz;
-    let x1=X*cyw+Z*syw, z1=-X*syw+Z*cyw, y1=Y*cp-z1*sp2, z2=Y*sp2+z1*cp;
-    return {sx:W/2+x1*R, sy:H/2+y1*R, depth:z2};}
+  /* Unit projection (no scale, no offset), so bounds can be measured before fitting. */
+  function unit(P){const {cyw,syw,cp,sp2}=rot; const X=P[0]-cx,Y=P[1]-cy,Z=P[2]-cz;
+    const x1=X*cyw+Z*syw, z1=-X*syw+Z*cyw;
+    return [x1, Y*cp-z1*sp2, Y*sp2+z1*cp];}
+
+  /* Scale so the grown embryo fills the frame at the current rotation, rather than
+     keying off min(W,H): the embryo is far wider than tall, which otherwise left
+     large empty bands above and below. */
+  let fitR=1, offX=0, offY=0;
+  function computeFit(W,H){
+    if(!fitPts.length){ fitR=Math.min(W,H)*0.34/spread; offX=W/2; offY=H/2; return; }
+    let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+    for(const q of fitPts){
+      const u=unit([q[0]+cx,q[1]+cy,q[2]+cz]);
+      if(u[0]<x0)x0=u[0]; if(u[0]>x1)x1=u[0];
+      if(u[1]<y0)y0=u[1]; if(u[1]>y1)y1=u[1];
+    }
+    const spanX=(x1-x0)||1, spanY=(y1-y0)||1, pad=0.90;
+    fitR=Math.min(W*pad/spanX, H*pad/spanY);
+    offX=W/2-((x0+x1)/2)*fitR*zoom;
+    offY=H/2-((y0+y1)/2)*fitR*zoom;
+  }
+
+  function project(P,W,H,R){const u=unit(P);
+    return {sx:offX+u[0]*R, sy:offY+u[1]*R, depth:u[2]};}
 
   let lastPts=[];
   function draw(){
     const W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H); setRot();
-    const R=Math.min(W,H)*0.34*zoom/spread;
+    computeFit(W,H);
+    const R=fitR*zoom;
     const f0=Math.min(Math.floor(t),NF-1);
     const S=new Array(cells.length); const pts=[];
     for(let i=0;i<cells.length;i++){
