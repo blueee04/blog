@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>ESTGEL on bluee :)</title>
-    <link>https://barshan.is-a.dev/tags/estgel/</link>
-    <description>Recent content in ESTGEL on bluee :)</description>
+    <title>Google Summer of Code on bluee :)</title>
+    <link>https://barshan.is-a.dev/tags/google-summer-of-code/</link>
+    <description>Recent content in Google Summer of Code on bluee :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 20 Aug 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://barshan.is-a.dev/tags/estgel/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://barshan.is-a.dev/tags/google-summer-of-code/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ESTGEL Is Live: Go Click a Cell</title>
       <link>https://barshan.is-a.dev/posts/2026-08-20-estgel-live/</link>
       <pubDate>Thu, 20 Aug 2026 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/posts/2026-08-20-estgel-live/</guid>
       <description>The cell-fate model is off my GPU and on the internet. An interactive 3D embryo you can scrub through, and a Space where you can upload your own.</description>
+    </item>
+    <item>
+      <title>Google Summer of Code Week 8: Turning One Spreadsheet Into 2,769 Answers</title>
+      <link>https://barshan.is-a.dev/posts/2026-07-31-gsoc-week-8/</link>
+      <pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2026-07-31-gsoc-week-8/</guid>
+      <description>Turning a DevoWorm reference sheet into 2,506 honest cell fate training labels, and the four ways it fought back.</description>
     </item>
     <item>
       <title>Google Summer of Code Week 7: The 96% That Wasn&#39;t</title>
@@ -42,6 +49,27 @@
       <pubDate>Sat, 13 Jun 2026 00:00:00 +0000</pubDate>
       <guid>https://barshan.is-a.dev/posts/2026-06-13-gsoc-week-3/</guid>
       <description>A plain-English breakdown of ESTGEL&amp;rsquo;s three modules using a student friendship network analogy.</description>
+    </item>
+    <item>
+      <title>Google Summer of Code - Coding Period Week 2</title>
+      <link>https://barshan.is-a.dev/posts/2026-06-06-gsoc-week-2/</link>
+      <pubDate>Sat, 06 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2026-06-06-gsoc-week-2/</guid>
+      <description>Created a Dataset Loader for my Dataset</description>
+    </item>
+    <item>
+      <title>Tiny Worms and Large Graphs</title>
+      <link>https://barshan.is-a.dev/posts/2026-05-24-community-bonding-gsoc/</link>
+      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2026-05-24-community-bonding-gsoc/</guid>
+      <description>So, I Started Working on OpenWorm</description>
+    </item>
+    <item>
+      <title>Attention in Development Biology?</title>
+      <link>https://barshan.is-a.dev/posts/2026-03-12-attention-mechanism-bio/</link>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://barshan.is-a.dev/posts/2026-03-12-attention-mechanism-bio/</guid>
+      <description>My set of research while i build my proposal for Google Summer of Code 2026 at the Openworm Foundation</description>
     </item>
   </channel>
 </rss>

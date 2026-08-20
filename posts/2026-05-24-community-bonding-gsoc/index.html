@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Tiny Worms and Large Graphs | bluee :)</title>
-<meta name="keywords" content="Deep Learning, C. elegans, graph-neural-networks, OpenWorm, GSOC, data-preprocessing">
+<meta name="keywords" content="Deep Learning, C. elegans, graph-neural-networks, OpenWorm, Google Summer of Code, data-preprocessing">
 <meta name="description" content="So, I Started Working on OpenWorm">
 <meta name="author" content="Barshan Mondal">
 <link rel="canonical" href="https://barshan.is-a.dev/posts/2026-05-24-community-bonding-gsoc/">
@@ -94,10 +94,10 @@
   "name": "Tiny Worms and Large Graphs",
   "description": "So, I Started Working on OpenWorm",
   "keywords": [
-    "Deep Learning", "C. elegans", "graph-neural-networks", "OpenWorm", "GSOC", "data-preprocessing"
+    "Deep Learning", "C. elegans", "graph-neural-networks", "OpenWorm", "Google Summer of Code", "data-preprocessing"
   ],
-  "articleBody": "A few months ago, I somehow ended up spending my evenings reading about worms, dynamical systems, graph learning, and embryogenesis.\nAnd now I’m here.\nThis summer, I’ll be working with the OpenWorm Foundation as a GSoC contributor on the project:\nExplainable Spatio-Temporal Graph Evolution for Developmental Neuroscience\nHonestly, when I first came across developmental biology and computational neuroscience, I never expected it to connect this naturally with graph learning and deep learning. But somewhere between lineage trees, cell trajectories, and attention mechanisms, things started becoming very interesting.\nThe first week was mostly me getting to know more about the OpenWorm community and what are they striving to do. I got to meet Dr. Bradley Alicea, Jesse Parent and Mehul Arora. They gave me a warm welcome into the community.\nThis blog post is mostly a small recap of what the past few months looked like and my community bonding period\nThe Last Few Months Before the official coding period even began, I spent a lot of time attending discussions, meetings, paper reading sessions, and falling into random rabbit holes around developmental biology. But the interesting part was that it never felt limited to just neuroscience or research. A huge part of the experience was also about learning how to communicate ideas better presenting papers, explaining complicated concepts simply, storytelling, managing time, and learning how to work openly with a community. Honestly, those are the kinds of skills that don’t get talked about enough in technical spaces, but end up mattering just as much.\nMost of my recent weeks have looked something like this:\nreading papers at 2 AM trying to understand why cells move the way they do opening Napari documentation and staring at embryogenesis visualizations for unhealthy amounts of time pretending I fully understand dynamical systems discovering that biology people casually use words that sound like boss fights Some of the papers and topics I explored during this period included:\nThe Markovian Worm lecture Cell motility through eigenvalues and dynamical systems lecture, github Lineage-specific dynamics and learning on graphs using attention mechanisms for developmental learning lecture Dynamic relation learning for C. elegans embryogenesis lecture, github I spent some time building preprocessing pipelines and dataset structures for handling temporal embryogenesis data.\nThe dataset itself contains things like:\ncell coordinates across time lineage information edge creation timestamps alive/dead cell states behavioral and spatial metadata All of this in one .npz (Numpy Array) file.\nYou can find the dataset here\nI wrote a dedicated technical blog about this pipeline because there’s a lot to unpack there.\nGet that here buddy…\nWhat Next? The coding period officially begins soon.\nI’m genuinely excited about where this project could go over the next few months. There’s still a lot I don’t know yet, but honestly that’s probably the best part.\nI’ll keep posting detailed updates and technical breakdowns in my blogpost\nhttps://barshan.is-a.dev/\nAnd hopefully by the end of the summer, we’ll have something really interesting growing out of this tiny worm.\n",
-  "wordCount" : "496",
+  "articleBody": "A few months ago, I somehow ended up spending my evenings reading about worms, dynamical systems, graph learning, and embryogenesis.\nAnd now I’m here.\nThis summer, I’ll be working with the OpenWorm Foundation as a Google Summer of Code contributor on the project:\nExplainable Spatio-Temporal Graph Evolution for Developmental Neuroscience\nHonestly, when I first came across developmental biology and computational neuroscience, I never expected it to connect this naturally with graph learning and deep learning. But somewhere between lineage trees, cell trajectories, and attention mechanisms, things started becoming very interesting.\nThe first week was mostly me getting to know more about the OpenWorm community and what are they striving to do. I got to meet Dr. Bradley Alicea, Jesse Parent and Mehul Arora. They gave me a warm welcome into the community.\nThis blog post is mostly a small recap of what the past few months looked like and my community bonding period\nThe Last Few Months Before the official coding period even began, I spent a lot of time attending discussions, meetings, paper reading sessions, and falling into random rabbit holes around developmental biology. But the interesting part was that it never felt limited to just neuroscience or research. A huge part of the experience was also about learning how to communicate ideas better presenting papers, explaining complicated concepts simply, storytelling, managing time, and learning how to work openly with a community. Honestly, those are the kinds of skills that don’t get talked about enough in technical spaces, but end up mattering just as much.\nMost of my recent weeks have looked something like this:\nreading papers at 2 AM trying to understand why cells move the way they do opening Napari documentation and staring at embryogenesis visualizations for unhealthy amounts of time pretending I fully understand dynamical systems discovering that biology people casually use words that sound like boss fights Some of the papers and topics I explored during this period included:\nThe Markovian Worm lecture Cell motility through eigenvalues and dynamical systems lecture, github Lineage-specific dynamics and learning on graphs using attention mechanisms for developmental learning lecture Dynamic relation learning for C. elegans embryogenesis lecture, github I spent some time building preprocessing pipelines and dataset structures for handling temporal embryogenesis data.\nThe dataset itself contains things like:\ncell coordinates across time lineage information edge creation timestamps alive/dead cell states behavioral and spatial metadata All of this in one .npz (Numpy Array) file.\nYou can find the dataset here\nI wrote a dedicated technical blog about this pipeline because there’s a lot to unpack there.\nGet that here buddy…\nWhat Next? The coding period officially begins soon.\nI’m genuinely excited about where this project could go over the next few months. There’s still a lot I don’t know yet, but honestly that’s probably the best part.\nI’ll keep posting detailed updates and technical breakdowns in my blogpost\nhttps://barshan.is-a.dev/\nAnd hopefully by the end of the summer, we’ll have something really interesting growing out of this tiny worm.\n",
+  "wordCount" : "499",
   "inLanguage": "en",
   "datePublished": "2026-05-24T00:00:00Z",
   "dateModified": "2026-05-24T00:00:00Z",
@@ -199,7 +199,7 @@
 
   <div class="post-content"><p>A few months ago, I somehow ended up spending my evenings reading about worms, dynamical systems, graph learning, and embryogenesis.</p>
 <p>And now I’m here.</p>
-<p>This summer, I’ll be working with the OpenWorm Foundation as a GSoC contributor on the project:</p>
+<p>This summer, I’ll be working with the OpenWorm Foundation as a Google Summer of Code contributor on the project:</p>
 <p><a href="https://summerofcode.withgoogle.com/programs/2026/projects/A289WZd0"><strong>Explainable Spatio-Temporal Graph Evolution for Developmental Neuroscience</strong></a></p>
 <p>Honestly, when I first came across developmental biology and computational neuroscience, I never expected it to connect this naturally with graph learning and deep learning. But somewhere between lineage trees, cell trajectories, and attention mechanisms, things started becoming <em>very</em> interesting.</p>
 <p>The first week was mostly me getting to know more about the OpenWorm community and what are they striving to do. I got to meet <a href="https://github.com/balicea">Dr. Bradley Alicea</a>, <a href="https://jesparent.com/">Jesse Parent</a> and <a href="https://www.linkedin.com/in/mehular0ra/">Mehul Arora</a>. They gave me a warm welcome into the community.</p>
@@ -250,14 +250,14 @@
       <li><a href="https://barshan.is-a.dev/tags/c.-elegans/">C. elegans</a></li>
       <li><a href="https://barshan.is-a.dev/tags/graph-neural-networks/">Graph Neural Networks</a></li>
       <li><a href="https://barshan.is-a.dev/tags/openworm/">OpenWorm</a></li>
-      <li><a href="https://barshan.is-a.dev/tags/gsoc/">GSOC</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/google-summer-of-code/">Google Summer of Code</a></li>
       <li><a href="https://barshan.is-a.dev/tags/data-preprocessing/">data-preprocessing</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://barshan.is-a.dev/posts/2026-06-06-gsoc-week-2/">
     <span class="title">« Prev</span>
     <br>
-    <span>GSoC - Coding Period Week 2</span>
+    <span>Google Summer of Code - Coding Period Week 2</span>
   </a>
   <a class="next" href="https://barshan.is-a.dev/posts/2026-04-15-epic-data-preprocessing-documentation/">
     <span class="title">Next »</span>
@@ -270,7 +270,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Tiny Worms and Large Graphs on x"
-            href="https://x.com/intent/tweet/?text=Tiny%20Worms%20and%20Large%20Graphs&amp;url=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-05-24-community-bonding-gsoc%2f&amp;hashtags=DeepLearning%2cC.elegans%2cgraph-neural-networks%2cOpenWorm%2cGSOC%2cdata-preprocessing">
+            href="https://x.com/intent/tweet/?text=Tiny%20Worms%20and%20Large%20Graphs&amp;url=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-05-24-community-bonding-gsoc%2f&amp;hashtags=DeepLearning%2cC.elegans%2cgraph-neural-networks%2cOpenWorm%2cGoogleSummerofCode%2cdata-preprocessing">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>ESTGEL Is Live: Go Click a Cell | bluee :)</title>
-<meta name="keywords" content="GSOC, OpenWorm, ESTGEL, C. elegans, DevoLearn, Demo">
+<meta name="keywords" content="Google Summer of Code, OpenWorm, ESTGEL, C. elegans, DevoLearn, Demo">
 <meta name="description" content="The cell-fate model is off my GPU and on the internet. An interactive 3D embryo you can scrub through, and a Space where you can upload your own.">
 <meta name="author" content="Barshan Mondal">
 <link rel="canonical" href="https://barshan.is-a.dev/posts/2026-08-20-estgel-live/">
@@ -94,7 +94,7 @@
   "name": "ESTGEL Is Live: Go Click a Cell",
   "description": "The cell-fate model is off my GPU and on the internet. An interactive 3D embryo you can scrub through, and a Space where you can upload your own.",
   "keywords": [
-    "GSOC", "OpenWorm", "ESTGEL", "C. elegans", "DevoLearn", "Demo"
+    "Google Summer of Code", "OpenWorm", "ESTGEL", "C. elegans", "DevoLearn", "Demo"
   ],
   "articleBody": "New here? I’m spending Google Summer of Code with OpenWorm / DevoWorm working on C. elegans, a millimetre-long worm whose embryo is so predictable that biologists have mapped every single cell division it makes. I’m training a graph neural network to watch that embryo develop and predict what each cell grows up to become: a neuron, muscle, gut, skin. It gets to see where a cell sits in 3D, how big it is, when it appears and which cells it’s touching. It never gets to see the cell’s name, because in this worm the name is the answer.\nThe model stopped living on my GPU. It’s on the internet now, and you can poke it.\nIf that panel didn’t load, it lives at barshan.is-a.dev/estgel.\nEvery dot is a cell, coloured by the tissue my network thinks it becomes. Drag to rotate, scroll to zoom, drag the timeline to play development forward and watch cells divide. Click any cell and the inspector tells you what it was predicted to be, what it actually becomes, and how confident the call was.\nThree real embryos are loaded in as samples. Or feed it your own EPIC CSV, as long as it has cell, time, x, y, z, size, blot and somewhere between 12 and 1200 cells.\nUpload your own The prediction itself runs in a Space, which the dashboard calls behind the scenes. You can also use it directly:\nDirect link: huggingface.co/spaces/bluebarshan/estgel-cell-fate\nThe honest numbers 63% accuracy on held-out embryos, macro-F1 0.34. Pharynx, hypodermis and muscle land around 72 to 80% recall. Glia sits at 4%, and the genuinely rare tissues are at zero, because there are only a handful of them in the whole dataset and the model has never had a real chance to learn them. Those are on the dashboard too. I’d rather you see them than not.\nThe result I actually care about is this one:\nI never show the model a cell’s name, because in C. elegans the name gives away the answer. So the only way it can be right is by reading position, size, timing and who a cell is touching. Delete every contact edge and rerun, and 43% of the calls change. The graph is not decoration.\nThe dashboard measures importance this way throughout, by perturbation rather than attention weights, because the attention weights saturate and stop being informative.\nOne footnote for anyone deploying The whole classifier is 80,556 parameters. It runs on CPU in a couple of seconds, no GPU anywhere.\nWhich made deployment mildly absurd: the Space runs on ZeroGPU, and ZeroGPU refuses to start unless at least one GPU-decorated function exists in your app. So there’s a function in there called warm_up that is decorated, does nothing, returns \"ok\", and is never called by anything. It exists purely to satisfy a startup check. No GPU quota is ever consumed.\nAnyway. Go break it, and tell me what happens.\n",
   "wordCount" : "486",
@@ -247,7 +247,7 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://barshan.is-a.dev/tags/gsoc/">GSOC</a></li>
+      <li><a href="https://barshan.is-a.dev/tags/google-summer-of-code/">Google Summer of Code</a></li>
       <li><a href="https://barshan.is-a.dev/tags/openworm/">OpenWorm</a></li>
       <li><a href="https://barshan.is-a.dev/tags/estgel/">ESTGEL</a></li>
       <li><a href="https://barshan.is-a.dev/tags/c.-elegans/">C. elegans</a></li>
@@ -263,7 +263,7 @@
   <a class="next" href="https://barshan.is-a.dev/posts/2026-07-31-gsoc-week-8/">
     <span class="title">Next »</span>
     <br>
-    <span>GSOC Week 8: Turning One Spreadsheet Into 2,769 Answers</span>
+    <span>Google Summer of Code Week 8: Turning One Spreadsheet Into 2,769 Answers</span>
   </a>
 </nav>
 
@@ -271,7 +271,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share ESTGEL Is Live: Go Click a Cell on x"
-            href="https://x.com/intent/tweet/?text=ESTGEL%20Is%20Live%3a%20Go%20Click%20a%20Cell&amp;url=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-08-20-estgel-live%2f&amp;hashtags=GSOC%2cOpenWorm%2cESTGEL%2cC.elegans%2cDevoLearn%2cDemo">
+            href="https://x.com/intent/tweet/?text=ESTGEL%20Is%20Live%3a%20Go%20Click%20a%20Cell&amp;url=https%3a%2f%2fbarshan.is-a.dev%2fposts%2f2026-08-20-estgel-live%2f&amp;hashtags=GoogleSummerofCode%2cOpenWorm%2cESTGEL%2cC.elegans%2cDevoLearn%2cDemo">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
