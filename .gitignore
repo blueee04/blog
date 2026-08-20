@@ -1,0 +1,11 @@
+# Hugo build output (CI regenerates this on every deploy)
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# local preview scratch
+/static/previewimg/
+
+# OS cruft
+.DS_Store
+Thumbs.db

@@ -5,12 +5,30 @@ summary = "The cell-fate model is off my GPU and on the internet. An interactive
 tags = ["GSOC", "OpenWorm", "ESTGEL", "C. elegans", "DevoLearn", "Demo"]
 +++
 
-**New here? The one paragraph version.** I'm spending Google Summer of Code with [OpenWorm / DevoWorm](https://github.com/DevoLearn/DevoGraph) working on *C. elegans*, a millimetre-long worm whose embryo is so predictable that biologists have mapped every single cell division it makes. I'm training a graph neural network to watch that embryo develop and predict what each cell grows up to become: a neuron, muscle, gut, skin. It gets to see where a cell sits in 3D, how big it is, when it appears and which cells it's touching. It never gets to see the cell's name, because in this worm the name *is* the answer.
+**New here?** I'm spending Google Summer of Code with [OpenWorm / DevoWorm](https://github.com/DevoLearn/DevoGraph) working on *C. elegans*, a millimetre-long worm whose embryo is so predictable that biologists have mapped every single cell division it makes. I'm training a graph neural network to watch that embryo develop and predict what each cell grows up to become: a neuron, muscle, gut, skin. It gets to see where a cell sits in 3D, how big it is, when it appears and which cells it's touching. It never gets to see the cell's name, because in this worm the name *is* the answer.
 
 The model stopped living on my GPU. It's on the internet now, and you can poke it.
 
-<div style="position:relative;width:100%;height:min(80vh,720px);margin:1.5rem 0;border:1px solid rgba(128,128,128,.28);border-radius:10px;overflow:hidden;">
-  <iframe src="https://barshan.is-a.dev/estgel/" title="ESTGEL cell-fate dashboard" loading="lazy" style="width:100%;height:100%;border:0;"></iframe>
+<style>
+.estgel-embed{
+  position:relative;
+  width:min(96vw,1180px);
+  margin-top:1.75rem; margin-bottom:1.75rem;
+  margin-left:calc(50% - min(48vw,590px));
+  height:min(86vh,840px);
+  border:1px solid rgba(128,128,128,.28);
+  border-radius:10px;
+  overflow:hidden;
+  background:rgba(128,128,128,.04);
+}
+.estgel-embed iframe{width:100%;height:100%;border:0;display:block;}
+@media (max-width:900px){
+  .estgel-embed{width:100%;margin-left:0;height:min(78vh,620px);}
+}
+</style>
+
+<div class="estgel-embed">
+  <iframe src="https://barshan.is-a.dev/estgel/" title="ESTGEL cell-fate dashboard" loading="lazy"></iframe>
 </div>
 
 If that panel didn't load, it lives at **[barshan.is-a.dev/estgel](https://barshan.is-a.dev/estgel/)**.
@@ -23,8 +41,8 @@ Three real embryos are loaded in as samples. Or feed it your own EPIC CSV, as lo
 
 The prediction itself runs in a Space, which the dashboard calls behind the scenes. You can also use it directly:
 
-<div style="position:relative;width:100%;height:min(75vh,700px);margin:1.5rem 0;border:1px solid rgba(128,128,128,.28);border-radius:10px;overflow:hidden;">
-  <iframe src="https://bluebarshan-estgel-cell-fate.hf.space" title="ESTGEL Cell Fate Space" loading="lazy" style="width:100%;height:100%;border:0;"></iframe>
+<div class="estgel-embed">
+  <iframe src="https://bluebarshan-estgel-cell-fate.hf.space" title="ESTGEL Cell Fate Space" loading="lazy"></iframe>
 </div>
 
 Direct link: **[huggingface.co/spaces/bluebarshan/estgel-cell-fate](https://huggingface.co/spaces/bluebarshan/estgel-cell-fate)**
@@ -35,7 +53,7 @@ Direct link: **[huggingface.co/spaces/bluebarshan/estgel-cell-fate](https://hugg
 
 The result I actually care about is this one:
 
-![Accuracy drops from 50% to 31% and 43% of predictions flip when contact edges are removed](/previewimg/graph_ablation.png)
+![Accuracy drops from 50% to 31% and 43% of predictions flip when contact edges are removed](https://raw.githubusercontent.com/blueee04/blog/main/content/images/2026-08-20-ESTGEL-Live/graph_ablation.png)
 
 I never show the model a cell's name, because in *C. elegans* the name gives away the answer. So the only way it can be right is by reading position, size, timing and who a cell is touching. Delete every contact edge and rerun, and 43% of the calls change. The graph is not decoration.
 
